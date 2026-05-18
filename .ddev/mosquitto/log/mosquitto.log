@@ -1,0 +1,22 @@
+1779086978: mosquitto version 2.1.2 starting
+1779086978: Config loaded from /mosquitto/config/mosquitto.conf.
+1779086978: Bridge support available.
+1779086978: Persistence support available.
+1779086978: TLS support available.
+1779086978: TLS-PSK support available.
+1779086978: Websockets support available.
+1779086978: Warning: File /mosquitto/config/passwords has world readable permissions. Future versions will refuse to load this file.
+To fix this, use `chmod 0700 /mosquitto/config/passwords`.
+
+1779086978: Warning: File /mosquitto/config/passwords owner is not mosquitto. Future versions will refuse to load this file.To fix this, use `chown mosquitto /mosquitto/config/passwords`.
+
+1779086978: Warning: File /mosquitto/config/passwords group is not mosquitto. Future versions will refuse to load this file.
+
+1779086978: Plugin builtin-security has registered to receive 'basic-auth' events.
+1779086978: Opening ipv4 listen socket on port 1883.
+1779086978: Opening ipv6 listen socket on port 1883.
+1779086978: Opening ipv4 listen socket on port 9001.
+1779086978: Opening ipv6 listen socket on port 9001.
+1779086978: mosquitto version 2.1.2 running
+1779086979: New connection from 172.19.0.5:55716 on port 1883.
+1779086979: New client connected from 172.19.0.5:55716 as mqttjs_f8086d2b (p4, c1, k60, u'vr_device').
