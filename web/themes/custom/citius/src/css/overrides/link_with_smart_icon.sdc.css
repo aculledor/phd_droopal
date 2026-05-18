@@ -1,0 +1,55 @@
+/* ==========================================================================
+   LINK WITH SMART ICON
+   ===========================================================================
+   Project: Citius Theme
+   File: link_with_smart_icon.sdc.css
+   Description: Defines link with smart icon styling.
+   ========================================================================== */
+
+.component-link-with-smart-icon {
+  --cclwmi--icon-height: 51px;
+  --cclwmi--icon-width: 51px;
+  --cclwmi--link-bg-color: transparent;
+  --cclwmi--link-bg-color--hover: var(--c-neutral-lightest);
+  --cclwmi--link-border: 1px solid var(--c-neutral-lighter);
+  padding: var(--spacing-md);
+  border: var(--cclwmi--link-border);
+}
+
+.component-link-with-smart-icon a {
+  border-width: 0;
+}
+
+.component-link-with-smart-icon .file + span {
+  display: block;
+  font-size: calc(var(--fs) * 3.5);
+  padding: var(--spacing-xs) 0;
+  border-top: 1px dashed var(--c-neutral-lighter);
+}
+
+.component-link-with-smart-icon a {
+  display: flex;
+  justify-content: start;
+  padding: 0;
+  text-decoration: none;
+}
+
+.component-link-with-smart-icon a::before {
+  background-image: url("data:image/svg+xml,%3Csvg width='51' height='51' viewBox='0 0 51 51' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='51' height='51' fill='%23EEEEEE'/%3E%3Cpath d='M21.9649 24.7927C23.0979 23.6597 25.0739 23.6597 26.2069 24.7927L26.9139 25.4997L28.3279 24.0857L27.6209 23.3787C26.6779 22.4347 25.4219 21.9137 24.0859 21.9137C22.7499 21.9137 21.4939 22.4347 20.5509 23.3787L18.4289 25.4997C17.4932 26.4384 16.9678 27.7098 16.9678 29.0352C16.9678 30.3606 17.4932 31.632 18.4289 32.5707C18.8928 33.0352 19.4439 33.4035 20.0505 33.6544C20.6572 33.9053 21.3074 34.0339 21.9639 34.0327C22.6206 34.0341 23.271 33.9056 23.8779 33.6547C24.4847 33.4038 25.0359 33.0354 25.4999 32.5707L26.2069 31.8637L24.7929 30.4497L24.0859 31.1567C23.5224 31.7177 22.7596 32.0327 21.9644 32.0327C21.1692 32.0327 20.4064 31.7177 19.8429 31.1567C19.2814 30.5934 18.9661 29.8305 18.9661 29.0352C18.9661 28.2399 19.2814 27.477 19.8429 26.9137L21.9649 24.7927Z' fill='black'/%3E%3Cpath d='M25.4999 18.4287L24.7929 19.1357L26.2069 20.5497L26.9139 19.8427C27.4774 19.2817 28.2402 18.9668 29.0354 18.9668C29.8305 18.9668 30.5933 19.2817 31.1569 19.8427C31.7184 20.406 32.0337 21.1689 32.0337 21.9642C32.0337 22.7596 31.7184 23.5225 31.1569 24.0857L29.0349 26.2067C27.9019 27.3397 25.9259 27.3397 24.7929 26.2067L24.0859 25.4997L22.6719 26.9137L23.3789 27.6207C24.3219 28.5647 25.5779 29.0857 26.9139 29.0857C28.2499 29.0857 29.5059 28.5647 30.4489 27.6207L32.5709 25.4997C33.5066 24.561 34.032 23.2897 34.032 21.9642C34.032 20.6388 33.5066 19.3675 32.5709 18.4287C31.6324 17.4926 30.361 16.9668 29.0354 16.9668C27.7098 16.9668 26.4383 17.4926 25.4999 18.4287Z' fill='black'/%3E%3C/svg%3E%0A");
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: var(--cclwmi--icon-width);
+  height: var(--cclwmi--icon-height);
+  margin-right: 0.8125rem;
+  mask-image: none !important;
+}
+
+.component-link-with-smart-icon a[href$=".pdf"]::before {
+  background-image: url("data:image/svg+xml,%3Csvg width='51' height='51' viewBox='0 0 51 51' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='51' height='51' fill='black'/%3E%3Cpath d='M33.403 22.086C33.3556 21.9775 33.2892 21.8783 33.207 21.793L27.207 15.793C27.1217 15.7108 27.0225 15.6444 26.914 15.597C26.884 15.583 26.852 15.575 26.82 15.564C26.7363 15.5355 26.6492 15.5184 26.561 15.513C26.54 15.511 26.521 15.5 26.5 15.5H19.5C18.397 15.5 17.5 16.397 17.5 17.5V33.5C17.5 34.603 18.397 35.5 19.5 35.5H31.5C32.603 35.5 33.5 34.603 33.5 33.5V22.5C33.5 22.479 33.489 22.46 33.487 22.438C33.4821 22.3497 33.4649 22.2625 33.436 22.179C33.426 22.147 33.417 22.116 33.403 22.086ZM30.086 21.5H27.5V18.914L30.086 21.5ZM19.5 33.5V17.5H25.5V22.5C25.5 22.7652 25.6054 23.0196 25.7929 23.2071C25.9804 23.3946 26.2348 23.5 26.5 23.5H31.5L31.502 33.5H19.5Z' fill='white'/%3E%3Cpath d='M21.5 25.5H29.5V27.5H21.5V25.5ZM21.5 29.5H29.5V31.5H21.5V29.5ZM21.5 21.5H23.5V23.5H21.5V21.5Z' fill='white'/%3E%3C/svg%3E%0A");
+}
+
+@media screen and (min-width: 768px) {
+  .component-link-with-smart-icon {
+    padding: calc(var(--spacing) * 5);
+  }
+}

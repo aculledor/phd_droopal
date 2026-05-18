@@ -1,0 +1,24 @@
+uuid: c28948f7-3674-4384-8ae6-8169035c92b4
+langcode: es
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.videos
+_core:
+  default_config_hash: oAFN6XRM2haiozKnlhUMKlSrss0We_bi4wLOUARhW28
+id: paragraph.videos.status
+field_name: status
+entity_type: paragraph
+bundle: videos
+label: Publicado
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: Activado
+  off_label: Desactivado
+field_type: boolean

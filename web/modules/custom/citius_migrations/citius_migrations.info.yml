@@ -1,0 +1,13 @@
+name: 'CITIUS Migrations'
+type: module
+description: 'Provides migrations to create some default content'
+package: CITIUS
+core_version_requirement: ^10 || ^11
+dependencies:
+  - drupal:migrate
+  - migrate_plus:migrate_plus
+  - migrate_source_csv:migrate_source_csv
+  - migrate_tools:migrate_tools
+
+'interface translation project': custom_paragraphs_extras
+'interface translation server pattern': 'modules/custom/citius_migrations/translations/%language.po'

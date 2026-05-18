@@ -1,0 +1,81 @@
+/** User sessions views styles **/
+.view-user-sessions {
+  .session-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+    border: 1px solid var(--c-neutral-black);
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+    text-decoration: none;
+    position: relative;
+
+    &:hover {
+      background-color: var(--c-neutral-lightest);
+    }
+
+    &:after {
+      content: '';
+      display: flex;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      width: 3rem;
+      background: url('../../../../templates/svg/icons/arrows/chevron-right.svg') no-repeat center center;
+    }
+  }
+
+  .views-field {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+  }
+
+  .views-field-title {
+    font-weight: bold;
+  }
+
+  .views-label {
+    font-weight: bold;
+  }
+}
+
+.user__profile-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+  margin-bottom: var(--spacing-md);
+}
+
+.user__profile-button {
+  font-size: 1.25rem;
+  font-weight: bold;
+  flex-grow: 1;
+  padding: var(--spacing-md);
+}
+
+a.user__profile-button {
+  border: 1px solid var(--c-neutral-black);
+  text-decoration: none;
+  color: inherit;
+
+  &:hover {
+    background-color: var(--c-neutral-lightest);
+  }
+}
+
+span.user__profile-button {
+  background-color: var(--c-neutral-light);
+}
+
+@media screen and (min-width: 1024px) {
+  .view-user-sessions {
+    .session-row {
+      grid-template-columns: 1fr 1fr 1fr 30%;
+    }
+  }
+}

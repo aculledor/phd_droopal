@@ -1,0 +1,42 @@
+uuid: 5a532ba6-6a46-4108-887b-f3450dad70b8
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.exercise.field_duration
+    - field.field.paragraph.exercise.field_exercise
+    - field.field.paragraph.exercise.field_intensity
+    - paragraphs.paragraphs_type.exercise
+  module:
+    - tagify
+id: paragraph.exercise.default
+targetEntityType: paragraph
+bundle: exercise
+mode: default
+content:
+  field_duration:
+    type: number
+    weight: 1
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_exercise:
+    type: tagify_select_widget
+    weight: 0
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      placeholder: ''
+    third_party_settings: {  }
+  field_intensity:
+    type: number
+    weight: 2
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

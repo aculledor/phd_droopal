@@ -1,0 +1,89 @@
+label: Ficheiros
+description: 'Encontrar e gerir ficheiros.'
+display:
+  default:
+    display_title: Predefinido
+    display_options:
+      title: Ficheiros
+      fields:
+        filename:
+          label: Nome
+        filemime:
+          label: 'Tipo MIME'
+        filesize:
+          label: Tamanho
+        status:
+          label: Estado
+          settings:
+            format_custom_false: Temporário
+            format_custom_true: Permanente
+        created:
+          label: 'Data de carregamento'
+        changed:
+          label: 'Data alterada'
+        count:
+          label: 'Utilizado em'
+          format_plural_string: !!binary MSBsdWdhcgNAY291bnQgbHVnYXJlcw==
+        operations:
+          label: Operações
+      pager:
+        options:
+          tags:
+            next: 'Seguinte ›'
+            previous: '‹ Anterior'
+          expose:
+            items_per_page_label: 'Itens por página'
+            items_per_page_options_all_label: '- Todos -'
+            offset_label: Deslocamento
+      exposed_form:
+        options:
+          submit_button: Filtro
+          reset_button_label: Reiniciar
+          exposed_sorts_label: 'Ordenar por'
+          sort_asc_label: Ascendente
+          sort_desc_label: Descendente
+      empty:
+        area_text_custom:
+          content: 'Sem ficheiros disponíveis.'
+      filters:
+        filename:
+          expose:
+            label: 'Nome do ficheiro'
+        filemime:
+          expose:
+            label: 'Tipo MIME'
+        status:
+          expose:
+            label: Estado
+  page_1:
+    display_title: 'Resumo de ficheiros'
+    display_options:
+      menu:
+        title: Ficheiros
+  page_2:
+    display_title: 'Usos del archivo'
+    display_options:
+      title: 'Usos del archivo'
+      fields:
+        entity_label:
+          label: Entidade
+        type:
+          label: 'Tipo de entidade'
+        module:
+          label: 'A registar o módulo'
+        count:
+          label: 'Nº de Utilizações'
+      pager:
+        options:
+          tags:
+            next: 'Seguinte ›'
+            previous: '‹ Anterior'
+          expose:
+            items_per_page_label: 'Itens por página'
+            items_per_page_options_all_label: '- Todos -'
+            offset_label: Deslocamento
+      arguments:
+        fid:
+          exception:
+            title: Todos
+          title: 'Informação de utilização de ficheiro para {{ arguments.fid }}'

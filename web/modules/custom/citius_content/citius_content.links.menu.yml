@@ -1,0 +1,57 @@
+citius_content.centers:
+  title: Centers
+  route_name: <nolink>
+  menu_name: main
+  weight: 0
+
+citius_content.add_center:
+  title: New center
+  route_name: node.add
+  parent: citius_content.centers
+  weight: 1
+  route_parameters:
+    node_type: center
+
+citius_content.devices:
+  title: Devices
+  route_name: <nolink>
+  menu_name: main
+  weight: 1
+
+citius_content.add_device:
+  title: New device
+  route_name: node.add
+  parent: citius_content.devices
+  weight: 1
+  route_parameters:
+    node_type: device
+
+citius_content.sessions:
+  title: Sessions
+  route_name: <nolink>
+  menu_name: main
+  weight: 2
+
+citius_content.add_exercise:
+  title: New exercise
+  route_name: node.add
+  parent: citius_content.sessions
+  weight: 1
+  route_parameters:
+    node_type: exercise
+
+citius_content.add_routine:
+  title: New routine
+  route_name: node.add
+  parent: citius_content.sessions
+  weight: 3
+  route_parameters:
+    node_type: routine
+
+citius_content.add_session:
+  title: New session
+  route_name: node.add
+  parent: citius_content.sessions
+  weight: 5
+  route_parameters:
+    node_type: session

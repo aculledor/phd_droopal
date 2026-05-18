@@ -1,0 +1,22 @@
+uuid: d414dbd0-5f61-441e-8077-ab68c9c95f2d
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.pathology
+id: taxonomy_term.pathology.rh_redirect_response
+field_name: rh_redirect_response
+entity_type: taxonomy_term
+bundle: pathology
+label: 'Rabbit Hole redirect response code'
+description: 'Specifies the HTTP response code that should be used when perform a redirect.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

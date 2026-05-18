@@ -1,0 +1,18 @@
+uuid: f3b428e6-d881-45fa-a425-03aaf19f4877
+langcode: es
+status: true
+dependencies:
+  content:
+    - 'file:file:4c6763e8-35c4-41cd-bf04-32ecce5ee3e6'
+  module:
+    - custom_paragraphs_extras
+_core:
+  default_config_hash: cn93ujK2yIt0VAsiCQJqHmlkORw5PRZGPGk9QPKquBI
+id: image
+label: Imagen
+icon_uuid: 4c6763e8-35c4-41cd-bf04-32ecce5ee3e6
+icon_default: 'data:image/svg+xml;base64,PHN2ZyBpZD0iZjU0YTc2ZDYtMWZkYy00NDMwLWIxZDgtMTE2NmU4OTg1NjIyIiBkYXRhLW5hbWU9IkNhcGEgMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiBmaWxsPSIjZmZmIi8+PHBhdGggZD0iTTQsNEgyOFYyOEg0Wm04LjU3LDEzLjcxTDE2LDIxLjE0bDguNTctOC41N3YxMkg3LjQzVjIyLjg2Wm0uODYtMy40MmEyLjU4LDIuNTgsMCwxLDAtMi41Ny0yLjU4QTIuNTgsMi41OCwwLDAsMCwxMy40MywxNC4yOVoiIGZpbGwtcnVsZT0iZXZlbm9kZCIvPjwvc3ZnPg=='
+description: ''
+behavior_plugins:
+  custom_background_color_behavior:
+    enabled: true

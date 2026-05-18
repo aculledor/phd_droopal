@@ -1,0 +1,15 @@
+citius_common.admin_settings:
+  path: '/admin/config/citius'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'CITIUS'
+  requirements:
+    _permission: 'system'
+
+citius_common.settings:
+  path: '/admin/config/citius/settings'
+  defaults:
+    _form: '\Drupal\citius_common\Form\CommonSettingsForm'
+    _title: 'Citius Common settings'
+  requirements:
+    _permission: 'system'

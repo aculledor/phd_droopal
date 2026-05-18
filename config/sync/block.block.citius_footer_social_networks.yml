@@ -1,0 +1,25 @@
+uuid: 72cd22a4-f192-4eb8-985f-2338cb9bdc65
+langcode: es
+status: true
+dependencies:
+  config:
+    - system.menu.footer-social-networks
+  module:
+    - system
+  theme:
+    - citius
+id: citius_footer_social_networks
+theme: citius
+region: pre_footer
+weight: 0
+provider: null
+plugin: 'system_menu_block:footer-social-networks'
+settings:
+  id: 'system_menu_block:footer-social-networks'
+  label: 'Pie de página - Redes sociales'
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility: {  }

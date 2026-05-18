@@ -1,0 +1,5 @@
+execution.add_form:
+  title: 'Add execution'
+  route_name: entity.execution.add_form
+  appears_on:
+    - entity.execution.collection

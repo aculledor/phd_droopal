@@ -1,0 +1,55 @@
+# $Id$
+#
+# LANGUAGE translation of Drupal (general)
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+# Generated from files:
+#  modules/custom/custom_common_features/custom_common_features.module: n/a
+#  modules/custom/custom_common_features/custom_common_features.breakpoints.yml: n/a
+#  modules/custom/custom_common_features/custom_common_features.info.yml: n/a
+#  modules/custom/custom_common_features/src/Plugin/Field/FieldFormatter/CustomMediaThumbnailFormatter.php: n/a
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2025-11-11 13:23+0100\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: modules/custom/custom_common_features/custom_common_features.module:27
+msgid "The value of this field is purely administrative."
+msgstr "O valor deste campo é puramente administrativo."
+
+#: modules/custom/custom_common_features/custom_common_features.breakpoints.yml:0
+msgid "xs"
+msgstr "xs"
+
+#: modules/custom/custom_common_features/custom_common_features.breakpoints.yml:0
+msgid "lg"
+msgstr "lg"
+
+#: modules/custom/custom_common_features/custom_common_features.info.yml:0
+msgid "Custom Common Features"
+msgstr "Funcionalidades Comuns Personalizadas"
+
+#: modules/custom/custom_common_features/custom_common_features.info.yml:0
+msgid "Provides additional functionality for the site."
+msgstr "Fornece funcionalidade adicional para o site."
+
+#: modules/custom/custom_common_features/custom_common_features.info.yml:0
+msgid "Custom"
+msgstr "Personalizado"
+
+#: modules/custom/custom_common_features/src/Plugin/Field/FieldFormatter/CustomMediaThumbnailFormatter.php:32
+msgid "External media"
+msgstr "Multimédia externa"
+
+#: modules/custom/custom_common_features/src/Plugin/Field/FieldFormatter/CustomMediaThumbnailFormatter.php:13
+msgid "Custom responsive thumbnail (only external videos)"
+msgstr "Miniatura responsiva personalizada (apenas vídeos externos)"
+

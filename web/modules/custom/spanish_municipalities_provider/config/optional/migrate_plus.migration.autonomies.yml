@@ -1,0 +1,24 @@
+id: autonomies
+label: 'Autonomies import'
+migration_tags:
+  - 'taxonomy'
+source:
+  plugin: csv
+  path: 'modules/custom/spanish_municipalities_provider/data/municipalities.csv'
+  header_offset: 0
+  ids: [autonomy_code]
+  skip_count: true
+  constants:
+    vid: administrative_division
+process:
+  vid:
+    plugin: default_value
+    default_value: administrative_division
+  name: autonomy_name
+  field_official_code: autonomy_code
+  status:
+    plugin: default_value
+    default_value: 1
+destination:
+  plugin: entity:taxonomy_term
+migration_dependencies: {}

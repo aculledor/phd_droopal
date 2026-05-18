@@ -1,0 +1,13 @@
+name: 'International Phone'
+description: 'The phone_international module allows administrators to define a field type for international phone numbers.'
+type: module
+package: 'Field types'
+configure: phone_international.settings
+dependencies:
+  - drupal:field
+core_version_requirement: '>=9.4'
+
+# Information added by Drupal.org packaging script on 2022-12-18
+version: '3.3.1'
+project: 'phone_international'
+datestamp: 1671394619

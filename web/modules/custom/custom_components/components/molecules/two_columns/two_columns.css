@@ -1,0 +1,22 @@
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.row .col {
+  flex: 0 0 auto;
+  width: 100%;
+}
+
+@media (min-width: 992px) {
+  .row .col-1 {
+    width: 58.33333333%;
+  }
+  .row .col-2 {
+    width: 41.66666667%;
+  }
+}
+
+.component-alignment-inverted .row {
+  flex-direction: row-reverse;
+}

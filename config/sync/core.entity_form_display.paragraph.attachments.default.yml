@@ -1,0 +1,46 @@
+uuid: 413ce324-918e-456f-ab4f-ce022d9861d2
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.attachments.field_media_documents
+    - field.field.paragraph.attachments.field_title
+    - paragraphs.paragraphs_type.attachments
+  module:
+    - media_library
+_core:
+  default_config_hash: O8iu2d8iNiMyX4UeUAI-7zcPS643J8miKqE_ftKzCJA
+id: paragraph.attachments.default
+targetEntityType: paragraph
+bundle: attachments
+mode: default
+content:
+  field_media_documents:
+    type: media_library_widget
+    weight: 1
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  field_title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 3
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  translation:
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true

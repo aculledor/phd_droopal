@@ -1,0 +1,149 @@
+<?php
+
+/**
+ * @file
+ * Theme functions.
+ */
+
+use Drupal\citius_content\NodeFields;
+use Drupal\Component\Utility\Html;
+use Drupal\Core\Menu\MenuLinkInterface;
+use Drupal\user\RoleInterface;
+use Drupal\user\UserInterface;
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function citius_preprocess_image_widget(array &$variables): void {
+  $variables['data']['remove_button']['#attributes']['class'][] = 'button--icon';
+  $variables['data']['remove_button']['#attributes']['class'][] = 'button--icon-remove';
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function citius_preprocess_field_multiple_value_form(array &$variables): void {
+  $field_name = $variables['element']['#field_name'] ?? NULL;
+  if ($field_name === NodeFields::EXERCISES) {
+    $table = $variables['table'];
+    if ($table) {
+      $heading = $table['#header'][0]['data'] ?? NULL;
+
+      $display_repository = \Drupal::service('entity_display.repository');
+      $view_display = $display_repository->getViewDisplay('paragraph', 'exercise', 'preview');
+      $components = $view_display->getComponents();
+      uasort($components, static function ($a, $b) {
+        return ($a['weight'] ?? 0) <=> ($b['weight'] ?? 0);
+      });
+      $field_definitions = \Drupal::service('entity_field.manager')
+        ->getFieldDefinitions('paragraph', 'exercise');
+      $visible_fields = [
+        '#type' => 'container',
+        '#attributes' => [
+          'class' => ['table-header-labels'],
+        ],
+      ];
+      foreach ($components as $field_name => $component) {
+        if (isset($field_definitions[$field_name])) {
+          $visible_fields[$field_name] = [
+            '#type' => 'html_tag',
+            '#tag' => 'div',
+            '#attributes' => [
+              'class' => ['table-header-label'],
+            ],
+            '#value' => $field_definitions[$field_name]->getLabel(),
+          ];
+        }
+      }
+
+      $table['#header'] = [
+        [],
+        ['data' => $visible_fields],
+        [],
+        [],
+      ];
+
+      unset($table['#rows'][0]);
+      $variables['table'] = [
+        'heading' => $heading,
+        'table' => $table,
+      ];
+      unset($variables['element']['header_actions']);
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function citius_preprocess_menu__main(array &$variables): void {
+  foreach ($variables['items'] as &$item) {
+    _citius_add_icon_to_menu_link($item);
+    if (isset($item['below']) && is_array($item['below'])) {
+      foreach ($item['below'] as &$below) {
+        _citius_add_icon_to_menu_link($below);
+      }
+    }
+  }
+}
+
+/**
+ * Add icon to menu link according to menu link plugin id.
+ *
+ * @param array $item
+ *   Link item.
+ */
+function _citius_add_icon_to_menu_link(array &$item): void {
+  $original_link = $item['original_link'] ?? NULL;
+  if ($original_link instanceof MenuLinkInterface) {
+    $plugin_id = $original_link->getPluginId();
+    $parts = explode('.', $plugin_id);
+    $item['icon'] = Html::cleanCssIdentifier(end($parts));
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function citius_preprocess_user(array &$variables): void {
+  $user = $variables['user'] ?? NULL;
+  if (!$user instanceof UserInterface) {
+    return;
+  }
+  $variables['username'] = $user->getDisplayName();
+  $rol_ids = $user->getRoles(TRUE);
+  $roles = \Drupal::entityTypeManager()->getStorage('user_role')->loadMultiple($rol_ids);
+  $variables['roles'] = implode(', ', array_map(static function (RoleInterface $role) {
+    return $role->label();
+  }, $roles));
+  $email = $user->getEmail();
+  if ($email && !str_ends_with($email, '@citius.dummy')) {
+    $variables['email'] = $email;
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function citius_preprocess_views_view(array &$variables): void {
+  $type = $variables['rows']['#type'] ?? NULL;
+  if ($type === 'form') {
+    if (isset($variables['rows']['header']['user_bulk_form'])) {
+      $variables['rows']['header']['user_bulk_form']['#attributes']['class'][] = 'views-bulk-form';
+    }
+    if (isset($variables['rows']['actions'])) {
+      $variables['rows']['actions']['#attributes']['class'][] = 'views-bulk-actions';
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function citius_preprocess_links__language_block(array &$variables): void {
+  $langcode = \Drupal::languageManager()->getCurrentLanguage()->getId();
+  $variables['current_language'] = strtoupper($langcode);
+  foreach ($variables['links'] as &$link) {
+    $link['link']['#options']['attributes']['class'][] = 'nav__link';
+  }
+}

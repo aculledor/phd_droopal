@@ -1,0 +1,14 @@
+uuid: f82f89ff-5de8-4cda-9f41-0dbf99d827ea
+langcode: es
+status: true
+dependencies:
+  config:
+    - user.role.patient
+  module:
+    - user
+id: user_add_role_action.patient
+label: 'Añade el rol Paciente al(los) usuario(s) seleccionado(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: patient

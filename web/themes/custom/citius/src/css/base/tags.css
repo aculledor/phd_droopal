@@ -1,0 +1,15 @@
+/* ==========================================================================
+  TAGS HTML TAG
+  ===========================================================================
+  Project: Citius Theme
+  File: tags.css
+  Description: Defines tags html tag base styling.
+  ========================================================================== */
+
+.tagify__tag__removeBtn:hover + div {
+  opacity: .75;
+}
+
+.tagify__tag__removeBtn:hover + div > span {
+  opacity: 1;
+}

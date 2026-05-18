@@ -1,0 +1,48 @@
+_core:
+  default_config_hash: JyIkFj38h-aTLsrCfejAfP277qBJ61tlaLEBH44IHhg
+langcode: es
+enabled: true
+required_roles:
+  administrator: administrator
+  manager: manager
+  physiotherapist: physiotherapist
+  authenticated: '0'
+  patient: '0'
+send_plugins: {  }
+login_plugins: {  }
+login_plugin_settings:
+  tfa_trusted_browser:
+    cookie_allow_subdomains: true
+    cookie_expiration: 30
+    cookie_name: tfa-trusted-browser
+allowed_validation_plugins:
+  tfa_totp: tfa_totp
+default_validation_plugin: tfa_totp
+validation_plugin_settings:
+  tfa_recovery_code:
+    recovery_codes_amount: 10
+  tfa_hotp:
+    counter_window: 10
+    site_name_prefix: 1
+    name_prefix: TFA
+    issuer: Drupal
+  tfa_totp:
+    time_skew: 2
+    site_name_prefix: 1
+    name_prefix: TFA
+    issuer: CITIUS
+validation_skip: 3
+users_without_tfa_redirect: false
+reset_pass_skip_enabled: false
+encryption: tfa
+tfa_flood_uid_only: 1
+tfa_flood_window: 300
+tfa_flood_threshold: 6
+help_text: 'Comuníquese con el soporte para restablecer su acceso'
+mail:
+  tfa_enabled_configuration:
+    subject: 'Su cuenta [site:name] ahora tiene autenticación de dos factores'
+    body: "[user:display-name],\r\n\r\n¡Gracias por configurar la autenticación de dos factores en tu cuenta de [site:name]!\r\n\r\nEste nivel adicional de seguridad te ayudará a garantizar que solo tú puedas iniciar sesión en tu cuenta.\r\n\r\nSi alguna vez pierdes el dispositivo que configuraste, debes actuar rápidamente para eliminar su asociación con esta cuenta.\r\n\r\n--\r\nEquipo de [site:name]"
+  tfa_disabled_configuration:
+    subject: 'Su cuenta [site:name] ya no tiene autenticación de dos factores'
+    body: "[user:display-name],\r\n\r\nSe ha desactivado la autenticación de dos factores en su cuenta [site:name].\r\n\r\nSi no ha realizado esta acción, póngase en contacto con un administrador del sitio inmediatamente.\r\n\r\n--\r\nEquipo de [site:name]"

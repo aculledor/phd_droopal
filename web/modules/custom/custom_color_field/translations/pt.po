@@ -1,0 +1,84 @@
+# $Id$
+#
+# LANGUAGE translation of Drupal (general)
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+# Generated from files:
+#  modules/custom/custom_color_field/custom_color_field.info.yml: n/a
+#  modules/custom/custom_color_field/config/schema/custom_field_color.schema.yml: n/a
+#  modules/custom/custom_color_field/src/Element/Color.php: n/a
+#  modules/custom/custom_color_field/src/Plugin/Field/FieldType/ColorItem.php: n/a
+#  modules/custom/custom_color_field/src/Plugin/Field/FieldWidget/ColorSelectorWidget.php: n/a
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2025-11-11 13:23+0100\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: modules/custom/custom_color_field/custom_color_field.info.yml:0
+msgid "Custom color field"
+msgstr "Campo de cor personalizado"
+
+#: modules/custom/custom_color_field/custom_color_field.info.yml:0
+msgid "Provides a color field type to store the color value of a fixed palette."
+msgstr "Fornece um tipo de campo de cor para armazenar o valor de cor de uma paleta fixa."
+
+#: modules/custom/custom_color_field/custom_color_field.info.yml:0
+msgid "Custom"
+msgstr "Personalizado"
+
+#: modules/custom/custom_color_field/config/schema/custom_field_color.schema.yml:0
+msgid "Default value"
+msgstr "Valor predefinido"
+
+#: modules/custom/custom_color_field/config/schema/custom_field_color.schema.yml:0
+msgid "Value"
+msgstr "Valor"
+
+#: modules/custom/custom_color_field/src/Element/Color.php:28
+msgid "Transparent"
+msgstr "Transparente"
+
+#: modules/custom/custom_color_field/src/Element/Color.php:58
+msgid "Black"
+msgstr "Preto"
+
+#: modules/custom/custom_color_field/src/Element/Color.php:62
+msgid "Blue"
+msgstr "Azul"
+
+#: modules/custom/custom_color_field/src/Element/Color.php:66
+msgid "Dark blue"
+msgstr "Azul escuro"
+
+#: modules/custom/custom_color_field/src/Element/Color.php:70
+msgid "Blue 50%"
+msgstr "Azul 50%"
+
+#: modules/custom/custom_color_field/src/Element/Color.php:74
+msgid "Blue 25%"
+msgstr "Azul 25%"
+
+#: modules/custom/custom_color_field/src/Element/Color.php:78
+msgid "Blue 10%"
+msgstr "Azul 10%"
+
+#: modules/custom/custom_color_field/src/Element/Color.php:82
+msgid "Gray"
+msgstr "Cinzento"
+
+#: modules/custom/custom_color_field/src/Plugin/Field/FieldType/ColorItem.php:10
+msgid "Color"
+msgstr "Cor"
+
+#: modules/custom/custom_color_field/src/Plugin/Field/FieldWidget/ColorSelectorWidget.php:9
+msgid "Color selector"
+msgstr "Seletor de cor"
+

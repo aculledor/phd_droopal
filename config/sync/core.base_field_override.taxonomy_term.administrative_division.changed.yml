@@ -1,0 +1,18 @@
+uuid: 23ee04c0-7472-47a6-a596-55f8ceadf3c7
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.administrative_division
+id: taxonomy_term.administrative_division.changed
+field_name: changed
+entity_type: taxonomy_term
+bundle: administrative_division
+label: Changed
+description: 'The time that the term was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

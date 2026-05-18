@@ -1,0 +1,14 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata-full.schema.json
+name: Page Header
+status: experimental
+description: 'Component for the page header.'
+props:
+  type: object
+  properties:
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      description: 'HTML attributes for the header component.'
+slots:
+  page_inner_header:
+    title: Page Inner Header
+    description: 'The main contents of the header.'

@@ -1,0 +1,7 @@
+phone_international.settings:
+  path: '/admin/config/phone_international'
+  defaults:
+    _form: '\Drupal\phone_international\Form\PISettings'
+    _title: 'Phone international settings.'
+  requirements:
+    _permission: 'administer site configuration'

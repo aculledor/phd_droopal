@@ -1,0 +1,8 @@
+create physiotherapist user:
+  title: 'Create physiotherapist users'
+create patient user:
+  title: 'Create patient users'
+create manager user:
+  title: 'Create manager user'
+create user user:
+  title: 'Create managers and doctors'

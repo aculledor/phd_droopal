@@ -1,0 +1,89 @@
+.component-highlight {
+  --cch--aspect-ratio-xl: 2.35 / 1;
+  --cch--aspect-ratio-l: 4 / 3;
+  --cch--aspect-ratio-m: 8 / 3;
+  --cch--aspect-ratio-s: 4 / 3;
+  --cch--text-background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.5) 50%, transparent 100%);
+  --cch--text-color: #fff;
+  padding: 0;
+  position: relative;
+}
+.component-highlight.component-highlight--size-s {
+  aspect-ratio: var(--cch--aspect-ratio-s);
+}
+.component-highlight.component-highlight--size-m {
+  aspect-ratio: var(--cch--aspect-ratio-m);
+}
+@media (max-width: 576px) {
+  .component-highlight.component-highlight--size-m {
+    aspect-ratio: var(--cch--aspect-ratio-s);
+  }
+}
+.component-highlight.component-highlight--size-l {
+  aspect-ratio: var(--cch--aspect-ratio-l);
+}
+.component-highlight.component-highlight--size-xl {
+  aspect-ratio: var(--cch--aspect-ratio-xl);
+}
+@media (max-width: 767px) {
+  .component-highlight.component-highlight--size-xl {
+    aspect-ratio: var(--cch--aspect-ratio-l);
+  }
+}
+.component-highlight a {
+  display: block;
+  height: 100%;
+}
+.component-highlight img {
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+.component-highlight .text-wrapper {
+  align-items: center;
+  bottom: 0;
+  box-sizing: border-box;
+  color: var(--cch--text-color);
+  display: flex;
+  flex-direction: column;
+  font-size: 4vw;
+  height: 100%;
+  justify-content: center;
+  padding: 1rem;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+}
+.component-highlight.component-highlight--has-image .text-wrapper {
+  background: var(--cch--text-background);
+}
+.component-highlight .text-wrapper .title {
+  font-size: 1.5em;
+  margin-bottom: 1rem;
+}
+.component-highlight .text-wrapper p {
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+@media (min-width: 576px) {
+  .component-highlight .text-wrapper {
+    font-size: 2vw;
+  }
+}
+@media (min-width: 992px) {
+  .component-highlight .text-wrapper {
+    font-size: 1.5vw;
+  }
+}
+@media (min-width: 1400px) {
+  .component-highlight .text-wrapper {
+    font-size: 1vw;
+  }
+}
+.component-highlight.component-highlight--size-s .text-wrapper .text {
+  display: none;
+}

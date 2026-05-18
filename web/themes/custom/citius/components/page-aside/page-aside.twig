@@ -1,0 +1,30 @@
+{#
+/**
+ * @file
+ * Template for a Page Aside component.
+ *
+#}
+{% apply spaceless %}
+
+{% set aside_attributes = create_attribute() %}
+{%
+  set aside_classes = [
+    'page__aside',
+  ]
+%}
+
+<div id="page-aside-main-menu-bg" class="page__aside__bg aside-menu__toggle" data-target="page-aside-main-menu" aria-expanded="false" aria-hidden="true" aria-label="{{ 'Closes the main menu'|t }}"></div>
+<div {{ aside_attributes.addClass(aside_classes).setAttribute('id', 'page-aside-main-menu') }}>
+  <header>
+    <a href="javascript:void(0);" class="aside-menu__toggle" data-target="page-aside-main-menu" aria-expanded="false" aria-hidden="true" aria-label="{{ 'Closes the main menu'|t }}">
+      {% include '@citius/svg/icons/interface/x.svg' %}
+    </a>
+  </header>
+  {% block page_inner_aside %}
+    {% if page.aside %}
+      {{ page.aside }}
+    {% endif %}
+  {% endblock %}
+</div>
+
+{% endapply %}

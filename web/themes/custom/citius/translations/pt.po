@@ -1,0 +1,104 @@
+# $Id$
+#
+# LANGUAGE translation of Drupal (general)
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+# Generated from files:
+#  themes/custom/citius/citius.info.yml: n/a
+#  themes/custom/citius/components/collapsible-card/collapsible-card.twig: n/a
+#  themes/custom/citius/components/html/html.twig: n/a
+#  themes/custom/citius/components/icon-button-link/icon-button-link.twig: n/a
+#  themes/custom/citius/components/page-aside/page-aside.twig: n/a
+#  themes/custom/citius/components/page-header/page-header.twig: n/a
+#  themes/custom/citius/components/page-prefooter/page-prefooter.twig: n/a
+#  themes/custom/citius/templates/field/node.html.twig: n/a
+#  themes/custom/citius/templates/form/image-widget.html.twig: n/a
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2025-11-11 13:26+0100\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: themes/custom/citius/citius.info.yml:0;0
+msgid "CITIUS"
+msgstr "CITIUS"
+
+#: themes/custom/citius/citius.info.yml:0
+msgid "The base theme."
+msgstr "O tema base."
+
+#: themes/custom/citius/citius.info.yml:0
+msgid "Header"
+msgstr "Cabeçalho"
+
+#: themes/custom/citius/citius.info.yml:0
+msgid "Aside"
+msgstr "Lateral"
+
+#: themes/custom/citius/citius.info.yml:0
+msgid "Pre-content"
+msgstr "Pré-conteúdo"
+
+#: themes/custom/citius/citius.info.yml:0
+msgid "Content"
+msgstr "Conteúdo"
+
+#: themes/custom/citius/citius.info.yml:0
+msgid "Post-content"
+msgstr "Pós-conteúdo"
+
+#: themes/custom/citius/citius.info.yml:0
+msgid "Pre-footer"
+msgstr "Pré-rodapé"
+
+#: themes/custom/citius/citius.info.yml:0
+msgid "Footer"
+msgstr "Rodapé"
+
+#: themes/custom/citius/components/collapsible-card/collapsible-card.twig:17
+msgid "Open"
+msgstr "Abrir"
+
+#: themes/custom/citius/components/html/html.twig:68
+msgid "Skip to main content"
+msgstr "Saltar para o conteúdo principal"
+
+#: themes/custom/citius/components/icon-button-link/icon-button-link.twig:15
+msgid "Icon"
+msgstr "Ícone"
+
+#: themes/custom/citius/components/page-aside/page-aside.twig:16;19
+msgid "Closes the main menu"
+msgstr "Fecha o menu principal"
+
+#: themes/custom/citius/components/page-header/page-header.twig:24
+msgid "Opens the main menu"
+msgstr "Abre o menu principal"
+
+#: themes/custom/citius/components/page-prefooter/page-prefooter.twig:50
+msgid "Follow us"
+msgstr "Siga-nos"
+
+#: themes/custom/citius/templates/field/node.html.twig:87
+msgid "Submitted by @author_name on @date"
+msgstr "Submetido por @author_name em @date"
+
+#: themes/custom/citius/templates/form/image-widget.html.twig:21
+msgid "Upload"
+msgstr "Carregar"
+
+#: themes/custom/citius/templates/form/image-widget.html.twig:25
+msgid "Drag the file here to start the upload or"
+msgstr "Arraste o ficheiro aqui para iniciar o carregamento ou"
+
+#: themes/custom/citius/templates/form/image-widget.html.twig:28
+msgid "Select a file"
+msgstr "Selecionar um ficheiro"
+

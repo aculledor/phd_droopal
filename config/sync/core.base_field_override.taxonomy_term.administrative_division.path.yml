@@ -1,0 +1,20 @@
+uuid: db20cca8-8cd3-4ea0-a8b7-5d5b3c215dbf
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.administrative_division
+  module:
+    - path
+id: taxonomy_term.administrative_division.path
+field_name: path
+entity_type: taxonomy_term
+bundle: administrative_division
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

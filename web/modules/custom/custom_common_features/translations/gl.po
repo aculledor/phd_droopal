@@ -1,0 +1,37 @@
+# $Id$
+#
+# Galician translation of Drupal (general)
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+# Generated from files:
+#  modules/custom/custom_common_features/custom_common_features.module: n/a
+#  modules/custom/custom_common_features/custom_common_features.info.yml: n/a
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2024-09-20 13:48+0200\n"
+"PO-Revision-Date: 2024-09-20 13:48+0200\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Galician <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+#: modules/custom/custom_common_features/custom_common_features.module:27
+msgid "The value of this field is purely administrative."
+msgstr "O valor do campo é meramente administrativo."
+
+#: modules/custom/custom_common_features/custom_common_features.info.yml:0
+msgid "Custom Common Features"
+msgstr "Funcionalidades comúns personalizadas"
+
+#: modules/custom/custom_common_features/custom_common_features.info.yml:0
+msgid "Provides additional functionality for the site."
+msgstr "Proporciona funcionalidade adicional para o sitio."
+
+#: modules/custom/custom_common_features/custom_common_features.info.yml:0
+msgid "Custom"
+msgstr "Personalizado"
+

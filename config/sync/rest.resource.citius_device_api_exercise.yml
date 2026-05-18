@@ -1,0 +1,18 @@
+uuid: 444cf945-5f08-458f-90d3-bd702ebfe7fa
+langcode: es
+status: true
+dependencies:
+  module:
+    - citius_device_api
+    - serialization
+    - user
+id: citius_device_api_exercise
+plugin_id: citius_device_api_exercise
+granularity: resource
+configuration:
+  methods:
+    - POST
+  formats:
+    - json
+  authentication:
+    - cookie

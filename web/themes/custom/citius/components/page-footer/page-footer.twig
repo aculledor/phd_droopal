@@ -1,0 +1,78 @@
+{#
+/**
+ * @file
+ * Template for a Page Footer component.
+ *
+#}
+{% apply spaceless %}
+
+{% set footer_attributes = create_attribute() %}
+{%
+  set footer_classes = [
+    'page__footer',
+  ]
+%}
+
+<footer {{ footer_attributes.addClass(footer_classes) }}>
+  <div class="container">
+    <div class="footer__wrapper">
+      {% block page_inner_footer %}
+        <img
+          src="/{{ active_theme_path() }}/templates/svg/logos/partners/xunta-de-galicia.svg"
+          class="animate-fadeIn"
+          alt="Consellería de Educación, Ciencia, Universidade e Formación Profesional"
+          height="59"
+          width="186"
+        />
+        <img
+          src="/{{ active_theme_path() }}/templates/svg/logos/partners/centro-oportunius.svg"
+          class="animate-fadeIn"
+          alt="Centro Oportunius"
+          height="59"
+          width="195"
+        />
+        <img
+          src="/{{ active_theme_path() }}/templates/svg/logos/partners/gus.svg"
+          class="animate-fadeIn"
+          alt="Centros Gus"
+          height="59"
+          width="147"
+        />
+        <img
+          src="/{{ active_theme_path() }}/templates/svg/logos/partners/usc.svg"
+          class="animate-fadeIn"
+          alt="Universidad Santiago de Compostela"
+          height="59"
+          width="92"
+        />
+        <img
+          src="/{{ active_theme_path() }}/templates/svg/logos/partners/cofinanciado-ue.svg"
+          class="animate-fadeIn"
+          alt="Cofinanciado por la Unión Europea"
+          height="59"
+          width="241"
+        />
+        <img
+          src="/{{ active_theme_path() }}/templates/svg/logos/partners/fondos-europeos.svg"
+          class="animate-fadeIn"
+          alt="Fondos Europeos"
+          height="59"
+          width="269"
+        />
+      {% endblock %}
+    </div>
+    <div class="footer__wrapper footer__wrapper--secondary">
+      {% block page_inner_secondary_footer %}
+        <img
+          src="/{{ active_theme_path() }}/templates/svg/logos/partners/MICIU+NextG+PRTR+AEI.svg"
+          class="animate-fadeIn"
+          alt="Ministerio de Ciencia, Innovación y Universidades. Financiado por la Unión Europea Next Generation EU. Plan de Recuperación, Transformación y Resiliencia. Agencia Estatal de Investigación"
+          height="160"
+          width="840"
+        />
+      {% endblock %}
+    </div>
+  </div>
+</footer>
+
+{% endapply %}

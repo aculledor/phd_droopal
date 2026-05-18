@@ -1,0 +1,9 @@
+behaviors.background_color.view:
+  css:
+    component:
+      assets/css/background_color.view.css: { }
+
+behaviors.background_color.summary:
+  css:
+    component:
+      assets/css/background_color.summary.css: { }

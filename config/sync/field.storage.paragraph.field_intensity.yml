@@ -1,0 +1,20 @@
+uuid: 3b431c72-5a60-4c82-afcd-a8c16362fdc4
+langcode: es
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_intensity
+field_name: field_intensity
+entity_type: paragraph
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,22 @@
+services:
+  mqtt-drupal-bridge:
+    build:
+      context: ./mqtt-drupal-bridge
+    container_name: ddev-${DDEV_SITENAME}-mqtt-drupal-bridge
+    restart: "no"
+    depends_on:
+      - mosquitto
+      - web
+    environment:
+      MQTT_URL: mqtt://mosquitto:1883
+      MQTT_USERNAME: vr_device
+      MQTT_PASSWORD: "1234"
+      DRUPAL_BASE_URL: http://web
+      HTTP_PORT: 3000
+    networks:
+      default:
+        aliases:
+          - mqtt-drupal-bridge
+    labels:
+      com.ddev.site-name: ${DDEV_SITENAME}
+      com.ddev.approot: ${DDEV_APPROOT}

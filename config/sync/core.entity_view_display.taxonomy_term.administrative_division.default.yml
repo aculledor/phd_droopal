@@ -1,0 +1,38 @@
+uuid: 3a1eac4a-b076-42f6-8ed5-82b6ee6cb138
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.administrative_division.field_official_code
+    - taxonomy.vocabulary.administrative_division
+  module:
+    - text
+_core:
+  default_config_hash: udB_8d-VDyGKSranFFrLFWG1md0n_FEFlqSJGvCiNKQ
+id: taxonomy_term.administrative_division.default
+targetEntityType: taxonomy_term
+bundle: administrative_division
+mode: default
+content:
+  description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_official_code:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  langcode: true
+  search_api_excerpt: true

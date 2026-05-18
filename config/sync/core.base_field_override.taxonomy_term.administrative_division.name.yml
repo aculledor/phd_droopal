@@ -1,0 +1,18 @@
+uuid: da2095a1-6616-4451-9a7d-14e08969d0b3
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.administrative_division
+id: taxonomy_term.administrative_division.name
+field_name: name
+entity_type: taxonomy_term
+bundle: administrative_division
+label: Name
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

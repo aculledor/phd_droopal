@@ -1,0 +1,45 @@
+uuid: 5cecad25-04fd-4e31-be90-48a4d3247098
+langcode: es
+status: true
+dependencies:
+  config:
+    - node.type.center
+    - node.type.device
+    - node.type.exercise
+    - node.type.routine
+    - node.type.session
+    - rest.resource.citius_device_api_session_results
+    - rest.resource.citius_device_api_session_status
+  module:
+    - citius_user
+    - entity_bundle_permissions
+    - node
+    - quick_node_clone
+    - rest
+    - tfa
+id: physiotherapist
+label: 'Médico / Fisioterapeuta'
+weight: 5
+is_admin: false
+permissions:
+  - 'access user profiles'
+  - 'clone routine content'
+  - 'create patient user'
+  - 'create routine content'
+  - 'create session content'
+  - 'delete any routine content'
+  - 'delete any session content'
+  - 'delete own routine content'
+  - 'delete own session content'
+  - 'edit any routine content'
+  - 'edit any session content'
+  - 'edit own routine content'
+  - 'edit own session content'
+  - 'entity_bundle_permissions access node center'
+  - 'entity_bundle_permissions access node device'
+  - 'entity_bundle_permissions access node exercise'
+  - 'entity_bundle_permissions access node routine'
+  - 'entity_bundle_permissions access node session'
+  - 'restful get citius_device_api_session_results'
+  - 'restful post citius_device_api_session_status'
+  - 'setup own tfa'

@@ -1,0 +1,25 @@
+uuid: 009d761a-393a-4afc-b267-2fc60dc6d853
+langcode: es
+status: true
+dependencies:
+  module:
+    - citius_common
+  theme:
+    - citius
+id: citius_site_branding_header_slogan
+theme: citius
+region: header
+weight: -9
+provider: null
+plugin: citius_branding_block
+settings:
+  id: citius_branding_block
+  label: 'CiTIUS Site branding - Lema'
+  label_display: '0'
+  provider: citius_common
+  use_site_logo: false
+  use_site_name: false
+  use_site_slogan: true
+  use_site_address: false
+  use_site_copyright: false
+visibility: {  }

@@ -1,0 +1,13 @@
+/* ==========================================================================
+	LAYOUT Content Region
+	===========================================================================
+	Project: Citius Theme
+	File: content.layout.css
+	Description: Styling for Content Region.
+	========================================================================== */
+
+.page:not(.page__user__login) .region-content {
+  padding-block: var(--spacing-lg);
+  padding-inline: var(--spacing-lg);
+	max-width: var(--breakpoint-2xl);
+}

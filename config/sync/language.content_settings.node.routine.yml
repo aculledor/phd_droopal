@@ -1,0 +1,18 @@
+uuid: 9164ff34-b8be-4a0d-96ff-41c1642d4037
+langcode: es
+status: true
+dependencies:
+  config:
+    - node.type.routine
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: node.routine
+target_entity_type_id: node
+target_bundle: routine
+default_langcode: site_default
+language_alterable: true

@@ -1,0 +1,54 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for Paragraphs - Extras module.
+ */
+
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Render\BubbleableMetadata;
+use Drupal\custom_paragraphs_extras\ViewModeBehaviorInterface;
+use Drupal\paragraphs\ParagraphInterface;
+
+/**
+ * Implements hook_entity_view_mode_alter().
+ */
+function custom_paragraphs_extras_entity_view_mode_alter(string &$view_mode, EntityInterface $entity): void {
+  if ($entity instanceof ParagraphInterface) {
+    $paragraph_type = $entity->getParagraphType();
+    foreach ($paragraph_type->getEnabledBehaviorPlugins() as $plugin) {
+      if ($plugin instanceof ViewModeBehaviorInterface) {
+        $plugin->entityViewModeAlter($view_mode, $entity);
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_token_info().
+ */
+function custom_paragraphs_extras_token_info(): array {
+  $info = [];
+  $info['tokens']['paragraph']['background_color_behavior'] = [
+    'name'        => t('Background color behavior'),
+    'description' => t("Adds a 'background color' field to the Paragraph entity."),
+  ];
+  return $info;
+}
+
+/**
+ * Implements hook_tokens().
+ */
+function custom_paragraphs_extras_tokens(string $type, array $tokens, array $data, array $options, BubbleableMetadata $bubbleable_metadata): array {
+  $replacements = [];
+  if ($type === 'paragraph' && !empty($data['paragraph'])) {
+    $paragraph = $data['paragraph'];
+    foreach ($tokens as $name => $original) {
+      if ($name === 'background_color_behavior') {
+        $behaviors = unserialize($paragraph->get('behavior_settings')->getString(), ['allowed_classes' => FALSE]);
+        $replacements[$original] = $behaviors['custom_background_color_behavior']['background_color'] ?? NULL;
+      }
+    }
+  }
+  return $replacements;
+}

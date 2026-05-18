@@ -1,0 +1,29 @@
+uuid: 721b945f-1b03-4f12-a269-53c616e3515f
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_exercise
+    - node.type.exercise
+    - paragraphs.paragraphs_type.exercise
+id: paragraph.exercise.field_exercise
+field_name: field_exercise
+entity_type: paragraph
+bundle: exercise
+label: Ejercicio
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      exercise: exercise
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

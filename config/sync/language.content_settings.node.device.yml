@@ -1,0 +1,18 @@
+uuid: 4b223454-2131-4587-b2ef-9943412aa299
+langcode: es
+status: true
+dependencies:
+  config:
+    - node.type.device
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: node.device
+target_entity_type_id: node
+target_bundle: device
+default_langcode: site_default
+language_alterable: true

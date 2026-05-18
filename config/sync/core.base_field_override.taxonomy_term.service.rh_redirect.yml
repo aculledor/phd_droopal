@@ -1,0 +1,18 @@
+uuid: db77fa9b-e262-4ddf-86ff-91ddbfabec91
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.service
+id: taxonomy_term.service.rh_redirect
+field_name: rh_redirect
+entity_type: taxonomy_term
+bundle: service
+label: 'Rabbit Hole redirect path.'
+description: 'The path to where the user should get redirected to.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

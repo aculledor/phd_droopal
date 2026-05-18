@@ -1,0 +1,9 @@
+uuid: ddd5339c-3043-4d35-863e-bdf8df94dd85
+langcode: es
+status: true
+dependencies: {  }
+id: pt
+label: Portugués
+direction: ltr
+weight: 4
+locked: false

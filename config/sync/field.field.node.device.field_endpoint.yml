@@ -1,0 +1,23 @@
+uuid: f53a5fd8-2229-4350-92ec-60abf7084419
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_endpoint
+    - node.type.device
+  module:
+    - link
+id: node.device.field_endpoint
+field_name: field_endpoint
+entity_type: node
+bundle: device
+label: 'Endpoint del dispositivo'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 0
+  link_type: 16
+field_type: link

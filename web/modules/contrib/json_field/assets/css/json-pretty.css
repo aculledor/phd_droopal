@@ -1,0 +1,29 @@
+.json-field-pretty {
+  padding: 0.5rem;
+  background-color: #f9f9f9;
+}
+
+.json-field-pretty dl {
+  margin: 0;
+}
+
+.json-field-pretty dt {
+  margin-block-end: 0;
+  padding: 0;
+  font-weight: bold;
+}
+.json-field-pretty dt::after {
+  content: ":";
+}
+
+.json-field-pretty dd {
+  margin-block-start: 0;
+  margin-inline-start: 1rem;
+  padding-left: 0.5rem;
+  border-left: dashed 1px #d7d7d7;
+}
+
+.json-field-pretty dd > ul {
+  margin: 0;
+  list-style-position: inside;
+}

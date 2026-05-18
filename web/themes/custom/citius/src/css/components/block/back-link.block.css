@@ -1,0 +1,10 @@
+/** Back link styles **/
+.back-link {
+  margin-bottom: var(--spacing-md);
+  margin-top: -1rem;
+  display: inline-block;
+  padding-block: var(--spacing-md);
+  padding-left: 2rem;
+  background: url('../../../../templates/svg/icons/arrows/arrow-back.svg') no-repeat left center;
+  text-decoration: none;
+}

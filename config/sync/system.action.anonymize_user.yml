@@ -1,0 +1,13 @@
+uuid: 21b8a977-6159-4570-ab7f-81f583776b0b
+langcode: es
+status: true
+dependencies:
+  module:
+    - citius_gdpr
+_core:
+  default_config_hash: _UNcXbItKYnBVS87A5ABZnXZ68qiCvvZC5BKqSBoPbA
+id: anonymize_user
+label: 'Anonimizar usuario'
+type: user
+plugin: anonymize_user
+configuration: {  }

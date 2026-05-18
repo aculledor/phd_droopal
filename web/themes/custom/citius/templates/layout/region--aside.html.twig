@@ -1,0 +1,25 @@
+{#
+/**
+ * @file
+ * Theme override to display a region.
+ *
+ * Available variables:
+ * - content: The content for this region, typically blocks.
+ * - attributes: HTML attributes for the region <div>.
+ * - region: The name of the region variable as defined in the theme's
+ *   .info.yml file.
+ *
+ * @see template_preprocess_region()
+ */
+#}
+{% set region_classes = [
+  'region',
+  'region-aside',
+  'aside-main-menu'
+] %}
+
+{% if content %}
+  <aside{{ attributes.addClass(region_classes).setAttribute('id', 'aside-main-menu') }}>
+    {{ content }}
+  </aside>
+{% endif %}

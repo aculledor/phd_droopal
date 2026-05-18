@@ -1,0 +1,63 @@
+uuid: 5ee83998-f4c9-4bbd-b5d3-45b6790106e9
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.text.field_text
+    - field.field.paragraph.text.field_title
+    - paragraphs.paragraphs_type.text
+  module:
+    - nomarkup
+    - sdc_display
+    - text
+third_party_settings:
+  sdc_display:
+    enabled: false
+    component:
+      machine_name: ''
+    mappings:
+      static:
+        props: {  }
+        slots: {  }
+      dynamic:
+        props: {  }
+        slots: {  }
+_core:
+  default_config_hash: mtycvTDL56QH9kQ9BORhnY40x_WIP54v7lQPY5jqV-U
+id: paragraph.text.default
+targetEntityType: paragraph
+bundle: text
+mode: default
+content:
+  field_text:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      nomarkup:
+        enabled: true
+        separator: '|'
+        referenced_entity: ''
+      sdc_display:
+        enabled: '1'
+        component:
+          machine_name: 'custom_components:title'
+          show_deprecated: 0
+        mappings:
+          static:
+            props:
+              text: ''
+              html_tag: h2
+          dynamic:
+            mapped: text
+    weight: 0
+    region: content
+hidden: {  }

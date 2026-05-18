@@ -1,0 +1,30 @@
+services:
+  citius_device_api.normalizer.session_node:
+    class: Drupal\citius_device_api\Normalizer\SessionNodeNormalizer
+    tags:
+      - { name: normalizer, priority: 10 }
+
+  citius_device_api.event_subscriber:
+    class: Drupal\citius_device_api\EventSubscriber\ExerciseSubscriber
+    autowire: true
+    tags:
+      - { name: event_subscriber }
+
+  Drupal\citius_device_api\DeviceEndpointResolver:
+    autowire: true
+
+  Drupal\citius_device_api\DeviceIdManager:
+    autowire: true
+
+  Drupal\citius_device_api\DeviceTokenManager:
+    autowire: true
+
+  citius_device_api.request_subscriber:
+    class: Drupal\citius_device_api\EventSubscriber\RequestSubscriber
+    tags:
+      - { name: event_subscriber }
+
+  citius_device_api.route_subscriber:
+    class: Drupal\citius_device_api\EventSubscriber\ApiRouteSubscriber
+    tags:
+      - { name: event_subscriber }

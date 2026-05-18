@@ -1,0 +1,9 @@
+<div class="user-form__top">
+  <div class="user-form__top-left">
+    {{ form|without('user_picture', 'actions') }}
+  </div>
+  <div class="user-form__top-right">
+    {{ form.user_picture }}
+  </div>
+</div>
+{{ form.actions }}

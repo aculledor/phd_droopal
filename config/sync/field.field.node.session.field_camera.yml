@@ -1,0 +1,25 @@
+uuid: e5517129-e065-4bfe-b544-ea0d86012a97
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_camera
+    - node.type.session
+id: node.session.field_camera
+field_name: field_camera
+entity_type: node
+bundle: session
+label: Cámara
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: views
+  handler_settings:
+    view:
+      view_name: device_reference
+      display_name: entity_reference_1
+      arguments: {  }
+field_type: entity_reference

@@ -1,0 +1,24 @@
+uuid: eb307b97-8edb-4cd7-9b44-c9b603704853
+langcode: es
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.attachments
+_core:
+  default_config_hash: xJXQYmBSROqRDCr6MlGBcdU6FhJUQGZWtHVZrKJ92ZE
+id: paragraph.attachments.status
+field_name: status
+entity_type: paragraph
+bundle: attachments
+label: Publicado
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: Activado
+  off_label: Desactivado
+field_type: boolean

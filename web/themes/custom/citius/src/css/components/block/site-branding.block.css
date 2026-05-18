@@ -1,0 +1,27 @@
+/* ==========================================================================
+	BLOCK Site Branding
+	===========================================================================
+	Project: Citius Theme
+	File: site-branding.block.css
+	Description: Styling for Site Branding block.
+	========================================================================== */
+
+#block-citius-site-branding,
+#block-citius-site-branding-header-logo {
+  display: grid;
+  place-content: center;
+	height: 100%;
+}
+
+#block-citius-site-branding {
+  padding-block: calc(var(--spacing) * 7);
+  padding-inline: var(--spacing-lg);
+}
+
+.page.page__user__login #block-citius-site-branding-header-logo {
+	padding: var(--spacing-lg);
+}
+
+.page:not(.page__user__login) #block-citius-site-branding-header-logo > img {
+	max-height: 58px;
+}

@@ -1,0 +1,30 @@
+uuid: 111e20f6-7f15-48c1-a4d5-79887d65406a
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_civil_status
+    - taxonomy.vocabulary.civil_status
+  module:
+    - user
+id: user.user.field_civil_status
+field_name: field_civil_status
+entity_type: user
+bundle: user
+label: 'Estado civil'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      civil_status: civil_status
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

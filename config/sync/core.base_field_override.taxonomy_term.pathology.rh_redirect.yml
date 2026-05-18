@@ -1,0 +1,18 @@
+uuid: 11aa8053-1265-4c6e-b8ed-e91720f9f859
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.pathology
+id: taxonomy_term.pathology.rh_redirect
+field_name: rh_redirect
+entity_type: taxonomy_term
+bundle: pathology
+label: 'Rabbit Hole redirect path.'
+description: 'The path to where the user should get redirected to.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

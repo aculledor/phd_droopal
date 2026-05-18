@@ -1,0 +1,123 @@
+/** User add and edit form styles **/
+.user-form {
+  .iti {
+    width: 100%;
+  }
+}
+
+.user-form__top {
+  margin-bottom: var(--spacing-lg);
+}
+
+.user-form__top-left {
+  display: grid;
+  column-gap: var(--spacing-md);
+
+  .field--name-field-center,
+  .field--name-path,
+  fieldset[data-drupal-selector=edit-roles] {
+    grid-column: 1 / -1;
+  }
+
+  .field--name-field-location {
+    .form-type-cshs > label {
+      visibility: hidden;
+      position: absolute;
+      z-index: -1;
+      clip-path: polygon(0px 0px, 0px 0px, 0px 0px, 0px 0px);
+    }
+
+    .select-wrapper {
+      width: 100%;
+    }
+  }
+
+  fieldset[data-drupal-selector=edit-roles] {
+    .form-checkboxes {
+      display: flex;
+      flex-wrap: wrap;
+      column-gap: var(--spacing-md);
+    }
+  }
+
+  .form-item-notify {
+    flex-wrap: nowrap;
+
+    input {
+      flex-shrink: 0;
+    }
+  }
+}
+
+@media screen and (min-width: 640px) {
+  .user-form__top-left {
+    flex-grow: 1;
+    align-items: start;
+    grid-template-columns: repeat(2, 1fr);
+
+    .form-type-email {
+      grid-column: 1 / -1;
+    }
+
+    .form-type-password-confirm {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--spacing-md);
+
+      > .form-item {
+        flex-grow: 1;
+        margin-bottom: 0;
+      }
+
+      .password-suggestions,
+      .description {
+        grid-column: 1 / -1;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .user-form__top-left {
+    grid-template-columns: repeat(3, 1fr);
+
+    .field--name-field-surname {
+      grid-column: span 2;
+    }
+
+    .form-type-email {
+      grid-column: span 1;
+    }
+
+    .form-type-password-confirm {
+      grid-column: span 2;
+    }
+
+    .field--name-field-location {
+      grid-column: span 1;
+
+      .form-type-cshs {
+        display: grid;
+        gap: var(--spacing-md);
+
+        > label {
+          display: none;
+        }
+
+        .select-wrapper {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+
+  .user-form__top {
+    display: flex;
+    gap: var(--spacing-md);
+  }
+
+  .user-form__top-right {
+    width: 100%;
+  }
+}

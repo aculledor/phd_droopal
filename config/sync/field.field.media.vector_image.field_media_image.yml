@@ -1,0 +1,47 @@
+uuid: 879ccfdd-c937-466d-b1e1-2e24be8c794c
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_media_image
+    - media.type.vector_image
+  module:
+    - content_translation
+    - image
+third_party_settings:
+  content_translation:
+    translation_sync:
+      alt: alt
+      title: title
+      file: '0'
+_core:
+  default_config_hash: m3c9HhRU9HUAZ9fOhlVV9rBRS_RBIs1s3VsL9gnkpDU
+id: media.vector_image.field_media_image
+field_name: field_media_image
+entity_type: media
+bundle: vector_image
+label: Imagen
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: 'media/image/[date:custom:Y]/[date:custom:m]'
+  file_extensions: svg
+  max_filesize: ''
+  max_resolution: ''
+  min_resolution: ''
+  alt_field: true
+  alt_field_required: true
+  title_field: false
+  title_field_required: false
+  default_image:
+    uuid: ''
+    alt: ''
+    title: ''
+    width: null
+    height: null
+field_type: image

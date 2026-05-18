@@ -1,0 +1,18 @@
+uuid: 13bf4371-7d89-494a-95d2-a3624da0bfc3
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.exercise
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: paragraph.exercise
+target_entity_type_id: paragraph
+target_bundle: exercise
+default_langcode: site_default
+language_alterable: false

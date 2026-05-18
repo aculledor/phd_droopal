@@ -1,0 +1,19 @@
+diff --git a/src/Plugin/Field/FieldFormatter/MediaResponsiveThumbnailFormatter.php b/src/Plugin/Field/FieldFormatter/MediaResponsiveThumbnailFormatter.php
+index 6f36e931..dcce1497 100644
+--- a/src/Plugin/Field/FieldFormatter/MediaResponsiveThumbnailFormatter.php
++++ b/src/Plugin/Field/FieldFormatter/MediaResponsiveThumbnailFormatter.php
+@@ -182,11 +182,13 @@ public function viewElements(FieldItemListInterface $items, $langcode) {
+
+     /** @var \Drupal\media\MediaInterface[] $files */
+     foreach ($files as $delta => $file) {
++      $plugin_id = $file->getSource()->getPluginId();
++      $not_oembed = substr($plugin_id, 0, 7) !== 'oembed:';
+
+       $source_field = $file->getSource()->getConfiguration()['source_field'];
+       $elements[$delta] = [
+         '#theme' => 'responsive_image_formatter',
+-        '#item' => $file->hasField($source_field) && !$file->get($source_field)
++        '#item' => $not_oembed && $file->hasField($source_field) && !$file->get($source_field)
+           ->isEmpty() ? $file->get($source_field)
+           ->first() : $file->get('thumbnail')->first(),
+         '#item_attributes' => $item_attributes,

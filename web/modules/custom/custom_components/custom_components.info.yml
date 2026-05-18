@@ -1,0 +1,8 @@
+name: 'Custom - Components'
+type: module
+description: 'Custom components.'
+package: Custom
+core_version_requirement: ^10 || ^11
+
+'interface translation project': custom_paragraphs_extras
+'interface translation server pattern': 'modules/custom/custom_components/translations/%language.po'

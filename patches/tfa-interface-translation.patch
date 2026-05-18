@@ -1,0 +1,15 @@
+diff --git a/tfa.info.yml b/tfa.info.yml
+index 0b3c24c..edf1d78 100644
+--- a/tfa.info.yml
++++ b/tfa.info.yml
+@@ -11,8 +11,11 @@ test_dependencies:
+   - key:key
+   - encrypt:encrypt
+
++'interface translation project': tfa
++'interface translation server pattern': ../translations/tfa.%language.po
++
+ # Information added by Drupal.org packaging script on 2025-07-18
+ version: '8.x-1.12'
+ project: 'tfa'
+ datestamp: 1752807549

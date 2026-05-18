@@ -1,0 +1,56 @@
+# $Id$
+#
+# LANGUAGE translation of Drupal (general)
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+# Generated from files:
+#  modules/custom/citius_analytics/citius_analytics.info.yml: n/a
+#  modules/custom/citius_analytics/citius_analytics.links.menu.yml: n/a
+#  modules/custom/citius_analytics/src/Hook/ChartHooks.php: n/a
+#  modules/custom/citius_analytics/src/Hook/ViewsHooks.php: n/a
+#  modules/custom/citius_analytics/src/Plugin/views/field/StatisticsIconButtons.php: n/a
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2025-11-11 13:21+0100\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: modules/custom/citius_analytics/citius_analytics.info.yml:0
+msgid "Analytics"
+msgstr "Análises"
+
+#: modules/custom/citius_analytics/citius_analytics.info.yml:0
+msgid "Functionality related to analytics"
+msgstr "Funcionalidade relacionada com análises"
+
+#: modules/custom/citius_analytics/citius_analytics.info.yml:0
+msgid "CITIUS"
+msgstr "CITIUS"
+
+#: modules/custom/citius_analytics/citius_analytics.links.menu.yml:0
+msgid "Results"
+msgstr "Resultados"
+
+#: modules/custom/citius_analytics/src/Hook/ChartHooks.php:125
+msgid "- Select -"
+msgstr "- Selecionar -"
+
+#: modules/custom/citius_analytics/src/Hook/ViewsHooks.php:45
+msgid "Statistics icon buttons"
+msgstr "Botões de ícones de estatísticas"
+
+#: modules/custom/citius_analytics/src/Hook/ViewsHooks.php:46
+msgid "Displays statistics links as icons."
+msgstr "Exibe ligações de estatísticas como ícones."
+
+#: modules/custom/citius_analytics/src/Plugin/views/field/StatisticsIconButtons.php:40
+msgid "Statistics"
+msgstr "Estatísticas"
+

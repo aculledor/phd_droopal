@@ -1,0 +1,24 @@
+uuid: ae0bb5e9-16ae-4041-997f-0f9a8725c25d
+langcode: es
+status: true
+dependencies:
+  config:
+    - media.type.document
+_core:
+  default_config_hash: 3pgMS7kqXWl6ROycsMfQ2OdJKjJm7LAMZ9WqWXp_WBU
+id: media.document.status
+field_name: status
+entity_type: media
+bundle: document
+label: Publicado
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: Activado
+  off_label: Desactivado
+field_type: boolean

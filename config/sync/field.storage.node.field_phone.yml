@@ -1,0 +1,19 @@
+uuid: 0202b7c9-23cc-4cfc-8f91-4622cde49629
+langcode: es
+status: true
+dependencies:
+  module:
+    - node
+    - phone_international
+id: node.field_phone
+field_name: field_phone
+entity_type: node
+type: phone_international
+settings: {  }
+module: phone_international
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

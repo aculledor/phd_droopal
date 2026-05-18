@@ -1,0 +1,25 @@
+uuid: be196b58-552c-4b08-bdde-4bd438f0020e
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_patient
+    - node.type.session
+id: node.session.field_patient
+field_name: field_patient
+entity_type: node
+bundle: session
+label: Paciente
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: views
+  handler_settings:
+    view:
+      view_name: patient_reference
+      display_name: patient_reference
+      arguments: {  }
+field_type: entity_reference

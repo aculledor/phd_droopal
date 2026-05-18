@@ -1,0 +1,44 @@
+diff --git a/config/schema/cshs.schema.yml b/config/schema/cshs.schema.yml
+index f866664..e70a6d3 100644
+--- a/config/schema/cshs.schema.yml
++++ b/config/schema/cshs.schema.yml
+@@ -12,7 +12,7 @@ field.widget.settings.cshs:
+       type: string
+       label: 'Parent'
+     level_labels:
+-      type: string
++      type: label
+       label: 'Labels per hierarchy-level'
+     hierarchy_depth:
+       type: integer
+@@ -21,7 +21,7 @@ field.widget.settings.cshs:
+       type: integer
+       label: 'Required depth'
+     none_label:
+-      type: string
++      type: label
+       label: 'The "no selection" label'
+ field.formatter.settings.cshs_group_by_root:
+   type: mapping
+diff --git a/src/Plugin/views/filter/CshsTaxonomyIndex.php b/src/Plugin/views/filter/CshsTaxonomyIndex.php
+index 0e69fec..6222843 100644
+--- a/src/Plugin/views/filter/CshsTaxonomyIndex.php
++++ b/src/Plugin/views/filter/CshsTaxonomyIndex.php
+@@ -154,7 +154,7 @@ trait CshsTaxonomyIndex {
+         'label' => 'Parent',
+       ],
+       'level_labels' => [
+-        'type' => 'string',
++        'type' => 'label',
+         'label' => 'Labels per hierarchy-level',
+       ],
+       'hierarchy_depth' => [
+@@ -166,7 +166,7 @@ trait CshsTaxonomyIndex {
+         'label' => 'Required depth',
+       ],
+       'none_label' => [
+-        'type' => 'string',
++        'type' => 'label',
+         'label' => 'The "no selection" label',
+       ],
+     ];

@@ -1,0 +1,15 @@
+custom_common_features.xs:
+  label: xs
+  mediaQuery: '(min-width: 0px)'
+  weight: 0
+  multipliers:
+    - 1x
+    - 2x
+
+custom_common_features.lg:
+  label: lg
+  mediaQuery: 'screen and (min-width: 992px)'
+  weight: 1
+  multipliers:
+    - 1x
+    - 2x

@@ -1,0 +1,30 @@
+uuid: c7e00d6d-3dcf-4ecc-ab91-b38243292bf4
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_pathology_primary
+    - taxonomy.vocabulary.pathology
+  module:
+    - user
+id: user.user.field_pathology_primary
+field_name: field_pathology_primary
+entity_type: user
+bundle: user
+label: 'Patología principal'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      pathology: pathology
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,6 @@
+citius_gdpr.settings:
+  title: GDPR
+  description: GDPR settings
+  parent: citius_common.admin_settings
+  route_name: citius_gdpr.settings
+  weight: 10

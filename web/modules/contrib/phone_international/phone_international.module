@@ -1,0 +1,105 @@
+<?php
+
+/**
+ * @file
+ * Contains phone_international.module.
+ */
+
+declare(strict_types = 1);
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function phone_international_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.phone_international':
+      $text = file_get_contents(dirname(__FILE__) . '/README.md');
+      if (!Drupal::moduleHandler()->moduleExists('markdown')) {
+        return '<pre>' . $text . '</pre>';
+      }
+      else {
+        $filter_manager = Drupal::service('plugin.manager.filter');
+        $settings = Drupal::configFactory()
+          ->get('markdown.settings')
+          ->getRawData();
+        $config = ['settings' => $settings];
+        $filter = $filter_manager->createInstance('markdown', $config);
+        return $filter->process($text, 'en');
+      }
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_library_info_alter().
+ */
+function phone_international_library_info_alter(array &$libraries, $module) {
+  $cdn = \Drupal::config('phone_international.settings')->get('cdn');
+
+  if (!$cdn && $module === 'phone_international' && isset($libraries['phone_international'])) {
+    $intltel_path = _phone_international_get_path();
+    $minified = file_exists($intltel_path . '/js/intlTelInput.min.js');
+    $intltel_js_path = '/' . $intltel_path . '/js';
+
+    $intltel_js = $minified
+      ? $intltel_js_path . '/intlTelInput.min.js'
+      : $intltel_js_path . '/intlTelInput.js';
+
+    $libraries['phone_international.general']['js'] = [
+      $intltel_js => [
+        'minified' => $minified,
+      ],
+    ];
+
+    $minified_css = file_exists($intltel_path . '/css/intlTelInput.min.css');
+    $intltel_css_path = '/' . $intltel_path . '/css';
+
+    $intltel_css = $minified_css
+      ? $intltel_css_path . '/intlTelInput.min.css'
+      : $intltel_css_path . '/intlTelInput.css';
+
+    $libraries['phone_international.general']['css']['theme'] = [
+      $intltel_css => [
+        'minified' => $minified,
+      ],
+    ];
+  }
+}
+
+/**
+ * Get the location of the intl-tel-input library.
+ *
+ * @return string
+ *   The location of the library, or FALSE if the library isn't installed.
+ */
+function _phone_international_get_path() {
+  if (\Drupal::hasService('library.libraries_directory_file_finder')) {
+    /** @var \Drupal\Core\Asset\LibrariesDirectoryFileFinder $library_file_finder */
+    return \Drupal::service('library.libraries_directory_file_finder')->find('intl-tel-input/build');
+  }
+
+  // The following logic is taken from libraries_get_libraries()
+  $searchdir = [];
+
+  // Similar to 'modules' and 'themes' directories inside an installation
+  // profile, installation profiles may want to place libraries into a
+  // 'libraries' directory.
+  $searchdir[] = 'profiles/' . \Drupal::installProfile() . '/libraries';
+
+  // Always search libraries.
+  $searchdir[] = 'libraries';
+
+  // Also search sites/<domain>/*.
+  $searchdir[] = \Drupal::getContainer()->getParameter('site.path') . '/libraries';
+
+  foreach ($searchdir as $dir) {
+    if (file_exists($dir . '/intl-tel-input/build/js/intlTelInput.min.js') || file_exists($dir . '/intl-tel-input/build/js/intlTelInput.js')) {
+      return $dir . '/intl-tel-input/build';
+    }
+  }
+
+  return FALSE;
+}

@@ -1,0 +1,66 @@
+uuid: b2775bea-aa06-40bd-8f47-8d61149645a8
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_paragraphs
+    - node.type.basic_page
+    - paragraphs.paragraphs_type.attachments
+    - paragraphs.paragraphs_type.image
+    - paragraphs.paragraphs_type.image_gallery
+    - paragraphs.paragraphs_type.links
+    - paragraphs.paragraphs_type.text
+    - paragraphs.paragraphs_type.text_image
+    - paragraphs.paragraphs_type.text_video
+    - paragraphs.paragraphs_type.videos
+  module:
+    - entity_reference_revisions
+id: node.basic_page.field_paragraphs
+field_name: field_paragraphs
+entity_type: node
+bundle: basic_page
+label: Blocks
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      attachments: attachments
+      image: image
+      image_gallery: image_gallery
+      links: links
+      text: text
+      text_image: text_image
+      text_video: text_video
+      videos: videos
+    negate: 0
+    target_bundles_drag_drop:
+      attachments:
+        weight: 9
+        enabled: true
+      image:
+        weight: 10
+        enabled: true
+      image_gallery:
+        weight: 11
+        enabled: true
+      links:
+        weight: 12
+        enabled: true
+      text:
+        weight: 13
+        enabled: true
+      text_image:
+        weight: 14
+        enabled: true
+      text_video:
+        weight: 15
+        enabled: true
+      videos:
+        weight: 16
+        enabled: true
+field_type: entity_reference_revisions

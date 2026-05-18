@@ -1,0 +1,64 @@
+/** User profile page styles **/
+.user__profile {
+  margin-bottom: var(--spacing-xl);
+}
+.user__profile-top {
+  display: flex;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+
+  img {
+    height: auto;
+  }
+
+  .username {
+    margin-block: 0;
+  }
+}
+
+.user__profile-fields {
+  .field {
+    padding-left: 2.5rem;
+    position: relative;
+    margin-bottom: var(--spacing-md);
+
+    &:before {
+      content: '';
+      display: flex;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 2.5rem;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    &.field-name--field-center:before {
+      background-image: url('../../../../templates/svg/icons/user/buildings.svg');
+    }
+
+    &.field-name--field-phone:before {
+      background-image: url('../../../../templates/svg/icons/user/phone.svg');
+    }
+    &.field-email:before {
+      background-image: url('../../../../templates/svg/icons/user/mail-send.svg');
+    }
+
+    &.field-name--field-center {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--spacing-sm);
+
+      .field-item:not(:last-child):after {
+        content: ',';
+      }
+    }
+  }
+}
+
+.user__profile-roles {
+  text-transform: uppercase;
+  font-size: var(--fs-md);
+  margin-bottom: var(--spacing-md);
+}

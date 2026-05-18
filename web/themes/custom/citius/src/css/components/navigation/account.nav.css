@@ -1,0 +1,26 @@
+/* ==========================================================================
+	NAVIGATION Account
+	===========================================================================
+	Project: Citius Theme
+	File: account.nav.css
+	Description: Styling for Account Navigation.
+	========================================================================== */
+
+.menu.menu-account > .nav__item {
+  padding-block: var(--spacing-xs);
+  padding-inline: var(--spacing-sm);
+}
+
+.menu.menu-account > .nav__item > .nav__link {
+  border-radius: var(--rounded-xs);
+  display: block;
+  padding-block: var(--spacing-xs);
+  padding-inline: var(--spacing-sm);
+  text-decoration: none;
+}
+
+.menu.menu-account > .nav__item > .nav__link:hover,
+.menu.menu-account > .nav__item > .nav__link.active {
+  background-color: var(--c-neutral-lightest);
+  font-family: var(--ff-bold);
+}

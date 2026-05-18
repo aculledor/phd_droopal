@@ -1,0 +1,18 @@
+uuid: 08d5f478-b569-4a01-921c-1df4f3d4cac3
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.civil_status
+id: taxonomy_term.civil_status.rh_action
+field_name: rh_action
+entity_type: taxonomy_term
+bundle: civil_status
+label: 'Rabbit Hole action'
+description: 'Specifies which action that Rabbit Hole should take.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

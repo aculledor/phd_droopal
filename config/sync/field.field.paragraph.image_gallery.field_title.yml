@@ -1,0 +1,21 @@
+uuid: d93eef1f-e6b4-4101-a556-7324f84f0cdf
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_title
+    - paragraphs.paragraphs_type.image_gallery
+_core:
+  default_config_hash: mUfydLBAvU9tq7x3JJKDU9Sg2nU_v66rEErKykHvGJM
+id: paragraph.image_gallery.field_title
+field_name: field_title
+entity_type: paragraph
+bundle: image_gallery
+label: Título
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

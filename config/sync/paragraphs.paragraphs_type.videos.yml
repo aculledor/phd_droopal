@@ -1,0 +1,24 @@
+uuid: 5421a491-0d05-461a-b3d3-ef10d43be1b2
+langcode: es
+status: true
+dependencies:
+  content:
+    - 'file:file:a3f10777-6e40-48d1-afcd-3b12824946f7'
+  module:
+    - custom_paragraphs_extras
+_core:
+  default_config_hash: bdH_7IOv0LOH7DJ4yDTGgQexAqUChQl2FMeO6SQ-L7c
+id: videos
+label: Vídeos
+icon_uuid: a3f10777-6e40-48d1-afcd-3b12824946f7
+icon_default: 'data:image/svg+xml;base64,PHN2ZyBpZD0iYjk1N2FlZDYtNmIzNi00NjU1LTgxMTItOTdiZTczYTA1MjJkIiBkYXRhLW5hbWU9IkNhcGEgMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiBmaWxsPSIjZmZmIi8+PHBhdGggZD0iTTI4LDdINFYyNUgyOFpNMTMuNzUsMTEuNXY5aDEuNUwyMC41LDE2bC01LjI1LTQuNVoiIGZpbGwtcnVsZT0iZXZlbm9kZCIvPjwvc3ZnPg=='
+description: ''
+behavior_plugins:
+  custom_background_color_behavior:
+    enabled: true
+  custom_view_mode_behavior:
+    enabled: true
+    override_available:
+      size_s: size_s
+      size_xl: size_xl
+    override_default: size_s

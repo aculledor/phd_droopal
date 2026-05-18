@@ -1,0 +1,37 @@
+# https://www.drupal.org/drupalorg/docs/drupal-ci/customizing-drupalci-testing
+build:
+  environment:
+    startcontainers:
+      runcontainers:
+    create_db:
+      dbcreate:
+  assessment:
+    validate_codebase:
+      phplint:
+      container_composer:
+      container_command:
+        commands:
+          - cd ${SOURCE_DIR}
+          - sudo -u www-data composer config repositories.asset {"composer","https://asset-packagist.org"}
+          - sudo -u www-data composer config extra.installer-types.0 "npm-asset"
+          - sudo -u www-data composer config extra.installer-types.1 "bower-asset"
+          - sudo -u www-data composer config extra.installer-paths.libraries\/\{\$name\} "[type:bower-asset]"
+          - sudo -u www-data sed -i 's/"\[type:bower-asset\]"/\["type:bower-asset"\]/' composer.json
+          - sudo -u www-data composer require "oomphinc/composer-installers-extender:^2.0"
+          - sudo -u www-data composer require "npm-asset/intl-tel-input:^17.0"
+          - dir libraries
+      phpcs:
+        # phpcs will use core's specified version of Coder.
+        sniff-all-files: true
+        halt-on-fail: false
+    testing:
+      run_tests.standard:
+        types: 'PHPUnit-Unit,PHPUnit-Kernel,PHPUnit-Functional'
+        testgroups: '--all'
+        suppress-deprecations: false
+      run_tests.javascript:
+        concurrency: 1
+        types: 'PHPUnit-FunctionalJavascript'
+        testgroups: '--all'
+        suppress-deprecations: false
+        halt-on-fail: false

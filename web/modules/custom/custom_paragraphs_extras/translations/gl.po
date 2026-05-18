@@ -1,0 +1,114 @@
+# $Id$
+#
+# Galician translation of Drupal (general)
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+# Generated from files:
+#  modules/custom/custom_paragraphs_extras/custom_paragraphs_extras.info.yml: n/a
+#  modules/custom/custom_paragraphs_extras/config/schema/custom_paragraphs_extras.schema.yml: n/a
+#  modules/custom/custom_paragraphs_extras/src/Plugin/paragraphs/Behavior/AlignmentBehavior.php: n/a
+#  modules/custom/custom_paragraphs_extras/src/Plugin/paragraphs/Behavior/BackgroundColorBehavior.php: n/a
+#  modules/custom/custom_paragraphs_extras/src/Plugin/paragraphs/Behavior/ViewModeBehavior.php: n/a
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2024-09-17 10:23+0200\n"
+"PO-Revision-Date: 2024-09-17 10:23+0200\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Galician <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+#: modules/custom/custom_paragraphs_extras/custom_paragraphs_extras.info.yml:0
+msgid "Paragraphs - Extras"
+msgstr "Paragraphs - Extras"
+
+#: modules/custom/custom_paragraphs_extras/custom_paragraphs_extras.info.yml:0
+msgid "Additional features and customizations for paragraphs."
+msgstr "Funcións adicionais e personalizacións para paragraphs."
+
+#: modules/custom/custom_paragraphs_extras/custom_paragraphs_extras.info.yml:0
+msgid "Custom"
+msgstr "Personalizado"
+
+#: modules/custom/custom_paragraphs_extras/config/schema/custom_paragraphs_extras.schema.yml:0
+msgid "Paragraphs - View mode settings"
+msgstr "Paragraphs - Configuración de modo de vista"
+
+#: modules/custom/custom_paragraphs_extras/config/schema/custom_paragraphs_extras.schema.yml:0
+msgid "Select which view modes are allowed"
+msgstr "Selecciona que modos de vista están permitidos"
+
+#: modules/custom/custom_paragraphs_extras/config/schema/custom_paragraphs_extras.schema.yml:0
+msgid "View Mode"
+msgstr "Modo de vista"
+
+#: modules/custom/custom_paragraphs_extras/config/schema/custom_paragraphs_extras.schema.yml:0
+msgid "Select default view mode"
+msgstr "Selecciona o modo de vista predeterminado"
+
+#: modules/custom/custom_paragraphs_extras/src/Plugin/paragraphs/Behavior/AlignmentBehavior.php:30
+msgid "Alignment"
+msgstr "Aliñamento"
+
+#: modules/custom/custom_paragraphs_extras/src/Plugin/paragraphs/Behavior/AlignmentBehavior.php:51
+msgid "Alignment: @alignment"
+msgstr "Aliñamento: @alignment"
+
+#: modules/custom/custom_paragraphs_extras/src/Plugin/paragraphs/Behavior/AlignmentBehavior.php:61
+msgid "Normal"
+msgstr "Normal"
+
+#: modules/custom/custom_paragraphs_extras/src/Plugin/paragraphs/Behavior/AlignmentBehavior.php:62
+msgid "Inverted"
+msgstr "Invertida"
+
+#: modules/custom/custom_paragraphs_extras/src/Plugin/paragraphs/Behavior/AlignmentBehavior.php:11
+msgid "Alignment behavior"
+msgstr "Comportamento de aliñamento"
+
+#: modules/custom/custom_paragraphs_extras/src/Plugin/paragraphs/Behavior/AlignmentBehavior.php:11
+msgid "Add an alignment selector to paragraphs with 2 columns."
+msgstr "Engade un selector de aliñamento a paragraphs con 2 columnas."
+
+#: modules/custom/custom_paragraphs_extras/src/Plugin/paragraphs/Behavior/BackgroundColorBehavior.php:31
+msgid "Background color"
+msgstr "Cor de fondo"
+
+#: modules/custom/custom_paragraphs_extras/src/Plugin/paragraphs/Behavior/BackgroundColorBehavior.php:63
+msgid "Background color: @color"
+msgstr "Cor de fondo: @color"
+
+#: modules/custom/custom_paragraphs_extras/src/Plugin/paragraphs/Behavior/BackgroundColorBehavior.php:12
+msgid "Background color behavior"
+msgstr "Comportamento de cor de fondo"
+
+#: modules/custom/custom_paragraphs_extras/src/Plugin/paragraphs/Behavior/BackgroundColorBehavior.php:12
+msgid "Adds a 'background color' field to the Paragraph entity."
+msgstr "Engade un campo de 'cor de fondo' á entidade de Paragraph."
+
+#: modules/custom/custom_paragraphs_extras/src/Plugin/paragraphs/Behavior/ViewModeBehavior.php:71
+msgid "Select which view modes are allowable"
+msgstr "Selecciona que modos de vista son permitidos"
+
+#: modules/custom/custom_paragraphs_extras/src/Plugin/paragraphs/Behavior/ViewModeBehavior.php:77
+msgid "Select default view mode for content to use"
+msgstr "Selecciona o modo de vista predeterminado para o contido a usar"
+
+#: modules/custom/custom_paragraphs_extras/src/Plugin/paragraphs/Behavior/ViewModeBehavior.php:146
+msgid "View mode: @view_mode"
+msgstr "Modo de vista: @view_mode"
+
+#: modules/custom/custom_paragraphs_extras/src/Plugin/paragraphs/Behavior/ViewModeBehavior.php:15
+msgid "View mode behavior"
+msgstr "Comportamento de modo de vista"
+
+#: modules/custom/custom_paragraphs_extras/src/Plugin/paragraphs/Behavior/ViewModeBehavior.php:15
+msgid "Adds a 'view mode' selector field to the Paragraph entity."
+msgstr ""
+"Engade un campo de selector de 'modo de vista' á entidade de "
+"Paragraph."
+

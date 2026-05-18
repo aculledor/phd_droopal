@@ -1,0 +1,22 @@
+uuid: 02c245c4-4390-48ce-b3dd-49f323bc4f41
+langcode: es
+status: true
+dependencies:
+  module:
+    - node
+id: center
+label: Centro
+type: 'canonical_entities:node'
+pattern: '/centros/[node:title]'
+selection_criteria:
+  6a344195-e1ae-4fe0-99cb-1cbfab094b3a:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 6a344195-e1ae-4fe0-99cb-1cbfab094b3a
+    context_mapping:
+      node: node
+    bundles:
+      center: center
+selection_logic: and
+weight: -5
+relationships: {  }

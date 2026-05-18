@@ -1,0 +1,44 @@
+/* ==========================================================================
+   BLOCKQUOTES
+   ===========================================================================
+   Project: Citius Theme
+   File: blockquotes.css
+   Description: Defines blockquotes styling.
+   ========================================================================== */
+
+blockquote {
+  border: 1px solid var(--c-neutral-black);
+  margin-block: var(--spacing-lg);
+  padding: var(--spacing-md) var(--spacing-md) var(--spacing-md) 5.375rem;
+  position: relative;
+}
+
+blockquote::before {
+  content: '“';
+  display: block;
+  position: absolute;
+  width: 52px;
+  height: 52px;
+  top: var(--spacing-md);
+  left: var(--spacing-md);
+  font-size: calc(var(--fs) * 24);
+  font-family: var(--ff-bold);
+  line-height: .95;
+  background-color: var(--c-neutral-black);
+  color: var(--c-neutral-white);
+  padding: var(--spacing-xs);
+}
+
+blockquote p {
+  margin-top: 0;
+}
+
+blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+@media screen and (min-width: 768px) {
+  blockquote {
+    padding: calc(var(--spacing) * 5) calc(var(--spacing) * 5) calc(var(--spacing) * 5) 5.375rem;
+  }
+}

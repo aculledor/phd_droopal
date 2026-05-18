@@ -1,0 +1,22 @@
+uuid: 5970f611-ef04-474f-9260-099d5570dcf0
+langcode: es
+status: true
+dependencies:
+  config:
+    - node.type.exercise
+id: node.exercise.promote
+field_name: promote
+entity_type: node
+bundle: exercise
+label: 'Promocionado a la página principal'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Activado
+  off_label: Desactivado
+field_type: boolean

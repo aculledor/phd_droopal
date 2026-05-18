@@ -1,0 +1,20 @@
+uuid: 383eb029-bc4a-465b-a71c-2b21955dd82a
+langcode: es
+status: true
+dependencies:
+  theme:
+    - citius
+_core:
+  default_config_hash: OQ9aJ-4qVwK1x00o9EOYK4eFDjQr_HLpbPiJaPSVZiQ
+id: citius_local_actions
+theme: citius
+region: content
+weight: -9
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Primary admin actions'
+  label_display: '0'
+  provider: core
+visibility: {  }

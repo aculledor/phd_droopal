@@ -1,0 +1,29 @@
+uuid: d45430b2-ed83-42c1-a87c-3c2d0fd65639
+langcode: es
+status: true
+dependencies:
+  config:
+    - node.type.basic_page
+    - rest.resource.citius_device_api_authorize_glasses
+    - rest.resource.citius_device_api_exercise
+    - rest.resource.citius_device_api_glasses
+    - rest.resource.citius_device_api_register_glasses
+  module:
+    - entity_bundle_permissions
+    - media
+    - rest
+    - system
+_core:
+  default_config_hash: j5zLMOdJBqC0bMvSdth5UebkprJB8g_2FXHqhfpJzow
+id: anonymous
+label: 'Anonymous user'
+weight: 0
+is_admin: false
+permissions:
+  - 'access content'
+  - 'entity_bundle_permissions access node basic_page'
+  - 'restful get citius_device_api_glasses'
+  - 'restful post citius_device_api_authorize_glasses'
+  - 'restful post citius_device_api_exercise'
+  - 'restful post citius_device_api_register_glasses'
+  - 'view media'

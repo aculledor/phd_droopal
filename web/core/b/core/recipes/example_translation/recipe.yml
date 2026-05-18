@@ -1,0 +1,11 @@
+name: 'Example translation'
+description: "Example of a content type with translation."
+type: 'Content type'
+
+recipes:
+  - article_content_type
+
+install:
+  - node
+  - language
+  - config_translation

@@ -1,0 +1,25 @@
+/** Chart styles **/
+.chart-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: var(--spacing-md);
+}
+
+.chart-wrapper > div[data-chartjs-render-wrapper] {
+  width: 100% !important;
+  display: grid !important;
+  place-content: center;
+
+  canvas {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: var(--breakpoint-md);
+    aspect-ratio: 16 / 9;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .chart-wrapper > div[data-chartjs-render-wrapper] {
+    place-content: start;
+  }
+}

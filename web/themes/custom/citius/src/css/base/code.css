@@ -1,0 +1,17 @@
+/* ==========================================================================
+  CODE HTML TAG
+  ===========================================================================
+  Project: Citius Theme
+  File: code.css
+  Description: Defines code html tag base styling.
+  ========================================================================== */
+
+code {
+  background-color: var(--c-neutral-lightest);
+  border: 1px solid var(--c-neutral-lighter);
+  border-radius: var(--rounded-xs);
+  color: var(--c-neutral-dark);
+  display: inline-block;
+  padding-block: calc(var(--spacing) * .125);
+  padding-inline: var(--spacing);
+}

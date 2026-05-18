@@ -1,0 +1,61 @@
+.component-background-color {
+  --bg--light-text-color: #fff;
+  padding: 1rem 0;
+  position: relative;
+}
+
+.component-background-color::before {
+  content: '';
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: -1;
+}
+
+.component-background-color-full-width::before {
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+}
+
+.component-background-color.component-background-color-black {
+  color: var(--bg--light-text-color);
+}
+
+.component-background-color.component-background-color-black::before {
+  background-color: #000;
+}
+
+.component-background-color.component-background-color-blue {
+  color: var(--bg--light-text-color);
+}
+
+.component-background-color.component-background-color-blue::before {
+  background-color: #007bc4;
+}
+
+.component-background-color.component-background-color-dark_blue {
+  color: var(--bg--light-text-color);
+}
+
+.component-background-color.component-background-color-dark_blue::before {
+  background-color: #002b4a;
+}
+
+.component-background-color.component-background-color-blue-50::before {
+  background-color: #7fbce1;
+}
+
+.component-background-color.component-background-color-blue-25::before {
+  background-color: #bfddf0;
+}
+
+.component-background-color.component-background-color-blue-10::before {
+  background-color: #e5f1f8;
+}
+
+.component-background-color.component-background-color-gray::before {
+  background-color: #e9ecef;
+}

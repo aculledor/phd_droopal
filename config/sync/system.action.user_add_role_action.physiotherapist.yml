@@ -1,0 +1,14 @@
+uuid: ddb27661-1b29-42fc-b908-33ddf8249f31
+langcode: es
+status: true
+dependencies:
+  config:
+    - user.role.physiotherapist
+  module:
+    - user
+id: user_add_role_action.physiotherapist
+label: 'Añade el rol Médico / Fisioterapeuta al(los) usuario(s) seleccionado(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: physiotherapist

@@ -1,0 +1,15 @@
+_core:
+  default_config_hash: HlN7eAN2N4JIHsYv56V4E7sqC9bS609KwvGFjyD_mgk
+langcode: es
+uuid: df348a9a-863e-4a0f-b76b-6c3b54fc37c8
+name: 'CiTIUS - Centro Singular de Investigación en Tecnoloxías Intelixentes'
+mail: admin@example.com
+slogan: 'Rehabilitación Cardíaca'
+page:
+  403: ''
+  404: ''
+  front: /user/login
+admin_compact_mode: false
+weight_select_max: 100
+default_langcode: es
+mail_notification: null

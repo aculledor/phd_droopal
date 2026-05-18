@@ -1,0 +1,29 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for custom common features module.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_field_formatter_info_alter().
+ */
+function custom_common_features_field_formatter_info_alter(array &$info): void {
+  if (\Drupal::moduleHandler()->moduleExists('telephone')) {
+    // Allow using the telephone formatter for the fax field.
+    $info['telephone_link']['field_types'][] = 'string';
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function custom_common_features_form_alter(array &$form, FormStateInterface $form_state, string $form_id): void {
+  if (($form_id === 'media_library_add_form_upload') && isset($form['media'][0]['fields']['name'])) {
+    $name = &$form['media'][0]['fields']['name'];
+    // Add description.
+    $name['widget'][0]['value']['#description'] = t('The value of this field is purely administrative.');
+  }
+}

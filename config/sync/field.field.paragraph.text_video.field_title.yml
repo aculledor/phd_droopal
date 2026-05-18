@@ -1,0 +1,21 @@
+uuid: 73576671-52be-48b0-a94a-51a9c62b98f1
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_title
+    - paragraphs.paragraphs_type.text_video
+_core:
+  default_config_hash: 7EseVZ995kG04Z15nRi2LSbjz1na7hbDlBu4tzexILg
+id: paragraph.text_video.field_title
+field_name: field_title
+entity_type: paragraph
+bundle: text_video
+label: Título
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

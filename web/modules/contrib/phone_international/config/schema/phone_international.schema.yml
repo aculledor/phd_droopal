@@ -1,0 +1,75 @@
+phone_international:
+  type: mapping
+  label: 'Phone International'
+  mapping:
+    geolocation:
+      type: boolean
+      label: 'Enable Geolocation'
+    initial_country:
+      type: string
+      label: 'Default country'
+    exclude_countries:
+      type: sequence
+      label: 'List of countries'
+    preferred_countries:
+      type: sequence
+      label: 'Top list countries'
+    countries:
+      type: string
+      label: 'Choose countries to include/exclude from the list'
+
+field.formatter.settings.phone_international_formatter:
+  type: mapping
+  label: 'Phone International format settings'
+  mapping:
+    geolocation:
+      type: boolean
+      label: 'Enable Geolocation'
+    initial_country:
+      type: string
+      label: 'Default country'
+    exclude_countries:
+      type: sequence
+      label: 'List of countries'
+    preferred_countries:
+      type: sequence
+      label: 'Top list countries'
+    countries:
+      type: string
+      label: 'Choose countries to include/exclude from the list'
+
+field.widget.settings.phone_international_widget:
+  type: mapping
+  label: 'Phone International default format settings'
+  mapping:
+    geolocation:
+      type: boolean
+      label: 'Enable Geolocation'
+    initial_country:
+      type: string
+      label: 'Default country'
+    exclude_countries:
+      type: sequence
+      label: 'List of countries'
+    preferred_countries:
+      type: sequence
+      label: 'Top list countries'
+    countries:
+      type: string
+      label: 'Choose countries to include/exclude from the list'
+
+field.value.phone_international:
+  type: mapping
+  label: 'Phone International default format settings'
+  mapping:
+    value:
+      type: string
+      label: 'Value'
+
+phone_international.settings:
+  type: config_object
+  label: 'Module phone international settings'
+  mapping:
+    cdn:
+      type: boolean
+      label: 'Boolean indicating phone international to use CDN'

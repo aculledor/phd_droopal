@@ -1,0 +1,30 @@
+uuid: 1037f21f-8cb2-49b5-ae71-3cd801e54c70
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_media_videos
+    - paragraphs.paragraphs_type.videos
+_core:
+  default_config_hash: XG2l-BKbpmDgdu1srv5aweyXmOIrvQqm-CEn-dYustY
+id: paragraph.videos.field_media_videos
+field_name: field_media_videos
+entity_type: paragraph
+bundle: videos
+label: Vídeos
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      remote_video: remote_video
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

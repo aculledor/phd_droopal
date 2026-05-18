@@ -1,0 +1,18 @@
+uuid: 0c1d2b1a-a9b6-451d-aefb-1217b71c6723
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.administrative_division
+id: taxonomy_term.administrative_division.publish_on
+field_name: publish_on
+entity_type: taxonomy_term
+bundle: administrative_division
+label: 'Publish on'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: timestamp

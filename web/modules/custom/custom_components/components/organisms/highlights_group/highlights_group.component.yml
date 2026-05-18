@@ -1,0 +1,11 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Highlights group
+status: experimental
+group: Content
+
+props:
+  type: object
+  properties:
+    highlights:
+      title: Highlights
+      type: string

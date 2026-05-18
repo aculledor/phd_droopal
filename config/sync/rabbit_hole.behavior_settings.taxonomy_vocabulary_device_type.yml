@@ -1,0 +1,14 @@
+uuid: 878a2c49-7346-4b62-b26d-2fec049a7ede
+langcode: es
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.device_type
+id: taxonomy_vocabulary_device_type
+entity_type_id: taxonomy_vocabulary
+entity_id: device_type
+action: page_not_found
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

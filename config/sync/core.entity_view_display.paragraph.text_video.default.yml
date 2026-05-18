@@ -1,0 +1,111 @@
+uuid: 3dda4ed4-8a56-4ffb-bb82-f981906ac0fa
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.text_video.field_media_video
+    - field.field.paragraph.text_video.field_text
+    - field.field.paragraph.text_video.field_title
+    - paragraphs.paragraphs_type.text_video
+  module:
+    - field_group
+    - nomarkup
+    - sdc_display
+    - text
+third_party_settings:
+  sdc_display:
+    enabled: false
+    component:
+      machine_name: ''
+    mappings:
+      static:
+        props: {  }
+        slots: {  }
+      dynamic:
+        props: {  }
+        slots: {  }
+  field_group:
+    group_two_columns:
+      children:
+        - field_text
+        - field_media_video
+      label: 'Dos columnas'
+      parent_name: ''
+      region: content
+      weight: 1
+      format_type: sdc_display
+      format_settings:
+        sdc_field_group:
+          component:
+            machine_name: 'custom_components:two_columns'
+            show_deprecated: 0
+          mappings:
+            static:
+              slots:
+                col_1:
+                  value: ''
+                  format: plain_text
+                col_2:
+                  value: ''
+                  format: plain_text
+              props: null
+            dynamic:
+              slots:
+                col_1:
+                  field_text: field_text
+                  field_media_video: 0
+                col_2:
+                  field_media_video: field_media_video
+                  field_text: 0
+        id: ''
+        classes: ''
+        show_empty_fields: 0
+        label_as_html: 0
+_core:
+  default_config_hash: h1kz9jMdBwzVw9l61aKFf70vtPKRJePbsWz4F_-ZnnI
+id: paragraph.text_video.default
+targetEntityType: paragraph
+bundle: text_video
+mode: default
+content:
+  field_media_video:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_text:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      nomarkup:
+        enabled: true
+        separator: '|'
+        referenced_entity: ''
+      sdc_display:
+        enabled: '1'
+        component:
+          machine_name: 'custom_components:title'
+          show_deprecated: 0
+        mappings:
+          static:
+            props:
+              text: ''
+              html_tag: h2
+          dynamic:
+            mapped: text
+    weight: 0
+    region: content
+hidden: {  }

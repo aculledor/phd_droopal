@@ -1,0 +1,19 @@
+citius_gdpr.settings:
+  type: config_object
+  label: 'Citius GDPR settings'
+  mapping:
+    apply_gdpr:
+      type: integer
+      label: 'Apply GDPR'
+    cancellation_period:
+      type: integer
+      label: 'Cancellation period'
+    female_name:
+      type: string
+      label: 'Female name of anonymized user'
+    male_name:
+      type: string
+      label: 'Male name of anonymized user'
+    surname:
+      type: string
+      label: 'Surname of anonymized user'

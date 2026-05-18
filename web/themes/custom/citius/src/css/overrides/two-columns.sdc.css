@@ -1,0 +1,46 @@
+/* ==========================================================================
+   TWO COLUMNS
+   ===========================================================================
+   Project: Citius Theme
+   File: two-columns.sdc.css
+   Description: Defines two columns layout styling.
+   ========================================================================== */
+
+.component-two-columns .row {
+  gap: var(--spacing-lg);
+  flex-direction: column;
+}
+
+.component-two-columns .row .col-1
+.component-two-columns .row .col-2 {
+  width: 100%;
+}
+
+.component-two-columns .row .col .field-name--field-text p {
+  margin-top: 0;
+}
+
+.component-two-columns .row .col .field-name--field-text p:last-child {
+  margin-bottom: 0;
+}
+
+@media (min-width: 768px) {
+  .component-two-columns .row {
+    flex-direction: row;
+  }
+
+  .component-two-columns .row .col-1,
+  .component-two-columns .row .col-2 {
+    width: calc(50% - var(--spacing-md));
+  }
+}
+
+@media (min-width: 992px) {
+  .component-two-columns .row .col-1 {
+    width: calc(58.33333333% - var(--spacing-md));
+  }
+
+  .component-two-columns .row .col-2 {
+    width: calc(41.66666667% - var(--spacing-md));
+  }
+}

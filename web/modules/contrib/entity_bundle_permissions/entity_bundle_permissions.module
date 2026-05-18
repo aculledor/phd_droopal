@@ -1,0 +1,46 @@
+<?php
+
+/**
+ * @file
+ * Implements bundle-specific entity access.
+ *
+ * Copyright (C) 2022  Library Solutions, LLC (et al.).
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ */
+
+use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Access\AccessResultReasonInterface;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Session\AccountInterface;
+
+use Drupal\entity_bundle_permissions\DynamicPermissions;
+
+/**
+ * Implements hook_entity_access().
+ */
+function entity_bundle_permissions_entity_access(EntityInterface $entity, $operation, AccountInterface $account) {
+  /** @var \Drupal\entity_bundle_permissions\DynamicPermissions */
+  $dynamic_permissions = \Drupal::classResolver(DynamicPermissions::class);
+  $access_result = AccessResult::neutral();
+
+  if ($dynamic_permissions->applies($entity->getEntityType())) {
+    // If we reach this point, the presence of a bundle configuration entity is
+    // implied, so we don't need to worry about non-existent permissions.
+    $permission = "entity_bundle_permissions access {$entity->getEntityType()->id()} {$entity->bundle()}";
+
+    $access_result = AccessResult::forbiddenIf(!$account->hasPermission($permission));
+    $access_result->addCacheContexts([
+      'user.permissions',
+    ]);
+
+    if ($access_result instanceof AccessResultReasonInterface) {
+      $access_result->setReason("The '{$permission}' permission is required.");
+    }
+  }
+
+  return $access_result;
+}

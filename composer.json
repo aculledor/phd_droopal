@@ -1,0 +1,189 @@
+{
+    "name": "drupal/recommended-project",
+    "description": "Project template for Drupal projects with a relocated document root",
+    "license": "GPL-2.0-or-later",
+    "type": "project",
+    "homepage": "https://www.drupal.org/project/drupal",
+    "support": {
+        "chat": "https://www.drupal.org/node/314178",
+        "docs": "https://www.drupal.org/docs/user_guide/en/index.html"
+    },
+    "require": {
+        "composer/installers": "^2.3",
+        "cweagans/composer-patches": "^1.7",
+        "drupal/admin_toolbar": "^3.6",
+        "drupal/better_exposed_filters": "^7.0",
+        "drupal/charts": "^5.1",
+        "drupal/colorbox": "^2.1",
+        "drupal/core-composer-scaffold": "^11.1",
+        "drupal/core-project-message": "^11.1",
+        "drupal/core-recommended": "^11.1",
+        "drupal/cshs": "^4.0",
+        "drupal/entity_bundle_permissions": "^1.1",
+        "drupal/field_group": "^4.0",
+        "drupal/gin": "^4.0",
+        "drupal/gin_toolbar": "^2.0",
+        "drupal/json_field": "^1.4",
+        "drupal/mail_login": "^4.2",
+        "drupal/media_responsive_thumbnail": "^2.0",
+        "drupal/migrate_plus": "^6.0",
+        "drupal/migrate_source_csv": "^3.7",
+        "drupal/migrate_tools": "^6.1",
+        "drupal/nomarkup": "^1.0",
+        "drupal/openapi": "^2.3",
+        "drupal/openapi_ui_swagger": "^1.1",
+        "drupal/paragraphs": "^1.19",
+        "drupal/pathauto": "^1.13",
+        "drupal/phone_international": "^3.3",
+        "drupal/quick_node_clone": "^1.22",
+        "drupal/rabbit_hole": "^1.0",
+        "drupal/real_aes": "^2.6",
+        "drupal/scheduler": "^2.2",
+        "drupal/sdc_display": "^2.0",
+        "drupal/svg_image": "^3.2",
+        "drupal/symfony_mailer": "^1.6",
+        "drupal/tagify": "^1.2",
+        "drupal/tfa": "^1.12",
+        "drush/drush": "^13.6",
+        "mnsami/composer-custom-directory-installer": "^2.0",
+        "npm-asset/intl-tel-input": "18.5.3",
+        "oomphinc/composer-installers-extender": "^2.0",
+        "ronanguilloux/isocodes": "^2.3",
+        "vlucas/phpdotenv": "^5.6"
+    },
+    "require-dev": {
+        "drupal/core-dev": "^11.1",
+        "drupal/potx": "^1.1",
+        "ergebnis/composer-normalize": "^2.47"
+    },
+    "conflict": {
+        "drupal/drupal": "*"
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        },
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ],
+    "minimum-stability": "beta",
+    "prefer-stable": true,
+    "autoload": {
+        "files": [
+            "load.environment.php"
+        ]
+    },
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true,
+            "cweagans/composer-patches": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "drupal/core-composer-scaffold": true,
+            "drupal/core-project-message": true,
+            "ergebnis/composer-normalize": true,
+            "mnsami/composer-custom-directory-installer": true,
+            "oomphinc/composer-installers-extender": true,
+            "php-http/discovery": true,
+            "phpstan/extension-installer": true,
+            "tbachert/spi": true
+        },
+        "sort-packages": true
+    },
+    "extra": {
+        "drupal-core-project-message": {
+            "include-keys": [
+                "homepage",
+                "support"
+            ],
+            "post-create-project-cmd-message": [
+                "<bg=blue;fg=white>                                                         </>",
+                "<bg=blue;fg=white>  Congratulations, you’ve installed the Drupal codebase  </>",
+                "<bg=blue;fg=white>  from the drupal/recommended-project template!          </>",
+                "<bg=blue;fg=white>                                                         </>",
+                "",
+                "<bg=yellow;fg=black>Next steps</>:",
+                "  * Install the site: https://www.drupal.org/docs/installing-drupal",
+                "  * Read the user guide: https://www.drupal.org/docs/user_guide/en/index.html",
+                "  * Get support: https://www.drupal.org/support",
+                "  * Get involved with the Drupal community:",
+                "      https://www.drupal.org/getting-involved",
+                "  * Remove the plugin that prints this message:",
+                "      composer remove drupal/core-project-message"
+            ]
+        },
+        "drupal-scaffold": {
+            "locations": {
+                "web-root": "web/"
+            }
+        },
+        "installer-paths": {
+            "web/core": [
+                "type:drupal-core"
+            ],
+            "web/libraries/{$name}": [
+                "type:drupal-library",
+                "type:npm-asset",
+                "type:bower-asset",
+                "swagger-api/swagger-ui"
+            ],
+            "web/modules/contrib/{$name}": [
+                "type:drupal-module"
+            ],
+            "web/profiles/contrib/{$name}": [
+                "type:drupal-profile"
+            ],
+            "web/themes/contrib/{$name}": [
+                "type:drupal-theme"
+            ],
+            "drush/Commands/contrib/{$name}": [
+                "type:drupal-drush"
+            ],
+            "web/modules/custom/{$name}": [
+                "type:drupal-custom-module"
+            ],
+            "web/profiles/custom/{$name}": [
+                "type:drupal-custom-profile"
+            ],
+            "web/themes/custom/{$name}": [
+                "type:drupal-custom-theme"
+            ],
+            "recipes/{$name}": [
+                "type:drupal-recipe"
+            ]
+        },
+        "installer-types": [
+            "npm-asset",
+            "bower-asset"
+        ],
+        "patches": {
+            "drupal/cl_editorial": {
+                "[https://dgo.to/3432558] - Fix error with empty props": "https://www.drupal.org/files/issues/2024-09-24/cl_editorial-empty_properties.patch"
+            },
+            "drupal/core": {
+                "Incorrect langcode when installing in a language other than English (https://www.drupal.org/project/drupal/issues/3471762)": "./patches/3471762.patch",
+                "RecipeConfigInstaller should process translation config files (https://www.drupal.org/project/distributions_recipes/issues/3453331)": "./patches/3453331.patch"
+            },
+            "drupal/cshs": {
+                "[https://dgo.to/2793251] - Translate CSHS labels": "./patches/2793251-12-translate-cshs-labels.patch"
+            },
+            "drupal/media_responsive_thumbnail": {
+                "After update from 1.2 to 1.5 the oembed video thumbnails are broken (https://www.drupal.org/project/media_responsive_thumbnail/issues/3350081)": "./patches/3350081.patch"
+            },
+            "drupal/paragraphs": {
+                "Show behavior button for each paragraph (https://www.drupal.org/project/paragraphs/issues/3473771)": "./patches/3473771.patch"
+            },
+            "drupal/potx": {
+                "[https://dgo.to/2641334] - Drush Support for extracting strings in the theme files": "https://www.drupal.org/files/issues/2024-08-03/drush_support_for_extracting_strings_from_the_theme_files-2641334-26.patch"
+            },
+            "drupal/sdc_display": {
+                "Nested field groups (https://www.drupal.org/project/sdc_display/issues/3476920)": "./patches/3476920.patch"
+            },
+            "drupal/tfa": {
+                "Add interface translation configuration": "./patches/tfa-interface-translation.patch"
+            }
+        }
+    }
+}

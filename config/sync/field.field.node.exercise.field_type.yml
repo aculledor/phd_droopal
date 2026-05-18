@@ -1,0 +1,29 @@
+uuid: 66543a96-8380-4f26-b89f-d27c53ac96c5
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_type
+    - node.type.exercise
+    - taxonomy.vocabulary.exercise_type
+id: node.exercise.field_type
+field_name: field_type
+entity_type: node
+bundle: exercise
+label: Tipo
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      exercise_type: exercise_type
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

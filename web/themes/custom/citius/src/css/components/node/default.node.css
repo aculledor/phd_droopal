@@ -1,0 +1,24 @@
+/* ==========================================================================
+   DEFAULT NODE
+   ===========================================================================
+   Project: Citius Theme
+   File: default.node.css
+   Description: Defines default node styling.
+   ========================================================================== */
+
+.node.node-type--basic-page .field-item {
+  margin-bottom: var(--spacing-xl);
+}
+
+.field .field-label {
+  font-weight: var(--fw-lg);
+}
+
+.field.label-inline {
+  display: flex;
+  gap: var(--spacing-xs);
+}
+
+.field.label-inline .field-label:after {
+  content: ":";
+}

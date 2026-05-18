@@ -1,0 +1,11 @@
+name: 'Device API'
+type: module
+description: 'Provides API endpoints.'
+package: CITIUS
+core_version_requirement: ^11
+dependencies:
+  - drupal:rest
+  - json_field:json_field
+
+'interface translation project': citius_device_api
+'interface translation server pattern': modules/custom/citius_device_api/translations/%language.po

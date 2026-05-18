@@ -1,0 +1,22 @@
+name: CITIUS
+type: theme
+description: 'The base theme.'
+package: CITIUS
+core_version_requirement: ^11
+base theme: stable9
+
+regions:
+  header: Header
+  aside: Aside
+  pre_content: 'Pre-content'
+  content: Content
+  post_content: 'Post-content'
+  pre_footer: 'Pre-footer'
+  footer: Footer
+
+libraries:
+  - citius/style
+  - citius/scrolled
+
+interface translation project: citius
+interface translation server pattern: themes/custom/citius/translations/%language.po

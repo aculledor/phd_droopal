@@ -1,0 +1,14 @@
+<div class="component-image">
+  {% if link %}
+    <a href="{{ link }}">
+  {% endif %}
+    <figure>
+      {{ image }}
+      {% if caption %}
+        <figcaption>{{ caption }}</figcaption>
+      {% endif %}
+    </figure>
+  {% if link %}
+    </a>
+  {% endif %}
+</div>

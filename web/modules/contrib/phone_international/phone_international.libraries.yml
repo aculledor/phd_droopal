@@ -1,0 +1,21 @@
+phone_international.general:
+  remote: https://github.com/jackocnr/intl-tel-input
+  version: 17.0.19
+  license:
+    name: MIT
+    url: https://github.com/jackocnr/intl-tel-input/blob/master/LICENSE
+    gpl-compatible: true
+  js:
+    //cdn.jsdelivr.net/npm/intl-tel-input/build/js/intlTelInput.min.js: { type: external, minified: true }
+  css:
+    theme:
+      //cdn.jsdelivr.net/npm/intl-tel-input/build/css/intlTelInput.min.css: { type: external, minified: true }
+
+phone_international:
+  version: 11
+  js:
+    js/phone_international.js: {}
+  dependencies:
+    - core/drupal
+    - core/once
+    - phone_international/phone_international.general

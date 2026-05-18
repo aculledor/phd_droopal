@@ -1,0 +1,5 @@
+services:
+  phone_international.commands:
+    class: \Drupal\phone_international\Commands\PhoneInternationalCommands
+    tags:
+      - { name: drush.command }

@@ -1,0 +1,43 @@
+block.settings.citius_branding_block:
+  type: block_settings
+  label: 'Branding block'
+  mapping:
+    use_site_logo:
+      type: boolean
+      label: 'Use site logo'
+    use_site_name:
+      type: boolean
+      label: 'Use site name'
+    use_site_slogan:
+      type: boolean
+      label: 'Use site slogan'
+    use_site_address:
+      type: boolean
+      label: 'Use site address'
+    use_site_copyright:
+      type: boolean
+      label: 'Use site copyright'
+
+views.pager.with_summary:
+  type: views_pager_sql
+  label: 'Paged output, with summary'
+  mapping:
+    tags:
+      type: mapping
+      label: 'Tags'
+      mapping:
+        first:
+          type: label
+          label: 'First page link text'
+        last:
+          type: label
+          label: 'Last page link text'
+    quantity:
+      type: integer
+      label: 'Number of pager links visible'
+    summary_format:
+      type: label
+      label: 'Summary format'
+    show_summary:
+      type: boolean
+      label: 'Show summary'

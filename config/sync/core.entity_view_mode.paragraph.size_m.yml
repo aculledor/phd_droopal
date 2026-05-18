@@ -1,0 +1,13 @@
+uuid: 6a55fe4f-0918-4949-9111-4228b12dbad3
+langcode: es
+status: true
+dependencies:
+  module:
+    - paragraphs
+_core:
+  default_config_hash: ZoXuU4R4PrykRwY0KgVRLMNklwGvV6PpZyEUnQ9KqjM
+id: paragraph.size_m
+label: 'Talla M'
+description: ''
+targetEntityType: paragraph
+cache: true

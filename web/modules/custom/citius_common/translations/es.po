@@ -1,0 +1,194 @@
+# $Id$
+#
+# Spanish translation of Drupal (general)
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+# Generated from files:
+#  modules/custom/citius_common/citius_common.info.yml: n/a
+#  modules/custom/citius_common/citius_common.routing.yml: n/a
+#  modules/custom/citius_common/src/Plugin/Block/BackLinkBlock.php: n/a
+#  modules/custom/citius_common/citius_common.links.menu.yml: n/a
+#  modules/custom/citius_common/config/schema/citius_common.schema.yml: n/a
+#  modules/custom/citius_common/src/Form/CommonSettingsForm.php: n/a
+#  modules/custom/citius_common/src/Hook/CommonHooks.php: n/a
+#  modules/custom/citius_common/src/Plugin/Block/CitiusBrandingBlock.php: n/a
+#  modules/custom/citius_common/src/Plugin/Field/FieldFormatter/HideDummyEmailFormatter.php: n/a
+#  modules/custom/citius_common/src/Plugin/views/field/EntityOperationIconButtons.php: n/a
+#  modules/custom/citius_common/src/Plugin/views/pager/WithSummary.php: n/a
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2025-10-15 12:05+0200\n"
+"PO-Revision-Date: 2025-10-15 12:05+0200\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Spanish <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: modules/custom/citius_common/citius_common.info.yml:0
+msgid "Common"
+msgstr "Común"
+
+#: modules/custom/citius_common/citius_common.info.yml:0
+msgid "Common functionalities."
+msgstr "Funcionalidades comunes."
+
+#: modules/custom/citius_common/citius_common.info.yml:0 modules/custom/citius_common/citius_common.routing.yml:0 modules/custom/citius_common/src/Plugin/Block/BackLinkBlock.php:28
+msgid "CITIUS"
+msgstr "CITIUS"
+
+#: modules/custom/citius_common/citius_common.links.menu.yml:0
+msgid "CiTIUS"
+msgstr "CiTIUS"
+
+#: modules/custom/citius_common/citius_common.links.menu.yml:0
+msgid "Ajustes"
+msgstr "Ajustes"
+
+#: modules/custom/citius_common/citius_common.links.menu.yml:0
+msgid "Settings pages for CITIUS custom modules."
+msgstr "Páginas de ajustes para los módulos personalizados de CITIUS."
+
+#: modules/custom/citius_common/citius_common.routing.yml:0
+msgid "Citius Common settings"
+msgstr "Ajustes comunes de CiTIUS"
+
+#: modules/custom/citius_common/config/schema/citius_common.schema.yml:0
+msgid "Branding block"
+msgstr "Bloque de la marca"
+
+#: modules/custom/citius_common/config/schema/citius_common.schema.yml:0
+msgid "Use site logo"
+msgstr "Usar el logotipo del sitio"
+
+#: modules/custom/citius_common/config/schema/citius_common.schema.yml:0
+msgid "Use site name"
+msgstr "Utilizar nombre del sitio"
+
+#: modules/custom/citius_common/config/schema/citius_common.schema.yml:0
+msgid "Use site slogan"
+msgstr "Usar el lema del sitio"
+
+#: modules/custom/citius_common/config/schema/citius_common.schema.yml:0
+msgid "Use site address"
+msgstr "Usar la dirección del sitio"
+
+#: modules/custom/citius_common/config/schema/citius_common.schema.yml:0
+msgid "Use site copyright"
+msgstr "Usar el copyright del sitio"
+
+#: modules/custom/citius_common/src/Form/CommonSettingsForm.php:51
+msgid "Common settings"
+msgstr "Ajustes comunes"
+
+#: modules/custom/citius_common/src/Form/CommonSettingsForm.php:52
+msgid "Configure common settings for the site."
+msgstr "Configura los ajustes comunes del sitio."
+
+#: modules/custom/citius_common/src/Form/CommonSettingsForm.php:59
+msgid "Address"
+msgstr "Dirección"
+
+#: modules/custom/citius_common/src/Form/CommonSettingsForm.php:65
+msgid "Copyright"
+msgstr "Copyright"
+
+#: modules/custom/citius_common/src/Hook/CommonHooks.php:43
+msgid "Operation icon buttons"
+msgstr "Botones de operación con iconos"
+
+#: modules/custom/citius_common/src/Hook/CommonHooks.php:44
+msgid "Displays entity operation buttons as icons."
+msgstr "Muestra los botones de operación de la entidad como iconos."
+
+#: modules/custom/citius_common/src/Hook/CommonHooks.php:70
+msgid "Date from"
+msgstr "Fecha desde"
+
+#: modules/custom/citius_common/src/Hook/CommonHooks.php:71
+msgid "Date to"
+msgstr "Fecha hasta"
+
+#: modules/custom/citius_common/src/Plugin/Block/BackLinkBlock.php:116
+msgid "Patients list"
+msgstr "Lista de pacientes"
+
+#: modules/custom/citius_common/src/Plugin/Block/BackLinkBlock.php:27
+msgid "Back link"
+msgstr "Enlace de regreso"
+
+#: modules/custom/citius_common/src/Plugin/Block/CitiusBrandingBlock.php:51
+msgid "Site address"
+msgstr "Dirección del sitio"
+
+#: modules/custom/citius_common/src/Plugin/Block/CitiusBrandingBlock.php:58
+msgid "Site copyright"
+msgstr "Copyright del sitio"
+
+#: modules/custom/citius_common/src/Plugin/Block/CitiusBrandingBlock.php:35;39
+msgid "Defined on the <a href=\"@information\">CiTIUS Common Site Information</a> page."
+msgstr ""
+"Definido en la página <a href=\"@information\">Información común "
+"del sitio de CiTIUS</a>."
+
+#: modules/custom/citius_common/src/Plugin/Block/CitiusBrandingBlock.php:45;46
+msgid "Defined on the CiTIUS Common Site Information page. You do not have the appropriate permissions to change the site logo."
+msgstr ""
+"Definido en la página Información común del sitio de CiTIUS. No "
+"tienes los permisos adecuados para cambiar el logotipo del sitio."
+
+#: modules/custom/citius_common/src/Plugin/Block/CitiusBrandingBlock.php:10
+msgid "Citius Site branding"
+msgstr "Identidad del sitio de CiTIUS"
+
+#: modules/custom/citius_common/src/Plugin/Field/FieldFormatter/HideDummyEmailFormatter.php:19
+msgid "Hide dummy email"
+msgstr "Ocultar correo electrónico ficticio"
+
+#: modules/custom/citius_common/src/Plugin/views/field/EntityOperationIconButtons.php:91
+msgid "Edit"
+msgstr "Editar"
+
+#: modules/custom/citius_common/src/Plugin/views/field/EntityOperationIconButtons.php:92
+msgid "Delete"
+msgstr "Eliminar"
+
+#: modules/custom/citius_common/src/Plugin/views/field/EntityOperationIconButtons.php:93
+msgid "Statistics"
+msgstr "Estadísticas"
+
+#: modules/custom/citius_common/src/Plugin/views/pager/WithSummary.php:48
+msgid "Show results summary"
+msgstr "Mostrar resumen de resultados"
+
+#: modules/custom/citius_common/src/Plugin/views/pager/WithSummary.php:49
+msgid "Display a summary of the current results (e.g., \"Shows 1 to 10 out of 15\")."
+msgstr ""
+"Mostrar un resumen de los resultados actuales (p. ej., «Muestra del 1 "
+"al 10 de 15»)."
+
+#: modules/custom/citius_common/src/Plugin/views/pager/WithSummary.php:55
+msgid "Summary format"
+msgstr "Formato del resumen"
+
+#: modules/custom/citius_common/src/Plugin/views/pager/WithSummary.php:56
+msgid "Format string for the results summary. Available tokens: @start, @end, @total"
+msgstr ""
+"Cadena de formato para el resumen de resultados. Tokens disponibles: "
+"@start, @end, @total"
+
+#: modules/custom/citius_common/src/Plugin/views/pager/WithSummary.php:17
+msgid "Full pager with summary"
+msgstr "Paginador completo con resumen"
+
+#: modules/custom/citius_common/src/Plugin/views/pager/WithSummary.php:18
+msgid "Full with summary"
+msgstr "Completo con resumen"
+
+#: modules/custom/citius_common/src/Plugin/views/pager/WithSummary.php:19
+msgid "A full pager that displays a summary of results."
+msgstr "Un paginador completo que muestra un resumen de resultados."
+

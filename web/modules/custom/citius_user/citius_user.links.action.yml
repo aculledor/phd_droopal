@@ -1,0 +1,23 @@
+citius_user.add_manager:
+  title: New platform manager
+  route_name: citius_user.add_user
+  appears_on:
+    - entity.user.collection
+  route_parameters:
+    role: manager
+
+citius_user.add_physiotherapist:
+  title: New physiotherapist
+  route_name: citius_user.add_user
+  appears_on:
+    - entity.user.collection
+  route_parameters:
+    role: physiotherapist
+
+citius_user.add_patient:
+  title: New patient
+  route_name: citius_user.add_user
+  appears_on:
+    - entity.user.collection
+  route_parameters:
+    role: patient

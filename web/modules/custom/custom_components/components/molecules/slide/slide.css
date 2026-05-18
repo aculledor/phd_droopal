@@ -1,0 +1,41 @@
+.component-slide {
+  --ccs--aspect-ratio: 8 / 3;
+  --ccs--text-background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.5) 50%, transparent 100%);
+  --ccs--text-color: #fff;
+  aspect-ratio: var(--ccs--aspect-ratio);
+  overflow: hidden;
+}
+.component-slide img {
+  height: auto;
+  width: 100%;
+}
+.component-slide .text-wrapper {
+  align-items: center;
+  bottom: 0;
+  box-sizing: border-box;
+  color: var(--ccs--text-color);
+  display: flex;
+  flex-direction: column;
+  font-size: 3vw;
+  height: 100%;
+  justify-content: center;
+  padding: 1rem;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+}
+.component-slide.component-slide--has-image .text-wrapper {
+  background: var(--ccs--text-background);
+}
+.component-slide .text-wrapper .title {
+  font-size: 1.5em;
+  margin-bottom: 1rem;
+}
+.component-slide .text-wrapper p {
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

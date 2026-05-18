@@ -1,0 +1,19 @@
+{% set classes = [
+  'component-slide',
+] %}
+{% if image is not empty %}
+  {% set classes = classes|merge(['component-slide--has-image']) %}
+{% endif %}
+<div {{ attributes.addClass(classes)}}>
+  {% if link %}
+    <a href="{{ link }}">
+  {% endif %}
+  {{ image }}
+  <div class="text-wrapper">
+    <div class="title">{{ title }}</div>
+    <p class="text">{{ text }}</p>
+  </div>
+  {% if link %}
+    </a>
+  {% endif %}
+</div>

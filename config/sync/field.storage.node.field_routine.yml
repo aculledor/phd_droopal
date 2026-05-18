@@ -1,0 +1,19 @@
+uuid: eb397bdf-1505-42b8-9a26-357afa89da5b
+langcode: es
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_routine
+field_name: field_routine
+entity_type: node
+type: entity_reference
+settings:
+  target_type: node
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

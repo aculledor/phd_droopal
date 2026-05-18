@@ -1,0 +1,18 @@
+schema: "https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata-full.schema.json"
+name: Nav
+description: "Displays a navigation menu."
+status: stable
+props:
+  type: object
+  properties:
+    items:
+      type: array
+      title: "Menu Items"
+      description: "Array of menu links."
+      items:
+        type: object
+        properties:
+          title:
+            type: string
+          url:
+            type: string

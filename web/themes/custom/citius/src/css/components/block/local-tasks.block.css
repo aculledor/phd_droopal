@@ -1,0 +1,53 @@
+/* ==========================================================================
+	BLOCK Local Tasks Navigation
+	===========================================================================
+	Project: Citius Theme
+	File: local-tasks.block.css
+	Description: Styling for Local Tasks Navigation block.
+	========================================================================== */
+
+#block-citius-primary-local-tasks {
+  border-bottom: 1px solid var(--c-neutral-light);
+  padding-block: var(--spacing-sm);
+  padding-inline: var(--spacing-lg);
+}
+
+#block-citius-primary-local-tasks > ul {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+#block-citius-primary-local-tasks > ul a {
+  display: inline-block;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: var(--fw-md);
+  background-color: var(--c-neutral-white);
+  color: inherit;
+  border: 1px solid var(--c-neutral-black);
+  border-radius: var(--rounded-xs);
+  padding: var(--spacing-xs) var(--spacing-md);
+}
+
+#block-citius-primary-local-tasks > ul a:hover,
+#block-citius-primary-local-tasks > ul a:active,
+#block-citius-primary-local-tasks > ul a.is-active {
+  background-color: var(--c-neutral-dark);
+  color: var(--c-neutral-white);
+}
+
+#block-citius-primary-local-tasks > ul a.is-active {
+  pointer-events: none;
+}
+
+#block-citius-primary-local-tasks > ul a:focus {
+  --ring-color: var(--c-neutral-black);
+  --ring-offset-width: 2px;
+  --ring-offset-shadow: 0 0 0 var(--ring-offset-width) var(--ring-offset-color);
+  --ring-shadow: 0 0 0 calc(2px + var(--ring-offset-width)) var(--ring-color, currentcolor);
+  background-color: var(--c-neutral-dark);
+  color: var(--c-neutral-white);
+  box-shadow: var(--inset-shadow), var(--inset-ring-shadow), var(--ring-offset-shadow), var(--ring-shadow), var(--shadow);
+  outline: none;
+}

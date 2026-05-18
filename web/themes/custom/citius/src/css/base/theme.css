@@ -1,0 +1,111 @@
+/* ===========================================================================
+   THEME VARIABLES
+   ===========================================================================
+   Project: Citius Theme
+   File: theme.css
+   Description: Defines global theme-level CSS variables.
+   =========================================================================== */
+
+:root {
+  /* BRAND COLORS */
+  --c-brand-black: #000000;
+  --c-brand-white: #ffffff;
+  --c-brand-orange: #E75F4D;
+
+  /* NEUTRAL COLORS */
+  --c-neutral-black: #000000;
+  --c-neutral-white: #ffffff;
+  --c-neutral-lightest: #eeeeee;
+  --c-neutral-lighter: #cccccc;
+  --c-neutral-light: #aaaaaa;
+  --c-neutral: #666666;
+  --c-neutral-dark: #444444;
+  --c-neutral-darker: #222222;
+  --c-neutral-darkest: #111111;
+
+  /* NEUTRAL COLORS */
+  --c-system-success-green: #027A48;
+  --c-system-success-green-light: #ECFDF3;
+  --c-system-error-red: #a9170c;
+  --c-system-error-red-lighter: #d53620;
+  --c-system-error-red-light: #FEF3F2;
+
+  /* FONTS */
+  --ff-light: 'Proxima Nova Light';
+  --ff-regular: 'Proxima Nova';
+  --ff-bold: 'Proxima Nova Bold';
+  --ff-bold-italic: 'Proxima Nova Bold Italic';
+  --ff-extrabold: 'Proxima Nova Extrabold';
+  --ff-black: 'Proxima Nova Black';
+  --fw-xs: 200;
+  --fw-sm: 300;
+  --fw-md: 500;
+  --fw-lg: 600;
+  --fw-xl: 900;
+  --fs: 0.25rem;
+  --fs-xs: 0.25rem;
+  --fs-sm: 0.5rem;
+  --fs-md: 1rem;
+  --fs-lg: 2rem;
+  --fs-xl: 3rem;
+
+  /* SPACING */
+  --spacing: 0.25rem;
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+
+  /* BORDER RADIUS */
+  --rounded-xs: 0.25rem;
+  --rounded-sm: 0.5rem;
+  --rounded-md: 1rem;
+  --rounded-lg: 2rem;
+  --rounded-xl: 3rem;
+
+  /* SHADOWS */
+  --shadow-xxsmall: 0 1px 2px 0 hsl(0 0% 0% / 0.05);
+  --shadow-xsmall: 0 1px 2px 0 hsl(0 0% 0% / 0.06), 0 1px 3px 0 hsl(0 0% 0% / 0.1);
+  --shadow-small: 0 2px 4px -2px hsl(0 0% 0% / 0.06), 0 4px 8px -2px hsl(0 0% 0% / 0.1);
+  --shadow-medium: 0 4px 6px -2px hsl(0 0% 0% / 0.03), 0 12px 16px -4px hsl(0 0% 0% / 0.08);
+  --shadow-large: 0 8px 8px -4px hsl(0 0% 0% / 0.03), 0 20px 24px -4px hsl(0 0% 0% / 0.08);
+  --shadow-xlarge: 0 24px 48px -12px hsl(0 0% 0% / 0.18);
+  --shadow-xxlarge: 0 32px 64px -12px hsl(0 0% 0% / 0.14);
+
+  /* BREAKPOINTS */
+  --breakpoint-xs: 320px;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+
+  /* TRANSITIONS */
+  --transition-transform: transform .25s ease-in-out;
+  --transition-opacity: opacity .25s ease-in-out;
+
+  /* RING OUTLINE SHADOW */
+  --ring-outline-shadow: 0 0 0 1px var(--c-neutral-white), 0 0 0 4px rgba(0, 0, 0, 0.1);
+
+  /* ANIMATIONS */
+  --animate-fadeIn: fadeInAnimation 0.8s cubic-bezier(0.25, 1, 0.5, 1) both;
+  --animate-fadeInWithHeight: fadeInWithHeightAnimation 0.8s cubic-bezier(0.25, 1, 0.5, 1) both;
+  --animate-fadeInSlow: fadeInAnimation 1.8s cubic-bezier(0.25, 1, 0.5, 1) both;
+  --animate-fadeInTop: fadeInTopAnimation 0.8s cubic-bezier(0.25, 1, 0.5, 1) both;
+  --animate-fadeInTopSlow: fadeInTopAnimation 1.8s cubic-bezier(0.25, 1, 0.5, 1) both;
+
+  /* PROPERTIES */
+  --citius-header-height: 80px;
+}
+
+@media screen and (min-width: 1024px) {
+  :root {
+    /* PROPERTIES */
+    --citius-header-height: 125px;
+  }
+
+  body.scrolled {
+    --citius-header-height: 80px;
+  }
+}

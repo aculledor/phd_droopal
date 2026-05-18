@@ -1,0 +1,20 @@
+uuid: fbe890d0-f1bd-4487-a87d-06575deeeb6d
+langcode: es
+status: true
+dependencies:
+  theme:
+    - citius
+_core:
+  default_config_hash: HLQY2xgby8K3vN_98hiOSasOhm9pdCsH234-s0duJ8Q
+id: citius_page_title
+theme: citius
+region: pre_content
+weight: -6
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  label_display: '0'
+  provider: core
+visibility: {  }

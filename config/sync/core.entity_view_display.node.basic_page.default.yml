@@ -1,0 +1,31 @@
+uuid: c8f1fb53-f4ea-4b95-9da9-a7ce29a147aa
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.field.node.basic_page.field_paragraphs
+    - node.type.basic_page
+  module:
+    - entity_reference_revisions
+    - user
+id: node.basic_page.default
+targetEntityType: node
+bundle: basic_page
+mode: default
+content:
+  field_paragraphs:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  langcode: true

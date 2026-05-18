@@ -1,0 +1,25 @@
+/** Exercise node form styles **/
+.node-form__exercise {
+  display: grid;
+  column-gap: var(--spacing-md);
+
+  .field--name-body,
+  .menu-link-form,
+  .form-actions {
+    grid-column: 1 / -1;
+  }
+
+  .menu-link-form {
+    order: 45;
+  }
+
+  .form-actions {
+    order: 50;
+  }
+}
+
+@media screen and (min-width: 640px) {
+  .node-form__exercise {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

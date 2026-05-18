@@ -1,0 +1,107 @@
+/* ==========================================================================
+   FONTS
+   ===========================================================================
+   Project: Citius Theme
+   File: fonts.css
+   Description: Defines font faces and imports external font files.
+   ========================================================================== */
+
+
+@font-face {
+  font-family: "Proxima Nova";
+  src: url("../../assets/fonts/ProximaNova/ProximaNova-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+@font-face {
+  font-family: "Proxima Nova Light";
+  src: url("../../assets/fonts/ProximaNova/ProximaNova-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: block;
+}
+
+@font-face {
+  font-family: "Proxima Nova Bold";
+  src: url("../../assets/fonts/ProximaNova/ProximaNova-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+  font-display: block;
+}
+
+@font-face {
+  font-family: "Proxima Nova Bold Italic";
+  src: url("../../assets/fonts/ProximaNova/ProximaNova-BoldIt.ttf") format("truetype");
+  font-weight: bold;
+  font-style: italic;
+  font-display: block;
+}
+
+@font-face {
+  font-family: "Proxima Nova Extrabold";
+  src: url("../../assets/fonts/ProximaNova/ProximaNova-ExtraBold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+  font-display: block;
+}
+
+@font-face {
+  font-family: "Proxima Nova Black";
+  src: url("../../assets/fonts/ProximaNova/ProximaNova-Black.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: block;
+}
+
+@font-face {
+  font-family: "Proxima Nova Black Italic";
+  src: url("../../assets/fonts/ProximaNova/ProximaNova-BlackIt.ttf") format("truetype");
+  font-weight: 900;
+  font-style: italic;
+  font-display: block;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--ff-bold);
+  font-weight: normal;
+}
+
+h1 {
+  font-size: calc(var(--fs-xs) * 6);
+  line-height: 130%;
+}
+
+@media screen and (min-width: 1024px) {
+  h1 {
+    font-size: calc(var(--fs-xs) * 8);
+  }
+}
+
+h2 {
+  font-size: calc(var(--fs-xs) * 5);
+  line-height: 140%;
+}
+
+@media screen and (min-width: 1024px) {
+  h2 {
+    font-size: calc(var(--fs-xs) * 6);
+  }
+}
+
+h3 {
+  font-size: calc(var(--fs-xs) * 4.5);
+  line-height: 140%;
+}
+
+@media screen and (min-width: 1024px) {
+  h3 {
+    font-size: calc(var(--fs-xs) * 5);
+  }
+}
+
+h4, h5, h6 {
+  font-size: calc(var(--fs-xs) * 4);
+  line-height: 150%;
+}

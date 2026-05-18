@@ -1,0 +1,8 @@
+name: Custom Common Features
+type: module
+description: Provides additional functionality for the site.
+package: 'Custom'
+core_version_requirement: ^10 || ^11
+
+'interface translation project': custom_common_features
+'interface translation server pattern': 'modules/custom/custom_common_features/translations/%language.po'

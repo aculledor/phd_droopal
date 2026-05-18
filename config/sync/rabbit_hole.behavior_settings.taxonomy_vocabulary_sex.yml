@@ -1,0 +1,14 @@
+uuid: bd0e48c6-366b-40ff-b51e-14daeead8f53
+langcode: es
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.sex
+id: taxonomy_vocabulary_sex
+entity_type_id: taxonomy_vocabulary
+entity_id: sex
+action: page_not_found
+allow_override: 0
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

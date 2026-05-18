@@ -1,0 +1,53 @@
+/** Device node form styles **/
+.node-form__device {
+  display: grid;
+  column-gap: var(--spacing-md);
+  grid-template-columns: 1fr;
+
+  .field--name-field-image .fieldset-wrapper {
+    .field-prefix {
+      font-size: .95rem;
+    }
+
+    .form-submit {
+      width: 100%;
+    }
+  }
+
+  .menu-link-form {
+    grid-column: 1 / -1;
+    order: 45;
+  }
+
+  .form-actions {
+    order: 50;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .node-form__device {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+
+    .field--name-title {
+      grid-column: span 2;
+    }
+
+    .field--name-field-image {
+      grid-column: 4 / 5;
+      grid-row: span 2;
+    }
+
+    .field--name-body,
+    .field--name-field-endpoint {
+      grid-column: span 3;
+    }
+
+    .form-actions {
+      grid-column-end: -1;
+    }
+
+    .form-type-vertical-tabs {
+      grid-column: span 4;
+    }
+  }
+}

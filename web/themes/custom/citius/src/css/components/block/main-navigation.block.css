@@ -1,0 +1,11 @@
+/* ==========================================================================
+	BLOCK Main Navigation
+	===========================================================================
+	Project: Citius Theme
+	File: main-navigation.block.css
+	Description: Styling for Main Navigation block.
+	========================================================================== */
+
+#block-citius-main-navigation {
+  padding: var(--spacing-md);
+}

@@ -1,0 +1,13 @@
+name: 'JSON Field Widget Test Helper'
+type: module
+description: 'Extra logic to make testing the widget.'
+package: Testing
+dependencies:
+  - drupal:node
+  - drupal:user
+  - json_field:json_field_widget
+
+# Information added by Drupal.org packaging script on 2024-10-17
+version: '8.x-1.4'
+project: 'json_field'
+datestamp: 1729185547

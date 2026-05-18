@@ -1,0 +1,16 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Title
+status: experimental
+group: Texts
+
+props:
+  type: object
+  properties:
+    text:
+      title: Text
+      type: string
+    html_tag:
+      title: HTML tag for title
+      type: string
+      enum: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'span']
+      default: h2

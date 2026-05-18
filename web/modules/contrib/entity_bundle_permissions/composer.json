@@ -1,0 +1,34 @@
+{
+    "name": "drupal/entity_bundle_permissions",
+    "description": "Provides bundle-specific permissions for content entities.",
+    "type": "drupal-module",
+    "license": "GPL-2.0-or-later",
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        }
+    ],
+    "authors": [
+        {
+            "name": "Clay Freeman",
+            "email": "clay@librarymarket.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "config": {
+        "allow-plugins": {
+            "*": false
+        },
+        "sort-packages": true,
+        "discard-changes": true
+    },
+    "require": {
+        "php": ">=8.1",
+        "drupal/core": "^10.3 || ^11"
+    },
+    "require-dev": {
+        "drupal/core-dev": "^10.3 || ^11"
+    }
+}

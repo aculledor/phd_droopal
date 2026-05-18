@@ -1,0 +1,31 @@
+# $Id$
+#
+# LANGUAGE translation of Drupal (general)
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+# Generated from file: modules/custom/custom_components/custom_components.info.yml: n/a
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2025-11-11 13:24+0100\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: modules/custom/custom_components/custom_components.info.yml:0
+msgid "Custom - Components"
+msgstr "Personalizado - Componentes"
+
+#: modules/custom/custom_components/custom_components.info.yml:0
+msgid "Custom components."
+msgstr "Componentes personalizados."
+
+#: modules/custom/custom_components/custom_components.info.yml:0
+msgid "Custom"
+msgstr "Personalizado"
+

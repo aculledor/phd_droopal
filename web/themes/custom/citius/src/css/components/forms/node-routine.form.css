@@ -1,0 +1,153 @@
+/** Routine node form styles **/
+.node-form__routine {
+  .field--name-field-exercises {
+    h4 {
+      text-align: left;
+      font-family: var(--ff-bold);
+      font-size: var(--fs-lg);
+      margin-bottom: var(--spacing-md);
+    }
+
+    .field-multiple-table {
+      width: 100%;
+    }
+
+    th .paragraphs-actions, .tabledrag-toggle-weight-wrapper {
+      display: none;
+    }
+
+    tr {
+      border-bottom: 1px solid var(--c-neutral-black);
+    }
+
+    .paragraph-type-label {
+      display: none;
+    }
+
+    .paragraphs-subform {
+      gap: var(--spacing-md);
+      flex-grow: 1;
+      align-items: start !important;
+
+      > div {
+        flex-direction: unset;
+        align-items: unset !important;
+      }
+
+      .form-item {
+        flex-grow: 1;
+        margin-bottom: 0;
+
+        label {
+          font-family: var(--ff-bold);
+        }
+      }
+    }
+
+    .tabledrag-handle {
+      display: flex;
+      align-items: center;
+    }
+
+    .tabledrag-handle .handle {
+      background-position: 100%;
+      width: 20px;
+      flex-shrink: 0;
+    }
+
+    .form-wrapper {
+      display: flex;
+      gap: var(--spacing-md);
+      flex-direction: row-reverse;
+      align-items: center;
+    }
+
+    .paragraph--view-mode--preview {
+      flex-grow: 1;
+      display: grid;
+      gap: var(--spacing-md);
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .paragraph-top {
+      flex-direction: unset;
+      justify-content: flex-end;
+      min-width: 170px;
+      padding-right: 1rem;
+
+      .paragraphs-actions {
+        display: flex;
+        gap: var(--spacing-md);
+      }
+    }
+
+    .table-header-labels {
+      display: none;
+      grid-template-columns: 1fr 1fr 1fr;
+      margin-right: 186px;
+      margin-bottom: var(--spacing-md);
+    }
+
+    .table-header-label {
+      text-align: left;
+    }
+
+    tr:has(.paragraphs-subform) {
+      background: var(--c-neutral-lightest);
+    }
+
+    .button--only-icon:before {
+      background-size: contain;
+    }
+
+    div[data-drupal-selector=edit-field-exercises] > div:last-child {
+      width: 12rem;
+      margin-left: auto;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .node-form__routine {
+    .field--name-field-exercises {
+      .form-wrapper {
+        flex-direction: column-reverse;
+        align-items: end;
+      }
+
+      .paragraphs-subform {
+        flex-direction: column !important;
+        row-gap: var(--spacing-sm) !important;
+        width: 100%;
+        padding-right: var(--spacing-md);
+
+        > div {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .node-form__routine {
+    .field--name-field-exercises {
+      .paragraphs-subform {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr 1fr;
+        align-items: unset !important;
+
+        .form-item {
+          label {
+            visibility: hidden;
+            height: 0px;
+          }
+        }
+      }
+
+      .table-header-labels {
+        display: grid;
+      }
+    }
+  }
+}

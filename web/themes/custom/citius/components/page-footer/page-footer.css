@@ -1,0 +1,39 @@
+/* ==========================================================================
+   🧩 SDC: PAGE FOOTER
+   ===========================================================================
+   Project: Citius Theme
+   File: components/page-footer/page-footer.css
+   Description: Styles for the Page Footer component.
+   ========================================================================== */
+
+.page__footer {
+  user-select: none;
+}
+
+.page__footer .container {
+  padding-block: var(--spacing-lg);
+  padding-inline: var(--spacing-md);
+}
+
+.footer__wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xl);
+}
+
+.footer__wrapper--secondary {
+  margin-top: var(--spacing-lg);
+}
+
+@media screen and (min-width: 1024px) {
+  .footer__wrapper {
+    justify-content: space-between;
+    gap: var(--spacing-lg);
+  }
+
+  .footer__wrapper--secondary {
+    justify-content: center;
+  }
+}

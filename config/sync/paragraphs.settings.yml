@@ -1,0 +1,5 @@
+_core:
+  default_config_hash: DasBCHiYiQplPUMzdeE1gz1NiZdXgrMH3bQG4jXXa5k
+langcode: es
+show_unpublished: true
+individual_behavior_buttons: false

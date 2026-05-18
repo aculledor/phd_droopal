@@ -1,0 +1,20 @@
+uuid: cd301da6-2395-4123-850d-728c659fbb98
+langcode: es
+status: true
+dependencies:
+  content:
+    - 'file:file:3acc4b57-daff-4ebf-b726-a7159677450c'
+  module:
+    - custom_paragraphs_extras
+_core:
+  default_config_hash: LxIB3i5EPiajxoefJuB_JqUa8kBr_vwePxCib6VuoxE
+id: text_image
+label: 'Texto + Imagen'
+icon_uuid: 3acc4b57-daff-4ebf-b726-a7159677450c
+icon_default: 'data:image/svg+xml;base64,PHN2ZyBpZD0iYTAxMjg3MGItYjE3Yy00Yjc5LWIzMjMtZDBiZWQ2NzUyYjBjIiBkYXRhLW5hbWU9IkNhcGEgMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiBmaWxsPSIjZmZmIi8+PHBhdGggZD0iTTE3LDEwSDMwVjIzSDE3Wm00LjY0LDcuNDMsMS44NiwxLjg2LDQuNjQtNC42NXY2LjVIMTguODZ2LS45M1ptLjQ3LTEuODZhMS4zOSwxLjM5LDAsMSwwLTEuNC0xLjM5QTEuMzksMS4zOSwwLDAsMCwyMi4xMSwxNS41N1oiIGZpbGwtcnVsZT0iZXZlbm9kZCIvPjxyZWN0IHg9IjIiIHk9IjEwLjcyIiB3aWR0aD0iMTMiIGhlaWdodD0iMi4wOCIvPjxyZWN0IHg9IjIiIHk9IjE1LjQiIHdpZHRoPSIxMyIgaGVpZ2h0PSIyLjA4Ii8+PHJlY3QgeD0iMiIgeT0iMjAuMDgiIHdpZHRoPSIxMyIgaGVpZ2h0PSIyLjA4Ii8+PC9zdmc+'
+description: ''
+behavior_plugins:
+  custom_alignment_behavior:
+    enabled: true
+  custom_background_color_behavior:
+    enabled: true

@@ -1,0 +1,16 @@
+id,vid,title,code
+1,device_type,Gafa,glass
+2,device_type,Cámara,camera
+3,exercise_type,Golpe izquierdo,LEFT_HIT
+4,exercise_type,Golpe derecho,RIGHT_HIT
+5,exercise_type,Golpe izquierdo cruzado,CROSS_HIT_LEFT
+6,exercise_type,Golpe derecho cruzado,CROSS_HIT_RIGHT
+7,exercise_type,Sentadilla izquierda,SQUAT_LEFT
+8,exercise_type,Sentadilla en medio,SQUAT_MID
+9,exercise_type,Sentadilla derecha,SQUAT_RIGHT
+10,exercise_type,Movimiento izquierdo,MOVEMENT_LEFT
+11,exercise_type,Movimiento en medio,MOVEMENT_MID
+12,exercise_type,Movimiento derecho,MOVEMENT_RIGHT
+13,exercise_type,Descanso,REST
+14,sex,Femenino,female
+15,sex,Masculino,male

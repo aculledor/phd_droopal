@@ -1,0 +1,22 @@
+uuid: 8aaf83d5-7a00-4146-80f3-934568a6bf75
+langcode: es
+status: true
+dependencies:
+  theme:
+    - citius
+_core:
+  default_config_hash: Hh01DLj9k7UnNdPpOQXHZHW7GHf2OPNDQyCJF7_R9ac
+id: citius_primary_local_tasks
+theme: citius
+region: pre_content
+weight: -5
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: 'Solapas principales'
+  label_display: '0'
+  provider: core
+  primary: true
+  secondary: false
+visibility: {  }

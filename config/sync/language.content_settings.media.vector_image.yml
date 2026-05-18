@@ -1,0 +1,20 @@
+uuid: 50761407-e69d-4a6e-b1bc-f2892520c9d9
+langcode: es
+status: true
+dependencies:
+  config:
+    - media.type.vector_image
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+_core:
+  default_config_hash: kSOugUHRzX6VOlSQMe4HbFYiUYzCYcUIaTsR7_gOm_Q
+id: media.vector_image
+target_entity_type_id: media
+target_bundle: vector_image
+default_langcode: site_default
+language_alterable: false

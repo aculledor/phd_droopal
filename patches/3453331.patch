@@ -1,0 +1,322 @@
+From 45581aef291e0e19b56892046c957ebe180a1be7 Mon Sep 17 00:00:00 2001
+From: CI Bot <laura@fourkitchens.com>
+Date: Fri, 7 Jun 2024 23:03:41 -0400
+Subject: [PATCH 1/3] fix: #3453331 update recipeconfiginstaller and add
+ translated config test
+
+---
+ .../Core/Recipe/RecipeConfigInstaller.php     | 10 +++
+ .../config/language.entity.fr.yml             |  9 ++
+ .../config/language/fr/node.type.article.yml  | 10 +++
+ core/recipes/example_translation/recipe.yml   | 11 +++
+ .../ExampleTranslationRecipeInstallTest.php   | 84 +++++++++++++++++++
+ 5 files changed, 124 insertions(+)
+ create mode 100644 core/recipes/example_translation/config/language.entity.fr.yml
+ create mode 100644 core/recipes/example_translation/config/language/fr/node.type.article.yml
+ create mode 100644 core/recipes/example_translation/recipe.yml
+ create mode 100644 core/tests/Drupal/FunctionalTests/Core/Recipe/ExampleTranslationRecipeInstallTest.php
+
+diff --git a/core/lib/Drupal/Core/Recipe/RecipeConfigInstaller.php b/core/lib/Drupal/Core/Recipe/RecipeConfigInstaller.php
+index db0e6e24b0b..17a4a5d4a4c 100644
+--- a/core/lib/Drupal/Core/Recipe/RecipeConfigInstaller.php
++++ b/core/lib/Drupal/Core/Recipe/RecipeConfigInstaller.php
+@@ -24,6 +24,16 @@ final class RecipeConfigInstaller extends ConfigInstaller {
+   public function installRecipeConfig(ConfigConfigurator $recipe_config): void {
+     $storage = $recipe_config->getConfigStorage();
+
++    // Gather information about collections.
++    foreach ($storage->getAllCollectionNames() as $collection) {
++
++      $config_to_create = $this->getConfigToCreate($storage, $collection);
++
++      if (!empty($config_to_create)) {
++        $this->createConfiguration($collection, $config_to_create);
++      }
++    }
++
+     // Build the list of new configuration to create.
+     $list = array_diff($storage->listAll(), $this->getActiveStorages()->listAll());
+
+diff --git a/core/recipes/example_translation/config/language.entity.fr.yml b/core/recipes/example_translation/config/language.entity.fr.yml
+new file mode 100644
+index 00000000000..849314a9e1b
+--- /dev/null
++++ b/core/recipes/example_translation/config/language.entity.fr.yml
+@@ -0,0 +1,9 @@
++uuid: 2e800fcf-0ca7-461f-b3d8-20442de3246a
++langcode: en
++status: true
++dependencies: {  }
++id: fr
++label: French
++direction: ltr
++weight: 1
++locked: true
+diff --git a/core/recipes/example_translation/config/language/fr/node.type.article.yml b/core/recipes/example_translation/config/language/fr/node.type.article.yml
+new file mode 100644
+index 00000000000..4db11c285e3
+--- /dev/null
++++ b/core/recipes/example_translation/config/language/fr/node.type.article.yml
+@@ -0,0 +1,10 @@
++langcode: fr
++status: true
++dependencies: {  }
++name: Article
++type: article
++description: 'Description (fr).'
++help: null
++new_revision: true
++preview_mode: 1
++display_submitted: true
+diff --git a/core/recipes/example_translation/recipe.yml b/core/recipes/example_translation/recipe.yml
+new file mode 100644
+index 00000000000..1a8a15fd8d6
+--- /dev/null
++++ b/core/recipes/example_translation/recipe.yml
+@@ -0,0 +1,11 @@
++name: 'Example translation'
++description: "Example of a content type with translation."
++type: 'Content type'
++
++recipes:
++  - article_content_type
++
++install:
++  - node
++  - language
++  - config_translation
+diff --git a/core/tests/Drupal/FunctionalTests/Core/Recipe/ExampleTranslationRecipeInstallTest.php b/core/tests/Drupal/FunctionalTests/Core/Recipe/ExampleTranslationRecipeInstallTest.php
+new file mode 100644
+index 00000000000..74ac41d781d
+--- /dev/null
++++ b/core/tests/Drupal/FunctionalTests/Core/Recipe/ExampleTranslationRecipeInstallTest.php
+@@ -0,0 +1,84 @@
++<?php
++
++declare(strict_types=1);
++
++namespace Drupal\FunctionalTests\Core\Recipe;
++
++use Drupal\FunctionalTests\Installer\InstallerTestBase;
++// use Drupal\Tests\standard\Traits\StandardTestTrait;
++use Symfony\Component\DependencyInjection\ContainerInterface;
++use Symfony\Component\Yaml\Yaml as SymfonyYaml;
++
++/**
++ * Tests installing the Example recipe via the installer.
++ *
++ * @group #slow
++ * @group Recipe
++ */
++class ExampleTranslationRecipeInstallTest extends InstallerTestBase {
++  use RecipeTestTrait;
++
++  /**
++   * {@inheritdoc}
++   */
++  protected $profile = '';
++
++  /**
++   * {@inheritdoc}
++   */
++  protected function setUp(): void {
++    // Skip permissions hardening so we can write a services file later.
++    $this->settings['settings']['skip_permissions_hardening'] = (object) [
++      'value' => TRUE,
++      'required' => TRUE,
++    ];
++
++    parent::setUp();
++  }
++
++  /**
++   * {@inheritdoc}
++   */
++  protected function visitInstaller(): void {
++    // Use a URL to install from a recipe.
++    $this->drupalGet($GLOBALS['base_url'] . '/core/install.php' . '?profile=&recipe=core/recipes/example_translation');
++  }
++
++  /**
++   * {@inheritdoc}
++   */
++  public function testExampleTranslation(): void {
++    // Check if we have translated config and that the value for the translated
++    // description is the same we set in the example_translation recipe.
++    $language_manager = $this->container->get('language_manager');
++    $translated_config = $language_manager->getLanguageConfigOverride('fr', 'node.type.article');
++    $this->assertSame('Description (fr).', $translated_config->get('description'), 'The description is translated.');
++  }
++
++  /**
++   * {@inheritdoc}
++   */
++  protected function setUpProfile(): void {
++    // Noop. This form is skipped due the parameters set on the URL.
++  }
++
++  protected function installDefaultThemeFromClassProperty(ContainerInterface $container): void {
++    // In this context a default theme makes no sense.
++  }
++
++  /**
++   * {@inheritdoc}
++   */
++  protected function setUpSite(): void {
++    $services_file = DRUPAL_ROOT . '/' . $this->siteDirectory . '/services.yml';
++    // $content = file_get_contents($services_file);
++
++    // Disable the super user access.
++    $yaml = new SymfonyYaml();
++    $services = [];
++    $services['parameters']['security.enable_super_user'] = FALSE;
++    file_put_contents($services_file, $yaml->dump($services));
++    parent::setUpSite();
++  }
++
++}
+--
+GitLab
+
+
+From 2d98c76cc60900ad436ae04b46bf796208976d20 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Carlos=20Busto=20Cape=C3=A1ns?= <carlos.busto@balidea.com>
+Date: Fri, 6 Sep 2024 14:22:10 +0200
+Subject: [PATCH 2/3] fix: Allow applying recipes on sites where the default
+ language is not english
+
+---
+ .../Core/Recipe/RecipeConfigInstaller.php     | 40 ++++++++++++++++++-
+ core/lib/Drupal/Core/Recipe/RecipeRunner.php  |  4 +-
+ 2 files changed, 42 insertions(+), 2 deletions(-)
+
+diff --git a/core/lib/Drupal/Core/Recipe/RecipeConfigInstaller.php b/core/lib/Drupal/Core/Recipe/RecipeConfigInstaller.php
+index 17a4a5d4a4c..8a48b728cae 100644
+--- a/core/lib/Drupal/Core/Recipe/RecipeConfigInstaller.php
++++ b/core/lib/Drupal/Core/Recipe/RecipeConfigInstaller.php
+@@ -4,11 +4,17 @@
+
+ namespace Drupal\Core\Recipe;
+
++use Drupal\Core\Config\ConfigFactoryInterface;
+ use Drupal\Core\Config\ConfigInstaller;
++use Drupal\Core\Config\ConfigManagerInterface;
+ use Drupal\Core\Config\Entity\ConfigDependencyManager;
+ use Drupal\Core\Config\StorageInterface;
++use Drupal\Core\Config\TypedConfigManagerInterface;
++use Drupal\Core\Extension\ExtensionPathResolver;
+ use Drupal\Core\Installer\InstallerKernel;
++use Drupal\Core\Language\LanguageManagerInterface;
+ use Drupal\Core\Validation\Plugin\Validation\Constraint\FullyValidatableConstraint;
++use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
+
+ /**
+  * Extends the ConfigInstaller service for recipes.
+@@ -18,15 +24,34 @@
+  */
+ final class RecipeConfigInstaller extends ConfigInstaller {
+
++  /**
++   * {@inheritdoc}
++   */
++  public function __construct(
++    ConfigFactoryInterface $config_factory,
++    StorageInterface $active_storage,
++    TypedConfigManagerInterface $typed_config,
++    ConfigManagerInterface $config_manager,
++    EventDispatcherInterface $event_dispatcher,
++    $install_profile,
++    ExtensionPathResolver $extension_path_resolver,
++    protected LanguageManagerInterface $languageManager) {
++    parent::__construct($config_factory, $active_storage, $typed_config, $config_manager, $event_dispatcher, $install_profile, $extension_path_resolver);
++  }
++
+   /**
+    * {@inheritdoc}
+    */
+   public function installRecipeConfig(ConfigConfigurator $recipe_config): void {
+     $storage = $recipe_config->getConfigStorage();
++    $default_langcode = $this->languageManager->getDefaultLanguage()->getId();
+
+     // Gather information about collections.
+     foreach ($storage->getAllCollectionNames() as $collection) {
+-
++      if (explode('.', $collection)[1] === $default_langcode) {
++        $config_default_langcode = $this->getConfigToCreate($storage, 'language.'.$default_langcode);
++        continue;
++      }
+       $config_to_create = $this->getConfigToCreate($storage, $collection);
+
+       if (!empty($config_to_create)) {
+@@ -82,6 +107,19 @@ public function installRecipeConfig(ConfigConfigurator $recipe_config): void {
+           break;
+         }
+       }
++
++      if ($default_langcode !== 'en' && isset($config_default_langcode)) {
++        $config = $this->configFactory->reset($name)->getEditable($name);
++        $langcode = $config->get('langcode');
++        if (empty($langcode) || $langcode === 'en') {
++          if ($this->languageManager->getLanguages()['en']) {
++            $config_filtered[$config->getName()] = array_intersect_key($config->getRawData(), $config_default_langcode[$config->getName()]);
++            $this->createConfiguration('language.en', $config_filtered);
++          }
++          $config->merge($config_default_langcode[$config->getName()]);
++          $config->set('langcode', $default_langcode)->save();
++        }
++      }
+     }
+   }
+
+diff --git a/core/lib/Drupal/Core/Recipe/RecipeRunner.php b/core/lib/Drupal/Core/Recipe/RecipeRunner.php
+index 626c203d037..f6313c0cc33 100644
+--- a/core/lib/Drupal/Core/Recipe/RecipeRunner.php
++++ b/core/lib/Drupal/Core/Recipe/RecipeRunner.php
+@@ -100,7 +100,9 @@ protected static function processConfiguration(ConfigConfigurator $config): void
+       \Drupal::service('config.manager'),
+       \Drupal::service('event_dispatcher'),
+       NULL,
+-      \Drupal::service('extension.path.resolver'));
++      \Drupal::service('extension.path.resolver'),
++      \Drupal::service('language_manager')
++    );
+
+     // Create configuration that is either supplied by the recipe or listed in
+     // the config.import section that does not exist.
+--
+GitLab
+
+
+From b494ce0364dd560a430c7da42cf8c01051dfdbe2 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Carlos=20Busto=20Cape=C3=A1ns?= <carlos.busto@balidea.com>
+Date: Wed, 30 Oct 2024 11:06:42 +0100
+Subject: [PATCH 3/3] fix: Allow applying recipes on sites where the default
+ language is not english
+
+---
+ core/lib/Drupal/Core/Recipe/RecipeConfigInstaller.php | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/core/lib/Drupal/Core/Recipe/RecipeConfigInstaller.php b/core/lib/Drupal/Core/Recipe/RecipeConfigInstaller.php
+index 8a48b728cae..2ef20a6e825 100644
+--- a/core/lib/Drupal/Core/Recipe/RecipeConfigInstaller.php
++++ b/core/lib/Drupal/Core/Recipe/RecipeConfigInstaller.php
+@@ -112,11 +112,13 @@ public function installRecipeConfig(ConfigConfigurator $recipe_config): void {
+         $config = $this->configFactory->reset($name)->getEditable($name);
+         $langcode = $config->get('langcode');
+         if (empty($langcode) || $langcode === 'en') {
+-          if ($this->languageManager->getLanguages()['en']) {
++          if (isset($this->languageManager->getLanguages()['en'], $config_default_langcode[$config->getName()])) {
+             $config_filtered[$config->getName()] = array_intersect_key($config->getRawData(), $config_default_langcode[$config->getName()]);
+             $this->createConfiguration('language.en', $config_filtered);
+           }
+-          $config->merge($config_default_langcode[$config->getName()]);
++          if (isset($config_default_langcode[$config->getName()])) {
++            $config->merge($config_default_langcode[$config->getName()]);
++          }
+           $config->set('langcode', $default_langcode)->save();
+         }
+       }
+--
+GitLab
+

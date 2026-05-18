@@ -1,0 +1,13 @@
+paragraphs.behavior.settings.custom_view_mode_behavior:
+  type: paragraphs.behavior.settings_base
+  label: 'Paragraphs - View mode settings'
+  mapping:
+    override_available:
+      type: sequence
+      label: 'Select which view modes are allowed'
+      sequence:
+        type: text
+        label: 'View Mode'
+    override_default:
+      type: text
+      label: 'Select default view mode'

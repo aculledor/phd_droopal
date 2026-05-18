@@ -1,0 +1,20 @@
+uuid: 2dad41e9-364d-4ba4-9aef-21f4183cb54f
+langcode: es
+status: true
+dependencies:
+  module:
+    - citius_common
+  theme:
+    - citius
+id: citius_back_link
+theme: citius
+region: content
+weight: -10
+provider: null
+plugin: citius_common_back_link
+settings:
+  id: citius_common_back_link
+  label: 'Back link'
+  label_display: '0'
+  provider: citius_common
+visibility: {  }

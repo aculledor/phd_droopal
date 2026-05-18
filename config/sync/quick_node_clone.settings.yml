@@ -1,0 +1,9 @@
+_core:
+  default_config_hash: HnNkjzfFj_fgjLEIDkxUVqLrCgeJ-0hPKY3uc61liIs
+langcode: es
+exclude:
+  node: {  }
+  paragraph: {  }
+text_to_prepend_to_title: 'Clon de'
+clone_status: default
+create_group_relationships: true

@@ -1,0 +1,16 @@
+style:
+  version: 1.0.0
+  css:
+    theme:
+      src/css/main.style.css: {  }
+  dependencies:
+    - core/drupal
+    - core/once
+
+scrolled:
+  version: 1.0.0
+  js:
+    src/js/components/scrolled.js: {  }
+  dependencies:
+    - core/drupal
+    - core/once

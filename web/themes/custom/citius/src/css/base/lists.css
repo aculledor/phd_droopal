@@ -1,0 +1,112 @@
+/* ==========================================================================
+   LISTS
+   ===========================================================================
+   Project: Citius Theme
+   File: lists.css
+   Description: Defines lists base styling.
+   ========================================================================== */
+
+:root {
+  --ul-spacing: 1.325rem;
+  --ol-spacing: 2.5rem;
+}
+
+.node-content ul:not(.contextual-links) {
+  margin-block: var(--spacing-md);
+  padding-left: var(--ul-spacing);
+}
+
+.node-content ul:not(.contextual-links) li {
+  margin-top: var(--spacing-xs);
+}
+
+.node-content ul:not(.contextual-links) > li:before {
+  content: "■";
+  color: var(--c-primary);
+  font-size: 1.25rem;
+  line-height: 1;
+  margin-right: var(--spacing-sm);
+  margin-left: calc(var(--ul-spacing) * -1);
+}
+
+.node-content ul:not(.contextual-links) > li ul {
+  padding-left: calc(var(--spacing) * 5);
+  margin-block-start: 0;
+}
+
+.node-content ul:not(.contextual-links) > li ul li:before {
+  content: "□";
+  color: var(--c-primary);
+  font-size: 1.625rem;
+  line-height: 1;
+  margin-right: var(--spacing-xs);
+  margin-left: calc(var(--ul-spacing) * -1);
+}
+
+.node-content ol {
+  list-style: none;
+  padding-left: 0;
+  counter-reset: decimal;
+  padding-left: var(--ol-spacing);
+  margin-block: var(--spacing-lg);
+}
+
+.node-content ol li {
+  counter-increment: decimal;
+  margin-top: calc(var(--spacing) * 3);
+}
+
+.node-content ol > li ol {
+  counter-reset: lower-latin;
+  padding-left: calc(var(--spacing) * 8);
+  margin-top: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+.node-content ol > li ol > li {
+  counter-increment: lower-latin;
+}
+
+.node-content ol > li ol > li > ol {
+  counter-reset: lower-roman;
+}
+
+.node-content ol > li ol > li > ol > li {
+  counter-increment: lower-roman;
+}
+
+.node-content ol > li::before {
+  content: counter(decimal);
+  width: 2rem;
+  height: 2rem;
+  display: inline-grid;
+  place-content: center;
+  background-color: var(--c-brand-black);
+  color: var(--c-brand-white);
+  font-family: var(--ff-bold);
+  margin-right: var(--spacing-sm);
+  margin-left: calc(var(--ol-spacing) * -1);
+}
+
+.node-content ol > li ol > li::before {
+  content: counter(lower-latin, lower-latin);
+  background-color: var(--c-neutral-lighter);
+  color: var(--c-neutral-black);
+  font-family: var(--ff-bold);
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: var(--spacing-sm);
+  margin-left: -2rem;
+}
+
+.node-content ol > li ol > li ol > li::before {
+  content: counter(lower-roman, lower-roman);
+  background-color: var(--c-brand-white);
+  color: var(--c-neutral-black);
+  font-family: var(--ff-bold);
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--c-brand-black);
+  width: 1.5rem;
+  height: 1.5rem;
+}

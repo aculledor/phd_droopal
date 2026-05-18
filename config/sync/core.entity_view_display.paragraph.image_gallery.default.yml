@@ -1,0 +1,112 @@
+uuid: 1e01c48d-bf35-48a2-8aed-2369f3898da8
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.image_gallery.field_media_images
+    - field.field.paragraph.image_gallery.field_title
+    - paragraphs.paragraphs_type.image_gallery
+  module:
+    - field_group
+    - nomarkup
+    - sdc_display
+third_party_settings:
+  sdc_display:
+    enabled: false
+    component:
+      machine_name: ''
+    mappings:
+      static:
+        props: {  }
+        slots: {  }
+      dynamic:
+        props: {  }
+        slots: {  }
+  field_group:
+    group_gallery:
+      children:
+        - field_media_images
+      label: Galería
+      parent_name: ''
+      region: content
+      weight: 1
+      format_type: sdc_display
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+        sdc_field_group:
+          component:
+            machine_name: 'custom_components:gallery'
+            show_deprecated: 0
+          mappings:
+            static:
+              props:
+                images: ''
+            dynamic:
+              props:
+                images: field_media_images
+_core:
+  default_config_hash: XjXBZ5k9799L7dC95hSVnBRni_YgjauLpF1lpAWDCmg
+id: paragraph.image_gallery.default
+targetEntityType: paragraph
+bundle: image_gallery
+mode: default
+content:
+  field_media_images:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: gallery
+      link: false
+    third_party_settings:
+      nomarkup:
+        enabled: true
+        separator: ''
+        referenced_entity: '0'
+      sdc_display:
+        component:
+          machine_name: 'custom_components:gallery'
+          show_deprecated: 0
+        mappings:
+          static:
+            props:
+              images: ''
+          dynamic:
+            mapped: images
+        enabled: 0
+    weight: 2
+    region: content
+  field_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      nomarkup:
+        enabled: true
+        separator: '|'
+        referenced_entity: ''
+      sdc_display:
+        enabled: '1'
+        component:
+          machine_name: 'custom_components:title'
+          show_deprecated: 0
+        mappings:
+          static:
+            props:
+              text: ''
+              html_tag: h2
+          dynamic:
+            mapped: text
+    weight: 0
+    region: content
+hidden: {  }

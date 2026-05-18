@@ -1,0 +1,19 @@
+{%
+  set icon_path_prefix = 'themes/custom/citius/templates/svg/icons/'
+ %}
+{%
+  set icon_path = icon == 'edit' ? 'communication/edit.svg' : 'interface/x-circle.svg'
+%}
+{% if icon == 'chart-bar' %}
+{% set icon_path = 'interface/chart-bar.svg' %}
+{% endif %}
+<div class="icon-button-link">
+  <a href="{{ url }}" title="{{ title }}" class="icon-button-link__link">
+    <img
+      src="/{{ icon_path_prefix }}{{ icon_path }}"
+      class="icon-button-link__icon"
+      alt="{{ 'Icon'|t }}"
+      role="presentation"
+    />
+  </a>
+</div>

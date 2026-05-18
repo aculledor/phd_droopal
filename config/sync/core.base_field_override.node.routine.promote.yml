@@ -1,0 +1,22 @@
+uuid: 17905651-686e-4901-ba98-4abba099e556
+langcode: es
+status: true
+dependencies:
+  config:
+    - node.type.routine
+id: node.routine.promote
+field_name: promote
+entity_type: node
+bundle: routine
+label: 'Promocionado a la página principal'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Activado
+  off_label: Desactivado
+field_type: boolean

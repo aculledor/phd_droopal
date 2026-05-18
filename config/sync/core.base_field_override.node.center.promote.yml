@@ -1,0 +1,22 @@
+uuid: 1165e2af-22a7-4c12-acab-74d1ba6e6638
+langcode: es
+status: true
+dependencies:
+  config:
+    - node.type.center
+id: node.center.promote
+field_name: promote
+entity_type: node
+bundle: center
+label: 'Promocionado a la página principal'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Activado
+  off_label: Desactivado
+field_type: boolean

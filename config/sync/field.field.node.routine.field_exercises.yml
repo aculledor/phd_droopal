@@ -1,0 +1,55 @@
+uuid: 881f690a-38bb-4622-8b8b-789c6c7f28ed
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_exercises
+    - node.type.routine
+    - paragraphs.paragraphs_type.exercise
+  module:
+    - entity_reference_revisions
+id: node.routine.field_exercises
+field_name: field_exercises
+entity_type: node
+bundle: routine
+label: Ejercicios
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      exercise: exercise
+    negate: 0
+    target_bundles_drag_drop:
+      attachments:
+        weight: 11
+        enabled: false
+      exercise:
+        weight: 10
+        enabled: true
+      image:
+        weight: 12
+        enabled: false
+      image_gallery:
+        weight: 13
+        enabled: false
+      links:
+        weight: 14
+        enabled: false
+      text:
+        weight: 15
+        enabled: false
+      text_image:
+        weight: 16
+        enabled: false
+      text_video:
+        weight: 17
+        enabled: false
+      videos:
+        weight: 18
+        enabled: false
+field_type: entity_reference_revisions

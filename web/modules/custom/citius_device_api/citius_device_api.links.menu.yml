@@ -1,0 +1,5 @@
+entity.execution.collection:
+  title: 'Executions'
+  description: 'List of executions.'
+  route_name: entity.execution.collection
+  parent: citius_common.admin_settings

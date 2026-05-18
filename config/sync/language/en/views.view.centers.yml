@@ -1,0 +1,45 @@
+label: Centers
+display:
+  default:
+    display_options:
+      title: Centers
+      fields:
+        title:
+          label: Title
+        field_location:
+          label: Location
+        field_service:
+          label: Service
+        field_phone:
+          label: 'Contact phone'
+        entity_operation_icon_buttons:
+          label: Actions
+      pager:
+        options:
+          tags:
+            first: '« First'
+            last: 'Last »'
+          expose:
+            items_per_page_label: 'Elements per page'
+            items_per_page_options_all_label: '- All -'
+            offset_label: Offset
+          summary_format: 'Shows @start to @end out of @total'
+      exposed_form:
+        options:
+          submit_button: Search
+          reset_button_label: Reset
+          exposed_sorts_label: 'Order by'
+      filters:
+        title:
+          expose:
+            label: Title
+        field_service_target_id:
+          expose:
+            label: Service
+        term_node_tid_depth:
+          level_labels: 'Autonomous Community, Province, Municipality'
+          none_label: '- Select -'
+  centers_page:
+    display_options:
+      menu:
+        title: 'List of centers'

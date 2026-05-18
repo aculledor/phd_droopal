@@ -1,0 +1,48 @@
+parameters:
+  level: 0
+  fileExtensions:
+    - php
+    - module
+    - install
+  reportUnmatchedIgnoredErrors: false
+  ignoreErrors:
+    # Remove all of these when Drupal 9 support is dropped, then bump the
+    # core requirement to 10.3.0 and resolve all deprecated code.
+    -
+      message: """
+        #^Class Drupal\\\\json_field\\\\Element\\\\JsonPretty extends deprecated class Drupal\\\\Core\\\\Render\\\\Element\\\\RenderElement\\:
+        in drupal\\:10\\.3\\.0 and is removed from drupal\\:12\\.0\\.0\\. Use
+          \\\\Drupal\\\\Core\\\\Render\\\\Element\\\\RenderElementBase instead\\.$#
+      """
+      count: 1
+      path: src/Element/JsonPretty.php
+
+    -
+      message: """
+        #^Class Drupal\\\\json_field\\\\Element\\\\JsonText extends deprecated class Drupal\\\\Core\\\\Render\\\\Element\\\\RenderElement\\:
+        in drupal\\:10\\.3\\.0 and is removed from drupal\\:12\\.0\\.0\\. Use
+          \\\\Drupal\\\\Core\\\\Render\\\\Element\\\\RenderElementBase instead\\.$#
+      """
+      count: 1
+      path: src/Element/JsonText.php
+
+    -
+      message: """
+        #^Call to deprecated method renderPlain\\(\\) of class Drupal\\\\Core\\\\Render\\\\Renderer\\:
+        in drupal\\:10\\.3\\.0 and is removed from drupal\\:12\\.0\\.0\\. Use
+          \\\\Drupal\\\\Core\\\\Render\\\\RendererInterface\\:\\:renderInIsolation\\(\\) instead\\.$#
+      """
+      count: 1
+      path: tests/src/Kernel/PrettyElementTest.php
+
+    -
+      message: """
+        #^Call to deprecated method renderPlain\\(\\) of class Drupal\\\\Core\\\\Render\\\\Renderer\\:
+        in drupal\\:10\\.3\\.0 and is removed from drupal\\:12\\.0\\.0\\. Use
+          \\\\Drupal\\\\Core\\\\Render\\\\RendererInterface\\:\\:renderInIsolation\\(\\) instead\\.$#
+      """
+      count: 1
+      path: tests/src/Kernel/PrettyFormatterTest.php
+
+    # @see https://www.drupal.org/docs/develop/development-tools/phpstan/handling-unsafe-usage-of-new-static
+    - "#^Unsafe usage of new static#"

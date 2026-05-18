@@ -1,0 +1,33 @@
+uuid: df0ea5c8-b5cb-4209-8c62-dff34a31d9a8
+langcode: es
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.service
+  module:
+    - path
+id: taxonomy_term.service.default
+targetEntityType: taxonomy_term
+bundle: service
+mode: default
+content:
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  description: true
+  langcode: true
+  publish_on: true
+  status: true
+  unpublish_on: true

@@ -1,0 +1,11 @@
+uuid: 7bc27db1-4799-447c-a478-4b49c5743d6a
+langcode: es
+status: true
+dependencies: {  }
+name: 'Página básica'
+type: basic_page
+description: null
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: true

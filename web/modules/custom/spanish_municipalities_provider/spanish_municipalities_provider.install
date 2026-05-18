@@ -1,0 +1,21 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions the module.
+ */
+
+/**
+ * Implements hook_uninstall().
+ */
+function spanish_municipalities_provider_uninstall(): void {
+  $migrations = [
+    'migrate_plus.migration.autonomies',
+    'migrate_plus.migration.provinces',
+    'migrate_plus.migration.municipalities',
+  ];
+  foreach ($migrations as $migration) {
+    \Drupal::configFactory()->getEditable($migration)->delete();
+  }
+
+}

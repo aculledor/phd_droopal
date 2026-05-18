@@ -1,0 +1,18 @@
+uuid: 617bc8c8-cf3d-49f1-aed6-bfa8b6017dd6
+langcode: es
+status: true
+dependencies:
+  module:
+    - citius_device_api
+    - serialization
+    - user
+id: citius_device_api_glasses
+plugin_id: citius_device_api_glasses
+granularity: resource
+configuration:
+  methods:
+    - GET
+  formats:
+    - json
+  authentication:
+    - cookie

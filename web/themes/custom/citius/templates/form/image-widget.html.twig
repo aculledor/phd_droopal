@@ -1,0 +1,35 @@
+{#
+/**
+ * @file
+ * Theme override for an image field widget.
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the containing element.
+ * - data: Render elements of the image widget.
+ *
+ * @see template_preprocess_image_widget()
+ */
+#}
+{%
+  set classes = data.preview is empty ? 'empty' : 'has-preview'
+%}
+<div{{ attributes.addClass(classes) }}>
+  {% if not data.preview %}
+  <div class="image-widget__info">
+    <img
+      src="/{{ active_theme_path() }}/templates/svg/icons/interface/upload.svg"
+      alt="{{ 'Upload'|t }}"
+      role="presentation"
+    />
+    <div class="image-widget__info-text">
+      {{ 'Drag the file here to start the upload or'|t }}
+    </div>
+    <button class="button--outline">
+      {{ 'Select a file'|t }}
+    </button>
+  </div>
+  {% endif %}
+  {{ data.preview }}
+  {# Render widget data without the image preview that was output already. #}
+  {{ data|without('preview') }}
+</div>

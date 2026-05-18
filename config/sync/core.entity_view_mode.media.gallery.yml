@@ -1,0 +1,13 @@
+uuid: 16cf5647-bf26-4723-9f1d-f6287b5980f7
+langcode: es
+status: true
+dependencies:
+  module:
+    - media
+_core:
+  default_config_hash: k89jWpnMECo1515VG0h3tu6YO9t6wwCb50v408i6ohM
+id: media.gallery
+label: Galería
+description: ''
+targetEntityType: media
+cache: true

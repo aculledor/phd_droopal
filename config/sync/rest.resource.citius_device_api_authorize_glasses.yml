@@ -1,0 +1,18 @@
+uuid: 1dd38bcf-21c9-43f7-b4ef-be5a0457d33a
+langcode: es
+status: true
+dependencies:
+  module:
+    - citius_device_api
+    - serialization
+    - user
+id: citius_device_api_authorize_glasses
+plugin_id: citius_device_api_authorize_glasses
+granularity: resource
+configuration:
+  methods:
+    - POST
+  formats:
+    - json
+  authentication:
+    - cookie

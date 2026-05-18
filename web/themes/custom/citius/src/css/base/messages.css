@@ -1,0 +1,20 @@
+/* ==========================================================================
+  MESSAGES
+  ===========================================================================
+  Project: Citius Theme
+  File: messages.css
+  Description: Defines messages base styling.
+  ========================================================================== */
+
+[data-drupal-messages] {
+  padding: var(--spacing-md);
+  background-color: var(--c-system-success-green-light);
+  border-radius: var(--rounded-sm);
+  margin-bottom: var(--spacing-md);
+  border: 1px solid hsl(var(--c-system-success-green-light));
+
+  &:has([role="alert"]) {
+    background-color: var(--c-system-error-red-light);
+    border: 1px solid hsl(var(--c-system-error-red-light));
+  }
+}

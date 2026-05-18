@@ -1,0 +1,13 @@
+session_tracker:
+  js:
+    js/session-tracker.js: {}
+
+# Drupal wrapper to init session tracker
+drupal.session_tracker:
+  js:
+    js/drupal.session-tracker.js: {}
+  dependencies:
+    - core/once
+    - core/drupal
+    - core/drupalSettings
+    - citius_content/session_tracker

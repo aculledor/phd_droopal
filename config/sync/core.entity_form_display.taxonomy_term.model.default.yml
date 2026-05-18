@@ -1,0 +1,44 @@
+uuid: 5a74dc44-66d2-40b5-8e36-cc661de82432
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.model.field_type
+    - taxonomy.vocabulary.model
+  module:
+    - path
+    - tagify
+id: taxonomy_term.model.default
+targetEntityType: taxonomy_term
+bundle: model
+mode: default
+content:
+  field_type:
+    type: tagify_select_widget
+    weight: 1
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      placeholder: ''
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  description: true
+  langcode: true
+  publish_on: true
+  status: true
+  unpublish_on: true

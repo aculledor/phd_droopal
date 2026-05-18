@@ -1,0 +1,18 @@
+.component-image figure {
+  text-align: center;
+}
+.component-image figure img {
+  height: auto;
+  max-width: 100%;
+}
+.component-image figure img:hover {
+  animation: image-effect 0.5s ease-in;
+}
+@keyframes image-effect {
+  50% {
+    filter: brightness(125%);
+  }
+  100% {
+    filter: brightness(100%);
+  }
+}

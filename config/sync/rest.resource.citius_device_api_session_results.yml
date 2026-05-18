@@ -1,0 +1,18 @@
+uuid: 285a794b-a53e-4174-9c47-f05019782802
+langcode: es
+status: true
+dependencies:
+  module:
+    - citius_device_api
+    - serialization
+    - user
+id: citius_device_api_session_results
+plugin_id: citius_device_api_session_results
+granularity: resource
+configuration:
+  methods:
+    - GET
+  formats:
+    - json
+  authentication:
+    - cookie

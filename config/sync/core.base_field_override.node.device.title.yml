@@ -1,0 +1,18 @@
+uuid: 660af959-d495-4388-932a-7030e4358d51
+langcode: es
+status: true
+dependencies:
+  config:
+    - node.type.device
+id: node.device.title
+field_name: title
+entity_type: node
+bundle: device
+label: Nombre
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

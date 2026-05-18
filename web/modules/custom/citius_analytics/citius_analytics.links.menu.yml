@@ -1,0 +1,5 @@
+citius_analytics.results:
+  title: Results
+  route_name: <nolink>
+  menu_name: main
+  weight: 5

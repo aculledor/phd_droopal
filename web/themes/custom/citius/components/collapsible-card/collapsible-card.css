@@ -1,0 +1,97 @@
+.collapsible-card {
+  border: 1px solid var(--c-neutral-black);
+
+  .collapsible-card__header {
+    display: flex;
+    gap: var(--spacing-md);
+    align-items: center;
+    padding: var(--spacing-md);
+    transition: 0.3s ease-in-out;
+  }
+
+  .collapsible-card__header-title {
+    font-weight: var(--fw-lg);
+  }
+
+  &:not(.uncollapsible) .collapsible-card__header-title {
+    cursor: pointer;
+  }
+
+  .collapsible-card__header-right {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+  }
+
+  .collapsible-card__content {
+    transition: 0.5s ease-in-out;
+    opacity: 0;
+    transform: rotateX(90deg);
+    transform-origin: top;
+    display: grid;
+    grid-template-rows: 0fr;
+    border-top: 1px solid var(--c-neutral-black);
+  }
+
+  .collapsible-card__content-wrapper {
+    overflow: auto;
+    padding-inline: var(--spacing-md);
+    transition: 0.3s ease-in-out;
+
+    table {
+      min-width: 750px;
+    }
+  }
+
+  &.open, &.uncollapsible {
+    .collapsible-card__content {
+      opacity: 1;
+      transform: rotateX(0deg);
+      grid-template-rows: 1fr;
+    }
+
+    .collapsible-card__header {
+      background-color: var(--c-neutral-lightest);
+    }
+
+    .collapsible-card__toggle {
+      transform: rotateX(180deg);
+    }
+
+    .collapsible-card__content-wrapper {
+      padding-block: var(--spacing-md);
+    }
+  }
+
+  .collapsible-card__toggle {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 2rem;
+    height: 2rem;
+    background: url('/themes/custom/citius/templates/svg/icons/arrows/chevron-down.svg') no-repeat center center;
+    transition: 0.3s ease-in-out;
+    margin-left: 3rem;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .collapsible-card {
+    .collapsible-card__header {
+      flex-wrap: wrap;
+    }
+
+    .collapsible-card__header-center {
+      width: 100%;
+      order: 3;
+
+      .session__content {
+        gap: var(--spacing-sm);
+        margin-left: 0;
+        justify-content: start;
+      }
+    }
+  }
+}

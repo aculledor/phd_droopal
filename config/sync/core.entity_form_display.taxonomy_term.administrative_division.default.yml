@@ -1,0 +1,63 @@
+uuid: 0f0cd7d0-3fde-4a50-9a6e-1c706aebba0c
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.administrative_division.field_official_code
+    - taxonomy.vocabulary.administrative_division
+  module:
+    - path
+    - text
+_core:
+  default_config_hash: AMWN6XGZCNE5I2ahrFx8dqRS1o-NNHv-Ub6C4WnRk5Q
+id: taxonomy_term.administrative_division.default
+targetEntityType: taxonomy_term
+bundle: administrative_division
+mode: default
+content:
+  description:
+    type: text_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_official_code:
+    type: number
+    weight: 101
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 100
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+hidden:
+  publish_on: true
+  unpublish_on: true

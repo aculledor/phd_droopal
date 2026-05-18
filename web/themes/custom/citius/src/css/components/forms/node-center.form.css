@@ -1,0 +1,71 @@
+/** Center node form styles **/
+.node-form__center {
+  display: grid;
+  column-gap: var(--spacing-md);
+
+  .field--name-field-location > .form-item {
+    display: grid;
+    column-gap: var(--spacing-md);
+  }
+
+  .field--name-field-location > .form-item > label {
+    font-size: var(--fs-lg);
+    font-family: var(--ff-bold);
+    grid-column: 1 / -1;
+  }
+
+  .field--name-field-location > .form-item .select-wrapper {
+    margin-right: 0;
+    margin-bottom: var(--spacing-md);
+    width: 100%;
+  }
+
+  .field--name-title,
+  .field--name-body,
+  .field--name-field-website,
+  .field--name-field-location,
+  .form-actions {
+    grid-column: 1 / -1;
+  }
+
+  .field--name-field-website fieldset {
+    legend {
+      font-size: var(--fs-lg);
+      font-family: var(--ff-bold);
+    }
+
+    .fieldset-wrapper {
+      display: grid;
+      column-gap: var(--spacing-md);
+    }
+  }
+}
+
+@media screen and (min-width: 640px) {
+  .node-form__center {
+    grid-template-columns: repeat(2, 1fr);
+
+    .field--name-field-website fieldset .fieldset-wrapper {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .field--name-field-location > .form-item {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .node-form__center {
+    grid-template-columns: repeat(3, 1fr);
+
+    .field--name-field-email,
+    .field--name-field-service {
+      grid-column: span 2;
+    }
+
+    .field--name-field-location > .form-item {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}

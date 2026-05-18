@@ -1,0 +1,22 @@
+uuid: 4b2182a1-45d5-401d-baab-c71c4fdd356e
+langcode: es
+status: true
+dependencies:
+  module:
+    - node
+id: exercise
+label: Ejercicio
+type: 'canonical_entities:node'
+pattern: '/ejercicios/[node:title]'
+selection_criteria:
+  b4f18f91-09d9-44ba-a745-011c4db71deb:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: b4f18f91-09d9-44ba-a745-011c4db71deb
+    context_mapping:
+      node: node
+    bundles:
+      exercise: exercise
+selection_logic: and
+weight: -5
+relationships: {  }

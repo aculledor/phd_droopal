@@ -1,0 +1,26 @@
+uuid: c8de846e-2bb7-4509-9076-ed0fa4daf6df
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_center
+  module:
+    - user
+id: user.user.field_center
+field_name: field_center
+entity_type: user
+bundle: user
+label: Centro
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: views
+  handler_settings:
+    view:
+      view_name: center_reference
+      display_name: center_reference
+      arguments: {  }
+field_type: entity_reference

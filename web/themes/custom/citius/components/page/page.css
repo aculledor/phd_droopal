@@ -1,0 +1,32 @@
+/* ==========================================================================
+   SDC: PAGE
+   ===========================================================================
+   Project: Citius Theme
+   File: components/page/page.css
+   Description: Styles for the Page component.
+   ========================================================================== */
+
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100svh - var(--gin-toolbar-height, 0px));
+}
+
+.page .page-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.page .page-wrapper::selection {
+  background-color: var(--c-neutral-lighter);
+}
+
+.page:not(.page__user__login) .page-content {
+  display: flex;
+  flex-grow: 1;
+}
+
+.page .page-content .content-wrapper {
+  flex-grow: 1;
+}

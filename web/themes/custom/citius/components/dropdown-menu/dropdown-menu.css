@@ -1,0 +1,46 @@
+/* ==========================================================================
+  SDC: DROPDOWN MENU
+  ===========================================================================
+  Project: Citius Theme
+  File: components/dropdown-menu/dropdown-menu.css
+  Description: Styles for the Dropdown Menu component.
+  ========================================================================== */
+
+.dropdown-menu {
+  position: relative;
+}
+
+.dropdown-menu__link {
+  display: block;
+  padding: calc(var(--spacing) * 3);
+}
+
+.dropdown-menu__items {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  min-width: 150px;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 2px solid var(--color--secondary);
+  padding: 4px;
+  margin: 0;
+  border-radius: var(--rounded-sm);
+  z-index: 10;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+}
+
+.dropdown-menu:hover > .dropdown-menu__items {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+  max-height: 2000px;
+  pointer-events: auto;
+}
+
+.dropdown-menu:hover > .dropdown-menu__items[aria-hidden=false] {
+  display: none;
+}

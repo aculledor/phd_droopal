@@ -1,0 +1,28 @@
+<div {{ attributes.addClass('collapsible-card').addClass(classes).addClass(uncollapsible ? 'uncollapsible') }}>
+  <div class="collapsible-card__header">
+    <div class="collapsible-card__header-title">
+      {{ title }}
+    </div>
+    <div class="collapsible-card__header-center">
+      {% block header %}
+        {{ header }}
+      {% endblock %}
+    </div>
+    <div class="collapsible-card__header-right">
+      {% block header_right %}
+        {{ header_right }}
+      {% endblock %}
+    </div>
+    {% if not uncollapsible %}
+      <div class="collapsible-card__toggle" role="button" aria-expanded="false" title="{{ 'Open'|t }}">
+      </div>
+    {% endif %}
+  </div>
+  <div class="collapsible-card__content">
+    <div class="collapsible-card__content-wrapper">
+      {% block content %}
+        {{ content }}
+      {% endblock %}
+    </div>
+  </div>
+</div>

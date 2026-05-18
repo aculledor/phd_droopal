@@ -1,0 +1,18 @@
+uuid: f3350836-eafa-4f62-9868-c04ca80a3e9e
+langcode: es
+status: true
+dependencies:
+  content:
+    - 'file:file:584ad0ff-0818-453c-bff5-8161cfcd8680'
+  module:
+    - custom_paragraphs_extras
+_core:
+  default_config_hash: Y_6cqwbggSSECEBIESMqU3yCax6Gp6SZj4R5suYplaA
+id: attachments
+label: Adjuntos
+icon_uuid: 584ad0ff-0818-453c-bff5-8161cfcd8680
+icon_default: 'data:image/svg+xml;base64,PHN2ZyBpZD0iYTExYWMxNjMtNGQyMS00ZmUxLTliNDItOTg1OWM5YjY2NWVkIiBkYXRhLW5hbWU9IkNhcGEgMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiBmaWxsPSIjZmZmIi8+PHBhdGggZD0iTTQsNi4yNWg3LjVsNC41LDNoNy41djNIOS42MmwtMi41Nyw5aDMuMTJsMS43MS02SDI4bC0zLDEwLjVINFoiLz48L3N2Zz4='
+description: ''
+behavior_plugins:
+  custom_background_color_behavior:
+    enabled: true

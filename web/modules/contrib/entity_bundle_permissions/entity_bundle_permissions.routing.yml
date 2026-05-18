@@ -1,0 +1,7 @@
+entity_bundle_permissions.settings:
+  path: '/admin/config/entity-bundle-permissions'
+  defaults:
+    _form: '\Drupal\entity_bundle_permissions\Form\SettingsForm'
+    _title: 'Entity Bundle Permissions Settings'
+  requirements:
+    _permission: 'administer entity_bundle_permissions'

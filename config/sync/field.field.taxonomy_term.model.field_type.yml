@@ -1,0 +1,29 @@
+uuid: b528caa6-18f6-41b4-a64e-e0bbe629ac86
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_type
+    - taxonomy.vocabulary.device_type
+    - taxonomy.vocabulary.model
+id: taxonomy_term.model.field_type
+field_name: field_type
+entity_type: taxonomy_term
+bundle: model
+label: Tipo
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      device_type: device_type
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

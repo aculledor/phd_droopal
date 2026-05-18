@@ -1,0 +1,9 @@
+services:
+  Drupal\citius_analytics\FilterOptionsRepository:
+    autowire: true
+
+  Drupal\citius_analytics\PathProcessor\PathProcessorAnalytics:
+    autowire: true
+    tags:
+      - { name: path_processor_inbound }
+      - { name: path_processor_outbound }

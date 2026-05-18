@@ -1,0 +1,77 @@
+/* ==========================================================================
+	SDC: PAGE HEADER
+	===========================================================================
+	Project: Citius Theme
+	File: components/page-header/page-header.css
+	Description: Styles for the Page Header component.
+	========================================================================== */
+
+.page:not(.page__user__login) .page-header {
+  background-color: white;
+  border-bottom: 1px solid var(--c-neutral-light);
+  height: var(--citius-header-height);
+  justify-content: space-between;
+  padding-block: var(--spacing-sm);
+  padding-inline: var(--spacing-md);
+  position: sticky;
+  top: var(--gin-toolbar-height, 0);
+  z-index: 401;
+  display: flex;
+  transition: height .15s ease-in-out;
+}
+
+.page:not(.page__user__login) .page-header #block-citius-site-branding-header-logo {
+  min-width: 120px;
+}
+
+.page:not(.page__user__login) .page-header #block-citius-site-branding-header-logo img {
+  max-width: 100%;
+}
+
+.page:not(.page__user__login) .page-header > * {
+  align-self: center;
+}
+
+.page:not(.page__user__login) .page-header #block-citius-site-branding-header-slogan {
+  visibility: hidden;
+  flex-grow: 1;
+  font-size: 0;
+  font-family: var(--ff-bold);
+}
+
+.page:not(.page__user__login) .page-header #block-citius-user-account-menu {
+  flex-shrink: 0;
+}
+
+.page:not(.page__user__login) .page-header .aside-menu__toggle {
+  display: block;
+  padding: calc(var(--spacing) * 3);
+  flex-shrink: 0;
+}
+
+.page-header .contextual {
+  display: none;
+}
+
+@media screen and (min-width: 1024px) {
+  .page:not(.page__user__login) .page-header {
+    padding-block: 0;
+    padding-inline-start: 0;
+    padding-inline-end: var(--spacing-lg);
+  }
+
+  .page:not(.page__user__login) .page-header #block-citius-site-branding-header-logo {
+    width: 300px;
+    border-right: 1px solid var(--c-neutral-light);
+  }
+
+  .page:not(.page__user__login) .page-header #block-citius-site-branding-header-slogan {
+    visibility: visible;
+    margin-left: var(--spacing-lg);
+    font-size: calc(var(--fs) * 6);
+  }
+
+  .page:not(.page__user__login) .page-header .aside-menu__toggle {
+    display: none;
+  }
+}

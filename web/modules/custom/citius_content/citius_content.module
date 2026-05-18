@@ -1,0 +1,55 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for CITIUS Content module.
+ */
+
+use Drupal\citius_content\NodeBundles;
+use Drupal\citius_content\NodeFields;
+use Drupal\Core\Entity\EntityTypeInterface;
+
+/**
+ * Implements hook_entity_type_alter().
+ */
+function citius_content_entity_type_alter(array &$entity_types): void {
+  if (isset($entity_types['node'])) {
+    $entity_types['node']->addConstraint(
+      'UniqueNodeTitle',
+      [
+        'bundles' => [
+          NodeBundles::CENTER,
+          NodeBundles::DEVICE,
+          NodeBundles::EXERCISE,
+          NodeBundles::ROUTINE,
+        ],
+      ],
+    );
+  }
+}
+
+/**
+ * Implements hook_entity_bundle_field_info_alter().
+ */
+function citius_content_entity_bundle_field_info_alter(array &$fields, EntityTypeInterface $entity_type, string $bundle): void {
+  if ($entity_type->id() === 'node') {
+    $bundles_with_code = [
+      NodeBundles::DEVICE,
+    ];
+    foreach ($bundles_with_code as $bundle_with_code) {
+      if ($bundle === $bundle_with_code && isset($fields[NodeFields::CODE])) {
+        $fields[NodeFields::CODE]->addConstraint(
+          'UniqueBundleField',
+          [
+            'bundle' => $bundle,
+            'field' => NodeFields::CODE,
+          ],
+        );
+      }
+    }
+    if ($bundle === NodeBundles::CENTER) {
+      $fields[NodeFields::CIF]?->addConstraint('CifField');
+      $fields[NodeFields::CIF]?->addConstraint('UniqueField');
+    }
+  }
+}

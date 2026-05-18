@@ -1,0 +1,10 @@
+uuid: af7f9363-f58e-42ed-b276-b1267342e8ec
+langcode: es
+status: true
+dependencies: {  }
+id: exercise
+label: Ejercicio
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

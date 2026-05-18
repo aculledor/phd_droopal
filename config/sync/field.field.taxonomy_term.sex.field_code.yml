@@ -1,0 +1,19 @@
+uuid: f1873a07-5b55-4780-9d86-abb96d368a46
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_code
+    - taxonomy.vocabulary.sex
+id: taxonomy_term.sex.field_code
+field_name: field_code
+entity_type: taxonomy_term
+bundle: sex
+label: Código
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

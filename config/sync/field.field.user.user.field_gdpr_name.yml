@@ -1,0 +1,20 @@
+uuid: 955d89b7-10fd-4c15-950d-bad115937c84
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_gdpr_name
+  module:
+    - user
+id: user.user.field_gdpr_name
+field_name: field_gdpr_name
+entity_type: user
+bundle: user
+label: 'Nombre GDPR'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

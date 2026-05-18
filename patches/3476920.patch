@@ -1,0 +1,66 @@
+From 29adaa44e3981fb91db9f60161d1b24b17dc60cc Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Carlos=20Busto=20Cape=C3=A1ns?= <carlos.busto@balidea.com>
+Date: Thu, 26 Sep 2024 09:36:49 +0200
+Subject: [PATCH 1/2] feat: Allow nested field groups
+
+---
+ src/Util.php | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/src/Util.php b/src/Util.php
+index 49a95d7..576322c 100644
+--- a/src/Util.php
++++ b/src/Util.php
+@@ -103,6 +103,9 @@ class Util {
+           ->load($entity->getEntityTypeId() . '.' . $entity->bundle() . '.' . $element['#attached']['drupalSettings']['field_group']['sdc_display']['mode']);
+         $skip_static_mapping = $skip_static_mapping || $display->getComponent($field_name);
+       }
++      if (!$skip_static_mapping && isset($display?->getThirdPartySettings('field_group')[$field_name])) {
++        $skip_static_mapping = TRUE;
++      }
+ 
+       if ($skip_static_mapping) {
+         $values[$name] = $element[$field_name] ?? [];
+-- 
+GitLab
+
+
+From b2edcd085a488a5e891febb4d6f858623fd79009 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Carlos=20Busto=20Cape=C3=A1ns?= <carlos.busto@balidea.com>
+Date: Fri, 27 Sep 2024 12:42:32 +0200
+Subject: [PATCH 2/2] fix: Bug with nested field_groups in slots
+
+---
+ src/Util.php | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/src/Util.php b/src/Util.php
+index 576322c..5e3d66c 100644
+--- a/src/Util.php
++++ b/src/Util.php
+@@ -102,9 +102,10 @@ class Util {
+           ->getStorage('entity_view_display')
+           ->load($entity->getEntityTypeId() . '.' . $entity->bundle() . '.' . $element['#attached']['drupalSettings']['field_group']['sdc_display']['mode']);
+         $skip_static_mapping = $skip_static_mapping || $display->getComponent($field_name);
+-      }
+-      if (!$skip_static_mapping && isset($display?->getThirdPartySettings('field_group')[$field_name])) {
+-        $skip_static_mapping = TRUE;
++
++        if (!$skip_static_mapping && isset($display?->getThirdPartySettings('field_group')[$field_name])) {
++          $skip_static_mapping = TRUE;
++        }
+       }
+ 
+       if ($skip_static_mapping) {
+@@ -159,7 +160,7 @@ class Util {
+         $some_data = array_reduce(
+           $field_names,
+           static fn(bool $carry, string $field_name) =>
+-            $carry || !$entity->get($field_name)->isEmpty(),
++            $carry || ($entity->hasField($field_name) && !$entity->get($field_name)->isEmpty()),
+           FALSE,
+         );
+         if ($some_data) {
+-- 
+GitLab
+

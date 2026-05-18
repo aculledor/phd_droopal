@@ -1,0 +1,21 @@
+uuid: 70235ba4-7f1f-446a-997f-e014f3c536e3
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_is_active
+    - node.type.device
+id: node.device.field_is_active
+field_name: field_is_active
+entity_type: node
+bundle: device
+label: 'Está activo'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: Activado
+  off_label: Desactivado
+field_type: boolean

@@ -1,0 +1,8 @@
+uuid: 9b8c7309-d7a9-45ef-a3d9-5ce9bbde445d
+langcode: es
+status: true
+dependencies: {  }
+id: footer-social-networks
+label: 'Pie de página - Redes sociales'
+description: 'Enlaces a redes sociales del sitio'
+locked: false

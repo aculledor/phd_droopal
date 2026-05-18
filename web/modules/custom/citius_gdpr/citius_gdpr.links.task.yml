@@ -1,0 +1,11 @@
+citius_gdpr.anonymize_user:
+  title: Anonymize patient
+  route_name: citius_gdpr.anonymize_user
+  base_route: entity.user.canonical
+  weight: 5
+
+citius_gdpr.deanonymize_user:
+  title: Deanonymize patient
+  route_name: citius_gdpr.deanonymize_user
+  base_route: entity.user.canonical
+  weight: 5

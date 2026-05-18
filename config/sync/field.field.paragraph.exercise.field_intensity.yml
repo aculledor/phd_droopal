@@ -1,0 +1,23 @@
+uuid: 6ee8ec82-09bd-4beb-ba42-e158024eeaef
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_intensity
+    - paragraphs.paragraphs_type.exercise
+id: paragraph.exercise.field_intensity
+field_name: field_intensity
+entity_type: paragraph
+bundle: exercise
+label: Intensidad
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 1
+  max: null
+  prefix: ''
+  suffix: ' segundos'
+field_type: integer

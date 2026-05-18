@@ -1,0 +1,8 @@
+name: Common
+type: module
+description: 'Common functionalities.'
+package: CITIUS
+core_version_requirement: ^11
+
+'interface translation project': citius_common
+'interface translation server pattern': modules/custom/citius_common/translations/%language.po

@@ -1,0 +1,18 @@
+uuid: 12983ace-a5db-4dbd-9880-7a46742e24be
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.pathology
+id: taxonomy_term.pathology.rh_redirect_fallback_action
+field_name: rh_redirect_fallback_action
+entity_type: taxonomy_term
+bundle: pathology
+label: 'Rabbit Hole redirect fallback action'
+description: 'Specifies the action that should be used when the redirect path is invalid or empty.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

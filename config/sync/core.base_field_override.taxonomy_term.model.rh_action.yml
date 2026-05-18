@@ -1,0 +1,18 @@
+uuid: c13a33e8-f174-48d8-9a51-213385463eea
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.model
+id: taxonomy_term.model.rh_action
+field_name: rh_action
+entity_type: taxonomy_term
+bundle: model
+label: 'Rabbit Hole action'
+description: 'Specifies which action that Rabbit Hole should take.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

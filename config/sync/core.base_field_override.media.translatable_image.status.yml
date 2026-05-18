@@ -1,0 +1,24 @@
+uuid: d4803766-71e2-40d5-a367-62a02db843ab
+langcode: es
+status: true
+dependencies:
+  config:
+    - media.type.translatable_image
+_core:
+  default_config_hash: _TH4KooKyyx754Rai18Z6_HP3Sgg9hDeQAbEj4NyrjE
+id: media.translatable_image.status
+field_name: status
+entity_type: media
+bundle: translatable_image
+label: Publicado
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: Activado
+  off_label: Desactivado
+field_type: boolean

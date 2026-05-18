@@ -1,0 +1,47 @@
+label: Devices
+display:
+  default:
+    display_options:
+      title: Devices
+      fields:
+        title:
+          label: Title
+        field_model:
+          label: Model
+        field_type:
+          label: Type
+        field_state:
+          label: State
+        field_is_active:
+          label: Active
+          settings:
+            format_custom_false: Not
+            format_custom_true: 'Yes'
+      pager:
+        options:
+          tags:
+            first: '« First'
+            last: 'Last »'
+          summary_format: 'Shows @start to @end out of @total'
+      exposed_form:
+        options:
+          submit_button: Search
+          reset_button_label: Reset
+          exposed_sorts_label: 'Order by'
+      filters:
+        title:
+          expose:
+            label: Name
+        field_model_target_id:
+          expose:
+            label: Model
+        field_type_target_id:
+          expose:
+            label: Type
+        field_is_active_value:
+          expose:
+            label: Active
+  devices_list:
+    display_options:
+      menu:
+        title: 'List of devices'

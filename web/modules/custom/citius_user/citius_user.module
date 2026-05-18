@@ -1,0 +1,27 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for user module.
+ */
+
+use Drupal\Component\Utility\Unicode;
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function citius_user_preprocess_username(array &$variables): void {
+  $truncated = $variables['truncated'] ?? FALSE;
+  if ($truncated) {
+    /** @var \Drupal\user\UserInterface $account */
+    $account = $variables['account'];
+    $full_name = $account->getDisplayName();
+    if (mb_strlen($full_name) > 75) {
+      $variables['name'] = Unicode::truncate($full_name, 70, FALSE, TRUE);
+    }
+    else {
+      $variables['name'] = $full_name;
+      $variables['truncated'] = FALSE;
+    }
+  }
+}

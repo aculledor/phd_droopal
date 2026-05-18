@@ -1,0 +1,13 @@
+diff --git a/core/modules/locale/src/LocaleConfigManager.php b/core/modules/locale/src/LocaleConfigManager.php
+index 2bfc8ea421..a3b2171c23 100644
+--- a/core/modules/locale/src/LocaleConfigManager.php
++++ b/core/modules/locale/src/LocaleConfigManager.php
+@@ -673,7 +673,7 @@ public function updateDefaultConfigLangcodes() {
+           // Only set a `langcode` if this config actually contains translatable
+           // data.
+           // @see \Drupal\Core\Config\Plugin\Validation\Constraint\LangcodeRequiredIfTranslatableValuesConstraint
+-          if (!empty($this->getTranslatableData($typed_config)) && (empty($langcode) || $langcode == 'en')) {
++          if (empty($langcode) || $langcode == 'en') {
+             $config->set('langcode', $default_langcode)->save();
+           }
+         }

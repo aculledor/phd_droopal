@@ -1,0 +1,15 @@
+uuid: 114693d1-032a-44d1-b60c-7ed9f75ba9f3
+langcode: es
+status: true
+dependencies: {  }
+name: micro
+label: Micro
+effects:
+  20fb2531-055b-4fd5-a885-c3e599535539:
+    uuid: 20fb2531-055b-4fd5-a885-c3e599535539
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 55
+      height: 55
+      anchor: center-center

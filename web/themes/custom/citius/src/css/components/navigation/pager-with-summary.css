@@ -1,0 +1,16 @@
+/** Pager with summary views plugin styles **/
+.pager-with-summary {
+  background-color: var(--c-neutral-lightest);
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--spacing-md);
+
+  .pager-summary {
+    font-size: var(--fs-md);
+    font-weight: var(--fw-lg);
+  }
+}

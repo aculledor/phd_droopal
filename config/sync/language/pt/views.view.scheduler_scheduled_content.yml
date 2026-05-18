@@ -1,0 +1,88 @@
+label: 'Contenido planificado'
+description: 'Encontrar y gestionar contenido planificado.'
+display:
+  default:
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Filtro
+          reset_button_label: Reiniciar
+          exposed_sorts_label: 'Ordenar por'
+          sort_asc_label: Ascendente
+          sort_desc_label: Descendente
+      pager:
+        options:
+          tags:
+            previous: '‹ anterior'
+            next: 'seguinte ›'
+            first: '« primeira'
+            last: 'última »'
+      fields:
+        node_bulk_form:
+          action_title: Ação
+        title:
+          label: Título
+        type:
+          label: 'Tipo de contenido'
+        name:
+          label: Autor
+        status:
+          label: Estado
+          settings:
+            format_custom_true: Publicado
+            format_custom_false: 'Não publicado'
+        publish_on:
+          label: 'Publicar en'
+        unpublish_on:
+          label: 'Quitar publicación en'
+        operations:
+          label: Operações
+      filters:
+        title:
+          expose:
+            label: Título
+        type:
+          expose:
+            label: 'Tipo de conteúdo'
+        status:
+          expose:
+            label: Estado
+          group_info:
+            label: 'Estado da publicação'
+            group_items:
+              1:
+                title: Publicado
+              2:
+                title: 'Não publicado'
+        langcode:
+          expose:
+            label: Idioma
+      title: 'Contenido planificado'
+      empty:
+        area_text_custom:
+          content: 'No hay contenido planificado.'
+    display_title: Principal
+  overview:
+    display_options:
+      menu:
+        title: 'Contenido planificado'
+      tab_options:
+        title: Conteúdo
+        description: 'Encontrar y gestionar contenido planificado'
+    display_title: 'Resumen del contenido'
+  user_page:
+    display_options:
+      menu:
+        title: Planificado
+      tab_options:
+        title: Conteúdo
+        description: 'Encontrar y gestionar contenido planificado'
+      display_description: 'Pestaña de contenido planificado en el perfil de usuario, que muestra el contenido planificado solo por dicho usuario'
+      arguments:
+        uid:
+          exception:
+            title: Todos
+      empty:
+        area_text_custom:
+          content: 'No hay contenido planificado para el usuario {{ arguments.uid }}'
+    display_title: Utilizador

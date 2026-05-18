@@ -1,0 +1,63 @@
+<?php
+
+/**
+ * @file
+ * Contains update functions for Phone International module.
+ */
+
+declare(strict_types = 1);
+
+/**
+ * Implements hook_requirements().
+ */
+function phone_international_requirements(): array {
+  $requirements = [];
+  $path = 'libraries/intl-tel-input/index.js';
+
+  if (\Drupal::hasService('library.libraries_directory_file_finder')) {
+    /** @var \Drupal\Core\Asset\LibrariesDirectoryFileFinder $library_file_finder */
+    $path = \Drupal::service('library.libraries_directory_file_finder')->find('intl-tel-input/index.js');
+  }
+
+  $path = DRUPAL_ROOT . '/' . $path;
+
+  $requirements['phone_international'] = [
+    'title' => t('Phone International library'),
+    'value' => t('Plugin intl-tel-input detected'),
+    'severity' => REQUIREMENT_OK,
+  ];
+
+  if (!file_exists($path)) {
+    $requirements['phone_international'] = [
+      'title' => t('Phone International library is missing'),
+      'value' => t('Plugin not detected'),
+      'severity' => REQUIREMENT_ERROR,
+      'description' => t('Phone International requires the intl-tel-input library.
+       Download the plugin from <a href=":link" target="_blank">GitHub</a> at least
+       version 17.0.0, and place it in the libraries folder
+       (/libraries/intl-tel-input) or check README Install', [':link' => 'https://github.com/jackocnr/intl-tel-input']),
+    ];
+  }
+
+  return $requirements;
+}
+
+/**
+ * Set cdn config.
+ */
+function phone_international_update_8801(): void {
+  $config_factory = \Drupal::configFactory();
+  $config = $config_factory->getEditable('phone_international.settings');
+  $config->set('cdn', 0);
+  $config->save(TRUE);
+}
+
+/**
+ * Set cdn true instead of 0.
+ */
+function phone_international_update_8802(): void {
+  $config_factory = \Drupal::configFactory();
+  $config = $config_factory->getEditable('phone_international.settings');
+  $config->set('cdn', (bool) $config->get('cdn'));
+  $config->save(TRUE);
+}

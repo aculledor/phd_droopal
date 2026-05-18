@@ -1,0 +1,30 @@
+/* ==========================================================================
+   IMAGE
+   ===========================================================================
+   Project: Citius Theme
+   File: image.sdc.css
+   Description: Defines image styling.
+   ========================================================================== */
+
+.component-image figure {
+  text-align: left;
+}
+
+.component-image a {
+  text-decoration: none;
+}
+
+.component-image figcaption {
+  margin-top: calc(var(--spacing) * 2.25);
+  padding-top: var(--spacing-sm);
+  padding-bottom: var(--spacing-sm);
+}
+
+.component-image figcaption > .field-name--field-image-caption::before {
+  content: '■';
+  color: var(--c-primary);
+  font-size: 1.25rem;
+  line-height: 1;
+  margin-right: var(--spacing-sm);
+}
+

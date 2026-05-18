@@ -1,0 +1,33 @@
+uuid: 7edb4623-8dd7-4be9-b353-061ff0a71c01
+langcode: es
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_session_state
+field_name: field_session_state
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: scheduled
+      label: Programada
+    -
+      value: execution
+      label: 'En ejecución'
+    -
+      value: pause
+      label: 'En pausa'
+    -
+      value: finished
+      label: Finalizada
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

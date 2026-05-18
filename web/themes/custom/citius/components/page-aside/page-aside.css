@@ -1,0 +1,84 @@
+/* ==========================================================================
+  SDC: PAGE FOOTER
+  ===========================================================================
+  Project: Citius Theme
+  File: components/page-aside/page-aside.css
+  Description: Styles for the Page Aside component.
+  ========================================================================== */
+
+.page__aside .aside-main-menu {
+  width: 300px;
+	max-width: 100%;
+}
+
+.page__aside header {
+  display: none;
+}
+
+@media screen and (max-width: 1024px) {
+  .page__aside {
+    display: block;
+    position: fixed;
+    top: var(--drupal-displace-offset-top, 0);
+    right: 0;
+    height: calc(100svh - var(--drupal-displace-offset-top, 0));
+    background-color: var(--c-neutral-white);
+    z-index: 549;
+    overflow-y: auto;
+    transform: translateX(100%);
+    transition: var(--transition-transform);
+    box-shadow: -4px 0 8px rgba(0, 0, 0, 0.1);
+  }
+
+  body.scrolled .page__aside {
+    top: calc(var(--gin-toolbar-height, 0));
+    height: calc(100svh - var(--gin-toolbar-height, 0));
+  }
+
+  .page__aside__bg {
+    display: block;
+    position: fixed;
+    top: var(--drupal-displace-offset-top, 0);
+    left: 0;
+    opacity: 0;
+    width: 100svw;
+    height: calc(100svh - var(--drupal-displace-offset-top, 0));
+    background-color: color-mix(in srgb, var(--c-neutral-black) 32%, transparent);
+    transition: var(--transition-opacity);
+    visibility: hidden;
+    z-index: 529;
+  }
+
+  body.scrolled .page__aside__bg {
+    top: calc(var(--gin-toolbar-height, 0));
+    height: calc(100svh - var(--gin-toolbar-height, 0));
+  }
+
+  .page__aside[aria-hidden="false"] {
+    transform: translateX(0);
+  }
+
+  .page__aside__bg[aria-hidden="false"] {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .page__aside header {
+    display: flex;
+    justify-content: end;
+    background-color: var(--c-neutral-lightest);
+    border-bottom: 1px solid var(--c-neutral-light);
+  }
+
+  .page__aside header .aside-menu__toggle {
+    display: inline-block;
+    padding: calc(var(--spacing) * 3);
+    text-align: right;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .page__aside {
+    border-right: 1px solid var(--c-neutral-light);
+  }
+}

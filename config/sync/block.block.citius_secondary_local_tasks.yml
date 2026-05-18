@@ -1,0 +1,22 @@
+uuid: 2dbf4284-ac57-4cef-b51f-d669616f16aa
+langcode: es
+status: false
+dependencies:
+  theme:
+    - citius
+_core:
+  default_config_hash: BCWhood0xXFQYqxFgL1spXdb9KeIuXH1YvTdjIEedDg
+id: citius_secondary_local_tasks
+theme: citius
+region: pre_content
+weight: -3
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: 'Solapas secundarias'
+  label_display: '0'
+  provider: core
+  primary: false
+  secondary: true
+visibility: {  }

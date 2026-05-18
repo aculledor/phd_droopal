@@ -1,0 +1,27 @@
+/** Default views styles **/
+.view-centers {
+  form.views-exposed-form {
+    .form-item.form-type-cshs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--spacing-md);
+
+      .select-wrapper {
+        margin-right: 0;
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 640px) {
+  .view-centers {
+    form.views-exposed-form {
+      .form-item.form-type-cshs {
+        .select-wrapper {
+          flex: 1;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,94 @@
+/* ==========================================================================
+  SDC: PAGE PRE-FOOTER
+  ===========================================================================
+  Project: Citius Theme
+  File: components/page-prefooter/page-prefooter.css
+  Description: Styles for the Page Pre-Footer component.
+  ========================================================================== */
+
+.page__prefooter {
+  background-color: var(--c-brand-black);
+  color: var(--c-neutral-white);
+}
+
+.page__prefooter::selection {
+   background-color: var(--c-neutral-white);
+   color: var(--c-neutral-darker);
+}
+
+.page__prefooter .container {
+  padding-block: var(--spacing-lg);
+  padding-inline: var(--spacing-md);
+}
+
+.prefooter__wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-between;
+  gap: var(--spacing-lg);
+}
+
+.prefooter__info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+}
+
+.prefooter__info > .item {
+  max-width: var(--breakpoint-xs);
+}
+
+.prefooter__info > .item > .item__wrapper {
+  display: flex;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
+}
+
+.prefooter__info > .item > .item__wrapper p {
+  margin-block: 0;
+}
+
+.prefooter__social_menu {
+  display: inline-flex;
+  gap: var(--spacing-sm);
+}
+
+.prefooter__social_menu__link {
+  display: inline-block;
+  border-radius: var(--rounded-xs);
+  transition: var(--transition-transform);
+}
+
+.prefooter__social_menu__link:hover {
+  transform: translateY(-0.25rem);
+}
+
+.prefooter__social_menu__link:focus {
+  box-shadow: var(--ring-outline-shadow);
+  background-color: var(--c-neutral-dark);
+  outline: none;
+}
+
+.prefooter__links_menu__link {
+  text-decoration: none;
+}
+
+.prefooter__links_menu__link:hover {
+  text-decoration: underline;
+}
+
+@media screen and (min-width: 768px) {
+  .page__prefooter .container {
+    padding-block: var(--spacing-xl);
+  }
+
+  .prefooter__wrapper {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .prefooter__info {
+    gap: var(--spacing-lg);
+  }
+}

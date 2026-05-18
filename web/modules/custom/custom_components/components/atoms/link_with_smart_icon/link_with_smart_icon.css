@@ -1,0 +1,87 @@
+.component-link-with-smart-icon {
+  --cclwmi--icon-width: 30px;
+  --cclwmi--icon-height: 30px;
+  --cclwmi--link-bg-color: #eee;
+  --cclwmi--link-bg-color--hover: #ddd;
+  --cclwmi--link-border: 1px solid #ccc;
+  --cclwmi--transition: all 0.3s;
+}
+.component-link-with-smart-icon a {
+  align-items: center;
+  background-color: var(--cclwmi--link-bg-color);
+  border: var(--cclwmi--link-border);
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  transition: var(--cclwmi--transition);
+}
+.component-link-with-smart-icon a:hover {
+  background-color: var(--cclwmi--link-bg-color--hover);
+}
+.component-link-with-smart-icon a::before {
+  background-color: currentColor;
+  content: "";
+  display: inline-block;
+  mask-image: url('assets/sprite.svg#link');
+  mask-size: cover;
+  margin-right: 0.5rem;
+  height: var(--cclwmi--icon-height);
+  width: var(--cclwmi--icon-width);
+}
+.component-link-with-smart-icon a[href*="facebook.es"]::before,
+.component-link-with-smart-icon a[href*="facebook.com"]::before {
+  mask-image: url('assets/sprite.svg#facebook');
+}
+.component-link-with-smart-icon a[href*="flickr.com"]::before {
+  mask-image: url('assets/sprite.svg#facebook');
+}
+.component-link-with-smart-icon a[href*="instagram.es"]::before,
+.component-link-with-smart-icon a[href*="instagram.com"]::before {
+  mask-image: url('assets/sprite.svg#instagram');
+}
+.component-link-with-smart-icon a[href*="linkedin.com"]::before {
+  mask-image: url('assets/sprite.svg#linkedin');
+}
+.component-link-with-smart-icon a[href*="pinterest.com"]::before {
+  mask-image: url('assets/sprite.svg#pinterest');
+}
+.component-link-with-smart-icon a[href*="tiktok.com"]::before {
+  mask-image: url('assets/sprite.svg#tiktok');
+}
+.component-link-with-smart-icon a[href^="https://wa.me"]::before {
+  mask-image: url('assets/sprite.svg#whatsapp');
+}
+.component-link-with-smart-icon a[href*="x.com"]::before,
+.component-link-with-smart-icon a[href*="twitter.com"]::before {
+  mask-image: url('assets/sprite.svg#x-twitter');
+}
+.component-link-with-smart-icon a[href$=".pdf"]::before {
+  mask-image: url('assets/sprite.svg#pdf');
+}
+.component-link-with-smart-icon a[href$=".doc"]::before,
+.component-link-with-smart-icon a[href$=".docx"]::before,
+.component-link-with-smart-icon a[href$=".odf"]::before,
+.component-link-with-smart-icon a[href$=".txt"]::before {
+  mask-image: url('assets/sprite.svg#doc');
+}
+.component-link-with-smart-icon a[href$=".xls"]::before,
+.component-link-with-smart-icon a[href$=".xlsx"]::before,
+.component-link-with-smart-icon a[href$=".ods"]::before {
+  mask-image: url('assets/sprite.svg#calc');
+}
+.component-link-with-smart-icon a[href$=".ppt"]::before,
+.component-link-with-smart-icon a[href$=".pptx"]::before,
+.component-link-with-smart-icon a[href$=".odp"]::before {
+  mask-image: url('assets/sprite.svg#ppt');
+}
+.component-link-with-smart-icon a[href$=".jpg"]::before,
+.component-link-with-smart-icon a[href$=".jpeg"]::before,
+.component-link-with-smart-icon a[href$=".gif"]::before,
+.component-link-with-smart-icon a[href$=".tiff"]::before,
+.component-link-with-smart-icon a[href$=".png"]::before,
+.component-link-with-smart-icon a[href$=".webp"]::before {
+  mask-image: url('assets/sprite.svg#image');
+}
+.component-link-with-smart-icon a[href$=".zip"]::before {
+  mask-image: url('assets/sprite.svg#zip');
+}

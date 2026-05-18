@@ -1,0 +1,9 @@
+.component-background-color-preview {
+  border: 1px solid #ccc;
+  border-radius: 100%;
+  display: inline-block;
+  height: 15px;
+  text-indent: -99999px;
+  vertical-align: middle;
+  width: 15px;
+}

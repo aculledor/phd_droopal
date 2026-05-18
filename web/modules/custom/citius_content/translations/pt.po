@@ -1,0 +1,175 @@
+# $Id$
+#
+# LANGUAGE translation of Drupal (general)
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+# Generated from files:
+#  modules/custom/citius_content/citius_content.info.yml: n/a
+#  modules/custom/citius_content/citius_content.links.menu.yml: n/a
+#  modules/custom/citius_content/src/EventSubscriber/RouteSubscriber.php: n/a
+#  modules/custom/citius_content/src/Hook/SessionView.php: n/a
+#  modules/custom/citius_content/src/Plugin/Field/FieldFormatter/ExerciseTableFormatter.php: n/a
+#  modules/custom/citius_content/src/Plugin/Validation/Constraint/CifFieldConstraint.php: n/a
+#  modules/custom/citius_content/src/Plugin/Validation/Constraint/UniqueBundleFieldConstraint.php: n/a
+#  modules/custom/citius_content/src/Plugin/Validation/Constraint/UniqueNodeTitleConstraint.php: n/a
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2025-11-11 13:21+0100\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: modules/custom/citius_content/citius_content.info.yml:0
+msgid "Content"
+msgstr "Conteúdo"
+
+#: modules/custom/citius_content/citius_content.info.yml:0
+msgid "Additional functionalities related to content."
+msgstr "Funcionalidades adicionais relacionadas com o conteúdo."
+
+#: modules/custom/citius_content/citius_content.info.yml:0
+msgid "CITIUS"
+msgstr "CITIUS"
+
+#: modules/custom/citius_content/citius_content.links.menu.yml:0
+msgid "Centers"
+msgstr "Centros"
+
+#: modules/custom/citius_content/citius_content.links.menu.yml:0
+msgid "New center"
+msgstr "Novo centro"
+
+#: modules/custom/citius_content/citius_content.links.menu.yml:0
+msgid "Devices"
+msgstr "Dispositivos"
+
+#: modules/custom/citius_content/citius_content.links.menu.yml:0
+msgid "New device"
+msgstr "Novo dispositivo"
+
+#: modules/custom/citius_content/citius_content.links.menu.yml:0
+msgid "Sessions"
+msgstr "Sessões"
+
+#: modules/custom/citius_content/citius_content.links.menu.yml:0
+msgid "New exercise"
+msgstr "Novo exercício"
+
+#: modules/custom/citius_content/citius_content.links.menu.yml:0 modules/custom/citius_content/src/EventSubscriber/RouteSubscriber.php:39
+msgid "New routine"
+msgstr "Nova rotina"
+
+#: modules/custom/citius_content/citius_content.links.menu.yml:0
+msgid "New session"
+msgstr "Nova sessão"
+
+#: modules/custom/citius_content/src/EventSubscriber/RouteSubscriber.php:41
+msgid "New @node_type"
+msgstr "Novo @node_type"
+
+#: modules/custom/citius_content/src/Hook/SessionView.php:92
+msgid "No exercises"
+msgstr "Sem exercícios"
+
+#: modules/custom/citius_content/src/Hook/SessionView.php:94 modules/custom/citius_content/src/Plugin/Field/FieldFormatter/ExerciseTableFormatter.php:45
+msgid "Exercise"
+msgstr "Exercício"
+
+#: modules/custom/citius_content/src/Hook/SessionView.php:95 modules/custom/citius_content/src/Plugin/Field/FieldFormatter/ExerciseTableFormatter.php:46
+msgid "Duration"
+msgstr "Duração"
+
+#: modules/custom/citius_content/src/Hook/SessionView.php:96 modules/custom/citius_content/src/Plugin/Field/FieldFormatter/ExerciseTableFormatter.php:47
+msgid "Intensity"
+msgstr "Intensidade"
+
+#: modules/custom/citius_content/src/Hook/SessionView.php:97
+msgid "Expected results"
+msgstr "Resultados esperados"
+
+#: modules/custom/citius_content/src/Hook/SessionView.php:98
+msgid "Results obtained"
+msgstr "Resultados obtidos"
+
+#: modules/custom/citius_content/src/Hook/SessionView.php:99
+msgid "Actions"
+msgstr "Ações"
+
+#: modules/custom/citius_content/src/Hook/SessionView.php:219
+msgid "Show"
+msgstr "Mostrar"
+
+#: modules/custom/citius_content/src/Hook/SessionView.php:240
+msgid "Repetition"
+msgstr "Repetição"
+
+#: modules/custom/citius_content/src/Hook/SessionView.php:241
+msgid "Head <span>(X, Z, Y Value)</span>"
+msgstr "Cabeça <span>(Valor X, Z, Y)</span>"
+
+#: modules/custom/citius_content/src/Hook/SessionView.php:242
+msgid "Left arm <span>(X, Z, Y Value)</span>"
+msgstr "Braço esquerdo <span>(Valor X, Z, Y)</span>"
+
+#: modules/custom/citius_content/src/Hook/SessionView.php:243
+msgid "Right arm <span>(X, Z, Y Value)</span>"
+msgstr "Braço direito <span>(Valor X, Z, Y)</span>"
+
+#: modules/custom/citius_content/src/Hook/SessionView.php:244
+msgid "Result"
+msgstr "Resultado"
+
+#: modules/custom/citius_content/src/Hook/SessionView.php:283
+msgid "Start"
+msgstr "Iniciar"
+
+#: modules/custom/citius_content/src/Hook/SessionView.php:284
+msgid "Pause"
+msgstr "Pausa"
+
+#: modules/custom/citius_content/src/Hook/SessionView.php:285
+msgid "Restart"
+msgstr "Reiniciar"
+
+#: modules/custom/citius_content/src/Hook/SessionView.php:286
+msgid "Stop"
+msgstr "Parar"
+
+#: modules/custom/citius_content/src/Hook/SessionView.php:287
+msgid "Finish"
+msgstr "Terminar"
+
+#: modules/custom/citius_content/src/Plugin/Field/FieldFormatter/ExerciseTableFormatter.php:22
+msgid "Exercise table"
+msgstr "Tabela de exercícios"
+
+#: modules/custom/citius_content/src/Plugin/Validation/Constraint/CifFieldConstraint.php:14
+msgid "CIF field constraint"
+msgstr "Restrição do campo CIF"
+
+#: modules/custom/citius_content/src/Plugin/Validation/Constraint/CifFieldConstraint.php:23
+msgid "\"%value\" is not a valid CIF."
+msgstr "\"%value\" não é um CIF válido."
+
+#: modules/custom/citius_content/src/Plugin/Validation/Constraint/UniqueBundleFieldConstraint.php:14
+msgid "Unique field across bundle"
+msgstr "Campo único no bundle"
+
+#: modules/custom/citius_content/src/Plugin/Validation/Constraint/UniqueBundleFieldConstraint.php:23
+msgid "A @entity_type with @field_name %value already exists."
+msgstr "Um(a) @entity_type com @field_name %value já existe."
+
+#: modules/custom/citius_content/src/Plugin/Validation/Constraint/UniqueNodeTitleConstraint.php:14
+msgid "Unique node title"
+msgstr "Título de nó único"
+
+#: modules/custom/citius_content/src/Plugin/Validation/Constraint/UniqueNodeTitleConstraint.php:23
+msgid "Node with this title already exists."
+msgstr "Já existe um nó com este título."
+

@@ -1,0 +1,18 @@
+uuid: be467030-e9ca-4a62-a597-88ae4bf66164
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.sex
+id: taxonomy_term.sex.rh_redirect
+field_name: rh_redirect
+entity_type: taxonomy_term
+bundle: sex
+label: 'Rabbit Hole redirect path.'
+description: 'The path to where the user should get redirected to.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,62 @@
+uuid: d108d843-c4dd-43e4-8b07-0e5fa8128941
+langcode: es
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.user.compact
+    - field.field.user.user.field_birthdate
+    - field.field.user.user.field_center
+    - field.field.user.user.field_civil_status
+    - field.field.user.user.field_gdpr_date
+    - field.field.user.user.field_gdpr_image
+    - field.field.user.user.field_gdpr_name
+    - field.field.user.user.field_gdpr_surname
+    - field.field.user.user.field_gender
+    - field.field.user.user.field_location
+    - field.field.user.user.field_name
+    - field.field.user.user.field_pathology_primary
+    - field.field.user.user.field_pathology_secondary
+    - field.field.user.user.field_phone
+    - field.field.user.user.field_sex
+    - field.field.user.user.field_surname
+    - field.field.user.user.user_picture
+    - image.style.thumbnail
+  module:
+    - svg_image
+    - user
+_core:
+  default_config_hash: 00zr_RBdTjPjBGITD3h4c1ESQZimjdVCcHGt1trLqIY
+id: user.user.compact
+targetEntityType: user
+bundle: user
+mode: compact
+content:
+  user_picture:
+    type: image
+    label: hidden
+    settings:
+      image_link: content
+      image_style: thumbnail
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_birthdate: true
+  field_center: true
+  field_civil_status: true
+  field_gdpr_date: true
+  field_gdpr_image: true
+  field_gdpr_name: true
+  field_gdpr_surname: true
+  field_gender: true
+  field_location: true
+  field_name: true
+  field_pathology_primary: true
+  field_pathology_secondary: true
+  field_phone: true
+  field_sex: true
+  field_surname: true
+  langcode: true
+  member_for: true

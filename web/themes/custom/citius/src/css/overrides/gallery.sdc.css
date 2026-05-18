@@ -1,0 +1,18 @@
+/* ==========================================================================
+   GALLERY
+   ===========================================================================
+   Project: Citius Theme
+   File: gallery.sdc.css
+   Description: Defines gallery styling.
+   ========================================================================== */
+
+.component-gallery {
+  gap: var(--spacing-md);
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)) !important;
+}
+
+@media (min-width: 576px) {
+  .component-gallery {
+    gap: var(--spacing-lg);
+  }
+}

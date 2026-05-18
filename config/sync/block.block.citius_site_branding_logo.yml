@@ -1,0 +1,25 @@
+uuid: adc68c14-e441-431e-9886-f4ced75f5365
+langcode: es
+status: true
+dependencies:
+  module:
+    - citius_common
+  theme:
+    - citius
+id: citius_site_branding_logo
+theme: citius
+region: pre_footer
+weight: 0
+provider: null
+plugin: citius_branding_block
+settings:
+  id: citius_branding_block
+  label: 'CiTIUS Site branding - Logo'
+  label_display: '0'
+  provider: citius_common
+  use_site_logo: true
+  use_site_name: false
+  use_site_slogan: false
+  use_site_address: false
+  use_site_copyright: false
+visibility: {  }

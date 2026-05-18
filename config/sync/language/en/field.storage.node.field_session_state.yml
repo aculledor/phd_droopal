@@ -1,0 +1,14 @@
+label: 'Session state'
+allowed_values:
+  -
+    value: scheduled
+    label: Scheduled
+  -
+    value: execution
+    label: 'In progress'
+  -
+    value: pause
+    label: Paused
+  -
+    value: finished
+    label: Finished

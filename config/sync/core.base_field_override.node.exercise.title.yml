@@ -1,0 +1,18 @@
+uuid: 869d364e-cd8c-4564-ab32-78d0bd03fe0a
+langcode: es
+status: true
+dependencies:
+  config:
+    - node.type.exercise
+id: node.exercise.title
+field_name: title
+entity_type: node
+bundle: exercise
+label: 'Nombre de ejercicio'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

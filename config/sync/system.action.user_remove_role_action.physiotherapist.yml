@@ -1,0 +1,14 @@
+uuid: b0ad0984-13b5-4451-ab63-908e72d05f6d
+langcode: es
+status: true
+dependencies:
+  config:
+    - user.role.physiotherapist
+  module:
+    - user
+id: user_remove_role_action.physiotherapist
+label: 'Elimina el rol Médico / Fisioterapeuta al(los) usuario(s) seleccionado(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: physiotherapist

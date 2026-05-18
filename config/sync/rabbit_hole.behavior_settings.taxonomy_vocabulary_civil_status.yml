@@ -1,0 +1,14 @@
+uuid: e8ee8276-0841-40bc-a75b-4e8bdcf425ec
+langcode: es
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.civil_status
+id: taxonomy_vocabulary_civil_status
+entity_type_id: taxonomy_vocabulary
+entity_id: civil_status
+action: page_not_found
+allow_override: 0
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

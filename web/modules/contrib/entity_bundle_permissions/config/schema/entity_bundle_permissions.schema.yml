@@ -1,0 +1,10 @@
+entity_bundle_permissions.settings:
+  type: config_object
+  label: 'Entity Bundle Permissions Settings'
+  mapping:
+    ignored_entity_types:
+      type: sequence
+      label: 'Ignored entity types'
+      sequence:
+        type: string
+        label: 'Entity Type ID'

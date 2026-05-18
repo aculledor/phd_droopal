@@ -1,0 +1,22 @@
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_official_code
+    - taxonomy.vocabulary.administrative_division
+id: taxonomy_term.administrative_division.field_official_code
+field_name: field_official_code
+entity_type: taxonomy_term
+bundle: administrative_division
+label: 'Código oficial'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

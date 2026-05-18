@@ -1,0 +1,8 @@
+name: 'User'
+type: module
+description: 'Additional functionality related to users.'
+package: 'CITIUS'
+core_version_requirement: ^11
+
+'interface translation project': citius_user
+'interface translation server pattern': modules/custom/citius_user/translations/%language.po

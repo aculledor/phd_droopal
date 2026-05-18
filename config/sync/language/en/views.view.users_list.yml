@@ -1,0 +1,114 @@
+label: Users
+display:
+  default:
+    display_options:
+      title: Users
+      fields:
+        field_name:
+          label: Name
+        field_surname:
+          label: Surname
+        field_center:
+          label: Center
+        roles_target_id:
+          label: Type
+        mail:
+          label: Email
+        entity_operation_icon_buttons:
+          label: Actions
+      exposed_form:
+        options:
+          submit_button: Search
+          reset_button_label: Reset
+          exposed_sorts_label: 'Order by'
+      filters:
+        field_name_value:
+          expose:
+            label: Name
+        field_surname_value:
+          expose:
+            label: Surname
+        mail:
+          expose:
+            label: Email
+        roles_target_id_1:
+          expose:
+            label: Type
+        field_center_target_id:
+          expose:
+            label: Center
+      pager:
+        options:
+          tags:
+            first: '« First'
+            last: 'Last »'
+          expose:
+            items_per_page_label: 'Elements per page'
+            items_per_page_options_all_label: '- All -'
+            offset_label: Displacement
+          summary_format: 'Shows @start to @end out of @total'
+  patient_statistics:
+    display_title: 'Patient statistics'
+    display_options:
+      title: 'Patient statistics'
+      fields:
+        user_bulk_form:
+          label: 'Bulk update'
+          action_title: Action
+        view_user:
+          text: view
+        field_name:
+          label: Name
+        field_surname:
+          label: Surname
+        field_center:
+          label: Center
+        statistics_icon_buttons:
+          label: Actions
+      filters:
+        field_name_value:
+          expose:
+            label: Name
+        field_surname_value:
+          expose:
+            label: Surname
+        field_center_target_id:
+          expose:
+            label: Center
+      menu:
+        title: 'By patients'
+  patients:
+    display_title: Patients
+    display_options:
+      title: Patients
+      fields:
+        user_bulk_form:
+          label: 'Bulk update'
+          action_title: Action
+        view_user:
+          text: view
+        field_name:
+          label: Name
+        field_surname:
+          label: Surname
+        field_center:
+          label: Center
+        entity_operation_icon_buttons:
+          label: Actions
+      filters:
+        field_name_value:
+          expose:
+            label: Name
+        field_surname_value:
+          expose:
+            label: Surname
+        field_center_target_id:
+          expose:
+            label: Center
+      menu:
+        title: 'List of patients'
+  users_list:
+    display_title: Users
+    display_options:
+      menu:
+        title: 'User list'

@@ -1,0 +1,52 @@
+/* ==========================================================================
+	NAVIGATION Main
+	===========================================================================
+	Project: Citius Theme
+	File: main.nav.css
+	Description: Styling for Main Navigation.
+	========================================================================== */
+
+.menu.menu-main > .nav__item {
+  padding-block: var(--spacing-xs);
+  padding-inline: var(--spacing-sm);
+}
+
+.menu.menu-main > .nav__item > .nav__link {
+  border-radius: var(--rounded-xs);
+  padding-block: var(--spacing-sm);
+  padding-inline: var(--spacing-md);
+  text-decoration: none;
+}
+
+@media screen and (min-width: 1024px) {
+  .menu.menu-main > .nav__item > .nav__link {
+    padding-block: 0.75rem;
+  }
+}
+
+.menu.menu-main > .nav__item.nav__item--has-children:has(.nav__submenu > .nav__item > .nav__link.is-active) > .nav__link,
+.menu.menu-main > .nav__item.nav__item--has-children.open > .nav__link,
+.menu.menu-main > .nav__item.nav__item--has-children:hover > .nav__link,
+.menu.menu-main > .nav__item > .nav__link[aria-expanded="true"],
+.menu.menu-main > .nav__item > .nav__link:hover,
+.menu.menu-main > .nav__item > .nav__link.active {
+  background-color: var(--c-neutral-lightest);
+  font-family: var(--ff-bold);
+}
+
+.menu.menu-main > .nav__item.nav__item--has-children > ul .nav__link {
+  padding-block: var(--spacing-xs);
+  padding-inline: var(--spacing-sm);
+  margin-bottom: var(--spacing-xs);
+  text-decoration: none;
+  text-underline-offset: 3px;
+}
+
+.menu.menu-main > .nav__item.nav__item--has-children:has(.nav__submenu > .nav__item > .nav__link.is-active) > ul .nav__link.is-active,
+.menu.menu-main > .nav__item.nav__item--has-children.open > ul .nav__link.is-active,
+.menu.menu-main > .nav__item.nav__item--has-children.is-active > ul .nav__link.is-active,
+.menu.menu-main > .nav__item.nav__item--has-children > ul .nav__link:hover,
+.menu.menu-main > .nav__item.nav__item--has-children > ul .nav__link.active {
+  font-family: var(--ff-bold);
+  text-decoration: underline;
+}

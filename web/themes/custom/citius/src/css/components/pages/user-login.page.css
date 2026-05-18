@@ -1,0 +1,39 @@
+/* ==========================================================================
+	PAGES User Login
+	===========================================================================
+	Project: Citius Theme
+	File: user-login.page.css
+	Description: Styling for User Login page.
+	========================================================================== */
+
+.page.page__user__login .page-wrapper {
+  background-color: var(--c-neutral-lightest);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-md);
+  padding-bottom: var(--spacing-lg);
+}
+
+.page.page__user__login .region-aside.aside-main-menu,
+.page.page__user__login .page-header,
+.page.page__user__login .page-content {
+  width: 100%;
+  max-width: var(--breakpoint-sm);
+}
+
+.page.page__user__login .region-header {
+  display: none;
+}
+
+.page.page__user__login #block-citius-site-branding {
+  border-width: 0;
+}
+
+.page.page__user__login #block-citius-site-branding img {
+  animation: var(--animate-fadeInTopSlow);
+}
+
+.page.page__user__login .form.user-login-form {
+  animation: var(--animate-fadeInTop);
+}

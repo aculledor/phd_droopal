@@ -1,0 +1,32 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json'
+name: Collapsible card
+status: stable
+libraryOverrides:
+  dependencies:
+    - core/once
+    - core/drupal
+props:
+  type: object
+  properties:
+    title:
+      type: string
+      title: Title
+    uncollapsible:
+      type: boolean
+      title: Uncollapsible
+      description: If true, the card will not be collapsible.
+      default: false
+    classes:
+      type: array
+      items:
+        type: string
+      title: Classes
+      description: An array of utility classes to add to the card.
+      default: []
+slots:
+  header:
+    title: Header
+  header_right:
+    title: Header right
+  content:
+    title: Content

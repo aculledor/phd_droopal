@@ -1,0 +1,51 @@
+/* Defines UI Dialog styling. */
+.ui-dialog.media-library-widget-modal .ui-dialog-content {
+  padding-block: var(--spacing-sm);
+
+  .form-managed-file .form-file {
+    border-radius: var(--rounded-sm);
+    border: 1px solid var(--c-neutral-lighter);
+    padding: calc(var(--spacing) * 2);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .js-media-library-view {
+    .views-display-link {
+      color: var(--c-brand-black);
+      display: inline-block;
+      text-decoration: none;
+      margin: 0 !important;
+      padding: .35rem .75rem;
+    }
+
+    .views-display-link.is-active {
+      background-color: var(--c-neutral-lightest);
+    }
+
+    .views-exposed-form {
+      border-width: 0;
+    }
+
+    form.views-exposed-form {
+      border-top: 2px solid var(--c-neutral-lighter);
+      padding-block: var(--spacing-sm);
+
+      button {
+        width: auto;
+        font-size: .95rem;
+        margin-top: 28px;
+
+        &:before {
+          margin-right: .25rem;
+        }
+      }
+    }
+  }
+
+  .js-media-library-views-form {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: var(--spacing-md);
+  }
+}

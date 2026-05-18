@@ -1,0 +1,79 @@
+/******************************************************************************
+ * Main Theme Styles
+ *
+ * This file aggregates all theme styles via @import, making it the central
+ * entry point for the theme’s compiled stylesheet. Edit component files
+ * directly and import them here.
+ ******************************************************************************/
+
+/* Base */
+@import url('base/fonts.css');
+@import url('base/reset.css');
+@import url('base/theme.css');
+@import url('base/properties.css');
+@import url('base/utilities.css');
+@import url('base/messages.css');
+@import url('base/forms.css');
+@import url('base/buttons.css');
+@import url('base/lists.css');
+@import url('base/blockquotes.css');
+@import url('base/code.css');
+@import url('base/ui-dialog.css');
+@import url('base/tags.css');
+
+/* Overrides */
+@import url('overrides/grid.sdc.css');
+@import url('overrides/link_with_smart_icon.sdc.css');
+@import url('overrides/two-columns.sdc.css');
+@import url('overrides/image.sdc.css');
+@import url('overrides/video.sdc.css');
+@import url('overrides/gallery.sdc.css');
+
+/* Vendor */
+@import url('vendor/ck-editor.css');
+
+/* Blocks */
+@import url('components/block/back-link.block.css');
+@import url('components/block/change-center.block.css');
+@import url('components/block/site-branding.block.css');
+@import url('components/block/language-switcher.block.css');
+@import url('components/block/main-navigation.block.css');
+@import url('components/block/page-title.block.css');
+@import url('components/block/local-tasks.block.css');
+
+/* Charts */
+@import url('components/charts/chart.css');
+
+/* Forms */
+@import url('components/forms/node-device.form.css');
+@import url('components/forms/node-routine.form.css');
+@import url('components/forms/node-center.form.css');
+@import url('components/forms/node-exercise.form.css');
+@import url('components/forms/node-session.form.css');
+@import url('components/forms/select-center.form.css');
+@import url('components/forms/user-login.form.css');
+@import url('components/forms/user.form.css');
+
+/* Layout */
+@import url('components/layout/aside-main-menu.layout.css');
+@import url('components/layout/content.layout.css');
+
+/* Navigation */
+@import url('components/navigation/account.nav.css');
+@import url('components/navigation/main.nav.css');
+@import url('components/navigation/pager-with-summary.css');
+@import url('components/navigation/pagination.css');
+
+/* Pages */
+@import url('components/pages/user-login.page.css');
+@import url('components/pages/user-profile.page.css');
+
+/* Nodes */
+@import url('components/node/default.node.css');
+@import url('components/node/routine.node.css');
+@import url('components/node/session.node.css');
+
+/* Views */
+@import url('components/views/default.view.css');
+@import url('components/views/user-sessions.view.css');
+@import url('components/views/centers.view.css');

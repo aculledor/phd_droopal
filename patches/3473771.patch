@@ -1,0 +1,192 @@
+From b55aebb0b33713b8a1bee26dd06f9f3a0facb686 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Carlos=20Busto=20Cape=C3=A1ns?= <carlos.busto@balidea.com>
+Date: Thu, 12 Sep 2024 11:16:44 +0200
+Subject: [PATCH] feat: Show behavior button for each paragraph
+
+---
+ config/install/paragraphs.settings.yml        |  1 +
+ config/schema/paragraphs.schema.yml           |  3 ++
+ js/paragraphs.individual_behavior_buttons.js  | 21 ++++++++++++
+ paragraphs.libraries.yml                      |  7 ++++
+ src/Form/ParagraphsSettingsForm.php           |  7 ++++
+ .../Field/FieldWidget/ParagraphsWidget.php    | 32 +++++++++++++++++--
+ 6 files changed, 69 insertions(+), 2 deletions(-)
+ create mode 100644 js/paragraphs.individual_behavior_buttons.js
+
+diff --git a/config/install/paragraphs.settings.yml b/config/install/paragraphs.settings.yml
+index 52e67b14..3627a3ad 100644
+--- a/config/install/paragraphs.settings.yml
++++ b/config/install/paragraphs.settings.yml
+@@ -1 +1,2 @@
+ show_unpublished: true
++individual_behavior_buttons: false
+diff --git a/config/schema/paragraphs.schema.yml b/config/schema/paragraphs.schema.yml
+index e6cf7339..6a85a481 100644
+--- a/config/schema/paragraphs.schema.yml
++++ b/config/schema/paragraphs.schema.yml
+@@ -4,3 +4,6 @@ paragraphs.settings:
+     show_unpublished:
+       type: boolean
+       label: 'Allow users with "View unpublished paragraphs" permission to see unpublished paragraphs.'
++    individual_behavior_buttons:
++      type: boolean
++      label: 'Show individual behavior buttons for each paragraph type. Disable this if you want to use the global behavior buttons for all paragraph types.'
+diff --git a/js/paragraphs.individual_behavior_buttons.js b/js/paragraphs.individual_behavior_buttons.js
+new file mode 100644
+index 00000000..c1a54a33
+--- /dev/null
++++ b/js/paragraphs.individual_behavior_buttons.js
+@@ -0,0 +1,21 @@
++(function (Drupal, once) {
++  Drupal.behaviors.customButtonBehavior = {
++    attach: function (context, settings) {
++      once('individualBehaviorButtons', '.paragraphs-individual-behavior-button', context).forEach(function (button) {
++        button.addEventListener('click', function (event) {
++          event.preventDefault();
++          const targetDiv = this.parentElement.parentElement.parentElement;
++          if (targetDiv.classList.contains('behavior-active')) {
++            targetDiv.classList.remove('behavior-active');
++            targetDiv.classList.add('content-active');
++            this.value = Drupal.t('Configuration');
++          } else {
++            targetDiv.classList.add('behavior-active');
++            targetDiv.classList.remove('content-active');
++            this.value = Drupal.t('Content');
++          }
++        });
++      });
++    }
++  };
++})(Drupal, once);
+diff --git a/paragraphs.libraries.yml b/paragraphs.libraries.yml
+index 6dde28a3..bf14dde9 100644
+--- a/paragraphs.libraries.yml
++++ b/paragraphs.libraries.yml
+@@ -10,6 +10,13 @@ drupal.paragraphs.admin:
+     theme:
+       css/paragraphs.admin.css: {}
+ 
++drupal.paragraphs.individual_behavior_buttons:
++  js:
++    js/paragraphs.individual_behavior_buttons.js: {}
++  dependencies:
++    - core/drupalSettings
++    - core/once
++
+ drupal.paragraphs.widget:
+   dependencies:
+     - core/jquery
+diff --git a/src/Form/ParagraphsSettingsForm.php b/src/Form/ParagraphsSettingsForm.php
+index 0f6a410e..ba9cf156 100644
+--- a/src/Form/ParagraphsSettingsForm.php
++++ b/src/Form/ParagraphsSettingsForm.php
+@@ -35,6 +35,12 @@ class ParagraphsSettingsForm extends ConfigFormBase {
+       '#default_value' => $config->get('show_unpublished'),
+       '#description' => $this->t('Allow users with "View unpublished paragraphs" permission to see unpublished Paragraphs. Disable this if unpublished paragraphs should be hidden for all users, including super administrators.')
+     ];
++    $form['individual_behavior_buttons'] = [
++      '#type' => 'checkbox',
++      '#title' => $this->t('Show individual behavior buttons'),
++      '#default_value' => $config->get('individual_behavior_buttons'),
++      '#description' => $this->t('Show individual behavior buttons for each paragraph type. Disable this if you want to use the global behavior buttons for all paragraph types.')
++    ];
+ 
+     return parent::buildForm($form, $form_state);
+   }
+@@ -45,6 +51,7 @@ class ParagraphsSettingsForm extends ConfigFormBase {
+   public function submitForm(array &$form, FormStateInterface $form_state) {
+     $config = $this->config('paragraphs.settings');
+     $config->set('show_unpublished', $form_state->getValue('show_unpublished'));
++    $config->set('individual_behavior_buttons', $form_state->getValue('individual_behavior_buttons'));
+     $config->save();
+ 
+     parent::submitForm($form, $form_state);
+diff --git a/src/Plugin/Field/FieldWidget/ParagraphsWidget.php b/src/Plugin/Field/FieldWidget/ParagraphsWidget.php
+index bf8633a3..02ed1b87 100644
+--- a/src/Plugin/Field/FieldWidget/ParagraphsWidget.php
++++ b/src/Plugin/Field/FieldWidget/ParagraphsWidget.php
+@@ -4,6 +4,7 @@ namespace Drupal\paragraphs\Plugin\Field\FieldWidget;
+ 
+ use Drupal\Component\Utility\NestedArray;
+ use Drupal\Component\Utility\Html;
++use Drupal\Core\Config\ConfigFactoryInterface;
+ use Drupal\Core\Entity\ContentEntityInterface;
+ use Drupal\Core\Entity\Entity\EntityFormDisplay;
+ use Drupal\Core\Entity\EntityFieldManagerInterface;
+@@ -104,6 +105,13 @@ class ParagraphsWidget extends WidgetBase {
+    */
+   protected $entityFieldManager;
+ 
++  /**
++   * The paragraphs settings.
++   *
++   * @var \Drupal\Core\Config\Config
++   */
++  protected $paragraphsSettings;
++
+   /**
+    * Constructs a ParagraphsWidget object.
+    *
+@@ -119,8 +127,10 @@ class ParagraphsWidget extends WidgetBase {
+    *   Any third party settings.
+    * @param \Drupal\Core\Entity\EntityFieldManagerInterface $entity_field_manager
+    *   The entity field manager service.
++   * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
++   *   Config factory.
+    */
+-  public function __construct($plugin_id, $plugin_definition, FieldDefinitionInterface $field_definition, array $settings, array $third_party_settings, EntityFieldManagerInterface $entity_field_manager) {
++  public function __construct($plugin_id, $plugin_definition, FieldDefinitionInterface $field_definition, array $settings, array $third_party_settings, EntityFieldManagerInterface $entity_field_manager, ConfigFactoryInterface $config_factory) {
+     // Modify settings that were set before https://www.drupal.org/node/2896115.
+     if(isset($settings['edit_mode']) && $settings['edit_mode'] === 'preview') {
+       $settings['edit_mode'] = 'closed';
+@@ -128,6 +138,7 @@ class ParagraphsWidget extends WidgetBase {
+     }
+ 
+     $this->entityFieldManager = $entity_field_manager;
++    $this->paragraphsSettings = $config_factory->get('paragraphs.settings');
+ 
+     parent::__construct($plugin_id, $plugin_definition, $field_definition, $settings, $third_party_settings);
+   }
+@@ -143,6 +154,7 @@ class ParagraphsWidget extends WidgetBase {
+       $configuration['settings'],
+       $configuration['third_party_settings'],
+       $container->get('entity_field.manager'),
++      $container->get('config.factory'),
+     );
+   }
+ 
+@@ -688,6 +700,22 @@ class ParagraphsWidget extends WidgetBase {
+ 
+         if ($item_mode == 'edit') {
+           if (isset($paragraphs_entity)) {
++            $paragraphs_type = $paragraphs_entity->getParagraphType();
++            if ($this->paragraphsSettings->get('individual_behavior_buttons') && $paragraphs_type && $paragraphs_type->getEnabledBehaviorPlugins()) {
++              $widget_actions['actions']['behavior_button'] = [
++                '#value' => $this->t('Configuration'),
++                '#name' => $id_prefix . '_behavior',
++                '#weight' => 1,
++                '#type' => 'button',
++                '#access' => \Drupal::currentUser()->hasPermission('edit behavior plugin settings') && !$this->isTranslating,
++                '#attributes' => [
++                  'class' => ['paragraphs-individual-behavior-button', 'button--extrasmall'],
++                  'title' => $this->t('Collapse'),
++                ],
++                '#attached' => ['library' => ['paragraphs/drupal.paragraphs.individual_behavior_buttons']]
++              ];
++            }
++
+             $widget_actions['actions']['collapse_button'] = [
+               '#value' => $this->t('Collapse'),
+               '#name' => $id_prefix . '_collapse',
+@@ -1324,7 +1352,7 @@ class ParagraphsWidget extends WidgetBase {
+     // If the parent entity is paragraph add the nested class if not then add
+     // the perspective tabs.
+     $field_prefix = strtr($this->fieldIdPrefix, '_', '-');
+-    if (count($this->fieldParents) == 0) {
++    if (count($this->fieldParents) == 0 && !$this->paragraphsSettings->get('individual_behavior_buttons')) {
+       if ($items->getEntity()->getEntityTypeId() != 'paragraph') {
+         $tabs = '<ul class="paragraphs-tabs tabs primary tabs--secondary paragraphs-tabs-hide clearfix"><li class="tabs__tab paragraphs_content_tab"><a href="#' . $field_prefix . '-values" class="tabs__link">' . $this->t('Content', [], ['context' => 'paragraphs']) . '</a></li><li class="tabs__tab paragraphs_behavior_tab"><a href="#' . $field_prefix . '-values" class="tabs__link">' . $this->t('Behavior', [], ['context' => 'paragraphs']) . '</a></li></ul>';
+       }
+-- 
+GitLab
+

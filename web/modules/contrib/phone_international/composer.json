@@ -1,0 +1,41 @@
+{
+    "name": "drupal/phone_international",
+    "description": "The phone_international module allows administrators to define a field type for international phone numbers.",
+    "type": "drupal-module",
+    "license": "GPL-2.0+",
+    "keywords": [
+        "drupal",
+        "field",
+        "field management",
+        "telephone",
+        "phone",
+        "international phone",
+        "verification phone",
+        "international",
+        "i18n",
+        "country",
+        "dial",
+        "code",
+        "tel",
+        "number",
+        "mobile",
+        "input",
+        "flag"
+    ],
+    "homepage": "https://www.drupal.org/project/phone_international",
+    "support": {
+        "issues": "https://www.drupal.org/project/issues/phone_international",
+        "source": "http://cgit.drupalcode.org/phone_international"
+    },
+    "minimum-stability": "dev",
+    "require": {
+        "giggsey/libphonenumber-for-php": "^8.13"
+    },
+    "extra": {
+        "drush": {
+            "services": {
+                "drush.services.yml": ">=9"
+            }
+        }
+    }
+}

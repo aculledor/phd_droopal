@@ -1,0 +1,214 @@
+uuid: 7790599a-f1b8-4310-810d-676859ac6e6e
+langcode: es
+status: true
+dependencies:
+  config:
+    - media.type.document
+    - media.type.image
+    - media.type.remote_video
+    - media.type.translatable_image
+    - media.type.vector_image
+    - node.type.basic_page
+    - node.type.center
+    - node.type.device
+    - node.type.exercise
+    - node.type.routine
+    - node.type.session
+    - rest.resource.citius_device_api_session_results
+    - rest.resource.citius_device_api_session_status
+    - taxonomy.vocabulary.administrative_division
+    - taxonomy.vocabulary.civil_status
+    - taxonomy.vocabulary.device_type
+    - taxonomy.vocabulary.exercise_type
+    - taxonomy.vocabulary.gender
+    - taxonomy.vocabulary.model
+    - taxonomy.vocabulary.pathology
+    - taxonomy.vocabulary.service
+    - taxonomy.vocabulary.sex
+  module:
+    - citius_user
+    - entity_bundle_permissions
+    - media
+    - node
+    - openapi
+    - quick_node_clone
+    - rest
+    - scheduler
+    - system
+    - taxonomy
+    - tfa
+    - toolbar
+id: manager
+label: 'Gestor de la plataforma'
+weight: 4
+is_admin: false
+permissions:
+  - 'access administration pages'
+  - 'access content overview'
+  - 'access media overview'
+  - 'access openapi api docs'
+  - 'access taxonomy overview'
+  - 'access toolbar'
+  - 'access user profiles'
+  - 'administer users'
+  - 'clone routine content'
+  - 'create basic_page content'
+  - 'create center content'
+  - 'create device content'
+  - 'create document media'
+  - 'create exercise content'
+  - 'create image media'
+  - 'create manager user'
+  - 'create media'
+  - 'create patient user'
+  - 'create physiotherapist user'
+  - 'create remote_video media'
+  - 'create routine content'
+  - 'create session content'
+  - 'create terms in administrative_division'
+  - 'create terms in civil_status'
+  - 'create terms in device_type'
+  - 'create terms in exercise_type'
+  - 'create terms in gender'
+  - 'create terms in model'
+  - 'create terms in pathology'
+  - 'create terms in service'
+  - 'create terms in sex'
+  - 'create translatable_image media'
+  - 'create user user'
+  - 'create vector_image media'
+  - 'delete any basic_page content'
+  - 'delete any center content'
+  - 'delete any device content'
+  - 'delete any document media'
+  - 'delete any document media revisions'
+  - 'delete any exercise content'
+  - 'delete any image media'
+  - 'delete any image media revisions'
+  - 'delete any media'
+  - 'delete any remote_video media'
+  - 'delete any remote_video media revisions'
+  - 'delete any routine content'
+  - 'delete any session content'
+  - 'delete any translatable_image media'
+  - 'delete any translatable_image media revisions'
+  - 'delete any vector_image media'
+  - 'delete any vector_image media revisions'
+  - 'delete basic_page revisions'
+  - 'delete center revisions'
+  - 'delete device revisions'
+  - 'delete exercise revisions'
+  - 'delete media'
+  - 'delete own basic_page content'
+  - 'delete own center content'
+  - 'delete own device content'
+  - 'delete own document media'
+  - 'delete own exercise content'
+  - 'delete own image media'
+  - 'delete own remote_video media'
+  - 'delete own routine content'
+  - 'delete own session content'
+  - 'delete own translatable_image media'
+  - 'delete own vector_image media'
+  - 'delete routine revisions'
+  - 'delete term revisions in administrative_division'
+  - 'delete term revisions in civil_status'
+  - 'delete term revisions in device_type'
+  - 'delete term revisions in exercise_type'
+  - 'delete term revisions in gender'
+  - 'delete term revisions in model'
+  - 'delete term revisions in pathology'
+  - 'delete term revisions in service'
+  - 'delete term revisions in sex'
+  - 'delete terms in administrative_division'
+  - 'delete terms in civil_status'
+  - 'delete terms in device_type'
+  - 'delete terms in exercise_type'
+  - 'delete terms in gender'
+  - 'delete terms in model'
+  - 'delete terms in pathology'
+  - 'delete terms in service'
+  - 'delete terms in sex'
+  - 'edit any basic_page content'
+  - 'edit any center content'
+  - 'edit any device content'
+  - 'edit any document media'
+  - 'edit any exercise content'
+  - 'edit any image media'
+  - 'edit any remote_video media'
+  - 'edit any routine content'
+  - 'edit any session content'
+  - 'edit any translatable_image media'
+  - 'edit any vector_image media'
+  - 'edit own basic_page content'
+  - 'edit own center content'
+  - 'edit own device content'
+  - 'edit own document media'
+  - 'edit own exercise content'
+  - 'edit own image media'
+  - 'edit own remote_video media'
+  - 'edit own routine content'
+  - 'edit own session content'
+  - 'edit own translatable_image media'
+  - 'edit own vector_image media'
+  - 'edit terms in administrative_division'
+  - 'edit terms in civil_status'
+  - 'edit terms in device_type'
+  - 'edit terms in exercise_type'
+  - 'edit terms in gender'
+  - 'edit terms in model'
+  - 'edit terms in pathology'
+  - 'edit terms in service'
+  - 'edit terms in sex'
+  - 'entity_bundle_permissions access node center'
+  - 'entity_bundle_permissions access node device'
+  - 'entity_bundle_permissions access node exercise'
+  - 'entity_bundle_permissions access node routine'
+  - 'entity_bundle_permissions access node session'
+  - 'entity_bundle_permissions access taxonomy_term administrative_division'
+  - 'entity_bundle_permissions access taxonomy_term civil_status'
+  - 'entity_bundle_permissions access taxonomy_term device_type'
+  - 'entity_bundle_permissions access taxonomy_term exercise_type'
+  - 'entity_bundle_permissions access taxonomy_term gender'
+  - 'entity_bundle_permissions access taxonomy_term model'
+  - 'entity_bundle_permissions access taxonomy_term pathology'
+  - 'entity_bundle_permissions access taxonomy_term service'
+  - 'entity_bundle_permissions access taxonomy_term sex'
+  - 'restful get citius_device_api_session_results'
+  - 'restful post citius_device_api_session_status'
+  - 'revert session revisions'
+  - 'schedule publishing of media'
+  - 'schedule publishing of nodes'
+  - 'schedule publishing of taxonomy_term'
+  - 'setup own tfa'
+  - 'update any media'
+  - 'update media'
+  - 'view all media revisions'
+  - 'view all revisions'
+  - 'view any document media revisions'
+  - 'view any image media revisions'
+  - 'view any remote_video media revisions'
+  - 'view any translatable_image media revisions'
+  - 'view any vector_image media revisions'
+  - 'view basic_page revisions'
+  - 'view center revisions'
+  - 'view device revisions'
+  - 'view exercise revisions'
+  - 'view own unpublished content'
+  - 'view own unpublished media'
+  - 'view routine revisions'
+  - 'view scheduled content'
+  - 'view scheduled media'
+  - 'view scheduled taxonomy_term'
+  - 'view session revisions'
+  - 'view term revisions in administrative_division'
+  - 'view term revisions in civil_status'
+  - 'view term revisions in device_type'
+  - 'view term revisions in exercise_type'
+  - 'view term revisions in gender'
+  - 'view term revisions in model'
+  - 'view term revisions in pathology'
+  - 'view term revisions in service'
+  - 'view term revisions in sex'
+  - 'view the administration theme'
+  - 'view vocabulary labels'

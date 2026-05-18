@@ -1,0 +1,8 @@
+_core:
+  default_config_hash: 4tL4ijJuqTiaxzlsRiRCDKoIklnv2IQPjoQ0e7wzDoA
+langcode: es
+apply_gdpr: 5
+cancellation_period: 30
+female_name: Juana
+male_name: Juan
+surname: Nadie

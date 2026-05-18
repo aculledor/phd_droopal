@@ -1,0 +1,20 @@
+uuid: 646b3ed9-3e2b-4355-b93c-04fc3cb2c601
+langcode: es
+status: true
+dependencies:
+  module:
+    - citius_user
+  theme:
+    - citius
+id: current_center
+theme: citius
+region: header
+weight: -7
+provider: null
+plugin: current_center_block
+settings:
+  id: current_center_block
+  label: 'Current center block'
+  label_display: '0'
+  provider: citius_user
+visibility: {  }

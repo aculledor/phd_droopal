@@ -1,0 +1,4 @@
+langcode: es
+ignored_entity_types:
+  media: media
+  paragraph: paragraph

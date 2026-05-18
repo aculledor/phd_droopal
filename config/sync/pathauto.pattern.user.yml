@@ -1,0 +1,14 @@
+uuid: ca48f97f-3d64-4597-a883-5a4bf183993e
+langcode: es
+status: true
+dependencies:
+  module:
+    - user
+id: user
+label: Usuario
+type: 'canonical_entities:user'
+pattern: '/usuario/[user:field_name]-[user:field_surname]'
+selection_criteria: {  }
+selection_logic: and
+weight: 0
+relationships: {  }

@@ -1,0 +1,14 @@
+uuid: f6ff52ff-081f-452f-852a-a431d87d3d78
+langcode: es
+status: true
+dependencies:
+  config:
+    - user.role.manager
+  module:
+    - user
+id: user_add_role_action.manager
+label: 'Añade el rol Gestor de la plataforma al(los) usuario(s) seleccionado(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: manager

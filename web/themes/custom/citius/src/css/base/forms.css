@@ -1,0 +1,271 @@
+/* ==========================================================================
+   FORMS
+   ===========================================================================
+   Project: Citius Theme
+   File: forms.css
+   Description: Defines forms base styling.
+   ========================================================================== */
+
+.form-item {
+  margin-bottom: var(--spacing-md);
+}
+
+.form-item label {
+  display: block;
+  font-weight: var(--fw-md);
+  margin-bottom: var(--spacing-xs);
+}
+
+.field--type-datetime h4 {
+  font-family: var(--ff-regular);
+  font-weight: var(--fw-md);
+  margin-bottom: var(--spacing-xs);
+  margin-top: 0;
+}
+
+.form-item input {
+  position: relative;
+  z-index: 1;
+}
+
+.form-item input.form-text,
+.form-item input.form-email,
+.form-item input.form-tel,
+.form-item input.form-url,
+.form-item input.form-number,
+.form-type-select select.form-select,
+.form-type-select select.form-date,
+.form-type-select select.form-select,
+.form-type-cshs select.form-select,
+.form-date {
+  border: 1px solid var(--c-neutral-dark);
+  height: var(--fs-xl);
+  padding: 0.75rem;
+  width: 100%;
+}
+
+.form-item input.form-text:focus,
+.form-item input.form-email:focus,
+.form-item input.form-tel:focus,
+.form-item input.form-url:focus,
+.form-item input.form-number:focus,
+.form-item input.form-date:focus,
+.form-type-select select.form-select:focus,
+.form-item tags.tagify--focus {
+  --ring-offset-width: 2px;
+  --ring-offset-shadow: 0 0 0 var(--ring-offset-width) var(--ring-offset-color);
+  --ring-shadow: 0 0 0 calc(2px + var(--ring-offset-width)) var(--ring-color, currentcolor);
+  box-shadow: var(--inset-shadow), var(--inset-ring-shadow), var(--ring-offset-shadow), var(--ring-shadow), var(--shadow);
+  outline: none;
+}
+
+.form-item tags {
+  border-color: var(--c-neutral-dark);
+  background: var(--c-neutral-white);
+}
+
+
+.form-item .description {
+  background-color: var(--c-neutral-lightest);
+  font-size: .95rem;
+  line-height: 1.15;
+  margin-top: .375rem;
+  padding: var(--spacing-sm) var(--spacing-md);
+  animation: var(--animate-fadeInTop);
+}
+
+.form-type-select select.form-select,
+.form-type-cshs select.form-select {
+  cursor: pointer;
+  appearance: none;
+  position: relative;
+  background-image: url('../../../templates/svg/icons/arrows/chevron-down.svg');
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  padding-right: 3rem;
+}
+
+.js-text-format-wrapper .form-type-textarea {
+  margin-bottom: 0;
+}
+
+.js-text-format-wrapper .js-filter-wrapper {
+  background-color: var(--c-neutral-lightest);
+  border-left: 1px solid var(--c-neutral-lighter);
+  border-right: 1px solid var(--c-neutral-lighter);
+  border-bottom: 1px solid var(--c-neutral-lighter);
+  padding-inline: var(--spacing-sm);
+}
+
+.js-text-format-wrapper .js-filter-wrapper a {
+  color: var(--c-neutral);
+  font-size: calc(var(--fs-md) * .8125);
+  font-weight: var(--fw-lg);
+  text-decoration-style: dashed;
+  text-underline-offset: 3px;
+}
+
+.js-text-format-wrapper .js-filter-wrapper a:hover,
+.js-text-format-wrapper .js-filter-wrapper a:focus {
+  color: var(--c-neutral-darker);
+}
+
+.form-item select.form-select:open {
+  background-image: url('../../../templates/svg/icons/arrows/chevron-up.svg');
+}
+
+.form-select:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 1.5rem;
+  pointer-events: none;
+}
+
+.form-date-wrapper {
+  margin-bottom: var(--spacing-md);
+
+  legend {
+    margin-bottom: 0;
+  }
+
+  fieldset {
+    margin-bottom: 0;
+  }
+
+  .form-item {
+    margin-bottom: 0;
+  }
+}
+
+.form-date-wrapper .fieldset-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: var(--spacing-md);
+}
+
+.image-widget {
+  background-color: var(--c-neutral-lighter);
+  position: relative;
+
+  .form-file {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+  }
+}
+
+.image-widget.has-preview {
+  padding: var(--spacing-lg);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-md);
+}
+
+.image-widget__info {
+  padding: var(--spacing-lg);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-md);
+}
+
+legend {
+  margin-bottom: var(--spacing-sm);
+}
+
+.form-type-checkbox {
+  display: flex;
+  flex-wrap: wrap;
+
+  .description {
+    width: 100%;
+  }
+}
+.form-type-checkbox input,
+.views-field-user-bulk-form input {
+  margin-right: var(--spacing-sm);
+  appearance: none;
+  width: 1.125rem;
+  height: 1.125rem;
+  border: 1px solid var(--c-neutral-dark);
+  cursor: pointer;
+
+  &:checked {
+    background-color: var(--c-brand-black);
+    background-image: url('../../../templates/svg/icons/interface/checkbox.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+}
+
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--spacing-md);
+}
+
+.image-widget {
+  background-color: var(--c-neutral-lighter);
+  position: relative;
+
+  .form-file {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+  }
+}
+
+.image-widget.has-preview {
+  padding: var(--spacing-lg);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-md);
+}
+
+.image-widget__info {
+  padding: var(--spacing-lg);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-md);
+}
+
+legend {
+  margin-bottom: var(--spacing-sm);
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--spacing-md);
+}
+
+.form-type-cshs {
+  > select:first-child {
+    margin-top: 27px;
+    max-width: 366px;
+  }
+}

@@ -1,0 +1,24 @@
+uuid: 8ca7f609-fcb6-42d0-8149-08828e20bd69
+langcode: es
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.links
+_core:
+  default_config_hash: YOf9dVDt0DpG5s9XnrZrk7bENCTNxVG48R736NMvw1k
+id: paragraph.links.status
+field_name: status
+entity_type: paragraph
+bundle: links
+label: Publicado
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: Activado
+  off_label: Desactivado
+field_type: boolean

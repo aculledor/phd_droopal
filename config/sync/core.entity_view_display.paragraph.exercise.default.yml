@@ -1,0 +1,55 @@
+uuid: 4b2264a4-2f9e-4562-b39b-a04c092e27c7
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.exercise.field_duration
+    - field.field.paragraph.exercise.field_exercise
+    - field.field.paragraph.exercise.field_intensity
+    - paragraphs.paragraphs_type.exercise
+  module:
+    - sdc_display
+third_party_settings:
+  sdc_display:
+    enabled: false
+    component:
+      machine_name: ''
+    mappings:
+      static:
+        props: {  }
+        slots: {  }
+      dynamic:
+        props: {  }
+        slots: {  }
+id: paragraph.exercise.default
+targetEntityType: paragraph
+bundle: exercise
+mode: default
+content:
+  field_duration:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_exercise:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_intensity:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden: {  }

@@ -1,0 +1,15 @@
+citius_user.add_user:
+  path: '/users/create/{role}'
+  defaults:
+    _title_callback: '\Drupal\citius_user\Controller\AddUserController::title'
+    _controller: '\Drupal\citius_user\Controller\AddUserController'
+  requirements:
+    _custom_access: '\Drupal\citius_user\Controller\AddUserController::access'
+
+citius_user.select_center:
+  path: '/user/select-center'
+  defaults:
+    _title_callback: 'Drupal\citius_user\Form\SelectCenterForm::title'
+    _form: 'Drupal\citius_user\Form\SelectCenterForm'
+  requirements:
+    _custom_access: '\Drupal\citius_user\Form\SelectCenterForm::access'

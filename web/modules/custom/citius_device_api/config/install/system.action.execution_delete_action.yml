@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - citius_device_api
+id: execution_delete_action
+label: 'Delete executions'
+type: execution
+plugin: entity:delete_action:execution
+configuration: {  }

@@ -1,0 +1,22 @@
+uuid: ba8ac5eb-7206-48d8-bf26-59100f28bc42
+langcode: es
+status: false
+dependencies:
+  module:
+    - system
+  theme:
+    - citius
+_core:
+  default_config_hash: y9X3xgCsO59pQyzNLzY1D3SDJJxCHILLWkpPnmuTJ2E
+id: citius_breadcrumbs
+theme: citius
+region: pre_content
+weight: -4
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: 'Enlaces de ayuda a la navegación'
+  label_display: '0'
+  provider: system
+visibility: {  }

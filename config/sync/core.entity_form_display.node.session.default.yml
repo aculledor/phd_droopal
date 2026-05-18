@@ -1,0 +1,86 @@
+uuid: c574ed5c-6c97-4893-86f0-d670ff195d08
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.field.node.session.field_camera
+    - field.field.node.session.field_date
+    - field.field.node.session.field_glasses
+    - field.field.node.session.field_patient
+    - field.field.node.session.field_routine
+    - field.field.node.session.field_session_state
+    - node.type.session
+  module:
+    - tagify
+id: node.session.default
+targetEntityType: node
+bundle: session
+mode: default
+content:
+  field_camera:
+    type: tagify_select_widget
+    weight: 3
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      placeholder: ''
+    third_party_settings: {  }
+  field_glasses:
+    type: tagify_select_widget
+    weight: 2
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      placeholder: ''
+    third_party_settings: {  }
+  field_patient:
+    type: tagify_select_widget
+    weight: 4
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      placeholder: ''
+    third_party_settings: {  }
+  field_routine:
+    type: tagify_select_widget
+    weight: 6
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      placeholder: ''
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 1
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  translation:
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  field_date: true
+  field_session_state: true
+  langcode: true
+  path: true
+  promote: true
+  publish_on: true
+  sticky: true
+  uid: true
+  unpublish_on: true

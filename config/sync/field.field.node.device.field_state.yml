@@ -1,0 +1,21 @@
+uuid: 18b25439-c9e5-4486-99a1-019dec00cc90
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_state
+    - node.type.device
+id: node.device.field_state
+field_name: field_state
+entity_type: node
+bundle: device
+label: Estado
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: Activado
+  off_label: Desactivado
+field_type: boolean

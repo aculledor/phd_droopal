@@ -1,0 +1,4 @@
+data:
+  label: 'Data'
+  description: 'Arbitrary data'
+  weight: 0

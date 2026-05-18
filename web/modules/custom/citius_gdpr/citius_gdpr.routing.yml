@@ -1,0 +1,39 @@
+citius_gdpr.settings:
+  path: '/admin/config/citius/gdpr'
+  defaults:
+    _title: 'GDPR settings'
+    _form: 'Drupal\citius_gdpr\Form\SettingsForm'
+  requirements:
+    _permission: 'administer site configuration'
+
+citius_gdpr.anonymize_user:
+  path: '/user/{user}/anonymize'
+  defaults:
+    _title: 'Anonymize patient'
+    _form: 'Drupal\citius_gdpr\Form\GdprUserForm'
+  requirements:
+    _custom_access: 'Drupal\citius_gdpr\Form\GdprUserForm::checkAnonymizeAccess'
+  options:
+    parameters:
+      user:
+        type: entity:user
+
+citius_gdpr.deanonymize_user:
+  path: '/user/{user}/deanonymize'
+  defaults:
+    _title: 'Deanonymize patient'
+    _form: 'Drupal\citius_gdpr\Form\GdprUserForm'
+  requirements:
+    _custom_access: 'Drupal\citius_gdpr\Form\GdprUserForm::checkDeanonymizeAccess'
+  options:
+    parameters:
+      user:
+        type: entity:user
+
+citius_gdpr.anonymize_confirm:
+  path: '/user/anonymize/confirm'
+  defaults:
+    _title: 'Anonymize selected users'
+    _form: 'Drupal\citius_gdpr\Form\AnonymizeConfirmForm'
+  requirements:
+    _permission: 'create patient user'

@@ -1,0 +1,18 @@
+uuid: d7f0469c-dd58-4543-bd7b-873af77fe006
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.civil_status
+id: taxonomy_term.civil_status.rh_redirect
+field_name: rh_redirect
+entity_type: taxonomy_term
+bundle: civil_status
+label: 'Rabbit Hole redirect path.'
+description: 'The path to where the user should get redirected to.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,20 @@
+uuid: eb4cd484-f562-4f05-9f66-f9c939620711
+langcode: es
+status: true
+dependencies:
+  content:
+    - 'file:file:c6fe79c4-6cf3-478b-8225-6c67b113c91c'
+  module:
+    - custom_paragraphs_extras
+_core:
+  default_config_hash: fzLhmoDCud2q0ORhFiHFnGRVt5A_nmP6-I3fgZ6jwQY
+id: text_video
+label: 'Texto + Vídeo'
+icon_uuid: c6fe79c4-6cf3-478b-8225-6c67b113c91c
+icon_default: 'data:image/svg+xml;base64,PHN2ZyBpZD0iYTY5MWM1ZDUtZmRhMy00NjdkLWE4OGMtZmRlMTA0Yjc0NTEyIiBkYXRhLW5hbWU9IkNhcGEgMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMiIgeT0iMTAuMjIiIHdpZHRoPSIxMyIgaGVpZ2h0PSIyLjA4Ii8+PHJlY3QgeD0iMiIgeT0iMTQuOSIgd2lkdGg9IjEzIiBoZWlnaHQ9IjIuMDgiLz48cmVjdCB4PSIyIiB5PSIxOS41OCIgd2lkdGg9IjEzIiBoZWlnaHQ9IjIuMDgiLz48cGF0aCBkPSJNMzAsMTEuMTJIMTd2OS43NkgzMFptLTcuNzIsMi40NHY0Ljg4aC44MUwyNS45NCwxNmwtMi44NS0yLjQ0WiIgZmlsbC1ydWxlPSJldmVub2RkIi8+PC9zdmc+'
+description: ''
+behavior_plugins:
+  custom_alignment_behavior:
+    enabled: true
+  custom_background_color_behavior:
+    enabled: true

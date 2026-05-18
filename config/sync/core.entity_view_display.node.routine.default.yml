@@ -1,0 +1,47 @@
+uuid: f3762084-08f4-47c4-afad-73740a5bf311
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.field.node.routine.body
+    - field.field.node.routine.field_exercises
+    - node.type.routine
+  module:
+    - citius_content
+    - sdc_display
+    - text
+    - user
+third_party_settings:
+  sdc_display:
+    enabled: false
+    component:
+      machine_name: ''
+    mappings:
+      static:
+        props: {  }
+        slots: {  }
+      dynamic:
+        props: {  }
+        slots: {  }
+id: node.routine.default
+targetEntityType: node
+bundle: routine
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_exercises:
+    type: citius_content_exercise_table
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  langcode: true
+  links: true

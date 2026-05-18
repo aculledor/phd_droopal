@@ -1,0 +1,30 @@
+uuid: b87bda02-2b03-46b3-8ad2-c5f10b278a62
+langcode: es
+status: true
+dependencies:
+  config:
+    - views.view.executions_chart
+  module:
+    - system
+    - views
+  theme:
+    - citius
+id: citius_views_block__executions_chart_user_execution
+theme: citius
+region: content
+weight: -5
+provider: null
+plugin: 'views_block:executions_chart-user_execution'
+settings:
+  id: 'views_block:executions_chart-user_execution'
+  label: ''
+  label_display: visible
+  provider: views
+  context_mapping: {  }
+  views_label: ''
+  items_per_page: none
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: '/user/*/results'

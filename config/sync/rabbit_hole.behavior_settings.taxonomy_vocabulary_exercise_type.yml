@@ -1,0 +1,14 @@
+uuid: fe6dff24-ccc6-4e67-bec1-ae88ed1691b0
+langcode: es
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.exercise_type
+id: taxonomy_vocabulary_exercise_type
+entity_type_id: taxonomy_vocabulary
+entity_id: exercise_type
+action: page_not_found
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

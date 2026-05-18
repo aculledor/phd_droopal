@@ -1,0 +1,22 @@
+uuid: 4072d262-91ad-44a9-bad2-786cec3deb05
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.exercise
+id: paragraph.exercise.status
+field_name: status
+entity_type: paragraph
+bundle: exercise
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,7 @@
+services:
+  logger.channel.phone_international:
+    parent: logger.channel_base
+    arguments: ['phone_international']
+  phone_international.validate:
+    class: Drupal\phone_international\Helpers\ValidatingService
+    arguments: []

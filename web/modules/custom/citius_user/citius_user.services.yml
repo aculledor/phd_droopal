@@ -1,0 +1,18 @@
+services:
+  Drupal\citius_user\EventSubscriber\RouteSubscriber:
+    tags:
+      - { name: event_subscriber }
+
+  Drupal\citius_user\CurrentCenterResolver:
+    autowire: true
+
+  Drupal\citius_user\ForceSelectCenter:
+    autowire: true
+    tags:
+      - { name: http_middleware, priority: 1 }
+
+  cache_context.current_center:
+    class: Drupal\citius_user\Cache\Context\CurrentCenterCacheContext
+    autowire: true
+    tags:
+      - { name: cache.context }

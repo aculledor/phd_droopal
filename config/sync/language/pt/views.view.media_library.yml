@@ -1,0 +1,113 @@
+label: 'Biblioteca de medios'
+description: 'Buscar y administrar medios.'
+display:
+  default:
+    display_title: Predefinido
+    display_options:
+      fields:
+        media_bulk_form:
+          action_title: Ação
+      pager:
+        options:
+          expose:
+            items_per_page_label: 'Itens por página'
+            items_per_page_options_all_label: '- Todos -'
+            offset_label: Deslocamento
+      exposed_form:
+        options:
+          submit_button: 'Aplicar filtros'
+          reset_button_label: Reiniciar
+          exposed_sorts_label: 'Ordenar por'
+          sort_asc_label: Ascendente
+          sort_desc_label: Descendente
+      empty:
+        area_text_custom:
+          content: 'No hay medios disponibles.'
+      sorts:
+        created:
+          expose:
+            label: 'Mais recentes primeiro'
+        name:
+          expose:
+            label: 'Nombre (A-Z)'
+        name_1:
+          expose:
+            label: 'Nombre (Z-A)'
+      filters:
+        status:
+          expose:
+            label: 'Estado da publicação'
+          group_info:
+            label: Publicado
+            group_items:
+              1:
+                title: Publicado
+              2:
+                title: 'Não publicado'
+        name:
+          expose:
+            label: Nome
+        bundle:
+          expose:
+            label: 'Tipos multimedia'
+          group_info:
+            label: 'Tipos multimedia'
+        langcode:
+          expose:
+            label: Idioma
+  page:
+    display_title: Página
+    display_options:
+      fields:
+        media_bulk_form:
+          action_title: Ação
+        edit_media:
+          alter:
+            text: 'Editar {{ nombre }}'
+            alt: 'Editar {{ nombre }}'
+          text: Editar
+        delete_media:
+          alter:
+            text: 'Borrar {{ nombre }}'
+            alt: 'Borrar {{ nombre }}'
+          text: Eliminar
+  widget:
+    display_options:
+      arguments:
+        bundle:
+          exception:
+            title: Todos
+      filters:
+        name:
+          expose:
+            label: Nome
+      header:
+        display_link_grid:
+          label: Grelha
+        display_link_table:
+          label: Tabela
+  widget_table:
+    display_title: 'Widget (tabla)'
+    display_options:
+      fields:
+        thumbnail__target_id:
+          label: Miniatura
+        name:
+          label: Nome
+        uid:
+          label: Autor
+        changed:
+          label: Atualizado
+      arguments:
+        bundle:
+          exception:
+            title: Todos
+      filters:
+        name:
+          expose:
+            label: Nome
+      header:
+        display_link_grid:
+          label: Grelha
+        display_link_table:
+          label: Tabela

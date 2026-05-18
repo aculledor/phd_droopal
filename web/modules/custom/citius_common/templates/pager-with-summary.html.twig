@@ -1,0 +1,26 @@
+{#
+/**
+ * @file
+ * Theme implementation for a pager with results summary.
+ *
+ * Available variables:
+ * - pager: The rendered pager output.
+ * - summary: The results summary text.
+ *
+ * @see template_preprocess_pager_with_summary()
+ */
+#}
+{% if pager or summary %}
+  <div class="pager-with-summary">
+    {% if summary %}
+      <div class="pager-summary">
+        {{ summary }}
+      </div>
+    {% endif %}
+    {% if pager %}
+      <div class="pager-wrapper">
+        {{ pager }}
+      </div>
+    {% endif %}
+  </div>
+{% endif %}

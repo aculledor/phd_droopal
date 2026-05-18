@@ -1,0 +1,64 @@
+uuid: ca08604b-2d78-495e-8f7f-0cd59a2b769a
+langcode: es
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.gallery
+    - field.field.media.translatable_image.field_media_image
+    - media.type.translatable_image
+  module:
+    - colorbox
+    - layout_builder
+    - nomarkup
+    - sdc_display
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+  sdc_display:
+    enabled: false
+    component:
+      machine_name: ''
+    mappings:
+      static:
+        props: {  }
+        slots: {  }
+      dynamic:
+        props: {  }
+        slots: {  }
+_core:
+  default_config_hash: zjGAgdlKipgYSpbHD2JTfEyzQfsd5YKhJe1Bm2PtQag
+id: media.translatable_image.gallery
+targetEntityType: media
+bundle: translatable_image
+mode: gallery
+content:
+  field_media_image:
+    type: colorbox_responsive
+    label: visually_hidden
+    settings:
+      colorbox_image_style: ''
+      colorbox_gallery: page
+      colorbox_gallery_custom: ''
+      colorbox_caption: auto
+      colorbox_caption_custom: ''
+      colorbox_responsive_node_style: l
+      colorbox_responsive_image_style: inner
+    third_party_settings:
+      nomarkup:
+        enabled: true
+        separator: '|'
+        referenced_entity: ''
+      sdc_display:
+        enabled: 0
+        component:
+          machine_name: null
+          show_deprecated: 0
+    weight: 0
+    region: content
+hidden:
+  created: true
+  langcode: true
+  name: true
+  thumbnail: true
+  uid: true

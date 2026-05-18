@@ -1,0 +1,62 @@
+uuid: 975800cf-906b-4113-89d1-1ef7b5d9d8c3
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.field.node.session.field_camera
+    - field.field.node.session.field_date
+    - field.field.node.session.field_glasses
+    - field.field.node.session.field_patient
+    - field.field.node.session.field_routine
+    - field.field.node.session.field_session_state
+    - node.type.session
+  module:
+    - options
+    - sdc_display
+    - user
+third_party_settings:
+  sdc_display:
+    enabled: false
+    component:
+      machine_name: ''
+    mappings:
+      static:
+        props: {  }
+        slots: {  }
+      dynamic:
+        props: {  }
+        slots: {  }
+id: node.session.default
+targetEntityType: node
+bundle: session
+mode: default
+content:
+  field_camera:
+    type: entity_reference_label
+    label: inline
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_glasses:
+    type: entity_reference_label
+    label: inline
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_session_state:
+    type: list_default
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_date: true
+  field_patient: true
+  field_routine: true
+  langcode: true
+  links: true

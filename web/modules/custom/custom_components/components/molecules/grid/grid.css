@@ -1,0 +1,29 @@
+.component-grid {
+  --ccg--grid-gap: 2rem;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-gap: var(--ccg--grid-gap);
+}
+.component-grid--1c-cols {
+  grid-template-columns: repeat(1, 1fr);
+}
+@media (min-width: 768px) {
+  .component-grid--2c-cols,
+  .component-grid--3c-cols,
+  .component-grid--4c-cols {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 992px) {
+  .component-grid--4c-cols {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (min-width: 1200px) {
+  .component-grid--3c-cols {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .component-grid--4c-cols {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

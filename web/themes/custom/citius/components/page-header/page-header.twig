@@ -1,0 +1,31 @@
+{#
+/**
+ * @file
+ * Template for a Page Header component.
+ *
+#}
+{% apply spaceless %}
+
+{% set header_attributes = create_attribute() %}
+{%
+  set header_classes = [
+    'page-header',
+  ]
+%}
+
+<div {{ header_attributes.addClass(header_classes) }}>
+  {% block page_inner_header %}
+    {% if page.header %}
+      {% for key, item in page.header %}
+        {% if key|slice(0, 1) != '#' %}
+          {{ item }}
+        {% endif %}
+      {% endfor %}
+      <a href="javascript:void(0)"  class="aside-menu__toggle" data-target="page-aside-main-menu" aria-expanded="false" aria-label="{{ 'Opens the main menu'|t }}">
+        {% include '@citius/svg/icons/interface/dots-vertical-rounded.svg' %}
+      </a>
+    {% endif %}
+  {% endblock %}
+</div>
+
+{% endapply %}

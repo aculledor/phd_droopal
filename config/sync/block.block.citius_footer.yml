@@ -1,0 +1,25 @@
+uuid: aa37c829-6e49-486d-bf0c-ec8db3bc06da
+langcode: es
+status: true
+dependencies:
+  config:
+    - system.menu.footer
+  module:
+    - system
+  theme:
+    - citius
+id: citius_footer
+theme: citius
+region: pre_footer
+weight: 0
+provider: null
+plugin: 'system_menu_block:footer'
+settings:
+  id: 'system_menu_block:footer'
+  label: 'Pie de página'
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility: {  }

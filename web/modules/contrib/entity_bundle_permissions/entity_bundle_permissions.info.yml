@@ -1,0 +1,17 @@
+name: 'Entity Bundle Permissions'
+description: 'Provides bundle-specific permissions for content entities.'
+
+core_version_requirement: '^10.1 || ^11'
+type: module
+
+configure: entity_bundle_permissions.settings
+
+php: '8.1'
+
+dependencies:
+  - 'drupal:user'
+
+# Information added by Drupal.org packaging script on 2025-02-10
+version: '1.1.1'
+project: 'entity_bundle_permissions'
+datestamp: 1739202641

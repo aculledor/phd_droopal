@@ -1,0 +1,12 @@
+citius_common.admin_settings:
+  title: 'CiTIUS'
+  parent: system.admin_config
+  route_name: citius_common.admin_settings
+  description: 'Settings pages for CITIUS custom modules.'
+
+citius_common.settings:
+  title: 'Ajustes'
+  route_name: citius_common.settings
+  description: ''
+  parent: citius_common.admin_settings
+  weight: 0

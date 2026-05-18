@@ -1,0 +1,21 @@
+uuid: 51752fbd-39e2-4a0b-96e9-18fbc303521a
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_phone
+  module:
+    - phone_international
+    - user
+id: user.user.field_phone
+field_name: field_phone
+entity_type: user
+bundle: user
+label: 'Teléfono de contacto'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: phone_international

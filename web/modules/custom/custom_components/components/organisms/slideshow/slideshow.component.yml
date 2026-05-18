@@ -1,0 +1,11 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Slideshow
+status: experimental
+group: Content
+
+props:
+  type: object
+  properties:
+    slides:
+      title: Slides
+      type: string

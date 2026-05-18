@@ -1,0 +1,28 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Highlight
+status: experimental
+group: Content
+
+props:
+  type: object
+  properties:
+    title:
+      title: Title
+      type: string
+    text:
+      title: Text
+      type: string
+    link:
+      title: Link
+      type: string
+    image:
+      title: Image
+      type: string
+    size:
+      title: Size
+      type: string
+      enum: [ 's', 'm', 'l', 'xl' ]
+      default: 'm'
+    wrapper_classes:
+      title: Wrapper classes
+      type: string

@@ -1,0 +1,14 @@
+/* ==========================================================================
+	LAYOUT Aside Main Menu Region
+	===========================================================================
+	Project: Citius Theme
+	File: aside-main-menu.layout.css
+	Description: Styling for Aside Main Menu Region.
+	========================================================================== */
+
+@media screen and (min-width: 1024px){
+	.page:not(.page-user-login) .region-aside.aside-main-menu {
+		position: sticky;
+		top: calc(var(--citius-header-height) + var(--gin-toolbar-height));
+	}
+}

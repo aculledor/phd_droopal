@@ -1,0 +1,15 @@
+[data-component-id="citius:icon_button_link"] {
+  img {
+    max-width: 1.5rem;
+    height: auto;
+  }
+}
+
+.icon-button-links-wrapper {
+  display: flex;
+  gap: var(--spacing-md);
+
+  .icon-button-link {
+    flex-shrink: 0;
+  }
+}

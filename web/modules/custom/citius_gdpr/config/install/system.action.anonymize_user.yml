@@ -1,0 +1,10 @@
+langcode: es
+status: true
+dependencies:
+  module:
+    - citius_gdpr
+id: anonymize_user
+label: 'Anonimizar usuario'
+type: user
+plugin: anonymize_user
+configuration: {  }

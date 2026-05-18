@@ -1,0 +1,18 @@
+uuid: 05ec4b8f-60b6-4aec-a49a-f86ed6f4feff
+langcode: es
+status: true
+dependencies:
+  config:
+    - node.type.routine
+id: node.routine.title
+field_name: title
+entity_type: node
+bundle: routine
+label: 'Nombre de rutina'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

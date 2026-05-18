@@ -1,0 +1,32 @@
+uuid: 44202c8b-a5be-4810-94ef-3ea8ea4e9d3f
+langcode: es
+status: true
+dependencies:
+  module:
+    - scheduler
+third_party_settings:
+  scheduler:
+    expand_fieldset: when_required
+    fields_display_mode: vertical_tab
+    publish_enable: false
+    publish_past_date: error
+    publish_past_date_created: false
+    publish_required: false
+    publish_revision: false
+    publish_touch: false
+    show_message_after_update: true
+    unpublish_enable: false
+    unpublish_required: false
+    unpublish_revision: false
+_core:
+  default_config_hash: do3-hQl3BCJrTKNLIPG-Bgp_6zuFxPkVy-EA9KLyCkg
+id: vector_image
+label: 'Imagen vectorial'
+description: 'Un archivo de gráficos vectoriales escalables alojado localmente.'
+source: image
+queue_thumbnail_downloads: false
+new_revision: false
+source_configuration:
+  source_field: field_media_image
+field_map:
+  name: name

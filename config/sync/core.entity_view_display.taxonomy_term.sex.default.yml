@@ -1,0 +1,37 @@
+uuid: 554792fa-bbc4-4153-8bf4-28c77a6e1e75
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.sex.field_code
+    - taxonomy.vocabulary.sex
+  module:
+    - sdc_display
+    - text
+third_party_settings:
+  sdc_display:
+    enabled: false
+    component:
+      machine_name: ''
+    mappings:
+      static:
+        props: {  }
+        slots: {  }
+      dynamic:
+        props: {  }
+        slots: {  }
+id: taxonomy_term.sex.default
+targetEntityType: taxonomy_term
+bundle: sex
+mode: default
+content:
+  description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_code: true
+  langcode: true

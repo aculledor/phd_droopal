@@ -1,0 +1,66 @@
+{#
+/**
+ * @file
+ * Template for a Page Footer component.
+ *
+#}
+{% apply spaceless %}
+
+{% set prefooter_attributes = prefooter_attributes ?: create_attribute() %}
+{% set footer_attributes = footer_attributes ?: create_attribute() %}
+{%
+  set prefooter_classes = [
+    'page__prefooter',
+  ]
+%}
+{%
+  set footer_classes = [
+    'page__footer',
+  ]
+%}
+
+<footer {{ prefooter_attributes.addClass(prefooter_classes) }}>
+  <div class="container">
+    <div class="prefooter__wrapper">
+      {% block page_inner_prefooter %}
+        <picture
+          class="animate-fadeInSlow"
+          alt="Centro Singular de Investigación en Tecnoloxías Intelixentes"
+          height="100"
+          width="278"
+        >
+          {% include "@citius/svg/logos/brand/brand_vertical_tagline_inverted.svg" %}
+        </picture>
+        <div class="prefooter__info">
+          {% if page.pre_footer.citius_site_branding_address %}
+            <div class="item">
+              {{ page.pre_footer.citius_site_branding_address }}
+            </div>
+          {% endif %}
+
+          {% if page.pre_footer.citius_site_branding_copy %}
+            <div class="item">
+              {{ page.pre_footer.citius_site_branding_copy }}
+            </div>
+          {% endif %}
+
+          <div class="item">
+            <div class="item__wrapper">
+              <p>
+                <strong>{{ 'Follow us'|t }}</strong>
+              </p>
+              {% if page.pre_footer.citius_footer_social_networks %}
+                {{ page.pre_footer.citius_footer_social_networks }}
+              {% endif %}
+            </div>
+            {% if page.pre_footer.citius_footer %}
+              {{ page.pre_footer.citius_footer }}
+            {% endif %}
+          </div>
+        </div>
+      {% endblock %}
+    </div>
+  </div>
+</footer>
+
+{% endapply %}

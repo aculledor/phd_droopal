@@ -1,0 +1,66 @@
+description: 'Buscar y administrar medios.'
+display:
+  default:
+    display_title: Predefinido
+    display_options:
+      fields:
+        media_bulk_form:
+          action_title: Ação
+        thumbnail__target_id:
+          label: Miniatura
+        name:
+          label: 'Nombre del elemento multimedia'
+        bundle:
+          label: Tipo
+        uid:
+          label: Autor
+        status:
+          label: Estado
+          settings:
+            format_custom_false: 'Não publicado'
+            format_custom_true: Publicado
+        changed:
+          label: Atualizado
+        operations:
+          label: Operações
+      pager:
+        options:
+          tags:
+            next: 'Seguinte ›'
+            previous: '‹ Anterior'
+            first: '« Primeira'
+            last: 'Última »'
+          expose:
+            items_per_page_label: 'Itens por página'
+            items_per_page_options_all_label: '- Todos -'
+            offset_label: Deslocamento
+      exposed_form:
+        options:
+          submit_button: Filtro
+          reset_button_label: Reiniciar
+          exposed_sorts_label: 'Ordenar por'
+          sort_asc_label: Ascendente
+          sort_desc_label: Descendente
+      empty:
+        area_text_custom:
+          content: 'No hay medios disponibles.'
+      filters:
+        name:
+          expose:
+            label: 'Nombre del elemento multimedia'
+        bundle:
+          expose:
+            label: Tipo
+        status:
+          expose:
+            label: Verdadeiro
+          group_info:
+            label: 'Estado da publicação'
+            group_items:
+              1:
+                title: Publicado
+              2:
+                title: 'Não publicado'
+        langcode:
+          expose:
+            label: Idioma

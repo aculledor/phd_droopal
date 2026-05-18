@@ -1,0 +1,58 @@
+uuid: bae87cb6-4c11-4975-8c13-cef58008d40e
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.field.node.exercise.body
+    - field.field.node.exercise.field_type
+    - node.type.exercise
+  module:
+    - tagify
+    - text
+id: node.exercise.default
+targetEntityType: node
+bundle: exercise
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 3
+    region: content
+    settings:
+      rows: 5
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+  field_type:
+    type: tagify_select_widget
+    weight: 1
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      placeholder: ''
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  translation:
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  langcode: true
+  path: true
+  promote: true
+  publish_on: true
+  status: true
+  sticky: true
+  uid: true
+  unpublish_on: true

@@ -1,0 +1,3 @@
+administer execution:
+  title: 'Administer executions'
+  restrict access: true

@@ -1,0 +1,14 @@
+uuid: da0e21e8-4985-4002-9a77-4bc654094c9c
+langcode: es
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.pathology
+id: taxonomy_vocabulary_pathology
+entity_type_id: taxonomy_vocabulary
+entity_id: pathology
+action: display_page
+allow_override: 0
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

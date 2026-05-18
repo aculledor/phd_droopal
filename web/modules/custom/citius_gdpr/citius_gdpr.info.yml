@@ -1,0 +1,8 @@
+name: 'GDPR'
+type: module
+description: 'Provides anonymization of user data and other things related to GDPR.'
+package: CITIUS
+core_version_requirement: ^11
+
+'interface translation project': citius_gdpr
+'interface translation server pattern': modules/custom/citius_gdpr/translations/%language.po

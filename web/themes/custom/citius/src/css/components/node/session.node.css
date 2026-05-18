@@ -1,0 +1,140 @@
+/** Session node styles */
+.session__content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+  justify-content: space-between;
+
+  .field-item {
+    margin-bottom: 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .session__content {
+    margin-left: 3rem;
+  }
+}
+
+.session__buttons {
+  display: flex;
+  gap: var(--spacing-md);
+}
+
+.session__exercises {
+  width: 100%;
+
+  th {
+    text-align: left;
+    padding: var(--spacing-md) 0;
+  }
+
+  tr.session__exercise {
+    border-top: 1px solid var(--c-neutral-black);
+  }
+
+  tr.active {
+    background-color: var(--c-neutral-lightest);
+    border-top: 2px solid var(--c-neutral-black);
+    border-bottom: 2px solid var(--c-neutral-black);
+
+    td:first-child {
+      padding-left: var(--spacing-md);
+    }
+
+    td:last-child {
+      padding-right: var(--spacing-md);
+    }
+  }
+
+  td {
+    padding: var(--spacing-md) 0;
+  }
+}
+
+.session__results-column {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+
+  .button--only-icon:before {
+    background-size: contain;
+  }
+}
+
+.session__exercise-results {
+  > td {
+    padding: 0;
+  }
+
+  table {
+    width: 100%;
+
+    thead {
+      background-color: var(--c-neutral-lightest);
+    }
+
+    th {
+      padding-inline: var(--spacing-md);
+
+      span {
+        font-weight: normal;
+      }
+    }
+
+    td {
+      padding: var(--spacing-xs) var(--spacing-md);
+    }
+
+    tr:hover {
+      background-color: var(--c-neutral-lightest);
+    }
+  }
+}
+
+.session__exercise-results-table {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: .3s ease;
+}
+
+.session__exercise-results-wrapper {
+  overflow: hidden;
+}
+
+.session__exercise.open {
+  .session__results-column .button--only-icon:before {
+    background-image: url('../../../../templates/svg/icons/interface/eye-cross.svg');
+  }
+}
+
+.session__exercise.open + .session__exercise-results {
+  .session__exercise-results-table {
+    grid-template-rows: 1fr;
+  }
+}
+
+.session__exercise-status {
+  width: 1.25rem;
+  height: 1.25rem;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  &.success {
+    background-image: url('../../../../templates/svg/icons/alerts/success.svg');
+  }
+
+  &.failure {
+    background-image: url('../../../../templates/svg/icons/alerts/error.svg');
+  }
+}
+
+.session__error-placeholder {
+  color: var(--c-system-error-red);
+}
+
+.session__error-placeholder:empty {
+  display: none;
+}

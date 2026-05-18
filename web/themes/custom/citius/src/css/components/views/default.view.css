@@ -1,0 +1,16 @@
+/** Default views styles **/
+.views-element-container > div {
+  display: grid;
+}
+
+.views-bulk-form {
+  .form-actions .button {
+    width: unset;
+  }
+}
+
+.form-actions.views-bulk-actions {
+  .button {
+    width: unset;
+  }
+}

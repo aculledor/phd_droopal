@@ -1,0 +1,11 @@
+uuid: f76c5d5e-c1b2-4650-a0f9-032b0b5c4bc7
+langcode: es
+status: true
+dependencies:
+  module:
+    - citius_device_api
+id: execution.token
+label: Token
+description: null
+targetEntityType: execution
+cache: true

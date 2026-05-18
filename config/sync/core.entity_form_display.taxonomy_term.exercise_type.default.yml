@@ -1,0 +1,35 @@
+uuid: d90a3673-1a30-4b38-9221-90c69c073024
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.exercise_type.field_code
+    - taxonomy.vocabulary.exercise_type
+id: taxonomy_term.exercise_type.default
+targetEntityType: taxonomy_term
+bundle: exercise_type
+mode: default
+content:
+  field_code:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  description: true
+  langcode: true
+  path: true
+  publish_on: true
+  status: true
+  unpublish_on: true

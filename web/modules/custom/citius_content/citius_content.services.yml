@@ -1,0 +1,14 @@
+services:
+  Drupal\citius_content\SessionTitleGenerator:
+    autowire: true
+
+  theme.negotiator.citius_content:
+    class: Drupal\citius_content\Theme\CitiusContentNegotiator
+    autowire: true
+    tags:
+      - { name: theme_negotiator, priority: 1000 }
+
+  citius_content.route_subscriber:
+    class: Drupal\citius_content\EventSubscriber\RouteSubscriber
+    tags:
+      - { name: event_subscriber }

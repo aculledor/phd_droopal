@@ -1,0 +1,41 @@
+uuid: 7f8ec402-fb96-4942-8d86-1ae55de3a3ce
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.device_type.field_code
+    - taxonomy.vocabulary.device_type
+id: taxonomy_term.device_type.default
+targetEntityType: taxonomy_term
+bundle: device_type
+mode: default
+content:
+  field_code:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 2
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+hidden:
+  description: true
+  langcode: true
+  path: true
+  publish_on: true
+  unpublish_on: true

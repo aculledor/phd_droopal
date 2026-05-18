@@ -1,0 +1,20 @@
+uuid: f7d8f024-b731-4484-9a0c-5b3aaf92fac3
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_gdpr_surname
+  module:
+    - user
+id: user.user.field_gdpr_surname
+field_name: field_gdpr_surname
+entity_type: user
+bundle: user
+label: 'Apellidos GDPR'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

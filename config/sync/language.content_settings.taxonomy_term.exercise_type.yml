@@ -1,0 +1,18 @@
+uuid: f373862d-f5c1-4d26-88db-8f90883f11e5
+langcode: es
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.exercise_type
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: taxonomy_term.exercise_type
+target_entity_type_id: taxonomy_term
+target_bundle: exercise_type
+default_langcode: site_default
+language_alterable: true

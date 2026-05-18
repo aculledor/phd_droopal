@@ -1,0 +1,8 @@
+/** Change Center Block styles **/
+.current-center-block {
+  margin-right: var(--spacing-md);
+
+  .form-item {
+    margin-bottom: 0;
+  }
+}

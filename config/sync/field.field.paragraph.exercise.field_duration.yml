@@ -1,0 +1,23 @@
+uuid: 101d193a-8850-49f8-9118-f3b48d01896d
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_duration
+    - paragraphs.paragraphs_type.exercise
+id: paragraph.exercise.field_duration
+field_name: field_duration
+entity_type: paragraph
+bundle: exercise
+label: Duración
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 1
+  max: null
+  prefix: ''
+  suffix: ' segundos'
+field_type: integer

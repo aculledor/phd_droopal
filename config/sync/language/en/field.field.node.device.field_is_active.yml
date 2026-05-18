@@ -1,0 +1,5 @@
+label: 'Is active'
+description: ''
+settings:
+  on_label: Enabled
+  off_label: Disabled

@@ -1,0 +1,25 @@
+uuid: 300718e6-c6c9-47fc-a22e-14d2a919f59b
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_official_code
+    - taxonomy.vocabulary.administrative_division
+_core:
+  default_config_hash: YmtEa5-TKZtravTfanHQbWHsF2EJjrGN63hK01xZuqM
+id: taxonomy_term.administrative_division.field_official_code
+field_name: field_official_code
+entity_type: taxonomy_term
+bundle: administrative_division
+label: 'Código oficial'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

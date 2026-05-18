@@ -1,0 +1,56 @@
+[data-component-id="citius:views-exposed-form"] {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: var(--spacing-md);
+  margin-bottom: var(--spacing-xl);
+
+  .form-item {
+    flex-grow: 1;
+    min-width: 20%;
+  }
+
+  .form-actions {
+    margin-left: auto;
+    margin-bottom: var(--spacing-md);
+    flex-grow: 1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: end;
+    align-items: end;
+    gap: var(--spacing-md);
+
+    .form-reset {
+      order: -1;
+    }
+  }
+
+  .form-radios {
+    padding-top: var(--spacing-md);
+
+    .form-radio {
+      margin-top: 0;
+      appearance: none;
+      border: 1px solid var(--c-neutral-dark);
+      border-radius: 50%;
+      padding: var(--spacing-sm);
+      transition: var(--transition-transform);
+      cursor: pointer;
+
+      &:checked {
+        background-image: radial-gradient(circle at center, var(--c-neutral-dark) 50%, transparent 50%);
+      }
+    }
+
+    .form-item {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-xs);
+      cursor: pointer;
+
+      label {
+        margin-block: 0;
+        cursor: pointer;
+      }
+    }
+  }
+}

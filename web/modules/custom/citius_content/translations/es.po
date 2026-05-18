@@ -1,0 +1,174 @@
+# $Id$
+#
+# Spanish translation of Drupal (general)
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+# Generated from files:
+#  modules/custom/citius_content/citius_content.info.yml: n/a
+#  modules/custom/citius_content/citius_content.links.menu.yml: n/a
+#  modules/custom/citius_content/src/EventSubscriber/RouteSubscriber.php: n/a
+#  modules/custom/citius_content/src/Hook/SessionView.php: n/a
+#  modules/custom/citius_content/src/Plugin/Validation/Constraint/CifFieldConstraint.php: n/a
+#  modules/custom/citius_content/src/Plugin/Validation/Constraint/UniqueBundleFieldConstraint.php: n/a
+#  modules/custom/citius_content/src/Plugin/Validation/Constraint/UniqueNodeTitleConstraint.php: n/a
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2025-09-29 11:07+0200\n"
+"PO-Revision-Date: 2025-09-29 11:07+0200\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Spanish <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: modules/custom/citius_content/citius_content.info.yml:0
+msgid "Content"
+msgstr "Contenido"
+
+#: modules/custom/citius_content/citius_content.info.yml:0
+msgid "Additional functionalities related to content."
+msgstr "Funcionalidades adicionales relacionadas con el contenido."
+
+#: modules/custom/citius_content/citius_content.info.yml:0
+msgid "CITIUS"
+msgstr "CITIUS"
+
+#: modules/custom/citius_content/citius_content.links.menu.yml:0
+msgid "Centers"
+msgstr "Centros"
+
+#: modules/custom/citius_content/citius_content.links.menu.yml:0
+msgid "New center"
+msgstr "Nuevo centro"
+
+#: modules/custom/citius_content/citius_content.links.menu.yml:0 modules/custom/citius_content/src/EventSubscriber/RouteSubscriber.php:39
+msgid "New routine"
+msgstr "Nueva rutina"
+
+#: modules/custom/citius_content/citius_content.links.menu.yml:0
+msgid "Devices"
+msgstr "Dispositivos"
+
+#: modules/custom/citius_content/citius_content.links.menu.yml:0
+msgid "New device"
+msgstr "Nuevo dispositivo"
+
+#: modules/custom/citius_content/citius_content.links.menu.yml:0
+msgid "Sessions"
+msgstr "Sesiones"
+
+#: modules/custom/citius_content/citius_content.links.menu.yml:0
+msgid "New exercise"
+msgstr "Nuevo ejercicio"
+
+#: modules/custom/citius_content/citius_content.links.menu.yml:0
+msgid "New session"
+msgstr "Nueva sesión"
+
+#: modules/custom/citius_content/src/EventSubscriber/RouteSubscriber.php:41
+msgid "New @node_type"
+msgstr "Nuevo @node_type"
+
+#: modules/custom/citius_content/src/Hook/SessionView.php:92
+msgid "No exercises"
+msgstr "Sin ejercicios"
+
+#: modules/custom/citius_content/src/Hook/SessionView.php:94
+msgid "Exercise"
+msgstr "Ejercicio"
+
+#: modules/custom/citius_content/src/Hook/SessionView.php:95
+msgid "Duration"
+msgstr "Duración"
+
+#: modules/custom/citius_content/src/Hook/SessionView.php:96
+msgid "Intensity"
+msgstr "Intensidad"
+
+#: modules/custom/citius_content/src/Hook/SessionView.php:97
+msgid "Expected results"
+msgstr "Resultados esperados"
+
+#: modules/custom/citius_content/src/Hook/SessionView.php:98
+msgid "Results obtained"
+msgstr "Resultados obtenidos"
+
+#: modules/custom/citius_content/src/Hook/SessionView.php:99
+msgid "Actions"
+msgstr "Acciones"
+
+#: modules/custom/citius_content/src/Hook/SessionView.php:219
+msgid "Show"
+msgstr "Mostrar"
+
+#: modules/custom/citius_content/src/Hook/SessionView.php:240
+msgid "Repetition"
+msgstr "Repetición"
+
+#: modules/custom/citius_content/src/Hook/SessionView.php:241
+msgid "Head <span>(X, Z, Y Value)</span>"
+msgstr "Cabeza <span>(Valor X, Z, Y )</span>"
+
+#: modules/custom/citius_content/src/Hook/SessionView.php:242
+msgid "Left arm <span>(X, Z, Y Value)</span>"
+msgstr "Brazo izquierdo <span>(Valor X, Z, Y )</span>"
+
+#: modules/custom/citius_content/src/Hook/SessionView.php:243
+msgid "Right arm <span>(X, Z, Y Value)</span>"
+msgstr "Brazo derecho <span>(Valor X, Z, Y )</span>"
+
+#: modules/custom/citius_content/src/Hook/SessionView.php:244
+msgid "Result"
+msgstr "Resultado"
+
+#: modules/custom/citius_content/src/Hook/SessionView.php:255
+msgid "Success"
+msgstr "Éxito"
+
+#: modules/custom/citius_content/src/Hook/SessionView.php:255
+msgid "Failure"
+msgstr "Fracaso"
+
+#: modules/custom/citius_content/src/Hook/SessionView.php:283
+msgid "Start"
+msgstr "Iniciar"
+
+#: modules/custom/citius_content/src/Hook/SessionView.php:284
+msgid "Pause"
+msgstr "Pausar"
+
+#: modules/custom/citius_content/src/Hook/SessionView.php:285
+msgid "Restart"
+msgstr "Reiniciar "
+
+#: modules/custom/citius_content/src/Hook/SessionView.php:286
+msgid "Stop"
+msgstr "Detener"
+
+#: modules/custom/citius_content/src/Plugin/Validation/Constraint/CifFieldConstraint.php:14
+msgid "CIF field constraint"
+msgstr "Restricción de campo CIF"
+
+#: modules/custom/citius_content/src/Plugin/Validation/Constraint/CifFieldConstraint.php:23
+msgid "\"%value\" is not a valid CIF."
+msgstr "\"%value\" no es un CIF válido."
+
+#: modules/custom/citius_content/src/Plugin/Validation/Constraint/UniqueBundleFieldConstraint.php:14
+msgid "Unique field across bundle"
+msgstr "Campo único en todo el bundle"
+
+#: modules/custom/citius_content/src/Plugin/Validation/Constraint/UniqueBundleFieldConstraint.php:23
+msgid "A @entity_type with @field_name %value already exists."
+msgstr "Ya existe un @entity_type con @field_name %value."
+
+#: modules/custom/citius_content/src/Plugin/Validation/Constraint/UniqueNodeTitleConstraint.php:14
+msgid "Unique node title"
+msgstr "Título de nodo único"
+
+#: modules/custom/citius_content/src/Plugin/Validation/Constraint/UniqueNodeTitleConstraint.php:23
+msgid "Node with this title already exists."
+msgstr "Ya existe un nodo con este título."
+

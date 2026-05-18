@@ -1,0 +1,22 @@
+uuid: 0ece674a-dbd8-4ef8-a780-1625ec2fa8a0
+langcode: es
+status: true
+dependencies:
+  module:
+    - node
+id: routine
+label: Rutina
+type: 'canonical_entities:node'
+pattern: '/rutinas/[node:title]'
+selection_criteria:
+  e7abd1b0-c60e-4c1d-a659-dcea06706a50:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: e7abd1b0-c60e-4c1d-a659-dcea06706a50
+    context_mapping:
+      node: node
+    bundles:
+      routine: routine
+selection_logic: and
+weight: -5
+relationships: {  }

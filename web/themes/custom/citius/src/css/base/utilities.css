@@ -1,0 +1,145 @@
+/* ==========================================================================
+	UTILITIES
+	===========================================================================
+	Project: Citius Theme
+	File: utilities.css
+	Description: Common utility classes for spacing, layout, and text.
+	========================================================================== */
+
+/* =========================
+	DISPLAY UTILS
+	========================= */
+.d-block { display: block !important; }
+.d-inline-block { display: inline-block !important; }
+.d-inline { display: inline !important; }
+.d-flex { display: flex !important; }
+.d-grid { display: grid !important; }
+
+/* =========================
+	SPACING UTILS
+	========================= */
+/* Margin */
+.m-0    { margin: 0 !important; }
+.mt-0   { margin-top: 0 !important; }
+.mb-0   { margin-bottom: 0 !important; }
+.ml-0   { margin-left: 0 !important; }
+.mr-0   { margin-right: 0 !important; }
+
+/* Padding */
+.p-0    { padding: 0 !important; }
+.pt-0   { padding-top: 0 !important; }
+.pb-0   { padding-bottom: 0 !important; }
+.pl-0   { padding-left: 0 !important; }
+.pr-0   { padding-right: 0 !important; }
+
+/* =========================
+	TEXT UTILS
+	========================= */
+.text-center { text-align: center !important; }
+.text-left   { text-align: left !important; }
+.text-right  { text-align: right !important; }
+
+.text-bold   { font-weight: bold !important; }
+.text-italic { font-style: italic !important; }
+
+/* =========================
+	COLOR UTILS
+	========================= */
+.text-primary     { color: var(--c-neutral-black) !important; }
+.text-secondary   { color: var(--c-neutral-light) !important; }
+.text-alternate   { color: var(--c-neutral-white) !important; }
+.text-success   { color: var(--c-system-success-green) !important; }
+.text-error   { color: var(--c-system-error-red) !important; }
+
+.bg-error   { background-color: var(--c-system-error-red-light) !important; }
+.bg-primary     { background-color: var(--c-neutral-white) !important; }
+.bg-secondary   { background-color: var(--c-neutral-lightest) !important; }
+.bg-tertiary   { background-color: var(--c-neutral) !important; }
+.bg-alternate   { background-color: var(--c-neutral-black) !important; }
+.bg-success   { background-color: var(--c-system-success-green-light) !important; }
+.bg-error   { background-color: var(--c-system-error-red-light) !important; }
+
+.border-primary     { border-color: var(--c-neutral-black) !important; }
+.border-secondary   { border-color: var(--c-neutral-light) !important; }
+.border-tertiary   { border-color: var(--c-neutral-dark) !important; }
+.border-alternate   { border-color: var(--c-neutral-white) !important; }
+.border-success   { border-color: var(--c-system-success-green) !important; }
+.border-error   { border-color: var(--c-system-error-red) !important; }
+
+/* =========================
+	MISC UTILS
+	========================= */
+.hidden    { display: none !important; }
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.container { max-width: 100%; margin: 0 auto; padding-inline: var(--spacing-md);}
+
+@media screen and (min-width: 640px) {
+	.container { max-width: var(--breakpoint-sm); }
+}
+
+@media screen and (min-width: 768px) {
+	.container { max-width: var(--breakpoint-md); }
+}
+
+@media screen and (min-width: 1024px) {
+	.container { max-width: var(--breakpoint-lg); }
+}
+
+@media screen and (min-width: 1280px) {
+	.container { max-width: var(--breakpoint-xl); }
+}
+
+@media screen and (min-width: 1536px) {
+	.container { max-width: var(--breakpoint-2xl); }
+}
+
+/* =========================
+	ANIMATION UTILS
+	========================= */
+@keyframes fadeInAnimation {
+	0% { opacity: 0; transform: scale(.98); }
+	12% { opacity: 0; transform: scale(.98); }
+	100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fadeInWithHeightAnimation {
+	0% { opacity: 0; transform: scale(.98); max-height: 0; }
+	12% { opacity: 0; transform: scale(.98); }
+	100% { opacity: 1; transform: scale(1); max-height: 150px; }
+}
+
+@keyframes fadeInTopAnimation {
+	0% { opacity: 0; transform: translateY(-30px) scale(.98); }
+	12% { opacity: 0; transform: translateY(-30px) scale(.98); }
+	100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.animate-fadeIn {
+	animation: var(--animate-fadeIn);
+}
+
+.animate-fadeInWithHeight {
+	animation: var(--animate-fadeInWithHeight);
+}
+
+.animate-fadeInSlow {
+  animation: var(--animate-fadeInSlow);
+}
+
+.animate-fadeInTop {
+	animation: var(--animate-fadeInTop);
+}
+
+.animate-fadeInTopSlow {
+	animation: var(--animate-fadeInTopSlow);
+}

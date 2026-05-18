@@ -1,0 +1,20 @@
+uuid: 8cefc3c7-a273-4086-9c9f-3632236505d0
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_gdpr_date
+  module:
+    - user
+id: user.user.field_gdpr_date
+field_name: field_gdpr_date
+entity_type: user
+bundle: user
+label: 'Fecha de aplicación de la GDPR'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: timestamp

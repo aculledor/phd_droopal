@@ -1,0 +1,8 @@
+.component-video {
+  text-align: center;
+}
+.component-video iframe {
+  aspect-ratio: 16/9;
+  height: auto;
+  width: 80%;
+}

@@ -1,0 +1,37 @@
+uuid: 0ddfc1ae-68f4-4292-8ca7-a93da52d25d5
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.exercise_type.field_code
+    - taxonomy.vocabulary.exercise_type
+  module:
+    - sdc_display
+third_party_settings:
+  sdc_display:
+    enabled: false
+    component:
+      machine_name: ''
+    mappings:
+      static:
+        props: {  }
+        slots: {  }
+      dynamic:
+        props: {  }
+        slots: {  }
+id: taxonomy_term.exercise_type.default
+targetEntityType: taxonomy_term
+bundle: exercise_type
+mode: default
+content:
+  field_code:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  description: true
+  langcode: true

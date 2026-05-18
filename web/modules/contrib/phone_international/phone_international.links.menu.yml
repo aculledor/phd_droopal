@@ -1,0 +1,6 @@
+phone_international.settings:
+  title: 'Phone international settings'
+  parent: system.admin_config_system
+  description: 'Configure settings for all phone international fields.'
+  route_name: phone_international.settings
+  weight: 50

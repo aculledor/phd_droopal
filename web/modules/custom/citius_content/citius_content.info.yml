@@ -1,0 +1,8 @@
+name: 'Content'
+type: module
+description: 'Additional functionalities related to content.'
+package: CITIUS
+core_version_requirement: ^10 || ^11
+
+'interface translation project': citius_content
+'interface translation server pattern': modules/custom/citius_content/translations/%language.po

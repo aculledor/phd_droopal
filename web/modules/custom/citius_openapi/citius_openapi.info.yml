@@ -1,0 +1,8 @@
+name: 'OpenAPI'
+type: module
+description: 'Provides OpenAPI documentation for REST endpoints.'
+package: CITIUS
+core_version_requirement: ^11
+dependencies:
+  - citius_device_api:citius_device_api
+  - openapi:openapi

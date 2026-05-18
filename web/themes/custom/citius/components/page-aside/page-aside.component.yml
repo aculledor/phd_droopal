@@ -1,0 +1,14 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata-full.schema.json
+name: Page Aside
+status: experimental
+description: 'Component for the page aside.'
+props:
+  type: object
+  properties:
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      description: 'HTML attributes for the aside component.'
+slots:
+  page_inner_aside:
+    title: Page Inner Aside
+    description: 'The main contents of the aside.'

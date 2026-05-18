@@ -1,0 +1,28 @@
+citius_user.users:
+  title: Users
+  route_name: <nolink>
+  menu_name: main
+  weight: 3
+
+citius_user.add_user:
+  title: New user
+  route_name: citius_user.add_user
+  parent: citius_user.users
+  weight: 1
+  route_parameters:
+    role: user
+
+
+citius_user.add_patient:
+  title: New patient
+  route_name: citius_user.add_user
+  parent: citius_user.users
+  weight: 3
+  route_parameters:
+    role: patient
+
+citius_user.logout:
+  title: Disconnect
+  route_name: user.logout
+  menu_name: main
+  weight: 100

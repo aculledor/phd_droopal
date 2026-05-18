@@ -1,0 +1,18 @@
+uuid: d52dbac3-6865-4c91-a825-d4fbdb7d4b06
+langcode: es
+status: true
+dependencies:
+  content:
+    - 'file:file:0f6e1da5-d369-4d50-a39a-3e779aa553e9'
+  module:
+    - custom_paragraphs_extras
+_core:
+  default_config_hash: I9aAn0G19H175JqPc-rygfsct1SU8lLG6pfuD1xJsy4
+id: text
+label: Texto
+icon_uuid: 0f6e1da5-d369-4d50-a39a-3e779aa553e9
+icon_default: 'data:image/svg+xml;base64,PHN2ZyBpZD0iZTU5NGE1YzctNmE5ZS00OTZkLTk1OTQtMjBhY2QwZjk2ZDE4IiBkYXRhLW5hbWU9IkNhcGEgMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMy44MSIgeT0iNSIgd2lkdGg9IjI1IiBoZWlnaHQ9IjQiLz48cmVjdCB4PSIzLjgxIiB5PSIxNCIgd2lkdGg9IjI1IiBoZWlnaHQ9IjQiLz48cmVjdCB4PSIzLjgxIiB5PSIyMyIgd2lkdGg9IjI1IiBoZWlnaHQ9IjQiLz48L3N2Zz4='
+description: ''
+behavior_plugins:
+  custom_background_color_behavior:
+    enabled: true

@@ -1,0 +1,218 @@
+# $Id$
+#
+# LANGUAGE translation of Drupal (general)
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+# Generated from files:
+#  modules/custom/citius_device_api/citius_device_api.info.yml: n/a
+#  modules/custom/citius_device_api/citius_device_api.links.action.yml: n/a
+#  modules/custom/citius_device_api/citius_device_api.links.menu.yml: n/a
+#  modules/custom/citius_device_api/src/Entity/Execution.php: n/a
+#  modules/custom/citius_device_api/citius_device_api.permissions.yml: n/a
+#  modules/custom/citius_device_api/src/Entity/Handler/ExecutionListBuilder.php: n/a
+#  modules/custom/citius_device_api/src/Plugin/rest/resource/ExerciseResource.php: n/a
+#  modules/custom/citius_device_api/src/Form/ExecutionForm.php: n/a
+#  modules/custom/citius_device_api/src/Hook/DeviceNodeFormAlter.php: n/a
+#  modules/custom/citius_device_api/src/Plugin/Validation/Constraint/ExecutionParagraphConstraint.php: n/a
+#  modules/custom/citius_device_api/src/Plugin/rest/resource/AuthorizeGlasses.php: n/a
+#  modules/custom/citius_device_api/src/Plugin/rest/resource/GlassesResource.php: n/a
+#  modules/custom/citius_device_api/src/Plugin/rest/resource/RegisterGlasses.php: n/a
+#  modules/custom/citius_device_api/src/Plugin/rest/resource/SessionResultsResource.php: n/a
+#  modules/custom/citius_device_api/src/Plugin/rest/resource/SessionStatusResource.php: n/a
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2025-11-11 13:21+0100\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: modules/custom/citius_device_api/citius_device_api.info.yml:0
+msgid "Device API"
+msgstr "API de Dispositivo"
+
+#: modules/custom/citius_device_api/citius_device_api.info.yml:0
+msgid "Provides API endpoints."
+msgstr "Fornece endpoints de API."
+
+#: modules/custom/citius_device_api/citius_device_api.info.yml:0
+msgid "CITIUS"
+msgstr "CITIUS"
+
+#: modules/custom/citius_device_api/citius_device_api.links.action.yml:0
+msgid "Add execution"
+msgstr "Adicionar execução"
+
+#: modules/custom/citius_device_api/citius_device_api.links.menu.yml:0 modules/custom/citius_device_api/src/Entity/Execution.php:31
+msgid "Executions"
+msgstr "Execuções"
+
+#: modules/custom/citius_device_api/citius_device_api.links.menu.yml:0
+msgid "List of executions."
+msgstr "Lista de execuções."
+
+#: modules/custom/citius_device_api/citius_device_api.permissions.yml:0
+msgid "Administer executions"
+msgstr "Administrar execuções"
+
+#: modules/custom/citius_device_api/src/Entity/Execution.php:79 modules/custom/citius_device_api/src/Entity/Handler/ExecutionListBuilder.php:20
+msgid "Session"
+msgstr "Sessão"
+
+#: modules/custom/citius_device_api/src/Entity/Execution.php:101 modules/custom/citius_device_api/src/Plugin/rest/resource/ExerciseResource.php:21
+msgid "Exercise"
+msgstr "Exercício"
+
+#: modules/custom/citius_device_api/src/Entity/Execution.php:124
+msgid "Result"
+msgstr "Resultado"
+
+#: modules/custom/citius_device_api/src/Entity/Execution.php:141
+msgid "Execution Date"
+msgstr "Data da Execução"
+
+#: modules/custom/citius_device_api/src/Entity/Execution.php:156
+msgid "Execution Data"
+msgstr "Dados da Execução"
+
+#: modules/custom/citius_device_api/src/Entity/Execution.php:171 modules/custom/citius_device_api/src/Form/ExecutionForm.php:21
+msgid "Head"
+msgstr "Cabeça"
+
+#: modules/custom/citius_device_api/src/Entity/Execution.php:172
+msgid "Left"
+msgstr "Esquerda"
+
+#: modules/custom/citius_device_api/src/Entity/Execution.php:173
+msgid "Right"
+msgstr "Direita"
+
+#: modules/custom/citius_device_api/src/Entity/Execution.php:181
+msgid "@direction @coordinate"
+msgstr "@direction @coordinate"
+
+#: modules/custom/citius_device_api/src/Entity/Execution.php:211
+msgid "Success"
+msgstr "Sucesso"
+
+#: modules/custom/citius_device_api/src/Entity/Execution.php:212
+msgid "Failure"
+msgstr "Falha"
+
+#: modules/custom/citius_device_api/src/Entity/Execution.php:213
+msgid "Missed"
+msgstr "Perdido"
+
+#: modules/custom/citius_device_api/src/Entity/Execution.php:30
+msgid "Execution"
+msgstr "Execução"
+
+#: modules/custom/citius_device_api/src/Entity/Execution.php:32
+msgid "execution"
+msgstr "execução"
+
+#: modules/custom/citius_device_api/src/Entity/Execution.php:33
+msgid "executions"
+msgstr "execuções"
+
+#: modules/custom/citius_device_api/src/Entity/Handler/ExecutionListBuilder.php:19
+msgid "ID"
+msgstr "ID"
+
+#: modules/custom/citius_device_api/src/Entity/Handler/ExecutionListBuilder.php:21
+msgid "Execution date"
+msgstr "Data da execução"
+
+#: modules/custom/citius_device_api/src/Form/ExecutionForm.php:22
+msgid "Left controller"
+msgstr "Controlador esquerdo"
+
+#: modules/custom/citius_device_api/src/Form/ExecutionForm.php:23
+msgid "Right controller"
+msgstr "Controlador direito"
+
+#: modules/custom/citius_device_api/src/Form/ExecutionForm.php:53
+msgid "View"
+msgstr "Ver"
+
+#: modules/custom/citius_device_api/src/Form/ExecutionForm.php:58;59
+msgid "New execution %label has been created."
+msgstr "A nova execução %label foi criada."
+
+#: modules/custom/citius_device_api/src/Form/ExecutionForm.php:63;64
+msgid "The execution %label has been updated."
+msgstr "A execução %label foi atualizada."
+
+#: modules/custom/citius_device_api/src/Hook/DeviceNodeFormAlter.php:39
+msgid "Other device is being created. Close other tabs with this form to create a new device. If it does not work, wait a few minutes and try again."
+msgstr "Outro dispositivo está a ser criado. Feche outras abas com este formulário para criar um novo dispositivo. Se não funcionar, espere alguns minutos e tente novamente."
+
+#: modules/custom/citius_device_api/src/Hook/DeviceNodeFormAlter.php:93
+msgid "Device ID manager is not active."
+msgstr "O gestor de ID do dispositivo não está ativo."
+
+#: modules/custom/citius_device_api/src/Hook/DeviceNodeFormAlter.php:94
+msgid "Device ID is already claimed."
+msgstr "O ID do dispositivo já está reivindicado."
+
+#: modules/custom/citius_device_api/src/Hook/DeviceNodeFormAlter.php:95
+msgid "Device ID is not claimed yet."
+msgstr "O ID do dispositivo ainda não foi reivindicado."
+
+#: modules/custom/citius_device_api/src/Hook/DeviceNodeFormAlter.php:96
+msgid "Device ID manager is already active."
+msgstr "O gestor de ID do dispositivo já está ativo."
+
+#: modules/custom/citius_device_api/src/Plugin/Validation/Constraint/ExecutionParagraphConstraint.php:16
+msgid "Exercise paragraphs"
+msgstr "Parágrafos de exercício"
+
+#: modules/custom/citius_device_api/src/Plugin/Validation/Constraint/ExecutionParagraphConstraint.php:25
+msgid "Paragraph does not belong to specified session."
+msgstr "O parágrafo não pertence à sessão especificada."
+
+#: modules/custom/citius_device_api/src/Plugin/Validation/Constraint/ExecutionParagraphConstraint.php:32
+msgid "Paragraph field cannot be empty."
+msgstr "O campo do parágrafo não pode estar vazio."
+
+#: modules/custom/citius_device_api/src/Plugin/Validation/Constraint/ExecutionParagraphConstraint.php:39
+msgid "Paragraph bundle is not valid for this field."
+msgstr "O bundle do parágrafo não é válido para este campo."
+
+#: modules/custom/citius_device_api/src/Plugin/Validation/Constraint/ExecutionParagraphConstraint.php:46
+msgid "Session bundle is not valid for this session."
+msgstr "O bundle da sessão não é válido para esta sessão."
+
+#: modules/custom/citius_device_api/src/Plugin/rest/resource/AuthorizeGlasses.php:26
+msgid "Authorize glasses"
+msgstr "Autorizar óculos"
+
+#: modules/custom/citius_device_api/src/Plugin/rest/resource/GlassesResource.php:27
+msgid "Glass sessions"
+msgstr "Sessões dos óculos"
+
+#: modules/custom/citius_device_api/src/Plugin/rest/resource/RegisterGlasses.php:21
+msgid "Register glasses"
+msgstr "Registar óculos"
+
+#: modules/custom/citius_device_api/src/Plugin/rest/resource/SessionResultsResource.php:27
+msgid "Session results"
+msgstr "Resultados da sessão"
+
+#: modules/custom/citius_device_api/src/Plugin/rest/resource/SessionStatusResource.php:107
+msgid "Failed to connect to glasses device."
+msgstr "Falha ao ligar ao dispositivo dos óculos."
+
+#: modules/custom/citius_device_api/src/Plugin/rest/resource/SessionStatusResource.php:111
+msgid "Device endpoint is not configured."
+msgstr "O endpoint do dispositivo não está configurado."
+
+#: modules/custom/citius_device_api/src/Plugin/rest/resource/SessionStatusResource.php:26
+msgid "Session status"
+msgstr "Estado da sessão"
+

@@ -1,0 +1,20 @@
+/** Select Center Form styles **/
+.citius-user-select-center {
+  display: flex;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+  align-items: end;
+
+  .form-actions {
+    margin-bottom: var(--spacing-md);
+  }
+}
+
+.page__user__select-center {
+  #block-citius-page-title {
+    background: none;
+    border-bottom: 0;
+    width: 720px;
+    max-width: 100%;
+  }
+}

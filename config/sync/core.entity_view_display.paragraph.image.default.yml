@@ -1,0 +1,140 @@
+uuid: fee89e81-6aa1-424b-ad66-f8d620387b18
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.image.field_image_caption
+    - field.field.paragraph.image.field_image_link
+    - field.field.paragraph.image.field_media_image
+    - field.field.paragraph.image.field_title
+    - paragraphs.paragraphs_type.image
+  module:
+    - field_group
+    - link
+    - media_responsive_thumbnail
+    - nomarkup
+    - sdc_display
+third_party_settings:
+  field_group:
+    group_image:
+      children:
+        - field_media_image
+        - field_image_caption
+        - field_image_link
+      label: Imagen
+      parent_name: ''
+      region: content
+      weight: 1
+      format_type: sdc_display
+      format_settings:
+        sdc_field_group:
+          component:
+            machine_name: 'custom_components:image'
+            show_deprecated: 0
+          mappings:
+            static:
+              props:
+                image: ''
+                caption: ''
+                link: ''
+            dynamic:
+              props:
+                image: field_media_image
+                caption: field_image_caption
+                link: field_image_link
+        id: ''
+        classes: ''
+        show_empty_fields: 0
+        label_as_html: 0
+  sdc_display:
+    enabled: false
+    component:
+      machine_name: ''
+    mappings:
+      static:
+        props: {  }
+        slots: {  }
+      dynamic:
+        props: {  }
+        slots: {  }
+_core:
+  default_config_hash: _-4qchWz_e_MwyC1MsurPCcwCC3uxKbypEzpq4HPFNM
+id: paragraph.image.default
+targetEntityType: paragraph
+bundle: image
+mode: default
+content:
+  field_image_caption:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_image_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: true
+      url_plain: true
+      rel: '0'
+      target: '0'
+    third_party_settings:
+      nomarkup:
+        enabled: true
+        separator: '|'
+        referenced_entity: ''
+      sdc_display:
+        enabled: 0
+        component:
+          machine_name: null
+          show_deprecated: 0
+    weight: 4
+    region: content
+  field_media_image:
+    type: media_responsive_thumbnail
+    label: hidden
+    settings:
+      responsive_image_style: inner
+      image_link: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings:
+      nomarkup:
+        enabled: true
+        separator: '|'
+        referenced_entity: ''
+      sdc_display:
+        enabled: 0
+        component:
+          machine_name: null
+          show_deprecated: 0
+    weight: 2
+    region: content
+  field_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      nomarkup:
+        enabled: true
+        separator: '|'
+        referenced_entity: ''
+      sdc_display:
+        enabled: '1'
+        component:
+          machine_name: 'custom_components:title'
+          show_deprecated: 0
+        mappings:
+          static:
+            props:
+              text: ''
+              html_tag: h2
+          dynamic:
+            mapped: text
+    weight: 0
+    region: content
+hidden: {  }

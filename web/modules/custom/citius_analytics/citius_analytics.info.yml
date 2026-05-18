@@ -1,0 +1,11 @@
+name: 'Analytics'
+type: module
+description: 'Functionality related to analytics'
+package: CITIUS
+core_version_requirement: ^11
+dependencies:
+  - citius_content:citius_content
+  - citius_device_api:citius_device_api
+
+'interface translation project': citius_analytics
+'interface translation server pattern': modules/custom/citius_analytics/translations/%language.po

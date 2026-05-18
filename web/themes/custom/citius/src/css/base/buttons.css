@@ -1,0 +1,183 @@
+/* ==========================================================================
+   BUTTONS
+   ===========================================================================
+   Project: Citius Theme
+   File: buttons.css
+   Description: Defines button styling.
+   ========================================================================== */
+:root {
+  --c-btn-color: var(--c-neutral-black);
+  --c-btn-color-hover: var(--c-neutral-dark);
+  --c-btn-text-color: var(--c-neutral-white);
+}
+
+.button--secondary {
+  --c-btn-color: var(--c-neutral-lighter);
+  --c-btn-color-hover: var(--c-neutral-light);
+  --c-btn-text-color: var(--c-neutral-black);
+}
+
+.button--danger {
+  --c-btn-color: var(--c-system-error-red);
+  --c-btn-color-hover: var(--c-system-error-red-lighter);
+}
+
+a.button {
+  text-decoration: none;
+  text-align: center;
+  line-height: 1.75;
+}
+
+.button--outline {
+  --c-btn-color: transparent;
+  --c-btn-color-hover: var(--c-neutral-black);
+  border-color: var(--c-neutral-black) !important;
+  color: var(--c-neutral-black) !important;
+}
+
+.button--outline:hover {
+  color: var(--c-neutral-white) !important;
+}
+
+.ui-dialog.media-library-widget-modal button[data-drupal-selector],
+.dialog-off-canvas-main-canvas button[data-drupal-selector],
+.dialog-off-canvas-main-canvas .button[data-drupal-selector] {
+  width: 12rem;
+  max-width: 100%;
+  min-height: 3rem;
+  cursor: pointer;
+  font-weight: var(--fw-md);
+  background-color: var(--c-btn-color);
+  color: var(--c-btn-text-color);
+  border: 1px solid var(--c-btn-color);
+  padding: var(--spacing-sm) var(--spacing-md);
+}
+
+.ui-dialog.media-library-widget-modal button[data-drupal-selector]:hover,
+.dialog-off-canvas-main-canvas button[data-drupal-selector]:not(.button--small):not(.button--extrasmall):hover,
+.dialog-off-canvas-main-canvas .button[data-drupal-selector]:not(.button--small):not(.button--extrasmall):hover {
+  background-color: var(--c-btn-color-hover);
+}
+
+.ui-dialog.media-library-widget-modal button[data-drupal-selector]:focus,
+.dialog-off-canvas-main-canvas button[data-drupal-selector]:focus,
+.dialog-off-canvas-main-canvas .button[data-drupal-selector]:focus {
+  --ring-color: var(--c-brand-black);
+  --ring-offset-width: 2px;
+  --ring-offset-shadow: 0 0 0 var(--ring-offset-width) var(--ring-offset-color);
+  --ring-shadow: 0 0 0 calc(2px + var(--ring-offset-width)) var(--ring-color, currentcolor);
+  background-color: var(--c-btn-color-hover);
+  box-shadow: var(--inset-shadow), var(--inset-ring-shadow), var(--ring-offset-shadow), var(--ring-shadow), var(--shadow);
+  outline: none;
+}
+
+.button--icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:before {
+    content: '';
+    margin-right: var(--spacing-md);
+    width: 1.5rem;
+    height: 1.5rem;
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+
+  &:not(.button--secondary):before {
+    filter: brightness(0) invert(1);
+  }
+}
+
+.button--icon-arrow-right:before {
+  background-image: url('../../../templates/svg/icons/arrows/arrow-right.svg');
+}
+
+.button--icon-remove:before {
+  background-image: url('../../../templates/svg/icons/interface/remove.svg');
+}
+
+.button--icon-reset:before {
+  background-image: url('../../../templates/svg/icons/interface/clear.svg');
+}
+
+.button--icon-search:before {
+  background-image: url('../../../templates/svg/icons/interface/search.svg');
+}
+
+.button--only-icon {
+  --c-btn-color: transparent;
+  padding: 0 !important;
+  width: 1.75rem !important;
+  height: 1.75rem;
+  min-height: 1.75rem !important;
+  border: none;
+  font-size: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  &:before {
+    content: '';
+    width: 1.5rem;
+    height: 1.5rem;
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: .75rem;
+  }
+
+  &:not(.button--small):not(.button--extrasmall):hover,
+  &:not(.button--small):not(.button--extrasmall):focus,
+  &:not(.button--small):not(.button--extrasmall).active {
+    background-color: var(--c-btn-color-hover);
+
+    &:before {
+      filter: brightness(0) invert(1);
+    }
+  }
+
+  &.icon-edit:before {
+    background-image: url('../../../templates/svg/icons/communication/edit.svg');
+  }
+
+  &.icon-remove:before {
+    background-image: url('../../../templates/svg/icons/interface/x-circle.svg');
+  }
+
+  &.icon-duplicate:before {
+    background-image: url('../../../templates/svg/icons/interface/copy.svg');
+  }
+
+  &.icon-eye:before {
+    background-image: url('../../../templates/svg/icons/interface/eye.svg');
+  }
+
+  &.icon-eye-cross:before {
+    background-image: url('../../../templates/svg/icons/interface/eye-cross.svg');
+  }
+
+  &.icon-finish:before {
+    background-image: url('../../../templates/svg/icons/controls/finish.svg');
+  }
+
+  &.icon-start:before {
+    background-image: url('../../../templates/svg/icons/controls/play.svg');
+  }
+
+  &.icon-stop:before {
+    background-image: url('../../../templates/svg/icons/controls/stop.svg');
+  }
+
+  &.icon-pause:before {
+    background-image: url('../../../templates/svg/icons/controls/pause.svg');
+  }
+
+  &.icon-restart:before {
+    background-image: url('../../../templates/svg/icons/controls/restart.svg');
+  }
+}

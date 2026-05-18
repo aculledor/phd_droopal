@@ -1,0 +1,6 @@
+services:
+  custom_common_features.helper:
+    class: Drupal\custom_common_features\Service\AliasHelper
+    arguments:
+      - '@logger.factory'
+      - '@path_alias.repository'
