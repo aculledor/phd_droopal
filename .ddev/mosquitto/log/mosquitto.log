@@ -20,3 +20,7 @@ To fix this, use `chmod 0700 /mosquitto/config/passwords`.
 1779086978: mosquitto version 2.1.2 running
 1779086979: New connection from 172.19.0.5:55716 on port 1883.
 1779086979: New client connected from 172.19.0.5:55716 as mqttjs_f8086d2b (p4, c1, k60, u'vr_device').
+1779087699: New connection from 172.19.0.1:33452 on port 9001.
+1779087699: New client connected from 172.19.0.1:33452 as vr-python-5a5da42033b41272808e73f1df0343e4 (p4, c1, k60, u'vr_device').
+1779088518: Client vr-python-5a5da42033b41272808e73f1df0343e4 [172.19.0.1:33452] disconnected.
+1779088778: Saving in-memory database to /mosquitto/data//mosquitto.db.
