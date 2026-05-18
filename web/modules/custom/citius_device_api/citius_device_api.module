@@ -1,0 +1,15 @@
+<?php
+
+/**
+ * @file
+ * Hooks for the citius_device_api module.
+ */
+
+use Drupal\citius_device_api\DeviceHeartbeatManager;
+
+/**
+ * Implements hook_cron().
+ */
+function citius_device_api_cron(): void {
+  \Drupal::service(DeviceHeartbeatManager::class)->markStaleDevicesInactive();
+}

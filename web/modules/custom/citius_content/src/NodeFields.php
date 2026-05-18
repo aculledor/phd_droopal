@@ -31,6 +31,8 @@ final class NodeFields {
 
   public const string SESSION_STATE = 'field_session_state';
 
+  public const string STATE = 'field_state';
+
   public const string TYPE = 'field_type';
 
 }
