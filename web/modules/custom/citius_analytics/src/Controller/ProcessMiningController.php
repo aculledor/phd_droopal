@@ -10,6 +10,7 @@ use Drupal\Core\Database\Connection;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Drupal\citius_analytics\Form\ProcessMiningFilterForm;
 
 final class ProcessMiningController extends ControllerBase {
   public function __construct(
@@ -29,21 +30,41 @@ final class ProcessMiningController extends ControllerBase {
   public function page(Request $request): array {
     $filters = $this->getFilters($request);
     $patterns = $this->buildPatterns($filters);
+
     $rows = [];
     foreach ($patterns as $pattern) {
-      $rows[] = ['data' => [(string) $pattern['length'], implode(' → ', $pattern['items']), (string) $pattern['count'], (string) count($pattern['sessions'])]];
+      $rows[] = [
+        'data' => [
+          (string) $pattern['length'],
+          implode(' → ', $pattern['items']),
+          (string) $pattern['count'],
+          (string) count($pattern['sessions']),
+        ],
+      ];
     }
 
     return [
-      'filters' => $this->buildFilterForm($filters),
+      '#cache' => [
+        'max-age' => 0,
+      ],
+      '#attached' => [
+        'library' => ['citius_analytics/process_mining'],
+      ],
+      'filters' => $this->formBuilder()->getForm(ProcessMiningFilterForm::class),
       'result' => [
         '#type' => 'table',
-        '#header' => [$this->t('Longitud'), $this->t('Subtraza'), $this->t('Frecuencia absoluta'), $this->t('Sesiones únicas')],
+        '#header' => [
+          $this->t('Longitud'),
+          $this->t('Subtraza'),
+          $this->t('Frecuencia absoluta'),
+          $this->t('Sesiones únicas'),
+        ],
         '#rows' => $rows,
         '#empty' => $this->t('No se encontraron subtrazas con los filtros seleccionados.'),
       ],
     ];
   }
+  
 
   private function getFilters(Request $request): array {
     return [
@@ -52,42 +73,6 @@ final class ProcessMiningController extends ControllerBase {
       'date_end' => (string) $request->query->get('date_end', ''),
       'subtrace_length' => (string) $request->query->get('subtrace_length', ''),
       'intensity' => (string) $request->query->get('intensity', ''),
-    ];
-  }
-
-  private function buildFilterForm(array $filters): array {
-    $length_options = array_combine(range(3, 10), range(3, 10));
-    $empty_option = $this->t('- Seleccionar -');
-
-    return [
-      '#type' => 'container',
-      '#prefix' => '<form method="get">',
-      '#suffix' => '</form>',
-      '#attributes' => ['class' => ['citius-process-mining-form']],
-      '#attached' => [
-        'library' => ['citius_analytics/process_mining'],
-      ],
-      'row_1' => [
-        '#type' => 'container',
-        '#attributes' => ['class' => ['form-row']],
-        'patient' => ['#type' => 'select', '#name' => 'patient', '#title' => $this->t('Paciente'), '#options' => $this->filterOptionsRepository->getPatientOptions(), '#empty_option' => $empty_option, '#default_value' => $filters['patient'] !== '' ? $filters['patient'] : NULL],
-        'subtrace_length' => ['#type' => 'select', '#name' => 'subtrace_length', '#title' => $this->t('Número de elementos en la subtraza'), '#options' => $length_options, '#empty_option' => $empty_option, '#default_value' => $filters['subtrace_length'] !== '' ? $filters['subtrace_length'] : NULL],
-        'intensity' => ['#type' => 'select', '#name' => 'intensity', '#title' => $this->t('Intensidad'), '#options' => $this->filterOptionsRepository->getIntensityOptions(), '#empty_option' => $empty_option, '#default_value' => $filters['intensity'] !== '' ? $filters['intensity'] : NULL],
-      ],
-      'row_2' => [
-        '#type' => 'container',
-        '#attributes' => ['class' => ['form-row', 'form-row--dates']],
-        'date_start' => ['#type' => 'date', '#name' => 'date_start', '#title' => $this->t('Fecha desde'), '#default_value' => $filters['date_start']],
-        'date_end' => ['#type' => 'date', '#name' => 'date_end', '#title' => $this->t('Fecha hasta'), '#default_value' => $filters['date_end']],
-        'actions' => [
-          '#type' => 'actions',
-          'submit' => [
-            '#type' => 'submit',
-            '#value' => $this->t('Buscar'),
-            '#attributes' => ['class' => ['button', 'button--primary'], 'type' => 'submit', 'name' => 'op'],
-          ],
-        ],
-      ],
     ];
   }
 
