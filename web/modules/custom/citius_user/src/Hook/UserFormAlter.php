@@ -35,6 +35,7 @@ class UserFormAlter {
     UserFields::CENTER => 5,
     UserFields::LOCATION => 6,
     UserFields::ROLES => 7,
+    UserFields::HEIGHT => 10.5,
     'notify' => 50,
   ];
 
