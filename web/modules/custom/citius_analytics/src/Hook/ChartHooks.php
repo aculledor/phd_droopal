@@ -109,7 +109,7 @@ class ChartHooks {
       $this->modifyFilter($form['intensity'], $this->filterOptionsRepository->getIntensityOptions());
     }
 
-    if ($view->id() === 'performance_chart') {
+    if (in_array($view->id(), ['performance_chart', 'executions_chart'], TRUE)) {
       $form['patient'] = [
         '#type' => 'select',
         '#title' => $this->t('Paciente'),
@@ -170,6 +170,8 @@ class ChartHooks {
    * Implements hook_chart_alter().
    */
   #[Hook('chart_performance_chart_performance_chart_alter')]
+  #[Hook('chart_executions_chart_execution_result_alter')]
+  #[Hook('chart_executions_chart_user_execution_alter')]
   public function performanceChartAlter(array &$element): void {
     $request = \Drupal::requestStack()->getCurrentRequest();
     $selected_chart = $request?->query->get('chart_type', 'totals') ?? 'totals';
@@ -222,6 +224,8 @@ class ChartHooks {
    * Implements hook_chart_definition_CHART_ID_alter().
    */
   #[Hook('chart_definition_performance_chart_performance_chart_alter')]
+  #[Hook('chart_definition_executions_chart_execution_result_alter')]
+  #[Hook('chart_definition_executions_chart_user_execution_alter')]
   public function chartDefinitionPerformanceChartAlter(array &$definition, array $element, string $chart_id): void {
     foreach ($definition['data']['datasets'] as $key => $data) {
       $type = $data['type'] ?? '';
