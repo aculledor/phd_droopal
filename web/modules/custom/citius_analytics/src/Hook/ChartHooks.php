@@ -13,6 +13,9 @@ use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\views\Plugin\views\query\Sql;
 use Drupal\views\ViewExecutable;
 use Symfony\Component\HttpFoundation\Request;
+use Drupal\citius_content\NodeBundles;
+use Drupal\citius_content\NodeFields;
+use Drupal\citius_content\ParagraphFields;
 
 /**
  * Hooks related to charts.
@@ -87,42 +90,29 @@ class ChartHooks {
       ExecutionResult::Success->value => array_fill_keys($day_labels, 0),
     ];
 
-    $query = \Drupal::database()->select('execution', 'e');
-    $query->addExpression('DATE(e.execution_date)', 'day');
-    $query->addField('e', 'result', 'result');
-    $query->addExpression('COUNT(*)', 'total');
-    $query->condition('e.execution_date', $from->format('Y-m-d 00:00:00'), '>=');
-    $query->condition('e.execution_date', $to->modify('+1 day')->format('Y-m-d 00:00:00'), '<');
+    $sessions = $this->resolveExecutionSessionIds($request, $from, $to);
 
-    $routine = (int) ($request?->query->get('routine') ?? 0);
-    if ($routine > 0) {
-      $query->condition('e.session', $routine);
-    }
-    $exercise = (int) ($request?->query->get('exercise') ?? 0);
-    if ($exercise > 0) {
-      $query->condition('e.exercise', $exercise);
-    }
-    $patient = (int) ($request?->query->get('patient') ?? 0);
-    if ($patient > 0) {
-      $query->where("JSON_UNQUOTE(JSON_EXTRACT(e.json_data, '$.metadata.user_id')) = :patient", [
-        ':patient' => (string) $patient,
-      ]);
-    }
-    $intensity = $request?->query->get('intensity');
-    if ($intensity !== NULL && $intensity !== '') {
-      $query->join('paragraph__field_intensity', 'pfi', 'pfi.entity_id = e.exercise');
-      $query->condition('pfi.field_intensity_value', (int) $intensity);
-    }
+    if (!empty($sessions)) {
+      $query = \Drupal::database()->select('execution', 'e');
+      $query->addExpression('DATE(e.execution_date)', 'day');
+      $query->addField('e', 'result', 'result');
+      $query->addExpression('COUNT(*)', 'total');
 
-    $query->groupBy('day');
-    $query->groupBy('e.result');
-    $query->orderBy('day', 'ASC');
+      $query->condition('e.execution_date', $from->format('Y-m-d 00:00:00'), '>=');
+      $query->condition('e.execution_date', $to->modify('+1 day')->format('Y-m-d 00:00:00'), '<');
+      $query->condition('e.session', $sessions, 'IN');
 
-    foreach ($query->execute()->fetchAll() as $row) {
-      $day = (string) $row->day;
-      $result = (string) $row->result;
-      if (isset($series[$result][$day])) {
-        $series[$result][$day] = (int) $row->total;
+      $query->groupBy('day');
+      $query->groupBy('e.result');
+      $query->orderBy('day', 'ASC');
+
+      foreach ($query->execute()->fetchAll() as $row) {
+        $day = (string) $row->day;
+        $result = (string) $row->result;
+
+        if (isset($series[$result][$day])) {
+          $series[$result][$day] = (int) $row->total;
+        }
       }
     }
 
@@ -137,29 +127,63 @@ class ChartHooks {
     ];
 
     foreach ($series as $result_key => $values_by_day) {
-      $dataset_key = 'line_' . $result_key;
-      $pairs = [];
-      $index = 0;
-      foreach ($values_by_day as $value) {
-        $pairs[] = [$index, $value];
-        $index++;
-      }
-      $element[$dataset_key] = [
+      $element['line_' . $result_key] = [
         '#type' => 'chart_data',
         '#title' => $labels[$result_key],
         '#chart_type' => 'line',
-        '#data' => $pairs,
+        '#data' => array_values($values_by_day),
+        '#mapped_data' => array_values($values_by_day),
         '#color' => $this->getResultColor($result_key),
       ];
     }
 
     $element['xaxis']['#type'] = 'chart_xaxis';
     $element['xaxis']['#labels'] = $day_labels;
+
     $element['yaxis']['#type'] = 'chart_yaxis';
+
     $element['#raw_options']['options']['plugins']['datalabels']['color'] = Colors::NeutralDarkest->value;
     $element['#raw_options']['options']['plugins']['datalabels']['anchor'] = 'end';
     $element['#raw_options']['options']['plugins']['datalabels']['align'] = 'top';
     $element['#raw_options']['options']['scales']['y']['ticks']['stepSize'] = 1;
+  }
+
+  /**
+   * Resolve session IDs affected by the exposed filters.
+   */
+  protected function resolveExecutionSessionIds(?Request $request, \DateTimeImmutable $from, \DateTimeImmutable $to): array {
+    $query = \Drupal::entityTypeManager()->getStorage('node')->getQuery();
+
+    $query
+      ->accessCheck(FALSE)
+      ->condition('type', NodeBundles::SESSION)
+      ->exists(NodeFields::DATE)
+      ->condition(NodeFields::DATE, [
+        $from->format('Y-m-d'),
+        $to->format('Y-m-d'),
+      ], 'BETWEEN');
+
+    $patient = (int) ($request?->query->get('patient') ?? 0);
+    if ($patient > 0) {
+      $query->condition(NodeFields::PATIENT, $patient);
+    }
+
+    $routine = (int) ($request?->query->get('routine') ?? 0);
+    if ($routine > 0) {
+      $query->condition(NodeFields::ROUTINE, $routine);
+    }
+
+    $exercise = (int) ($request?->query->get('exercise') ?? 0);
+    if ($exercise > 0) {
+      $query->condition(NodeFields::ROUTINE . '.entity.' . NodeFields::EXERCISES . '.entity.' . ParagraphFields::EXERCISE, $exercise);
+    }
+
+    $intensity = $request?->query->get('intensity');
+    if ($intensity !== NULL && $intensity !== '') {
+      $query->condition(NodeFields::ROUTINE . '.entity.' . NodeFields::EXERCISES . '.entity.' . ParagraphFields::INTENSITY, (int) $intensity);
+    }
+
+    return array_values($query->execute());
   }
 
   /**
