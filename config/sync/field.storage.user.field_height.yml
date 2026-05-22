@@ -1,0 +1,20 @@
+uuid: 8f35d9a0-2065-4472-bbe0-54db29ef86f0
+langcode: es
+status: true
+dependencies:
+  module:
+    - user
+id: user.field_height
+field_name: field_height
+entity_type: user
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

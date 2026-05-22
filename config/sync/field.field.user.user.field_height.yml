@@ -1,0 +1,24 @@
+uuid: f67d8650-a2a7-49c5-974a-53bbd5e3e03e
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_height
+  module:
+    - user
+id: user.user.field_height
+field_name: field_height
+entity_type: user
+bundle: user
+label: Altura
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: ' cm'
+field_type: integer
