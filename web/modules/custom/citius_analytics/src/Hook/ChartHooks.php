@@ -64,12 +64,8 @@ class ChartHooks {
     }
 
     $element['#raw_options']['options']['scales']['y']['ticks']['stepSize'] = 1;
-    $element['#raw_options']['options']['plugins']['datalabels']['color'] =
-      $selected_chart === 'evolution' ? Colors::NeutralDarkest->value : Colors::White->value;
-    if ($selected_chart === 'evolution') {
-      $element['#raw_options']['options']['plugins']['datalabels']['anchor'] = 'end';
-      $element['#raw_options']['options']['plugins']['datalabels']['align'] = 'top';
-    }
+    $element['#raw_options']['options']['scales']['y']['ticks']['stepSize'] = 1;
+    $element['#raw_options']['options']['plugins']['datalabels']['color'] = Colors::White->value;
   }
 
   /**
@@ -153,7 +149,7 @@ class ChartHooks {
         '#title' => $labels[$result_key],
         '#chart_type' => 'line',
         '#data' => $pairs,
-        '#color' => $this->getColor($labels[$result_key]),
+        '#color' => $this->getResultColor($result_key),
       ];
     }
 
@@ -171,8 +167,32 @@ class ChartHooks {
    */
   protected function resolveDateRange(?Request $request): array {
     $now = new \DateTimeImmutable('today');
-    $from = $this->parseExposedDate((string) ($request?->query->get('date[min]') ?? ''));
-    $to = $this->parseExposedDate((string) ($request?->query->get('date[max]') ?? ''));
+
+    $date_filter = [];
+    if ($request) {
+      $all = $request->query->all();
+      $date_filter = $all['date'] ?? [];
+    }
+
+    $from_value = '';
+    $to_value = '';
+
+    if (is_array($date_filter)) {
+      $from_value = (string) ($date_filter['min'] ?? '');
+      $to_value = (string) ($date_filter['max'] ?? '');
+    }
+
+    if ($from_value === '') {
+      $from_value = (string) ($request?->query->get('date[min]', '') ?? '');
+    }
+
+    if ($to_value === '') {
+      $to_value = (string) ($request?->query->get('date[max]', '') ?? '');
+    }
+
+    $from = $this->parseExposedDate($from_value);
+    $to = $this->parseExposedDate($to_value);
+
     if (!$from && !$to) {
       $from = $now->modify('-6 days');
       $to = $now;
@@ -183,6 +203,7 @@ class ChartHooks {
     elseif (!$from && $to) {
       $from = $to;
     }
+
     return [$from, $to];
   }
 
@@ -191,17 +212,20 @@ class ChartHooks {
    */
   protected function parseExposedDate(string $value): ?\DateTimeImmutable {
     $value = trim($value);
+
     if ($value === '') {
       return NULL;
     }
-    foreach (['Y-m-d', 'd/m/Y', 'Y-m-d\TH:i:s'] as $format) {
-      $date = \DateTimeImmutable::createFromFormat($format, $value);
+
+    foreach (['Y-m-d', 'd/m/Y', 'd-m-Y', 'Y-m-d\TH:i:s'] as $format) {
+      $date = \DateTimeImmutable::createFromFormat('!' . $format, $value);
       if ($date instanceof \DateTimeImmutable) {
         return $date;
       }
     }
+
     $timestamp = strtotime($value);
-    return $timestamp ? (new \DateTimeImmutable())->setTimestamp($timestamp) : NULL;
+    return $timestamp ? (new \DateTimeImmutable())->setTimestamp($timestamp)->setTime(0, 0) : NULL;
   }
 
 
@@ -215,20 +239,32 @@ class ChartHooks {
    *   Color HEX code.
    */
   protected function getColor(string $state): string {
-    if (!self::$reverseResultOptions) {
-      $options = Execution::getResultAllowedValues();
-      $reverse_options = [];
-      foreach ($options as $key => $value) {
-        $reverse_options[(string) $value] = $key;
-      }
-      self::$reverseResultOptions = $reverse_options;
-    }
-    $raw_state = self::$reverseResultOptions[$state] ?? NULL;
-    return match ($raw_state) {
+    $normalized = mb_strtolower(trim($state));
+
+    return match ($normalized) {
+      ExecutionResult::Success->value,
+      'success',
+      'éxito',
+      'exito' => '#198754',
+
+      ExecutionResult::Failure->value,
+      'failure',
+      'fracaso' => '#dc3545',
+
+      ExecutionResult::Missed->value,
+      'missed',
+      'fallo' => '#6c757d',
+
+      default => Colors::Neutral->value,
+    };
+  }
+
+  protected function getResultColor(string $result): string {
+    return match ($result) {
       ExecutionResult::Success->value => '#198754',
       ExecutionResult::Failure->value => '#dc3545',
       ExecutionResult::Missed->value => '#6c757d',
-      default => Colors::Neutral->value,
+      default => $this->getColor($result),
     };
   }
 
@@ -318,8 +354,6 @@ class ChartHooks {
    * Implements hook_chart_alter().
    */
   #[Hook('chart_performance_chart_performance_chart_alter')]
-  #[Hook('chart_executions_chart_execution_result_alter')]
-  #[Hook('chart_executions_chart_user_execution_alter')]
   public function performanceChartAlter(array &$element): void {
     $request = \Drupal::requestStack()->getCurrentRequest();
     $selected_chart = $request?->query->get('chart_type', 'totals') ?? 'totals';
@@ -372,8 +406,6 @@ class ChartHooks {
    * Implements hook_chart_definition_CHART_ID_alter().
    */
   #[Hook('chart_definition_performance_chart_performance_chart_alter')]
-  #[Hook('chart_definition_executions_chart_execution_result_alter')]
-  #[Hook('chart_definition_executions_chart_user_execution_alter')]
   public function chartDefinitionPerformanceChartAlter(array &$definition, array $element, string $chart_id): void {
     foreach ($definition['data']['datasets'] as $key => $data) {
       $type = $data['type'] ?? '';
