@@ -61,33 +61,30 @@ final class ProcessMiningController extends ControllerBase {
 
     return [
       '#type' => 'container',
-      '#attributes' => ['class' => ['views-exposed-form']],
-      'form' => [
-        '#type' => 'html_tag',
-        '#tag' => 'form',
-        '#attributes' => [
-          'method' => 'get',
-          'class' => ['views-exposed-form', 'bef-exposed-form', 'form--inline'],
-        ],
-        'row_1' => [
-          '#type' => 'container',
-          '#attributes' => ['class' => ['form--inline', 'js-form-wrapper']],
-          'patient' => ['#type' => 'select', '#title' => $this->t('Paciente'), '#options' => $this->filterOptionsRepository->getPatientOptions(), '#empty_option' => $empty_option, '#default_value' => $filters['patient'] !== '' ? $filters['patient'] : NULL],
-          'subtrace_length' => ['#type' => 'select', '#title' => $this->t('Número de elementos en la subtraza'), '#options' => $length_options, '#empty_option' => $empty_option, '#default_value' => $filters['subtrace_length'] !== '' ? $filters['subtrace_length'] : NULL],
-          'intensity' => ['#type' => 'select', '#title' => $this->t('Intensidad'), '#options' => $this->filterOptionsRepository->getIntensityOptions(), '#empty_option' => $empty_option, '#default_value' => $filters['intensity'] !== '' ? $filters['intensity'] : NULL],
-        ],
-        'row_2' => [
-          '#type' => 'container',
-          '#attributes' => ['class' => ['form--inline', 'js-form-wrapper']],
-          'date_start' => ['#type' => 'date', '#title' => $this->t('Fecha desde'), '#default_value' => $filters['date_start']],
-          'date_end' => ['#type' => 'date', '#title' => $this->t('Fecha hasta'), '#default_value' => $filters['date_end']],
-          'actions' => [
-            '#type' => 'actions',
-            'submit' => [
-              '#type' => 'submit',
-              '#value' => $this->t('Buscar'),
-              '#attributes' => ['class' => ['button', 'button--primary']],
-            ],
+      '#prefix' => '<form method="get">',
+      '#suffix' => '</form>',
+      '#attributes' => ['class' => ['citius-process-mining-form']],
+      '#attached' => [
+        'library' => ['citius_analytics/process_mining'],
+      ],
+      'row_1' => [
+        '#type' => 'container',
+        '#attributes' => ['class' => ['form-row']],
+        'patient' => ['#type' => 'select', '#title' => $this->t('Paciente'), '#options' => $this->filterOptionsRepository->getPatientOptions(), '#empty_option' => $empty_option, '#default_value' => $filters['patient'] !== '' ? $filters['patient'] : NULL],
+        'subtrace_length' => ['#type' => 'select', '#title' => $this->t('Número de elementos en la subtraza'), '#options' => $length_options, '#empty_option' => $empty_option, '#default_value' => $filters['subtrace_length'] !== '' ? $filters['subtrace_length'] : NULL],
+        'intensity' => ['#type' => 'select', '#title' => $this->t('Intensidad'), '#options' => $this->filterOptionsRepository->getIntensityOptions(), '#empty_option' => $empty_option, '#default_value' => $filters['intensity'] !== '' ? $filters['intensity'] : NULL],
+      ],
+      'row_2' => [
+        '#type' => 'container',
+        '#attributes' => ['class' => ['form-row', 'form-row--dates']],
+        'date_start' => ['#type' => 'date', '#title' => $this->t('Fecha desde'), '#default_value' => $filters['date_start']],
+        'date_end' => ['#type' => 'date', '#title' => $this->t('Fecha hasta'), '#default_value' => $filters['date_end']],
+        'actions' => [
+          '#type' => 'actions',
+          'submit' => [
+            '#type' => 'submit',
+            '#value' => $this->t('Buscar'),
+            '#attributes' => ['class' => ['button', 'button--primary']],
           ],
         ],
       ],

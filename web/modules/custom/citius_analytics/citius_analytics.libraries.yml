@@ -1,0 +1,4 @@
+process_mining:
+  css:
+    theme:
+      css/process-mining.css: {}
