@@ -11,6 +11,7 @@ dependencies:
     - field.field.user.user.field_gdpr_name
     - field.field.user.user.field_gdpr_surname
     - field.field.user.user.field_gender
+    - field.field.user.user.field_height
     - field.field.user.user.field_location
     - field.field.user.user.field_name
     - field.field.user.user.field_pathology_primary
@@ -74,6 +75,13 @@ content:
     settings:
       match_operator: CONTAINS
       match_limit: 10
+      placeholder: ''
+    third_party_settings: {  }
+  field_height:
+    type: number
+    weight: 14
+    region: content
+    settings:
       placeholder: ''
     third_party_settings: {  }
   field_location:

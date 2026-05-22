@@ -11,6 +11,7 @@ dependencies:
     - field.field.user.user.field_gdpr_name
     - field.field.user.user.field_gdpr_surname
     - field.field.user.user.field_gender
+    - field.field.user.user.field_height
     - field.field.user.user.field_location
     - field.field.user.user.field_name
     - field.field.user.user.field_pathology_primary
@@ -105,6 +106,24 @@ content:
           machine_name: null
           show_deprecated: 0
     weight: 3
+    region: content
+  field_height:
+    type: number_integer
+    label: inline
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings:
+      nomarkup:
+        enabled: false
+        separator: '|'
+        referenced_entity: ''
+      sdc_display:
+        enabled: 0
+        component:
+          machine_name: null
+          show_deprecated: 0
+    weight: 9
     region: content
   field_pathology_primary:
     type: entity_reference_label
