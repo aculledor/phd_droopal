@@ -15,7 +15,7 @@ final class ProcessMiningController extends ControllerBase {
   public function __construct(
     protected FilterOptionsRepository $filterOptionsRepository,
     protected Connection $database,
-    protected EntityTypeManagerInterface $entityTypeManager,
+    protected EntityTypeManagerInterface $entityTypeManagerService,
   ) {}
 
   public static function create(ContainerInterface $container): self {
@@ -135,7 +135,7 @@ final class ProcessMiningController extends ControllerBase {
     if ($ids === []) {
       return [];
     }
-    $entities = $this->entityTypeManager->getStorage('paragraph')->loadMultiple(array_values($ids));
+    $entities = $this->entityTypeManagerService->getStorage('paragraph')->loadMultiple(array_values($ids));
     $labels = [];
     foreach ($entities as $entity) {
       $labels[(int) $entity->id()] = strtoupper((string) preg_replace('/\s+/', '_', (string) $entity->label()));
