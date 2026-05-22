@@ -11,3 +11,10 @@ drupal.session_tracker:
     - core/drupal
     - core/drupalSettings
     - citius_content/session_tracker
+
+drupal.devices_auto_refresh:
+  js:
+    js/drupal.devices-auto-refresh.js: {}
+  dependencies:
+    - core/once
+    - core/drupal

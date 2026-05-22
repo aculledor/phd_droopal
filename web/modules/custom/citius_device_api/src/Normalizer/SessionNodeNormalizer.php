@@ -7,6 +7,7 @@ use Drupal\citius_content\NodeBundles;
 use Drupal\citius_content\NodeFields;
 use Drupal\citius_content\ParagraphBundles;
 use Drupal\citius_content\ParagraphFields;
+use Drupal\citius_user\UserFields;
 use Drupal\node\NodeInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
@@ -25,6 +26,8 @@ class SessionNodeNormalizer implements NormalizerInterface {
       'user_id' => (int) $session->get(NodeFields::PATIENT)->target_id,
       'routine_id' => (int) $session->id(),
     ];
+    $patient = $session->get(NodeFields::PATIENT)->entity;
+    $response['height'] = (int) ($patient?->get(UserFields::HEIGHT)->value ?? 0);
     $routine = $session->get(NodeFields::ROUTINE)->entity;
     if ($routine instanceof NodeInterface && $routine->bundle() === NodeBundles::ROUTINE) {
       $exercises = $routine->get(NodeFields::EXERCISES)->referencedEntities();
@@ -42,6 +45,8 @@ class SessionNodeNormalizer implements NormalizerInterface {
           'duration' => $duration,
           'time_between_events' => $intensity,
           'expected_responses' => $responses,
+          'height' => (int) ($exercise->get(ParagraphFields::HEIGHT)->value ?? 0),
+          'distance' => (int) ($exercise->get(ParagraphFields::DISTANCE)->value ?? 0),
         ];
       }
       $response['exercises'] = $exercise_data;
