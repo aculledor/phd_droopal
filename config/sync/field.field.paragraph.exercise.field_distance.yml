@@ -1,0 +1,23 @@
+uuid: 18007b8a-8d67-4dc5-8fd1-b27289c58fce
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_distance
+    - paragraphs.paragraphs_type.exercise
+id: paragraph.exercise.field_distance
+field_name: field_distance
+entity_type: paragraph
+bundle: exercise
+label: Distancia
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: ' cm'
+field_type: integer

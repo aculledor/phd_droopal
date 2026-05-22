@@ -9,7 +9,11 @@ final class ParagraphFields {
 
   public const string DURATION = 'field_duration';
 
+  public const string DISTANCE = 'field_distance';
+
   public const string EXERCISE = 'field_exercise';
+
+  public const string HEIGHT = 'field_height';
 
   public const string INTENSITY = 'field_intensity';
 

@@ -7,6 +7,7 @@ namespace Drupal\citius_device_api\Plugin\rest\resource;
 use Drupal\citius_content\NodeBundles;
 use Drupal\citius_content\NodeFields;
 use Drupal\citius_device_api\DeviceIdManager;
+use Drupal\citius_device_api\DeviceHeartbeatManager;
 use Drupal\citius_device_api\DeviceTokenManager;
 use Drupal\citius_device_api\Exception\DeviceIdException;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
@@ -52,6 +53,13 @@ class AuthorizeGlasses extends ResourceBase {
   protected DeviceTokenManager $deviceTokenManager;
 
   /**
+   * Device heartbeat manager.
+   *
+   * @var \Drupal\citius_device_api\DeviceHeartbeatManager
+   */
+  protected DeviceHeartbeatManager $deviceHeartbeatManager;
+
+  /**
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition): static {
@@ -59,6 +67,7 @@ class AuthorizeGlasses extends ResourceBase {
     $instance->deviceIdManager = $container->get(DeviceIdManager::class);
     $instance->entityTypeManager = $container->get('entity_type.manager');
     $instance->deviceTokenManager = $container->get(DeviceTokenManager::class);
+    $instance->deviceHeartbeatManager = $container->get(DeviceHeartbeatManager::class);
     return $instance;
   }
 
@@ -95,6 +104,14 @@ class AuthorizeGlasses extends ResourceBase {
       }
       throw new AccessDeniedHttpException('Invalid device credentials.');
     }
+
+    /** @var \Drupal\node\NodeInterface $device_node */
+    $device_node = reset($device);
+    if (!(bool) $device_node->get(NodeFields::STATE)->value) {
+      $device_node->set(NodeFields::STATE, TRUE);
+      $device_node->save();
+    }
+    $this->deviceHeartbeatManager->registerHeartbeat($id);
 
     return new ModifiedResourceResponse(['token' => $this->deviceTokenManager->getDeviceToken($id, $secret)], 201);
   }

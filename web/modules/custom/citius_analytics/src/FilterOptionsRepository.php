@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Drupal\citius_analytics;
 
+use Drupal\citius_user\UserFields;
+use Drupal\citius_user\UserRoles;
 use Drupal\Core\Cache\Cache;
 use Drupal\Core\Cache\CacheBackendInterface;
 use Drupal\Core\Database\Connection;
@@ -137,6 +139,42 @@ final class FilterOptionsRepository {
     $values = $this->getIntensityValues();
     $options = array_combine($values, $values);
     $this->cache->set($cid, $options, Cache::PERMANENT, ['node_list:session']);
+    return $options;
+  }
+
+  /**
+   * Get available options for patient filter.
+   *
+   * @return array
+   *   Array of patient options keyed by user ID.
+   */
+  public function getPatientOptions(): array {
+    $cid = self::CACHE_PREFIX . 'patient';
+    $cache_data = $this->cache->get($cid);
+    if ($cache_data) {
+      return $cache_data->data;
+    }
+
+    $query = $this->entityTypeManager->getStorage('user')->getQuery();
+    $query->accessCheck(TRUE)
+      ->condition('status', 1)
+      ->condition('roles', UserRoles::PATIENT);
+    $uids = $query->execute();
+
+    $users = $this->entityTypeManager->getStorage('user')->loadMultiple($uids);
+    $options = [];
+    foreach ($users as $user) {
+      $name = (string) ($user->get(UserFields::NAME)->value ?? '');
+      $surname = (string) ($user->get(UserFields::SURNAME)->value ?? '');
+      $label = trim($name . ' ' . $surname);
+      if ($label === '') {
+        $label = $user->getAccountName() ?: ('User #' . $user->id());
+      }
+      $options[(int) $user->id()] = $label;
+    }
+
+    asort($options);
+    $this->cache->set($cid, $options, Cache::PERMANENT, ['user_list']);
     return $options;
   }
 

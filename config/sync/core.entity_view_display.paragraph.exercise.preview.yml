@@ -5,7 +5,9 @@ dependencies:
   config:
     - core.entity_view_mode.paragraph.preview
     - field.field.paragraph.exercise.field_duration
+    - field.field.paragraph.exercise.field_distance
     - field.field.paragraph.exercise.field_exercise
+    - field.field.paragraph.exercise.field_height
     - field.field.paragraph.exercise.field_intensity
     - paragraphs.paragraphs_type.exercise
   module:
@@ -41,6 +43,15 @@ content:
     third_party_settings: {  }
     weight: 1
     region: content
+  field_distance:
+    type: number_integer
+    label: hidden
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 4
+    region: content
   field_exercise:
     type: entity_reference_label
     label: hidden
@@ -66,5 +77,14 @@ content:
       prefix_suffix: true
     third_party_settings: {  }
     weight: 2
+    region: content
+  field_height:
+    type: number_integer
+    label: hidden
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 3
     region: content
 hidden: {  }
