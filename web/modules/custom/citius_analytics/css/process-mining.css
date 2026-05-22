@@ -1,0 +1,27 @@
+.citius-process-mining-form .form-row {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(180px, 1fr));
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.citius-process-mining-form .form-row--dates {
+  grid-template-columns: minmax(180px, 1fr) minmax(180px, 1fr) 180px;
+  align-items: end;
+}
+
+.citius-process-mining-form .form-actions {
+  margin: 0;
+}
+
+.citius-process-mining-form .form-actions .button {
+  width: 100%;
+  min-height: 42px;
+}
+
+@media (max-width: 1024px) {
+  .citius-process-mining-form .form-row,
+  .citius-process-mining-form .form-row--dates {
+    grid-template-columns: 1fr;
+  }
+}
