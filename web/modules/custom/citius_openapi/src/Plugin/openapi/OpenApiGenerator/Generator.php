@@ -78,6 +78,9 @@ class Generator extends OpenApiGeneratorBase {
       'type' => 'object',
       'properties' => [
         'exercise_id' => ['type' => 'integer', 'example' => 10],
+        'exercise_name' => ['type' => 'string', 'example' => 'Movimientos laterales'],
+        'exercise_type' => ['type' => 'string', 'example' => 'Cervical'],
+        'exercise_type_code' => ['type' => 'string', 'example' => 'cervical'],
         'duration' => ['type' => 'integer', 'example' => 60],
         'time_between_events' => ['type' => 'integer', 'example' => 2],
         'expected_responses' => ['type' => 'number', 'example' => 30],
