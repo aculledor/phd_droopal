@@ -90,29 +90,41 @@ class ChartHooks {
       ExecutionResult::Success->value => array_fill_keys($day_labels, 0),
     ];
 
-    $sessions = $this->resolveExecutionSessionIds($request, $from, $to);
+    $query = \Drupal::database()->select('execution', 'e');
+    $query->addExpression('DATE(e.execution_date)', 'day');
+    $query->addField('e', 'result', 'result');
+    $query->addExpression('COUNT(*)', 'total');
 
-    if (!empty($sessions)) {
-      $query = \Drupal::database()->select('execution', 'e');
-      $query->addExpression('DATE(e.execution_date)', 'day');
-      $query->addField('e', 'result', 'result');
-      $query->addExpression('COUNT(*)', 'total');
+    $query->condition('e.execution_date', $from->format('Y-m-d 00:00:00'), '>=');
+    $query->condition('e.execution_date', $to->modify('+1 day')->format('Y-m-d 00:00:00'), '<');
 
-      $query->condition('e.execution_date', $from->format('Y-m-d 00:00:00'), '>=');
-      $query->condition('e.execution_date', $to->modify('+1 day')->format('Y-m-d 00:00:00'), '<');
-      $query->condition('e.session', $sessions, 'IN');
+    $patient = (int) ($request?->query->get('patient') ?? 0);
+    if ($patient > 0) {
+      $query->join('node__field_patient', 'nfp', 'nfp.entity_id = e.session');
+      $query->condition('nfp.field_patient_target_id', $patient);
+    }
 
-      $query->groupBy('day');
-      $query->groupBy('e.result');
-      $query->orderBy('day', 'ASC');
+    $routine = (int) ($request?->query->get('routine') ?? 0);
+    if ($routine > 0) {
+      $query->join('node__field_routine', 'nfr', 'nfr.entity_id = e.session');
+      $query->condition('nfr.field_routine_target_id', $routine);
+    }
 
-      foreach ($query->execute()->fetchAll() as $row) {
-        $day = (string) $row->day;
-        $result = (string) $row->result;
+    $exercise = (int) ($request?->query->get('exercise') ?? 0);
+    if ($exercise > 0) {
+      $query->condition('e.exercise', $exercise);
+    }
 
-        if (isset($series[$result][$day])) {
-          $series[$result][$day] = (int) $row->total;
-        }
+    $query->groupBy('day');
+    $query->groupBy('e.result');
+    $query->orderBy('day', 'ASC');
+
+    foreach ($query->execute()->fetchAll() as $row) {
+      $day = (string) $row->day;
+      $result = (string) $row->result;
+
+      if (isset($series[$result][$day])) {
+        $series[$result][$day] = (int) $row->total;
       }
     }
 
@@ -126,13 +138,25 @@ class ChartHooks {
       ExecutionResult::Success->value => 'Éxito',
     ];
 
+    $max_value = 0;
+    foreach ($series as $values_by_day) {
+      $max_value = max($max_value, ...array_values($values_by_day));
+    }
+
+    $y_axis_max = $max_value > 0 ? (int) ceil($max_value * 1.15) : 1;
+    if ($y_axis_max <= $max_value) {
+      $y_axis_max = $max_value + 1;
+    }
+
     foreach ($series as $result_key => $values_by_day) {
+      $values = array_values($values_by_day);
+
       $element['line_' . $result_key] = [
         '#type' => 'chart_data',
         '#title' => $labels[$result_key],
         '#chart_type' => 'line',
-        '#data' => array_values($values_by_day),
-        '#mapped_data' => array_values($values_by_day),
+        '#data' => $values,
+        '#mapped_data' => $values,
         '#color' => $this->getResultColor($result_key),
       ];
     }
@@ -142,48 +166,31 @@ class ChartHooks {
 
     $element['yaxis']['#type'] = 'chart_yaxis';
 
+    $element['#raw_options']['options']['plugins']['legend'] = [
+      'display' => TRUE,
+      'position' => 'top',
+      'labels' => [
+        'usePointStyle' => TRUE,
+        'boxWidth' => 14,
+        'boxHeight' => 14,
+        'font' => [
+          'size' => 16,
+          'weight' => 'bold',
+        ],
+      ],
+    ];
+
     $element['#raw_options']['options']['plugins']['datalabels']['color'] = Colors::NeutralDarkest->value;
     $element['#raw_options']['options']['plugins']['datalabels']['anchor'] = 'end';
     $element['#raw_options']['options']['plugins']['datalabels']['align'] = 'top';
+    $element['#raw_options']['options']['plugins']['datalabels']['font'] = [
+      'size' => 14,
+      'weight' => 'bold',
+    ];
+
+    $element['#raw_options']['options']['scales']['y']['beginAtZero'] = TRUE;
+    $element['#raw_options']['options']['scales']['y']['suggestedMax'] = $y_axis_max;
     $element['#raw_options']['options']['scales']['y']['ticks']['stepSize'] = 1;
-  }
-
-  /**
-   * Resolve session IDs affected by the exposed filters.
-   */
-  protected function resolveExecutionSessionIds(?Request $request, \DateTimeImmutable $from, \DateTimeImmutable $to): array {
-    $query = \Drupal::entityTypeManager()->getStorage('node')->getQuery();
-
-    $query
-      ->accessCheck(FALSE)
-      ->condition('type', NodeBundles::SESSION)
-      ->exists(NodeFields::DATE)
-      ->condition(NodeFields::DATE, [
-        $from->format('Y-m-d'),
-        $to->format('Y-m-d'),
-      ], 'BETWEEN');
-
-    $patient = (int) ($request?->query->get('patient') ?? 0);
-    if ($patient > 0) {
-      $query->condition(NodeFields::PATIENT, $patient);
-    }
-
-    $routine = (int) ($request?->query->get('routine') ?? 0);
-    if ($routine > 0) {
-      $query->condition(NodeFields::ROUTINE, $routine);
-    }
-
-    $exercise = (int) ($request?->query->get('exercise') ?? 0);
-    if ($exercise > 0) {
-      $query->condition(NodeFields::ROUTINE . '.entity.' . NodeFields::EXERCISES . '.entity.' . ParagraphFields::EXERCISE, $exercise);
-    }
-
-    $intensity = $request?->query->get('intensity');
-    if ($intensity !== NULL && $intensity !== '') {
-      $query->condition(NodeFields::ROUTINE . '.entity.' . NodeFields::EXERCISES . '.entity.' . ParagraphFields::INTENSITY, (int) $intensity);
-    }
-
-    return array_values($query->execute());
   }
 
   /**
