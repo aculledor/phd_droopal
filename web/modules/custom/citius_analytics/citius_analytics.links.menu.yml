@@ -3,3 +3,10 @@ citius_analytics.results:
   route_name: <nolink>
   menu_name: main
   weight: 5
+
+citius_analytics.process_mining:
+  title: Minería de procesos
+  route_name: citius_analytics.process_mining
+  menu_name: main
+  parent: citius_analytics.results
+  weight: 10
