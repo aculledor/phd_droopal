@@ -37,12 +37,25 @@ class ChartHooks {
   #[Hook('chart_executions_chart_execution_result_alter')]
   #[Hook('chart_executions_chart_user_execution_alter')]
   public function executionResultChartAlter(array &$element): void {
+    $request = \Drupal::requestStack()->getCurrentRequest();
+    $selected_chart = $request?->query->get('chart_type', 'totals') ?? 'totals';
+
     foreach (Element::children($element) as $key) {
-      $colors = [];
       $type = $element[$key]['#type'] ?? '';
       if ($type !== 'chart_data') {
         continue;
       }
+
+      if ($selected_chart === 'evolution') {
+        $element[$key]['#chart_type'] = 'line';
+        $element[$key]['#color'] = $this->getColor((string) ($element[$key]['#title'] ?? ''));
+        $element[$key]['#fill'] = FALSE;
+        $element[$key]['#pointRadius'] = 4;
+        $element[$key]['#pointHoverRadius'] = 5;
+        continue;
+      }
+
+      $colors = [];
       $sum = array_sum($element[$key]['#data']);
       $i = 0;
       foreach ($element[$key]['#mapped_data'] as $data_key => $value) {
@@ -53,8 +66,14 @@ class ChartHooks {
       }
       $element[$key]['#color'] = $colors;
     }
+
     $element['#raw_options']['options']['scales']['y']['ticks']['stepSize'] = 1;
-    $element['#raw_options']['options']['plugins']['datalabels']['color'] = Colors::White->value;
+    $element['#raw_options']['options']['plugins']['datalabels']['color'] =
+      $selected_chart === 'evolution' ? Colors::NeutralDarkest->value : Colors::White->value;
+    if ($selected_chart === 'evolution') {
+      $element['#raw_options']['options']['plugins']['datalabels']['anchor'] = 'end';
+      $element['#raw_options']['options']['plugins']['datalabels']['align'] = 'top';
+    }
   }
 
   /**
