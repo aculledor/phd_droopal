@@ -154,6 +154,7 @@ class UserFormAlter {
       UserFields::GENDER,
       UserFields::SEX,
       UserFields::BIRTHDATE,
+      UserFields::HEIGHT,
       UserFields::CIVIL_STATUS,
       UserFields::PATHOLOGY_PRIMARY,
       UserFields::PATHOLOGY_SECONDARY,
@@ -310,6 +311,7 @@ class UserFormAlter {
     }
     if ($is_patient) {
       $this->validateField($form, $form_state, UserFields::CENTER);
+      $this->validateField($form, $form_state, UserFields::HEIGHT);
     }
     foreach ($real_user_fields as $field) {
       if ($is_user_real) {
