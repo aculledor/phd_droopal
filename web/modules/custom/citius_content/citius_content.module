@@ -8,6 +8,7 @@
 use Drupal\citius_content\NodeBundles;
 use Drupal\citius_content\NodeFields;
 use Drupal\Core\Entity\EntityTypeInterface;
+use Drupal\Core\Routing\RouteMatchInterface;
 
 /**
  * Implements hook_entity_type_alter().
@@ -51,5 +52,19 @@ function citius_content_entity_bundle_field_info_alter(array &$fields, EntityTyp
       $fields[NodeFields::CIF]?->addConstraint('CifField');
       $fields[NodeFields::CIF]?->addConstraint('UniqueField');
     }
+  }
+}
+
+/**
+ * Implements hook_page_attachments().
+ */
+function citius_content_page_attachments(array &$attachments): void {
+  $route_match = \Drupal::routeMatch();
+  if (!$route_match instanceof RouteMatchInterface) {
+    return;
+  }
+
+  if ($route_match->getRouteName() === 'view.devices.page_1') {
+    $attachments['#attached']['library'][] = 'citius_content/drupal.devices_auto_refresh';
   }
 }

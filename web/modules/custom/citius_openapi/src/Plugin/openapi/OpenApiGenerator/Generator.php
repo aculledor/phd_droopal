@@ -81,6 +81,8 @@ class Generator extends OpenApiGeneratorBase {
         'duration' => ['type' => 'integer', 'example' => 60],
         'time_between_events' => ['type' => 'integer', 'example' => 2],
         'expected_responses' => ['type' => 'number', 'example' => 30],
+        'height' => ['type' => 'integer', 'example' => 150],
+        'distance' => ['type' => 'integer', 'example' => 150],
       ],
     ];
 
@@ -89,6 +91,7 @@ class Generator extends OpenApiGeneratorBase {
       'properties' => [
         'user_id' => ['type' => 'integer', 'example' => 123],
         'routine_id' => ['type' => 'integer', 'example' => 456],
+        'height' => ['type' => 'integer', 'example' => 170],
         'exercises' => [
           'type' => 'array',
           'items' => ['$ref' => '#/definitions/SessionExerciseItem'],
