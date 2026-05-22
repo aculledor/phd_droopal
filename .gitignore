@@ -19,3 +19,5 @@ web/sites/default/services.local.yml
 *.tar.gz
 
 .vscode-server/
+.ddev/mosquitto/data/mosquitto.db
+.ddev/mosquitto/log/mosquitto.log
