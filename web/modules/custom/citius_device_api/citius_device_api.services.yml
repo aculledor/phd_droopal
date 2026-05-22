@@ -19,6 +19,9 @@ services:
   Drupal\citius_device_api\DeviceTokenManager:
     autowire: true
 
+  Drupal\citius_device_api\DeviceHeartbeatManager:
+    autowire: true
+
   citius_device_api.request_subscriber:
     class: Drupal\citius_device_api\EventSubscriber\RequestSubscriber
     tags:

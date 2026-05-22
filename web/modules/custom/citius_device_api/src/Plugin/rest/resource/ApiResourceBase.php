@@ -5,6 +5,7 @@ namespace Drupal\citius_device_api\Plugin\rest\resource;
 use Drupal\citius_content\NodeBundles;
 use Drupal\citius_content\NodeFields;
 use Drupal\citius_device_api\DeviceEndpointResolver;
+use Drupal\citius_device_api\DeviceHeartbeatManager;
 use Drupal\citius_device_api\DeviceTokenManager;
 use Drupal\Component\Datetime\TimeInterface;
 use Drupal\Core\Datetime\DateFormatterInterface;
@@ -64,6 +65,13 @@ abstract class ApiResourceBase extends ResourceBase implements AuthenticatedReso
   protected DeviceEndpointResolver $deviceEndpointResolver;
 
   /**
+   * Device heartbeat manager.
+   *
+   * @var \Drupal\citius_device_api\DeviceHeartbeatManager
+   */
+  protected DeviceHeartbeatManager $deviceHeartbeatManager;
+
+  /**
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition): static {
@@ -80,6 +88,7 @@ abstract class ApiResourceBase extends ResourceBase implements AuthenticatedReso
     $instance->requestStack = $container->get('request_stack');
     $instance->deviceTokenManager = $container->get(DeviceTokenManager::class);
     $instance->deviceEndpointResolver = $container->get(DeviceEndpointResolver::class);
+    $instance->deviceHeartbeatManager = $container->get(DeviceHeartbeatManager::class);
 
     return $instance;
   }
@@ -127,9 +136,15 @@ abstract class ApiResourceBase extends ResourceBase implements AuthenticatedReso
     $item = $device->get(NodeFields::ENDPOINT)->first();
     $endpoint = $item?->uri;
     $new_endpoint = $this->deviceEndpointResolver->resolve();
+    $needs_save = FALSE;
     if ($new_endpoint !== $endpoint) {
-      $device->set(NodeFields::ENDPOINT, $new_endpoint)->save();
+      $device->set(NodeFields::ENDPOINT, $new_endpoint);
+      $needs_save = TRUE;
     }
+    if ($needs_save) {
+      $device->save();
+    }
+    $this->deviceHeartbeatManager->registerHeartbeat($device_id);
     return TRUE;
   }
 

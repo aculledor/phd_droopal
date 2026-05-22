@@ -4,7 +4,9 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.exercise.field_duration
+    - field.field.paragraph.exercise.field_distance
     - field.field.paragraph.exercise.field_exercise
+    - field.field.paragraph.exercise.field_height
     - field.field.paragraph.exercise.field_intensity
     - paragraphs.paragraphs_type.exercise
   module:
@@ -21,6 +23,13 @@ content:
     settings:
       placeholder: ''
     third_party_settings: {  }
+  field_distance:
+    type: number
+    weight: 4
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
   field_exercise:
     type: tagify_select_widget
     weight: 0
@@ -33,6 +42,13 @@ content:
   field_intensity:
     type: number
     weight: 2
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_height:
+    type: number
+    weight: 3
     region: content
     settings:
       placeholder: ''

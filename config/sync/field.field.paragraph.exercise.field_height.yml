@@ -1,0 +1,23 @@
+uuid: c63b0595-1cfb-4891-a444-25dbf877f018
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_height
+    - paragraphs.paragraphs_type.exercise
+id: paragraph.exercise.field_height
+field_name: field_height
+entity_type: paragraph
+bundle: exercise
+label: Altura
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: ' cm'
+field_type: integer
