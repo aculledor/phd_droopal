@@ -82,138 +82,6 @@ class ChartHooks {
     $cursor = clone $from;
     while ($cursor <= $to) {
       $day_labels[] = $cursor->format('Y-m-d');
-      $cursor->modify('+1 day');
-    }
-
-    $series = [
-      ExecutionResult::Failure->value => array_fill_keys($day_labels, 0),
-      ExecutionResult::Missed->value => array_fill_keys($day_labels, 0),
-      ExecutionResult::Success->value => array_fill_keys($day_labels, 0),
-    ];
-
-    $query = \Drupal::database()->select('execution', 'e');
-    $query->addExpression('DATE(e.execution_date)', 'day');
-    $query->addField('e', 'result', 'result');
-    $query->addExpression('COUNT(*)', 'total');
-    $query->condition('e.execution_date', $from->format('Y-m-d 00:00:00'), '>=');
-    $query->condition('e.execution_date', $to->modify('+1 day')->format('Y-m-d 00:00:00'), '<');
-
-    $routine = (int) ($request?->query->get('routine') ?? 0);
-    if ($routine > 0) {
-      $query->condition('e.session', $routine);
-    }
-    $exercise = (int) ($request?->query->get('exercise') ?? 0);
-    if ($exercise > 0) {
-      $query->condition('e.exercise', $exercise);
-    }
-    $patient = (int) ($request?->query->get('patient') ?? 0);
-    if ($patient > 0) {
-      $query->where("JSON_UNQUOTE(JSON_EXTRACT(e.json_data, '$.metadata.user_id')) = :patient", [
-        ':patient' => (string) $patient,
-      ]);
-    }
-    $intensity = $request?->query->get('intensity');
-    if ($intensity !== NULL && $intensity !== '') {
-      $query->join('paragraph__field_intensity', 'pfi', 'pfi.entity_id = e.exercise');
-      $query->condition('pfi.field_intensity_value', (int) $intensity);
-    }
-
-    $query->groupBy('day');
-    $query->groupBy('e.result');
-    $query->orderBy('day', 'ASC');
-
-    foreach ($query->execute()->fetchAll() as $row) {
-      $day = (string) $row->day;
-      $result = (string) $row->result;
-      if (isset($series[$result][$day])) {
-        $series[$result][$day] = (int) $row->total;
-      }
-    }
-
-    foreach (Element::children($element) as $child) {
-      unset($element[$child]);
-    }
-
-    $labels = [
-      ExecutionResult::Failure->value => 'Fracaso',
-      ExecutionResult::Missed->value => 'Fallo',
-      ExecutionResult::Success->value => 'Éxito',
-    ];
-
-    foreach ($series as $result_key => $values_by_day) {
-      $dataset_key = 'line_' . $result_key;
-      $pairs = [];
-      $index = 0;
-      foreach ($values_by_day as $value) {
-        $pairs[] = [$index, $value];
-        $index++;
-      }
-      $element[$dataset_key] = [
-        '#type' => 'chart_data',
-        '#title' => $labels[$result_key],
-        '#chart_type' => 'line',
-        '#data' => $pairs,
-        '#color' => $this->getColor($labels[$result_key]),
-      ];
-    }
-
-    $element['xaxis']['#type'] = 'chart_xaxis';
-    $element['xaxis']['#labels'] = $day_labels;
-    $element['yaxis']['#type'] = 'chart_yaxis';
-    $element['#raw_options']['options']['plugins']['datalabels']['color'] = Colors::NeutralDarkest->value;
-    $element['#raw_options']['options']['plugins']['datalabels']['anchor'] = 'end';
-    $element['#raw_options']['options']['plugins']['datalabels']['align'] = 'top';
-    $element['#raw_options']['options']['scales']['y']['ticks']['stepSize'] = 1;
-  }
-
-  /**
-   * Resolve date range from exposed filter values.
-   */
-  protected function resolveDateRange(?Request $request): array {
-    $now = new \DateTimeImmutable('today');
-    $from = $this->parseExposedDate((string) ($request?->query->get('date[min]') ?? ''));
-    $to = $this->parseExposedDate((string) ($request?->query->get('date[max]') ?? ''));
-    if (!$from && !$to) {
-      $from = $now->modify('-6 days');
-      $to = $now;
-    }
-    elseif ($from && !$to) {
-      $to = $from;
-    }
-    elseif (!$from && $to) {
-      $from = $to;
-    }
-    return [$from, $to];
-  }
-
-  /**
-   * Parse a date string from exposed filters.
-   */
-  protected function parseExposedDate(string $value): ?\DateTimeImmutable {
-    $value = trim($value);
-    if ($value === '') {
-      return NULL;
-    }
-    foreach (['Y-m-d', 'd/m/Y', 'Y-m-d\TH:i:s'] as $format) {
-      $date = \DateTimeImmutable::createFromFormat($format, $value);
-      if ($date instanceof \DateTimeImmutable) {
-        return $date;
-      }
-    }
-    $timestamp = strtotime($value);
-    return $timestamp ? (new \DateTimeImmutable())->setTimestamp($timestamp) : NULL;
-  }
-
-  /**
-   * Build evolution chart data grouped by day and outcome.
-   */
-  protected function buildExecutionEvolutionChart(array &$element, ?Request $request): void {
-    [$from, $to] = $this->resolveDateRange($request);
-
-    $day_labels = [];
-    $cursor = clone $from;
-    while ($cursor <= $to) {
-      $day_labels[] = $cursor->format('Y-m-d');
       $cursor = $cursor->modify('+1 day');
     }
 
@@ -335,6 +203,7 @@ class ChartHooks {
     $timestamp = strtotime($value);
     return $timestamp ? (new \DateTimeImmutable())->setTimestamp($timestamp) : NULL;
   }
+
 
   /**
    * Get bar color.
