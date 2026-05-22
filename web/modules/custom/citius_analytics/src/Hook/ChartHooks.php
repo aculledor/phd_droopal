@@ -64,7 +64,12 @@ class ChartHooks {
     }
 
     $element['#raw_options']['options']['scales']['y']['ticks']['stepSize'] = 1;
-    $element['#raw_options']['options']['plugins']['datalabels']['color'] = Colors::White->value;
+    $element['#raw_options']['options']['plugins']['datalabels']['color'] =
+      $selected_chart === 'evolution' ? Colors::NeutralDarkest->value : Colors::White->value;
+    if ($selected_chart === 'evolution') {
+      $element['#raw_options']['options']['plugins']['datalabels']['anchor'] = 'end';
+      $element['#raw_options']['options']['plugins']['datalabels']['align'] = 'top';
+    }
   }
 
   /**
@@ -312,6 +317,8 @@ class ChartHooks {
    * Implements hook_chart_alter().
    */
   #[Hook('chart_performance_chart_performance_chart_alter')]
+  #[Hook('chart_executions_chart_execution_result_alter')]
+  #[Hook('chart_executions_chart_user_execution_alter')]
   public function performanceChartAlter(array &$element): void {
     $request = \Drupal::requestStack()->getCurrentRequest();
     $selected_chart = $request?->query->get('chart_type', 'totals') ?? 'totals';
@@ -364,6 +371,8 @@ class ChartHooks {
    * Implements hook_chart_definition_CHART_ID_alter().
    */
   #[Hook('chart_definition_performance_chart_performance_chart_alter')]
+  #[Hook('chart_definition_executions_chart_execution_result_alter')]
+  #[Hook('chart_definition_executions_chart_user_execution_alter')]
   public function chartDefinitionPerformanceChartAlter(array &$definition, array $element, string $chart_id): void {
     foreach ($definition['data']['datasets'] as $key => $data) {
       $type = $data['type'] ?? '';

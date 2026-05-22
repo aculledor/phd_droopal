@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+## Description: Pull latest code, import Drupal config, and rebuild caches
+## Usage: pull-apply
+## Example: "ddev pull-apply"
+
+set -e
+
+echo "==> Git pull"
+git pull
+
+echo "==> Drupal config import"
+ddev drush cim -y
+
+echo "==> Drupal cache rebuild"
+ddev drush cr
+
+echo "==> Done"
