@@ -1,0 +1,7 @@
+citius_analytics.process_mining:
+  path: '/resultados/mineria-procesos'
+  defaults:
+    _controller: '\Drupal\citius_analytics\Controller\ProcessMiningController::page'
+    _title: 'Minería de procesos'
+  requirements:
+    _permission: 'access content'
