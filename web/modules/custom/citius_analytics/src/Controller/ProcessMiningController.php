@@ -104,7 +104,8 @@ final class ProcessMiningController extends ControllerBase {
       $session_id = (int) $row->session;
       $exercise_id = (int) $row->exercise;
       $exercise_label = $exercise_labels[$exercise_id] ?? ('EXERCISE_' . $exercise_id);
-      $traces[$session_id][] = $exercise_label . '-' . strtoupper((string) $row->result);
+      $result_label = $this->normalizeTraceLabel((string) $row->result);
+      $traces[$session_id][] = $exercise_label . '-' . $result_label;
     }
 
     $lengths = $filters['subtrace_length'] !== '' ? [(int) $filters['subtrace_length']] : range(3, 10);
@@ -131,18 +132,47 @@ final class ProcessMiningController extends ControllerBase {
   }
 
   private function loadExerciseLabels(array $rows): array {
-    $ids = [];
+    $paragraph_ids = [];
+
     foreach ($rows as $row) {
-      $ids[(int) $row->exercise] = (int) $row->exercise;
+      $paragraph_ids[(int) $row->exercise] = (int) $row->exercise;
     }
-    if ($ids === []) {
+
+    if ($paragraph_ids === []) {
       return [];
     }
-    $entities = $this->entityTypeManagerService->getStorage('paragraph')->loadMultiple(array_values($ids));
+
+    $query = $this->database->select('paragraph__field_exercise', 'pfe');
+    $query->fields('pfe', ['entity_id', 'field_exercise_target_id']);
+    $query->condition('pfe.entity_id', array_values($paragraph_ids), 'IN');
+
+    $query->leftJoin('node_field_data', 'nfd', 'nfd.nid = pfe.field_exercise_target_id');
+    $query->addField('nfd', 'title', 'exercise_title');
+
+    $result = $query->execute()->fetchAll();
+
     $labels = [];
-    foreach ($entities as $entity) {
-      $labels[(int) $entity->id()] = strtoupper((string) preg_replace('/\s+/', '_', (string) $entity->label()));
+
+    foreach ($result as $row) {
+      $paragraph_id = (int) $row->entity_id;
+      $title = (string) ($row->exercise_title ?? '');
+
+      if ($title === '') {
+        $title = 'EXERCISE_' . (string) $row->field_exercise_target_id;
+      }
+
+      $labels[$paragraph_id] = $this->normalizeTraceLabel($title);
     }
+
     return $labels;
+  }
+
+  private function normalizeTraceLabel(string $label): string {
+    $label = trim($label);
+    $label = strtoupper($label);
+    $label = preg_replace('/[^A-Z0-9]+/', '_', $label);
+    $label = trim((string) $label, '_');
+
+    return $label;
   }
 }
