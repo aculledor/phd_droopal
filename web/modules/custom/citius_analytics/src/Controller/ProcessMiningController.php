@@ -111,8 +111,8 @@ final class ProcessMiningController extends ControllerBase {
     $traces = [];
     foreach ($rows as $row) {
       $session_id = (int) $row->session;
-      $exercise_id = (int) $row->exercise;
-      $exercise_label = $exercise_labels[$exercise_id] ?? ('EXERCISE_' . $exercise_id);
+      $exercise_position = (int) $row->exercise;
+      $exercise_label = $exercise_labels[$exercise_position] ?? ('EXERCISE_' . $exercise_position);
       $result_label = $this->normalizeTraceLabel((string) $row->result);
       $traces[$session_id][] = $exercise_label . '-' . $result_label;
     }
@@ -141,21 +141,36 @@ final class ProcessMiningController extends ControllerBase {
   }
 
   private function loadExerciseLabels(array $rows): array {
-    $paragraph_ids = [];
+    $exercise_positions = [];
 
     foreach ($rows as $row) {
-      $paragraph_ids[(int) $row->exercise] = (int) $row->exercise;
+      $exercise_positions[(int) $row->exercise] = (int) $row->exercise;
     }
 
-    if ($paragraph_ids === []) {
+    if ($exercise_positions === []) {
       return [];
     }
 
-    $query = $this->database->select('paragraph__field_exercise', 'pfe');
-    $query->fields('pfe', ['entity_id', 'field_exercise_target_id']);
-    $query->condition('pfe.entity_id', array_values($paragraph_ids), 'IN');
+    $query = $this->database->select('node__field_exercises', 'nfe');
+    $query->fields('nfe', [
+      'delta',
+      'field_exercises_target_id',
+    ]);
 
-    $query->leftJoin('node_field_data', 'nfd', 'nfd.nid = pfe.field_exercise_target_id');
+    $query->condition('nfe.delta', array_values($exercise_positions), 'IN');
+
+    $query->leftJoin(
+      'paragraph__field_exercise',
+      'pfe',
+      'pfe.entity_id = nfe.field_exercises_target_id'
+    );
+
+    $query->leftJoin(
+      'node_field_data',
+      'nfd',
+      'nfd.nid = pfe.field_exercise_target_id'
+    );
+
     $query->addField('nfd', 'title', 'exercise_title');
 
     $result = $query->execute()->fetchAll();
@@ -163,14 +178,12 @@ final class ProcessMiningController extends ControllerBase {
     $labels = [];
 
     foreach ($result as $row) {
-      $paragraph_id = (int) $row->entity_id;
+      $position = (int) $row->delta;
       $title = (string) ($row->exercise_title ?? '');
 
-      if ($title === '') {
-        $title = 'EXERCISE_' . (string) $row->field_exercise_target_id;
+      if ($title !== '' && !isset($labels[$position])) {
+        $labels[$position] = $this->normalizeTraceLabel($title);
       }
-
-      $labels[$paragraph_id] = $this->normalizeTraceLabel($title);
     }
 
     return $labels;
