@@ -51,16 +51,25 @@ final class ProcessMiningController extends ControllerBase {
         'library' => ['citius_analytics/process_mining'],
       ],
       'filters' => $this->formBuilder()->getForm(ProcessMiningFilterForm::class),
-      'result' => [
-        '#type' => 'table',
-        '#header' => [
-          $this->t('Longitud'),
-          $this->t('Subtraza'),
-          $this->t('Frecuencia absoluta'),
-          $this->t('Sesiones únicas'),
+      'result_wrapper' => [
+        '#type' => 'container',
+        '#attributes' => [
+          'class' => ['process-mining-table-wrapper'],
         ],
-        '#rows' => $rows,
-        '#empty' => $this->t('No se encontraron subtrazas con los filtros seleccionados.'),
+        'result' => [
+          '#type' => 'table',
+          '#attributes' => [
+            'class' => ['process-mining-table'],
+          ],
+          '#header' => [
+            $this->t('Longitud'),
+            $this->t('Subtraza'),
+            $this->t('Frecuencia absoluta'),
+            $this->t('Sesiones únicas'),
+          ],
+          '#rows' => $rows,
+          '#empty' => $this->t('No se encontraron subtrazas con los filtros seleccionados.'),
+        ],
       ],
     ];
   }

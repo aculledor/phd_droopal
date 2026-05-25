@@ -104,3 +104,73 @@
     width: 100%;
   }
 }
+
+.process-mining-table {
+  width: 100%;
+  min-width: 980px;
+  border-collapse: collapse;
+  table-layout: fixed;
+  margin-top: 24px;
+  font-size: 14px;
+}
+
+.process-mining-table thead th {
+  padding: 14px 16px;
+  border-bottom: 2px solid #000;
+  background: #f2f2f2;
+  font-weight: 700;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.process-mining-table tbody td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #d6d6d6;
+  vertical-align: top;
+}
+
+.process-mining-table tbody tr:nth-child(even) {
+  background: #fafafa;
+}
+
+.process-mining-table tbody tr:hover {
+  background: #f0f0f0;
+}
+
+.process-mining-table th:nth-child(1),
+.process-mining-table td:nth-child(1) {
+  width: 90px;
+  min-width: 90px;
+  text-align: center;
+}
+
+.process-mining-table th:nth-child(2),
+.process-mining-table td:nth-child(2) {
+  width: auto;
+  min-width: 560px;
+}
+
+.process-mining-table th:nth-child(3),
+.process-mining-table td:nth-child(3) {
+  width: 150px;
+  min-width: 150px;
+  text-align: center;
+}
+
+.process-mining-table th:nth-child(4),
+.process-mining-table td:nth-child(4) {
+  width: 140px;
+  min-width: 140px;
+  text-align: center;
+}
+
+.process-mining-table td:nth-child(2) {
+  line-height: 1.5;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+.process-mining-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}

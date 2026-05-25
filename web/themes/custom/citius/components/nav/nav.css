@@ -117,6 +117,10 @@
   &.icon-patient-statistics:before {
     background-image: url(./icons/chart-bar.svg);
   }
+
+  &.icon-process-mining:before {
+    background-image: url(./icons/chart-bar.svg);
+  }
 }
 
 .nav__link-icon::before {
@@ -268,4 +272,26 @@
       overflow: visible !important;
     }
   }
+}
+
+/* Ocultar "Por pacientes" */
+.nav__item:has(> a.nav__link[href*="/resultados/pacientes"]) {
+  display: none;
+}
+
+/* Dar el icono chart-bar a "Minería de procesos" */
+a.nav__link[href*="/resultados/mineria-procesos"] {
+  justify-content: flex-start;
+}
+
+a.nav__link[href*="/resultados/mineria-procesos"]::before {
+  content: '';
+  width: 1.25rem;
+  height: 1.25rem;
+  display: inline-block;
+  background-image: url(./icons/chart-bar.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-right: .5rem;
 }
