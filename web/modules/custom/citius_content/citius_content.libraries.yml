@@ -18,3 +18,13 @@ drupal.devices_auto_refresh:
   dependencies:
     - core/once
     - core/drupal
+
+drupal.device_status_dots:
+  css:
+    theme:
+      css/device-status-dots.css: {}
+  js:
+    js/device-status-dots.js: {}
+  dependencies:
+    - core/once
+    - core/drupal

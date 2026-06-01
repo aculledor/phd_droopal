@@ -33,7 +33,9 @@ class SessionView {
     if (!($entity instanceof SessionNode) || $display->getOriginalMode() !== 'full') {
       return;
     }
+
     unset($build['#contextual_links']);
+
     $fields = [];
     foreach (Element::children($build) as $field) {
       if (str_starts_with($field, 'field_')) {
@@ -41,19 +43,56 @@ class SessionView {
       }
       unset($build[$field]);
     }
+
+    if (isset($fields[NodeFields::GLASSES]) && !$entity->get(NodeFields::GLASSES)->isEmpty()) {
+      $glass = $entity->get(NodeFields::GLASSES)->entity;
+      $glass_device_id = $this->getDeviceExternalId($glass);
+
+      if ($glass_device_id) {
+        $glass_field = $fields[NodeFields::GLASSES];
+
+        $fields[NodeFields::GLASSES] = [
+          '#type' => 'container',
+          '#attributes' => [
+            'class' => ['session__device-field-with-status'],
+          ],
+          'field' => $glass_field,
+          'status_dot' => $this->renderDeviceStatusDot($glass_device_id),
+        ];
+      }
+    }
+
+    if ($entity->hasField(NodeFields::CAMERA) && isset($fields[NodeFields::CAMERA]) && !$entity->get(NodeFields::CAMERA)->isEmpty()) {
+      $camera = $entity->get(NodeFields::CAMERA)->entity;
+      $camera_device_id = $this->getDeviceExternalId($camera);
+
+      if ($camera_device_id) {
+        $camera_field = $fields[NodeFields::CAMERA];
+
+        $fields[NodeFields::CAMERA] = [
+          '#type' => 'container',
+          '#attributes' => [
+            'class' => ['session__device-field-with-status'],
+          ],
+          'field' => $camera_field,
+          'status_dot' => $this->renderDeviceStatusDot($camera_device_id),
+        ];
+      }
+    }
+
     $build['card'] = [
       '#type' => 'component',
       '#component' => 'citius:collapsible-card',
       '#slots' => [
-        'header' => [
-          'fields' => [
-            ...$fields,
-            '#type' => 'container',
-            '#attributes' => [
-              'class' => ['session__content'],
-            ],
+      'header' => [
+        'fields' => [
+          ...$fields,
+          '#type' => 'container',
+          '#attributes' => [
+            'class' => ['session__content'],
           ],
         ],
+      ],
         'header_right' => $this->renderButtons(),
         'content' => [
           'table' => $this->renderExercisesTable($entity),
@@ -65,7 +104,10 @@ class SessionView {
         'classes' => ['session-tracker'],
       ],
       '#attached' => [
-        'library' => ['citius_content/drupal.session_tracker'],
+        'library' => [
+          'citius_content/drupal.session_tracker',
+          'citius_content/drupal.device_status_dots',
+        ],
       ],
     ];
   }
@@ -107,7 +149,10 @@ class SessionView {
       $duration = (int) ($exercise->get(ParagraphFields::DURATION)->value ?? 0);
       $intensity = (int) ($exercise->get(ParagraphFields::INTENSITY)->value ?? 1);
       $expected_results = $intensity !== 0 ? $duration / $intensity : 0;
-      $settings[$exercise->id()] = $duration;
+      $settings[$exercise->id()] = [
+        'duration' => $duration,
+        'expectedResults' => (int) $expected_results,
+      ];
       $event = new ExerciseExtraDataEvent($exercise, $session);
       $this->eventDispatcher->dispatch($event, ExerciseExtraDataEvent::NAME);
       $data = $event->getData();
@@ -127,6 +172,7 @@ class SessionView {
       $rows[] = [
         'data' => $row,
         'data-exercise' => $exercise->id(),
+        'data-expected-results' => (int) $expected_results,
         'class' => 'session__exercise',
       ];
       if (!empty($results)) {
@@ -206,6 +252,7 @@ class SessionView {
         '#tag' => 'div',
         '#attributes' => [
           'class' => ['session__results-column'],
+          'data-results-count' => 0,
         ],
         '#value' => '-',
       ];
@@ -214,6 +261,7 @@ class SessionView {
       '#type' => 'container',
       '#attributes' => [
         'class' => ['session__results-column'],
+        'data-results-count' => count($results),
       ],
       'count' => ['#markup' => count($results)],
       'button' => [
@@ -313,6 +361,34 @@ class SessionView {
       ];
     }
     return $buttons;
+  }
+
+  protected function getDeviceExternalId(?EntityInterface $device): ?string {
+    if (!$device || !$device->hasField(NodeFields::CODE) || $device->get(NodeFields::CODE)->isEmpty()) {
+      return NULL;
+    }
+
+    return (string) $device->get(NodeFields::CODE)->value;
+  }
+
+  protected function renderDeviceStatusDot(?string $device_id): array {
+    if (!$device_id) {
+      return [];
+    }
+
+    return [
+      '#type' => 'html_tag',
+      '#tag' => 'span',
+      '#attributes' => [
+        'class' => [
+          'device-status-dot',
+          'device-status-dot--offline',
+        ],
+        'data-device-status-id' => $device_id,
+        'title' => $this->t('Offline'),
+        'aria-label' => $this->t('Offline'),
+      ],
+    ];
   }
 
 }

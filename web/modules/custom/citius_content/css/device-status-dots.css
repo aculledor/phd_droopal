@@ -1,0 +1,42 @@
+.device-status-dot {
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  vertical-align: middle;
+  margin-left: 0.4rem;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  background: #B42318;
+}
+
+.device-status-dot--online {
+  background: #027A48;
+}
+
+.device-status-dot--offline {
+  background: #B42318;
+}
+
+.session__device-statuses {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+.session__device-status-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.session__device-field-with-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.session__device-field-with-status .field {
+  display: inline-flex;
+  align-items: center;
+}

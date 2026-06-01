@@ -23,6 +23,8 @@ final class NodeFields {
 
   public const string MODEL = 'field_model';
 
+  public const string CAMERA = 'field_camera';
+
   public const string PATIENT = 'field_patient';
 
   public const string ROUTINE = 'field_routine';

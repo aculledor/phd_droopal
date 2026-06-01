@@ -19,6 +19,7 @@ class SessionTracker {
     stop: 'stop',
     reboot: 'reboot',
     resume: 'resume',
+    finish: 'finish',
   };
 
   states = {
@@ -34,6 +35,8 @@ class SessionTracker {
     pause: [this.actions.start, this.actions.stop, this.actions.restart, this.actions.finish],
     finished: [this.actions.restart],
   }
+
+  resultsPoller = null;
 
   /**
    * Keep this annotation for type hints.
@@ -86,34 +89,119 @@ class SessionTracker {
   }
 
   startTimer = () => {
-    const duration = this.settings.exercises[this.currentExercise];
-    if (duration) {
-      this.timer = setTimeout(() => {
-        const nextIndex = Object.keys(this.exercises).indexOf(this.currentExercise) + 1;
-        const exerciseId = this.currentExercise;
-        setTimeout(() => {
-          this.updateSessionResults(exerciseId);
-        }, this.TIMESHIFT);
-        if (nextIndex < Object.keys(this.exercises).length) {
-          this.currentExercise = Object.keys(this.exercises)[nextIndex];
-          this.updateElements();
-          this.startTimer();
-        }
-        else {
-          this.state = this.states.finished;
-          this.updateElements();
-          this.saveSessionStatus(this.deviceActions.stop);
-        }
-      }, duration * 1000);
+    // Desactivado: el avance de ejercicios ya no lo decide Drupal por duración.
+    // La fuente de verdad son los resultados recibidos desde /api/session-results.
+  }
+
+  startResultsPolling = () => {
+    this.stopResultsPolling();
+
+    this.resultsPoller = setInterval(() => {
+      if (this.state === this.states.execution) {
+        this.updateSessionResults();
+      }
+    }, 2000);
+  }
+
+  stopResultsPolling = () => {
+    if (this.resultsPoller) {
+      clearInterval(this.resultsPoller);
+      this.resultsPoller = null;
     }
+  }
+
+  getExpectedResults = (exerciseId) => {
+    const exerciseSettings = this.settings.exercises[exerciseId];
+
+    if (exerciseSettings && typeof exerciseSettings === 'object') {
+      return Number(exerciseSettings.expectedResults || 0);
+    }
+
+    const row = this.exercises[exerciseId];
+    return Number(row?.dataset?.expectedResults || 0);
+  }
+
+  getObtainedResults = (exerciseId) => {
+    const row = this.exercises[exerciseId];
+    const resultsColumn = row?.querySelector('.session__results-column');
+
+    if (!resultsColumn) {
+      return 0;
+    }
+
+    const datasetValue = Number(resultsColumn.dataset.resultsCount || 0);
+
+    if (datasetValue > 0) {
+      return datasetValue;
+    }
+
+    const textValue = Number(resultsColumn.textContent.trim());
+    return Number.isFinite(textValue) ? textValue : 0;
+  }
+
+  isExerciseComplete = (exerciseId) => {
+    const expected = this.getExpectedResults(exerciseId);
+    const obtained = this.getObtainedResults(exerciseId);
+
+    if (!expected) {
+      return true;
+    }
+
+    return obtained >= expected;
+  }
+
+  getFirstIncompleteExercise = () => {
+    return Object.keys(this.exercises).find((exerciseId) => {
+      return !this.isExerciseComplete(exerciseId);
+    });
+  }
+
+  updateCurrentExerciseFromResults = () => {
+    const nextExercise = this.getFirstIncompleteExercise();
+
+    if (nextExercise) {
+      this.currentExercise = nextExercise;
+    }
+
+    this.updateExercisesState();
+  }
+
+  isSessionComplete = () => {
+    return Object.keys(this.exercises).every((exerciseId) => {
+      return this.isExerciseComplete(exerciseId);
+    });
+  }
+
+  finishIfAllResultsReceived = async () => {
+    if (this.state !== this.states.execution) {
+      return;
+    }
+
+    if (!this.isSessionComplete()) {
+      return;
+    }
+
+    this.state = this.states.finished;
+    clearTimeout(this.timer);
+    this.stopResultsPolling();
+    this.updateElements();
+
+    await this.saveSessionStatus(this.deviceActions.finish);
   }
 
   startSession = () => {
     const action = this.state === this.states.pause ? this.deviceActions.resume : this.deviceActions.start;
+
+    if (action === this.deviceActions.start) {
+      this.resetExerciseRows();
+      this.currentExercise = Object.keys(this.exercises)[0];
+    }
+
     this.state = this.states.execution;
     this.updateElements();
     this.saveSessionStatus(action);
-    this.startTimer();
+    this.updateSessionResults();
+    this.startResultsPolling();
   };
 
   pauseSession = () => {
@@ -121,45 +209,42 @@ class SessionTracker {
     this.updateElements();
     this.saveSessionStatus(this.deviceActions.pause);
     clearTimeout(this.timer);
+    this.stopResultsPolling();
   };
 
   stopSession = () => {
     this.state = this.states.scheduled;
-    this.updateElements();
-    this.saveSessionStatus(this.deviceActions.stop);
     clearTimeout(this.timer);
-    this.cleanResults();
+    this.stopResultsPolling();
+
+    this.saveSessionStatus(this.deviceActions.stop);
+    this.resetExerciseRows();
+    this.currentExercise = Object.keys(this.exercises)[0];
+    this.updateElements();
   };
 
   resetSession = () => {
     this.state = this.states.execution;
     clearTimeout(this.timer);
+    this.stopResultsPolling();
+
     this.currentExercise = Object.keys(this.exercises)[0];
+    this.resetExerciseRows();
     this.updateElements();
+
     this.saveSessionStatus(this.deviceActions.reboot);
-    this.startTimer();
-    this.cleanResults();
+    this.updateSessionResults();
+    this.startResultsPolling();
   };
 
   finishSession = () => {
     this.state = this.states.finished;
-    this.updateElements();
-    this.saveSessionStatus(this.deviceActions.stop);
     clearTimeout(this.timer);
-  };
+    this.stopResultsPolling();
 
-  cleanResults = () => {
-    Object.entries(this.exercises).forEach(([key, exercise]) => {
-      const results = exercise.nextElementSibling;
-      if (results && results.classList.contains('session__exercise-results')) {
-        results.remove();
-      }
-      const resultsColumn = exercise.querySelector('.session__results-column');
-      if (resultsColumn) {
-        resultsColumn.innerHTML = '';
-      }
-    })
-  }
+    this.updateElements();
+    this.saveSessionStatus(this.deviceActions.finish);
+  };
 
   buttonCallbacksByAction = {
     [this.actions.start]: this.startSession,
@@ -216,33 +301,72 @@ class SessionTracker {
     }
   }
 
+  resetExerciseRows = () => {
+    Object.entries(this.exercises).forEach(([key, exercise]) => {
+      exercise.classList.remove('active', 'open');
+
+      const results = exercise.nextElementSibling;
+      if (results && results.classList.contains('session__exercise-results')) {
+        results.remove();
+      }
+
+      const status = exercise.querySelector('.session__exercise-status');
+      if (status) {
+        status.classList.remove('success', 'failure', 'missed', 'pending');
+        status.setAttribute('title', '');
+        status.setAttribute('aria-label', '');
+      }
+
+      const resultsColumn = exercise.querySelector('.session__results-column');
+      if (resultsColumn) {
+        const wrapper = resultsColumn.parentElement;
+        wrapper.innerHTML = '<div class="session__results-column" data-results-count="0">-</div>';
+      }
+    });
+  }
+
   updateSessionResults = async () => {
     const url = `/api/session-results/${this.sessionId}`;
     const result = await fetch(url);
     const response = await result.json();
+
     if (Array.isArray(response)) {
       response.forEach((item) => {
         if (item.markup) {
           const id = item.exercise_id;
           const tableRow = this.exercises[id];
-          const oldResults = this.exercises[id].nextElementSibling;
+
+          if (!tableRow) {
+            return;
+          }
+
+          const oldResults = tableRow.nextElementSibling;
+
           if (oldResults && oldResults.classList.contains('session__exercise-results')) {
             oldResults.remove();
           }
+
           const newResults = document.createElement('template');
           newResults.innerHTML = item.markup;
           tableRow.insertAdjacentElement('afterend', newResults.content.firstElementChild);
+
           if (item.result_column) {
             const resultColumn = tableRow.querySelector('.session__results-column');
-            resultColumn.parentElement.innerHTML = item.result_column;
+
+            if (resultColumn) {
+              resultColumn.parentElement.innerHTML = item.result_column;
+            }
+
             tableRow.querySelector('.session__results-column button')?.addEventListener('click', () => {
               tableRow.classList.toggle('open');
-            })
+            });
           }
         }
       });
     }
 
+    this.updateCurrentExerciseFromResults();
+    await this.finishIfAllResultsReceived();
   }
 
 }

@@ -5,10 +5,13 @@
  * Primary module hooks for CITIUS Content module.
  */
 
+use Drupal\Component\Utility\Html;
 use Drupal\citius_content\NodeBundles;
 use Drupal\citius_content\NodeFields;
 use Drupal\Core\Entity\EntityTypeInterface;
+use Drupal\Core\Render\Markup;
 use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\views\ViewExecutable;
 
 /**
  * Implements hook_entity_type_alter().
@@ -37,6 +40,7 @@ function citius_content_entity_bundle_field_info_alter(array &$fields, EntityTyp
     $bundles_with_code = [
       NodeBundles::DEVICE,
     ];
+
     foreach ($bundles_with_code as $bundle_with_code) {
       if ($bundle === $bundle_with_code && isset($fields[NodeFields::CODE])) {
         $fields[NodeFields::CODE]->addConstraint(
@@ -48,6 +52,7 @@ function citius_content_entity_bundle_field_info_alter(array &$fields, EntityTyp
         );
       }
     }
+
     if ($bundle === NodeBundles::CENTER) {
       $fields[NodeFields::CIF]?->addConstraint('CifField');
       $fields[NodeFields::CIF]?->addConstraint('UniqueField');
@@ -60,11 +65,61 @@ function citius_content_entity_bundle_field_info_alter(array &$fields, EntityTyp
  */
 function citius_content_page_attachments(array &$attachments): void {
   $route_match = \Drupal::routeMatch();
+
   if (!$route_match instanceof RouteMatchInterface) {
     return;
   }
 
   if ($route_match->getRouteName() === 'view.devices.page_1') {
     $attachments['#attached']['library'][] = 'citius_content/drupal.devices_auto_refresh';
+    $attachments['#attached']['library'][] = 'citius_content/drupal.device_status_dots';
   }
+}
+
+/**
+ * Implements hook_preprocess_views_view_field().
+ */
+function citius_content_preprocess_views_view_field(array &$variables): void {
+  $view = $variables['view'] ?? NULL;
+
+  if (!$view || $view->id() !== 'devices') {
+    return;
+  }
+
+  $field_id = $variables['field']->options['id'] ?? NULL;
+
+  // Solo sustituimos la columna "Estado" por el estado dinámico de heartbeat.
+  // "Activo" / field_is_active debe seguir mostrando el booleano real de BD.
+  if ($field_id !== 'field_state') {
+    return;
+  }
+
+  $entity = $variables['row']->_entity ?? NULL;
+
+  if (
+    !$entity ||
+    $entity->bundle() !== NodeBundles::DEVICE ||
+    !$entity->hasField(NodeFields::CODE) ||
+    $entity->get(NodeFields::CODE)->isEmpty()
+  ) {
+    return;
+  }
+
+  $device_id = (string) $entity->get(NodeFields::CODE)->value;
+  $escaped_device_id = Html::escape($device_id);
+
+  $variables['output'] = Markup::create(
+    '<span class="device-status-dot device-status-dot--offline" data-device-status-id="' . $escaped_device_id . '" title="Offline" aria-label="Offline"></span>'
+  );
+}
+
+/**
+ * Implements hook_views_pre_render().
+ */
+function citius_content_views_pre_render(ViewExecutable $view): void {
+  if ($view->id() !== 'devices') {
+    return;
+  }
+
+  $view->element['#attached']['library'][] = 'citius_content/drupal.device_status_dots';
 }

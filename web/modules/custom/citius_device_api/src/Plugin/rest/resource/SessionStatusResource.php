@@ -91,33 +91,39 @@ class SessionStatusResource extends ResourceBase {
     $device_id = $session->getGlassDeviceId();
 
     $error_message = NULL;
-    if ($device_id) {
-      try {
-        $glasses_response = $this->httpClient->post(
-          $bridge_endpoint,
-          [
-            'json' => [
-              'device_id' => $device_id,
-              'user_id' => $session->get(NodeFields::PATIENT)->target_id,
-              'routine_id' => $session->id(),
-              'action' => $action,
-            ],
-            'timeout' => 5,
-          ]
-        );
+    $device_actions = ['start', 'stop', 'pause', 'resume', 'reboot'];
+
+    if (in_array($action, $device_actions, TRUE)) {
+      if ($device_id) {
+        try {
+          $glasses_response = $this->httpClient->post(
+            $bridge_endpoint,
+            [
+              'json' => [
+                'device_id' => $device_id,
+                'user_id' => $session->get(NodeFields::PATIENT)->target_id,
+                'routine_id' => $session->id(),
+                'action' => $action,
+              ],
+              'timeout' => 5,
+            ]
+          );
+        }
+        catch (GuzzleException $e) {
+          $this->logger->error($e->getMessage());
+          $error_message = $this->t('Failed to send command to glasses device.');
+        }
       }
-      catch (GuzzleException $e) {
-        $this->logger->error($e->getMessage());
-        $error_message = $this->t('Failed to send command to glasses device.');
+      else {
+        $error_message = $this->t('No glasses device is associated with this session.');
       }
-    }
-    else {
-      $error_message = $this->t('No glasses device is associated with this session.');
     }
 
     $response_data = [
       'status_label' => $status_label,
-      'endpoint_status' => isset($glasses_response) ? 'success' : 'failure',
+      'endpoint_status' => in_array($action, $device_actions, TRUE)
+        ? (isset($glasses_response) ? 'success' : 'failure')
+        : 'not_sent',
     ];
     if ($error_message) {
       $response_data['error_message'] = $error_message;

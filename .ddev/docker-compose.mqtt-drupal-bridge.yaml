@@ -13,6 +13,7 @@ services:
       MQTT_PASSWORD: "1234"
       DRUPAL_BASE_URL: http://web
       HTTP_PORT: 3000
+      ONLINE_TTL_MS: 65000
     networks:
       default:
         aliases:

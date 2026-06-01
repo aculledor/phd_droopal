@@ -1,0 +1,7 @@
+citius_device_api.device_status:
+  path: '/api/device-status/{device_id}'
+  defaults:
+    _controller: '\Drupal\citius_device_api\Controller\DeviceStatusController::status'
+  requirements:
+    _permission: 'access content'
+  methods: [GET]
