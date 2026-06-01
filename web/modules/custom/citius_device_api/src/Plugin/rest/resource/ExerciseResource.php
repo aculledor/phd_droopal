@@ -95,7 +95,20 @@ class ExerciseResource extends ApiResourceBase {
     ]);
     $violations_list = $execution->validate();
     if ($violations_list->count()) {
-      throw new BadRequestHttpException('Invalid data format.');
+      $errors = [];
+      foreach ($violations_list as $violation) {
+        $errors[] = $violation->getPropertyPath() . ': ' . $violation->getMessage();
+      }
+
+      \Drupal::logger('citius_device_api')->error(
+        'Execution validation failed: @errors. Payload: @payload',
+        [
+          '@errors' => implode(' | ', $errors),
+          '@payload' => Json::encode($data),
+        ]
+      );
+
+      throw new BadRequestHttpException('Invalid data format: ' . implode(' | ', $errors));
     }
     $execution->save();
     return new ModifiedResourceResponse($data, 201);
