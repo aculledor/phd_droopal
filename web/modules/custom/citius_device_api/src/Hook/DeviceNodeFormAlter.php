@@ -9,7 +9,6 @@ use Drupal\citius_device_api\Exception\DeviceIdException;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Hook\Attribute\Hook;
-use Drupal\Core\Messenger\MessengerInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -24,7 +23,6 @@ class DeviceNodeFormAlter {
   public function __construct(
     protected DeviceIdManager $deviceIdManager,
     protected RequestStack $requestStack,
-    protected MessengerInterface $messenger,
     protected EntityTypeManagerInterface $entityTypeManager,
   ) {}
 
@@ -35,11 +33,9 @@ class DeviceNodeFormAlter {
   public function deviceNodeFormAlter(array &$form, FormStateInterface $form_state, string $form_id): void {
     $request = $this->requestStack->getCurrentRequest();
     if ($request?->getMethod() === 'GET') {
-      if ($this->deviceIdManager->isActivated()) {
-        $this->messenger->addError($this->t('Other device is being created. Close other tabs with this form to create a new device. If it does not work, wait a few minutes and try again.'));
-        $form['#disabled'] = TRUE;
-        return;
-      }
+      // Opening or reloading the device creation form starts a fresh
+      // registration flow, cancelling any stale or failed registration state.
+      $this->deviceIdManager->deactivate();
       $this->deviceIdManager->activate();
     }
     $form[NodeFields::CODE]['#disabled'] = TRUE;
