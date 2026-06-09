@@ -26,6 +26,9 @@ class CommonHooks {
           'summary' => NULL,
         ],
       ],
+      'privacy_policy_vr' => [
+        'template' => 'privacy-policy-vr',
+      ],
     ];
   }
 
