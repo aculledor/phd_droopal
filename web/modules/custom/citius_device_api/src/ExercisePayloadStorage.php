@@ -72,7 +72,7 @@ final class ExercisePayloadStorage {
   /**
    * Saves a normalized movement tracking sample.
    */
-  public function createTrackingSample(array $data, int $raw_payload_id = NULL): int {
+  public function createTrackingSample(array $data, ?int $raw_payload_id = NULL): int {
     $metadata = $data['metadata'] ?? [];
     $tracking_sample = $data['tracking_sample'] ?? [];
 

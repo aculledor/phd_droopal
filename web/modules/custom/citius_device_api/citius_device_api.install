@@ -6,7 +6,6 @@
  */
 
 use Drupal\citius_device_api\ExercisePayloadStorage;
-use Drupal\Core\Field\BaseFieldDefinition;
 
 /**
  * Implements hook_schema().
@@ -155,7 +154,7 @@ function citius_device_api_schema(): array {
 }
 
 /**
- * Creates raw payload/tracking tables and adds execution rotation fields.
+ * Creates raw payload/tracking tables.
  */
 function citius_device_api_update_11001(): void {
   $schema = \Drupal::database()->schema();
@@ -166,27 +165,24 @@ function citius_device_api_update_11001(): void {
       $schema->createTable($table_name, $table_schema[$table_name]);
     }
   }
+}
 
+
+/**
+ * Removes transient execution rotation field definitions from the previous build.
+ */
+function citius_device_api_update_11002(): void {
   $entity_definition_update_manager = \Drupal::entityDefinitionUpdateManager();
-  $entity_type = $entity_definition_update_manager->getEntityType('execution');
   $directions = ['head', 'left', 'right'];
   $axes = ['x', 'y', 'z', 'w'];
 
   foreach ($directions as $direction) {
     foreach ($axes as $axis) {
       $field_name = sprintf('%s_rot_%s', $direction, $axis);
-      if ($entity_definition_update_manager->getFieldStorageDefinition($field_name, 'execution')) {
-        continue;
+      $field_storage_definition = $entity_definition_update_manager->getFieldStorageDefinition($field_name, 'execution');
+      if ($field_storage_definition !== NULL) {
+        $entity_definition_update_manager->uninstallFieldStorageDefinition($field_storage_definition);
       }
-      $field = BaseFieldDefinition::create('float')
-        ->setLabel(t('@direction rotation @axis', [
-          '@direction' => ucfirst($direction),
-          '@axis' => strtoupper($axis),
-        ]))
-        ->setRequired(FALSE);
-      $entity_definition_update_manager->installFieldStorageDefinition($field_name, 'execution', 'citius_device_api', $field);
     }
   }
-
-  $entity_definition_update_manager->updateEntityType($entity_type);
 }

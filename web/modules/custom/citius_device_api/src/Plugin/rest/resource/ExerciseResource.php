@@ -116,7 +116,27 @@ class ExerciseResource extends ApiResourceBase {
       ], 202);
     }
 
-    $execution->save();
+    try {
+      $execution->save();
+    }
+    catch (\Throwable $exception) {
+      $errors = [$exception->getMessage()];
+      $this->updateRawPayload($raw_payload_id, $data, 'exercise_event', ExercisePayloadStorage::STATUS_INVALID, $errors);
+      \Drupal::logger('citius_device_api')->error('Execution save failed: @error. Payload: @payload', [
+        '@error' => $exception->getMessage(),
+        '@payload' => Json::encode($data),
+      ]);
+
+      return new ModifiedResourceResponse([
+        'status' => 'accepted',
+        'payload_type' => 'exercise_event',
+        'raw_payload_saved' => TRUE,
+        'normalized_payload_saved' => FALSE,
+        'validation_status' => ExercisePayloadStorage::STATUS_INVALID,
+        'validation_errors' => $errors,
+      ], 202);
+    }
+
     $this->updateRawPayload($raw_payload_id, $data, 'exercise_event', ExercisePayloadStorage::STATUS_VALID, []);
 
     return new ModifiedResourceResponse([
@@ -176,7 +196,8 @@ class ExerciseResource extends ApiResourceBase {
   }
 
   /**
-   * Builds execution entity values, including optional quaternion rotations.
+   * Builds execution entity values. The full movement_data, including
+   * optional quaternion rotations, remains available in json_data.
    */
   protected function buildExecutionValues(array $data, SessionNode $session): array {
     $movement_data = $data['movement_data'];
@@ -196,12 +217,6 @@ class ExerciseResource extends ApiResourceBase {
       'right_y' => $movement_data['right_controller_y'],
       'right_z' => $movement_data['right_controller_z'],
     ];
-
-    foreach ($this->rotationFieldMap() as $payload_field => $entity_field) {
-      if (array_key_exists($payload_field, $movement_data) && $movement_data[$payload_field] !== '') {
-        $values[$entity_field] = (float) $movement_data[$payload_field];
-      }
-    }
 
     return $values;
   }
@@ -275,26 +290,6 @@ class ExerciseResource extends ApiResourceBase {
       $current = $current[$part];
     }
     return $current;
-  }
-
-  /**
-   * Maps Unity rotation payload fields to execution entity fields.
-   */
-  protected function rotationFieldMap(): array {
-    return [
-      'left_controller_rot_x' => 'left_rot_x',
-      'left_controller_rot_y' => 'left_rot_y',
-      'left_controller_rot_z' => 'left_rot_z',
-      'left_controller_rot_w' => 'left_rot_w',
-      'right_controller_rot_x' => 'right_rot_x',
-      'right_controller_rot_y' => 'right_rot_y',
-      'right_controller_rot_z' => 'right_rot_z',
-      'right_controller_rot_w' => 'right_rot_w',
-      'head_rot_x' => 'head_rot_x',
-      'head_rot_y' => 'head_rot_y',
-      'head_rot_z' => 'head_rot_z',
-      'head_rot_w' => 'head_rot_w',
-    ];
   }
 
   /**

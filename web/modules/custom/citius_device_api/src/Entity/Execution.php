@@ -198,28 +198,6 @@ class Execution extends ContentEntityBase implements ExecutionInterface {
       }
     }
 
-    foreach ($directions as $direction => $direction_label) {
-      foreach ($rotation_components as $component) {
-        $field_name = sprintf('%s_rot_%s', $direction, $component);
-        $fields[$field_name] = BaseFieldDefinition::create('float')
-          ->setLabel(t('@direction rotation @component', [
-            '@direction' => $direction_label,
-            '@component' => strtoupper($component),
-          ]))
-          ->setRequired(FALSE)
-          ->setDisplayOptions('form', [
-            'type' => 'number',
-            'weight' => 1,
-          ])
-          ->setDisplayConfigurable('form', TRUE)
-          ->setDisplayOptions('view', [
-            'label' => 'inline',
-            'type' => 'number_decimal',
-            'weight' => 1,
-          ])
-          ->setDisplayConfigurable('view', TRUE);
-      }
-    }
 
     return $fields;
   }
