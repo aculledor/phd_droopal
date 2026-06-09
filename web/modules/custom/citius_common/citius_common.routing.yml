@@ -13,3 +13,11 @@ citius_common.settings:
     _title: 'Citius Common settings'
   requirements:
     _permission: 'system'
+
+citius_common.privacy_policy_vr:
+  path: '/privacy_policy_vr'
+  defaults:
+    _controller: '\Drupal\citius_common\Controller\PrivacyPolicyVrController::page'
+    _title: 'Privacy Policy'
+  requirements:
+    _access: 'TRUE'
