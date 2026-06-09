@@ -1,0 +1,41 @@
+{
+  "metadata": {
+    "version": "v1",
+    "timestamp": "2026-06-09T00:00:00.0000000Z",
+    "source": "CiTIUS",
+    "routine_id": "42",
+    "user_id": "13",
+    "payload_type": "movement_tracking_sample"
+  },
+  "tracking_sample": {
+    "sample_id": "00000000-0000-0000-0000-000000000002",
+    "timestamp": "2026-06-09T00:00:00",
+    "exercise_id": "31",
+    "exercise_type_code": "CROSS_LEFT_HIT",
+    "legacy_game_event": "CROSS_LEFT_HIT_SUCCESS",
+    "sample_interval_seconds": 0.5
+  },
+  "movement_data": {
+    "left_controller_x": "0.1",
+    "left_controller_y": "1.2",
+    "left_controller_z": "2.3",
+    "left_controller_rot_x": "0.0",
+    "left_controller_rot_y": "0.0",
+    "left_controller_rot_z": "0.0",
+    "left_controller_rot_w": "1.0",
+    "right_controller_x": "0.4",
+    "right_controller_y": "1.5",
+    "right_controller_z": "2.6",
+    "right_controller_rot_x": "0.0",
+    "right_controller_rot_y": "0.0",
+    "right_controller_rot_z": "0.0",
+    "right_controller_rot_w": "1.0",
+    "head_x": "0.7",
+    "head_y": "1.8",
+    "head_z": "2.9",
+    "head_rot_x": "0.0",
+    "head_rot_y": "0.0",
+    "head_rot_z": "0.0",
+    "head_rot_w": "1.0"
+  }
+}
