@@ -173,6 +173,7 @@ class Execution extends ContentEntityBase implements ExecutionInterface {
       'right' => t('Right'),
     ];
     $coordinates = ['x', 'y', 'z'];
+    $rotation_components = ['x', 'y', 'z', 'w'];
 
     foreach ($directions as $direction => $direction_label) {
       foreach ($coordinates as $coordinate) {
