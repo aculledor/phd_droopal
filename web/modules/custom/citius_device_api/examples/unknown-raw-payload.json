@@ -1,0 +1,12 @@
+{
+  "metadata": {
+    "version": "v1",
+    "timestamp": "2026-06-09T00:00:00.0000000Z",
+    "source": "CiTIUS",
+    "routine_id": "42",
+    "user_id": "13"
+  },
+  "unexpected_payload": {
+    "note": "This payload should be accepted and saved in the raw payload log without normalized execution/tracking rows."
+  }
+}

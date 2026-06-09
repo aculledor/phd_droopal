@@ -24,6 +24,7 @@ services:
 
   citius_device_api.request_subscriber:
     class: Drupal\citius_device_api\EventSubscriber\RequestSubscriber
+    autowire: true
     tags:
       - { name: event_subscriber }
 
@@ -35,3 +36,7 @@ services:
   citius_device_api.device_status_checker:
     class: Drupal\citius_device_api\DeviceStatusChecker
     arguments: ['@http_client']
+
+
+  Drupal\citius_device_api\ExercisePayloadStorage:
+    autowire: true

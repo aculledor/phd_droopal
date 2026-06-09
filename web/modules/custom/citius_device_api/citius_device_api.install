@@ -1,0 +1,192 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall hooks for citius_device_api.
+ */
+
+use Drupal\citius_device_api\ExercisePayloadStorage;
+use Drupal\Core\Field\BaseFieldDefinition;
+
+/**
+ * Implements hook_schema().
+ */
+function citius_device_api_schema(): array {
+  $schema[ExercisePayloadStorage::TABLE_RAW] = [
+    'description' => 'Raw JSON payloads received by POST /api/exercise.',
+    'fields' => [
+      'id' => [
+        'type' => 'serial',
+        'not null' => TRUE,
+        'description' => 'Primary key.',
+      ],
+      'received_at' => [
+        'type' => 'datetime',
+        'not null' => TRUE,
+        'description' => 'Server receipt timestamp.',
+      ],
+      'device_id' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'description' => 'Device id inferred from the bearer token, when available.',
+      ],
+      'user_id' => [
+        'type' => 'varchar',
+        'length' => 64,
+        'not null' => FALSE,
+        'description' => 'User id from metadata, when available.',
+      ],
+      'routine_id' => [
+        'type' => 'varchar',
+        'length' => 64,
+        'not null' => FALSE,
+        'description' => 'Routine/session id from metadata, when available.',
+      ],
+      'payload_type' => [
+        'type' => 'varchar',
+        'length' => 64,
+        'not null' => TRUE,
+        'default' => 'unknown',
+        'description' => 'Detected payload type.',
+      ],
+      'raw_payload_json' => [
+        'type' => 'text',
+        'size' => 'big',
+        'not null' => TRUE,
+        'description' => 'Raw request body.',
+      ],
+      'validation_status' => [
+        'type' => 'varchar',
+        'length' => 32,
+        'not null' => TRUE,
+        'default' => ExercisePayloadStorage::STATUS_RECEIVED,
+        'description' => 'Validation result: received, valid, partially_valid, or invalid.',
+      ],
+      'validation_errors' => [
+        'type' => 'text',
+        'size' => 'big',
+        'not null' => FALSE,
+        'description' => 'JSON encoded list of validation errors.',
+      ],
+    ],
+    'primary key' => ['id'],
+    'indexes' => [
+      'received_at' => ['received_at'],
+      'payload_type' => ['payload_type'],
+      'user_id' => ['user_id'],
+      'routine_id' => ['routine_id'],
+      'device_id' => ['device_id'],
+    ],
+  ];
+
+  $schema[ExercisePayloadStorage::TABLE_TRACKING] = [
+    'description' => 'Normalized movement tracking samples received by POST /api/exercise.',
+    'fields' => [
+      'id' => [
+        'type' => 'serial',
+        'not null' => TRUE,
+        'description' => 'Primary key.',
+      ],
+      'raw_payload_id' => [
+        'type' => 'int',
+        'not null' => FALSE,
+        'unsigned' => TRUE,
+        'description' => 'Related raw payload id.',
+      ],
+      'received_at' => [
+        'type' => 'datetime',
+        'not null' => TRUE,
+        'description' => 'Server receipt timestamp.',
+      ],
+      'sample_timestamp' => [
+        'type' => 'varchar',
+        'length' => 64,
+        'not null' => FALSE,
+        'description' => 'Sample timestamp sent by the device.',
+      ],
+      'user_id' => [
+        'type' => 'varchar',
+        'length' => 64,
+        'not null' => FALSE,
+      ],
+      'routine_id' => [
+        'type' => 'varchar',
+        'length' => 64,
+        'not null' => FALSE,
+      ],
+      'exercise_id' => [
+        'type' => 'varchar',
+        'length' => 64,
+        'not null' => FALSE,
+      ],
+      'exercise_type_code' => [
+        'type' => 'varchar',
+        'length' => 128,
+        'not null' => FALSE,
+      ],
+      'legacy_game_event' => [
+        'type' => 'varchar',
+        'length' => 128,
+        'not null' => FALSE,
+      ],
+      'sample_interval_seconds' => [
+        'type' => 'float',
+        'not null' => FALSE,
+      ],
+      'movement_data_json' => [
+        'type' => 'text',
+        'size' => 'big',
+        'not null' => TRUE,
+        'description' => 'JSON encoded movement_data object, including position and rotation.',
+      ],
+    ],
+    'primary key' => ['id'],
+    'indexes' => [
+      'raw_payload_id' => ['raw_payload_id'],
+      'received_at' => ['received_at'],
+      'user_id' => ['user_id'],
+      'routine_id' => ['routine_id'],
+      'exercise_id' => ['exercise_id'],
+    ],
+  ];
+
+  return $schema;
+}
+
+/**
+ * Creates raw payload/tracking tables and adds execution rotation fields.
+ */
+function citius_device_api_update_11001(): void {
+  $schema = \Drupal::database()->schema();
+  $table_schema = citius_device_api_schema();
+
+  foreach ([ExercisePayloadStorage::TABLE_RAW, ExercisePayloadStorage::TABLE_TRACKING] as $table_name) {
+    if (!$schema->tableExists($table_name)) {
+      $schema->createTable($table_name, $table_schema[$table_name]);
+    }
+  }
+
+  $entity_definition_update_manager = \Drupal::entityDefinitionUpdateManager();
+  $entity_type = $entity_definition_update_manager->getEntityType('execution');
+  $directions = ['head', 'left', 'right'];
+  $axes = ['x', 'y', 'z', 'w'];
+
+  foreach ($directions as $direction) {
+    foreach ($axes as $axis) {
+      $field_name = sprintf('%s_rot_%s', $direction, $axis);
+      if ($entity_definition_update_manager->getFieldStorageDefinition($field_name, 'execution')) {
+        continue;
+      }
+      $field = BaseFieldDefinition::create('float')
+        ->setLabel(t('@direction rotation @axis', [
+          '@direction' => ucfirst($direction),
+          '@axis' => strtoupper($axis),
+        ]))
+        ->setRequired(FALSE);
+      $entity_definition_update_manager->installFieldStorageDefinition($field_name, 'execution', 'citius_device_api', $field);
+    }
+  }
+
+  $entity_definition_update_manager->updateEntityType($entity_type);
+}
