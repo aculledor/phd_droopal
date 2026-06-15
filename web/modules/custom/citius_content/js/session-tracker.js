@@ -7,6 +7,8 @@ class SessionTracker {
 
   actions = {
     start: 'start',
+    calibrateStandingHeight: 'calibrate_standing_height',
+    calibrateSquatHeight: 'calibrate_squat_height',
     pause: 'pause',
     stop: 'stop',
     restart: 'restart',
@@ -20,6 +22,8 @@ class SessionTracker {
     reboot: 'reboot',
     resume: 'resume',
     finish: 'finish',
+    calibrateStandingHeight: 'calibrate_standing_height',
+    calibrateSquatHeight: 'calibrate_squat_height',
   };
 
   states = {
@@ -30,9 +34,9 @@ class SessionTracker {
   };
 
   visibleActions = {
-    scheduled: [this.actions.start],
+    scheduled: [this.actions.start, this.actions.calibrateStandingHeight, this.actions.calibrateSquatHeight],
     execution: [this.actions.pause, this.actions.stop, this.actions.restart, this.actions.finish],
-    pause: [this.actions.start, this.actions.stop, this.actions.restart, this.actions.finish],
+    pause: [this.actions.start, this.actions.calibrateStandingHeight, this.actions.calibrateSquatHeight, this.actions.stop, this.actions.restart, this.actions.finish],
     finished: [this.actions.restart],
   }
 
@@ -246,8 +250,18 @@ class SessionTracker {
     this.saveSessionStatus(this.deviceActions.finish);
   };
 
+  calibrateStandingHeight = () => {
+    this.saveSessionStatus(this.deviceActions.calibrateStandingHeight);
+  };
+
+  calibrateSquatHeight = () => {
+    this.saveSessionStatus(this.deviceActions.calibrateSquatHeight);
+  };
+
   buttonCallbacksByAction = {
     [this.actions.start]: this.startSession,
+    [this.actions.calibrateStandingHeight]: this.calibrateStandingHeight,
+    [this.actions.calibrateSquatHeight]: this.calibrateSquatHeight,
     [this.actions.pause]: this.pauseSession,
     [this.actions.stop]: this.stopSession,
     [this.actions.restart]: this.resetSession,

@@ -331,6 +331,8 @@ class SessionView {
   protected function renderButtons(): array {
     $actions = [
       'start' => $this->t('Start'),
+      'calibrate_standing_height' => $this->t('Measure and save user height'),
+      'calibrate_squat_height' => $this->t('Measure and save squat height'),
       'pause' => $this->t('Pause'),
       'restart' => $this->t('Restart'),
       'stop' => $this->t('Stop'),

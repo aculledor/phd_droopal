@@ -177,6 +177,14 @@ a.button {
     background-image: url('../../../templates/svg/icons/controls/pause.svg');
   }
 
+  &.icon-calibrate_standing_height:before {
+    background-image: url('../../../templates/svg/icons/user/user.svg');
+  }
+
+  &.icon-calibrate_squat_height:before {
+    background-image: url('../../../templates/svg/icons/arrows/arrow-down.svg');
+  }
+
   &.icon-restart:before {
     background-image: url('../../../templates/svg/icons/controls/restart.svg');
   }
