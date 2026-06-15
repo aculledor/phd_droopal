@@ -17,6 +17,8 @@ class UserFields {
 
   public const string HEIGHT = 'field_height';
 
+  public const string SQUAT_HEIGHT = 'field_squat_height';
+
   public const string LOCATION = 'field_location';
 
   public const string MAIL = 'mail';

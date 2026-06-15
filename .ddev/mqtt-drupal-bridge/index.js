@@ -147,10 +147,10 @@ app.post("/publish-command", (req, res) => {
     });
   }
 
-  if (!["start", "stop", "pause", "resume", "reboot"].includes(action)) {
+  if (!["start", "stop", "pause", "resume", "reboot", 'calibrate_standing_height', 'calibrate_squat_height'].includes(action)) {
     return res.status(400).json({
       error: "Invalid action",
-      allowed_actions: ["start", "stop", "pause", "resume", "reboot"],
+      allowed_actions: ["start", "stop", "pause", "resume", "reboot", 'calibrate_standing_height', 'calibrate_squat_height'],
     });
   }
 

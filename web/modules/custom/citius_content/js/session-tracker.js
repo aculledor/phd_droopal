@@ -34,10 +34,30 @@ class SessionTracker {
   };
 
   visibleActions = {
-    scheduled: [this.actions.start, this.actions.calibrateStandingHeight, this.actions.calibrateSquatHeight],
-    execution: [this.actions.pause, this.actions.stop, this.actions.restart, this.actions.finish],
-    pause: [this.actions.start, this.actions.calibrateStandingHeight, this.actions.calibrateSquatHeight, this.actions.stop, this.actions.restart, this.actions.finish],
-    finished: [this.actions.restart],
+    scheduled: [
+      this.actions.start,
+      this.actions.calibrateStandingHeight,
+      this.actions.calibrateSquatHeight,
+    ],
+    execution: [
+      this.actions.calibrateStandingHeight,
+      this.actions.calibrateSquatHeight,
+      this.actions.pause,
+      this.actions.stop,
+      this.actions.restart,
+      this.actions.finish,
+    ],
+    pause: [
+      this.actions.start,
+      this.actions.calibrateStandingHeight,
+      this.actions.calibrateSquatHeight,
+      this.actions.stop,
+      this.actions.restart,
+      this.actions.finish,
+    ],
+    finished: [
+      this.actions.restart,
+    ],
   }
 
   resultsPoller = null;

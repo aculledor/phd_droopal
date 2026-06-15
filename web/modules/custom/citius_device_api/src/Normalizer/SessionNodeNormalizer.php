@@ -24,12 +24,20 @@ class SessionNodeNormalizer implements NormalizerInterface {
   public function normalize($data, $format = NULL, array $context = []): array {
     /** @var \Drupal\citius_content\Entity\SessionNode $session */
     $session = $data;
+
+    $patient = $session->get(NodeFields::PATIENT)->entity;
+
+    $standing_height = $this->getUserIntegerFieldValue($patient, UserFields::HEIGHT);
+    $squat_height = $this->getUserIntegerFieldValue($patient, UserFields::SQUAT_HEIGHT);
+
     $response = [
       'user_id' => (int) $session->get(NodeFields::PATIENT)->target_id,
       'routine_id' => (int) $session->id(),
+      'height' => $standing_height,
+      'standing_height' => $standing_height,
+      'squat_height' => $squat_height,
     ];
-    $patient = $session->get(NodeFields::PATIENT)->entity;
-    $response['height'] = (int) ($patient?->get(UserFields::HEIGHT)->value ?? 0);
+    
     $routine = $session->get(NodeFields::ROUTINE)->entity;
     if ($routine instanceof NodeInterface && $routine->bundle() === NodeBundles::ROUTINE) {
       $exercises = $routine->get(NodeFields::EXERCISES)->referencedEntities();
@@ -69,6 +77,16 @@ class SessionNodeNormalizer implements NormalizerInterface {
       $response['exercises'] = $exercise_data;
     }
     return $response;
+  }
+
+  private function getUserIntegerFieldValue($user, string $field_name): int {
+    if (!$user || !$user->hasField($field_name) || $user->get($field_name)->isEmpty()) {
+      return 0;
+    }
+
+    $value = $user->get($field_name)->value;
+
+    return is_numeric($value) ? (int) $value : 0;
   }
 
   /**

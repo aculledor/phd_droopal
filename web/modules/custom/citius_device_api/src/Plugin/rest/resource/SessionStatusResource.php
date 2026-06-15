@@ -120,8 +120,13 @@ class SessionStatusResource extends ResourceBase {
           );
         }
         catch (GuzzleException $e) {
-          $this->logger->error($e->getMessage());
-          $error_message = $this->t('Failed to send command to glasses device.');
+          $this->logger->error('MQTT bridge command failed: @message', [
+            '@message' => $e->getMessage(),
+          ]);
+
+          $error_message = $this->t('Failed to send command to glasses device: @message', [
+            '@message' => $e->getMessage(),
+          ]);
         }
       }
       else {
