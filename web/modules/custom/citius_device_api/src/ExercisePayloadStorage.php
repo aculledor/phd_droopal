@@ -12,13 +12,13 @@ use Drupal\Core\Database\Connection;
  */
 final class ExercisePayloadStorage {
 
-  public const string TABLE_RAW = 'citius_device_api_exercise_raw_payload';
-  public const string TABLE_TRACKING = 'citius_device_api_tracking_sample';
+  public const TABLE_RAW = 'citius_device_api_exercise_raw_payload';
+  public const TABLE_TRACKING = 'citius_device_api_tracking_sample';
 
-  public const string STATUS_RECEIVED = 'received';
-  public const string STATUS_VALID = 'valid';
-  public const string STATUS_PARTIALLY_VALID = 'partially_valid';
-  public const string STATUS_INVALID = 'invalid';
+  public const STATUS_RECEIVED = 'received';
+  public const STATUS_VALID = 'valid';
+  public const STATUS_PARTIALLY_VALID = 'partially_valid';
+  public const STATUS_INVALID = 'invalid';
 
   public function __construct(
     protected Connection $database,

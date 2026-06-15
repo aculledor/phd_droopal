@@ -16,9 +16,9 @@ use Symfony\Component\DependencyInjection\Attribute\Autowire;
  */
 final class DeviceHeartbeatManager {
 
-  private const string STORAGE_KEY = 'device_heartbeat';
+  private const STORAGE_KEY = 'device_heartbeat';
 
-  private const int HEARTBEAT_TTL = 60;
+  private const HEARTBEAT_TTL = 60;
 
   public function __construct(
     #[Autowire(service: 'keyvalue.expirable.database')]

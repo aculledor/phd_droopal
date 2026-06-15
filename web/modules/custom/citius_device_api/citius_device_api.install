@@ -20,7 +20,8 @@ function citius_device_api_schema(): array {
         'description' => 'Primary key.',
       ],
       'received_at' => [
-        'type' => 'datetime',
+        'type' => 'varchar',
+        'length' => 32,
         'not null' => TRUE,
         'description' => 'Server receipt timestamp.',
       ],
@@ -94,7 +95,8 @@ function citius_device_api_schema(): array {
         'description' => 'Related raw payload id.',
       ],
       'received_at' => [
-        'type' => 'datetime',
+        'type' => 'varchar',
+        'length' => 32,
         'not null' => TRUE,
         'description' => 'Server receipt timestamp.',
       ],
@@ -183,6 +185,59 @@ function citius_device_api_update_11002(): void {
       if ($field_storage_definition !== NULL) {
         $entity_definition_update_manager->uninstallFieldStorageDefinition($field_storage_definition);
       }
+    }
+  }
+}
+
+/**
+ * Ensures raw payload/tracking tables exist.
+ */
+function citius_device_api_update_11003(): void {
+  $schema = \Drupal::database()->schema();
+  $table_schema = citius_device_api_schema();
+
+  foreach ([ExercisePayloadStorage::TABLE_RAW, ExercisePayloadStorage::TABLE_TRACKING] as $table_name) {
+    if (!$schema->tableExists($table_name)) {
+      $schema->createTable($table_name, $table_schema[$table_name]);
+    }
+  }
+}
+
+/**
+ * Installs execution rotation base fields.
+ */
+function citius_device_api_update_11004(): void {
+  $entity_definition_update_manager = \Drupal::entityDefinitionUpdateManager();
+  $entity_type_manager = \Drupal::entityTypeManager();
+
+  $entity_type = $entity_type_manager->getDefinition('execution');
+  $field_definitions = \Drupal\citius_device_api\Entity\Execution::baseFieldDefinitions($entity_type);
+
+  $rotation_fields = [
+    'head_rot_x',
+    'head_rot_y',
+    'head_rot_z',
+    'head_rot_w',
+    'left_rot_x',
+    'left_rot_y',
+    'left_rot_z',
+    'left_rot_w',
+    'right_rot_x',
+    'right_rot_y',
+    'right_rot_z',
+    'right_rot_w',
+  ];
+
+  foreach ($rotation_fields as $field_name) {
+    $existing = $entity_definition_update_manager->getFieldStorageDefinition($field_name, 'execution');
+
+    if ($existing === NULL && isset($field_definitions[$field_name])) {
+      $entity_definition_update_manager->installFieldStorageDefinition(
+        $field_name,
+        'execution',
+        'citius_device_api',
+        $field_definitions[$field_name]
+      );
     }
   }
 }

@@ -55,8 +55,10 @@ final class RequestSubscriber implements EventSubscriberInterface {
       $request->attributes->set('citius_device_api_raw_payload_id', $raw_payload_id);
     }
     catch (\Throwable $exception) {
-      // Never block the Unity app because the defensive raw log failed.
-      watchdog_exception('citius_device_api', $exception);
+       // Never block the Unity app because the defensive raw log failed.
+      \Drupal::logger('citius_device_api')->error('Raw payload logging failed: @error', [
+        '@error' => $exception->getMessage(),
+      ]);
     }
   }
 

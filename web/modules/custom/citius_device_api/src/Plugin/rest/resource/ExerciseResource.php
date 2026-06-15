@@ -220,6 +220,18 @@ class ExerciseResource extends ApiResourceBase {
       'right_x' => $this->toFloat($movement_data['right_controller_x']),
       'right_y' => $this->toFloat($movement_data['right_controller_y']),
       'right_z' => $this->toFloat($movement_data['right_controller_z']),
+      'head_rot_x' => $this->toFloat($movement_data['head_rot_x'] ?? NULL),
+      'head_rot_y' => $this->toFloat($movement_data['head_rot_y'] ?? NULL),
+      'head_rot_z' => $this->toFloat($movement_data['head_rot_z'] ?? NULL),
+      'head_rot_w' => $this->toFloat($movement_data['head_rot_w'] ?? NULL),
+      'left_rot_x' => $this->toFloat($movement_data['left_controller_rot_x'] ?? NULL),
+      'left_rot_y' => $this->toFloat($movement_data['left_controller_rot_y'] ?? NULL),
+      'left_rot_z' => $this->toFloat($movement_data['left_controller_rot_z'] ?? NULL),
+      'left_rot_w' => $this->toFloat($movement_data['left_controller_rot_w'] ?? NULL),
+      'right_rot_x' => $this->toFloat($movement_data['right_controller_rot_x'] ?? NULL),
+      'right_rot_y' => $this->toFloat($movement_data['right_controller_rot_y'] ?? NULL),
+      'right_rot_z' => $this->toFloat($movement_data['right_controller_rot_z'] ?? NULL),
+      'right_rot_w' => $this->toFloat($movement_data['right_controller_rot_w'] ?? NULL),
     ];
 
     return $values;
@@ -372,7 +384,9 @@ class ExerciseResource extends ApiResourceBase {
       // Raw-payload bookkeeping must never turn an accepted Unity payload into
       // an HTTP 500 response. Log the storage problem and keep returning the
       // endpoint validation result to the device.
-      watchdog_exception('citius_device_api', $exception);
+      \Drupal::logger('citius_device_api')->error('Raw payload update failed: @error', [
+        '@error' => $exception->getMessage(),
+      ]);
     }
   }
 
@@ -389,7 +403,9 @@ class ExerciseResource extends ApiResourceBase {
       ]);
     }
     catch (\Throwable $exception) {
-      watchdog_exception('citius_device_api', $exception);
+      \Drupal::logger('citius_device_api')->error('Raw payload update failed: @error', [
+        '@error' => $exception->getMessage(),
+      ]);
     }
   }
 
@@ -413,7 +429,9 @@ class ExerciseResource extends ApiResourceBase {
     catch (\Throwable $exception) {
       // Raw logging is diagnostic-only. If its table is missing/outdated, the
       // exercise endpoint should still validate and save the normalized data.
-      watchdog_exception('citius_device_api', $exception);
+      \Drupal::logger('citius_device_api')->error('Raw payload update failed: @error', [
+        '@error' => $exception->getMessage(),
+      ]);
       return 0;
     }
   }

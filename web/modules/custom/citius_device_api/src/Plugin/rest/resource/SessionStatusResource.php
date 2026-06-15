@@ -91,7 +91,15 @@ class SessionStatusResource extends ResourceBase {
     $device_id = $session->getGlassDeviceId();
 
     $error_message = NULL;
-    $device_actions = ['start', 'stop', 'pause', 'resume', 'reboot'];
+    $device_actions = [
+      'start',
+      'stop',
+      'pause',
+      'resume',
+      'reboot',
+      'calibrate_standing_height',
+      'calibrate_squat_height',
+    ];
 
     if (in_array($action, $device_actions, TRUE)) {
       if ($device_id) {
@@ -103,7 +111,9 @@ class SessionStatusResource extends ResourceBase {
                 'device_id' => $device_id,
                 'user_id' => $session->get(NodeFields::PATIENT)->target_id,
                 'routine_id' => $session->id(),
+                'status' => $data['status'] ?? 'calibration',
                 'action' => $action,
+                'timestamp' => (new \DateTimeImmutable())->format(\DateTimeInterface::ATOM),
               ],
               'timeout' => 5,
             ]
