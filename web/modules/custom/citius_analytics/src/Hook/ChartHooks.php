@@ -244,26 +244,51 @@ class ChartHooks {
 
     $element['lateral_range'] = [
       '#type' => 'chart_data',
-      '#title' => $this->t('Rango de movimiento lateral'),
+      '#title' => $this->t('Movimiento lateral de la cabeza'),
       '#chart_type' => 'boxplot',
       '#data' => [$values],
       '#mapped_data' => [$values],
       '#color' => '#006fb0AA',
     ];
 
+    // Keep xaxis labels because Drupal Charts uses them to build the dataset.
+    // Even with indexAxis = y, removing this can make the data disappear.
     $element['xaxis']['#type'] = 'chart_xaxis';
-    $element['xaxis']['#labels'] = [$this->t('Cabeza eje X')];
+    $element['xaxis']['#labels'] = [$this->t('Movimiento izquierda-derecha')];
+
     $element['yaxis']['#type'] = 'chart_yaxis';
-    $element['yaxis']['#title'] = $this->t('Movimiento lateral (X)');
+    $element['yaxis']['#title'] = $this->t('Desplazamiento lateral de la cabeza (m)');
+
     $element['#chart_type'] = 'boxplot';
     $element['#attached']['library'][] = 'citius_analytics/chartjs_boxplot';
+
     $element['#raw_options']['type'] = 'boxplot';
+
+    // Horizontal boxplot.
+    $element['#raw_options']['options']['indexAxis'] = 'y';
+
     $element['#raw_options']['options']['plugins']['legend']['display'] = FALSE;
     $element['#raw_options']['options']['plugins']['datalabels']['display'] = FALSE;
-    $element['#raw_options']['options']['scales']['y']['title'] = [
+
+    // In horizontal mode, the numeric movement values are on the X axis.
+    $element['#raw_options']['options']['scales']['x']['title'] = [
       'display' => TRUE,
-      'text' => $this->t('Movimiento lateral (X)'),
+      'text' => $this->t('Desplazamiento lateral de la cabeza (m)'),
     ];
+
+    // Hide the vertical axis title to avoid duplicated/confusing labels.
+    $element['#raw_options']['options']['scales']['y']['title'] = [
+      'display' => FALSE,
+    ];
+
+    // Optional: keep 0 centered, but only if there are values.
+    if (!empty($values)) {
+      $max_abs = max(array_map('abs', $values));
+      $max_abs = max(0.1, ceil($max_abs * 10) / 10);
+
+      $element['#raw_options']['options']['scales']['x']['min'] = -$max_abs;
+      $element['#raw_options']['options']['scales']['x']['max'] = $max_abs;
+    }
   }
 
   /**
