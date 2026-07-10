@@ -49,6 +49,11 @@ class ChartHooks {
       return;
     }
 
+    if ($selected_chart === 'lateral_range') {
+      $this->buildLateralRangeBoxplotChart($element, $request);
+      return;
+    }
+
     foreach (Element::children($element) as $key) {
       $type = $element[$key]['#type'] ?? '';
       if ($type !== 'chart_data') {
@@ -191,6 +196,74 @@ class ChartHooks {
     $element['#raw_options']['options']['scales']['y']['beginAtZero'] = TRUE;
     $element['#raw_options']['options']['scales']['y']['suggestedMax'] = $y_axis_max;
     $element['#raw_options']['options']['scales']['y']['ticks']['stepSize'] = 1;
+  }
+
+
+  /**
+   * Build a boxplot chart for the lateral head movement (head X axis).
+   */
+  protected function buildLateralRangeBoxplotChart(array &$element, ?Request $request): void {
+    [$from, $to] = $this->resolveDateRange($request);
+
+    $query = \Drupal::database()->select('execution', 'e');
+    $query->addField('e', 'head_x', 'head_x');
+    $query->condition('e.execution_date', $from->format('Y-m-d 00:00:00'), '>=');
+    $query->condition('e.execution_date', $to->modify('+1 day')->format('Y-m-d 00:00:00'), '<');
+    $query->isNotNull('e.head_x');
+
+    $patient = (int) ($request?->query->get('patient') ?? 0);
+    if ($patient > 0) {
+      $query->join('node__field_patient', 'nfp', 'nfp.entity_id = e.session');
+      $query->condition('nfp.field_patient_target_id', $patient);
+    }
+
+    $routine = (int) ($request?->query->get('routine') ?? 0);
+    if ($routine > 0) {
+      $query->join('node__field_routine', 'nfr', 'nfr.entity_id = e.session');
+      $query->condition('nfr.field_routine_target_id', $routine);
+    }
+
+    $exercise = (int) ($request?->query->get('exercise') ?? 0);
+    if ($exercise > 0) {
+      $query->condition('e.exercise', $exercise);
+    }
+
+    $intensity = (string) ($request?->query->get('intensity') ?? '');
+    if ($intensity !== '') {
+      $query->join('paragraph__field_intensity', 'pfi', 'pfi.entity_id = e.exercise');
+      $query->condition('pfi.field_intensity_value', $intensity);
+    }
+
+    $query->orderBy('e.execution_date', 'ASC');
+
+    $values = array_map('floatval', $query->execute()->fetchCol());
+
+    foreach (Element::children($element) as $child) {
+      unset($element[$child]);
+    }
+
+    $element['lateral_range'] = [
+      '#type' => 'chart_data',
+      '#title' => $this->t('Rango de movimiento lateral'),
+      '#chart_type' => 'boxplot',
+      '#data' => [$values],
+      '#mapped_data' => [$values],
+      '#color' => '#006fb0AA',
+    ];
+
+    $element['xaxis']['#type'] = 'chart_xaxis';
+    $element['xaxis']['#labels'] = [$this->t('Cabeza eje X')];
+    $element['yaxis']['#type'] = 'chart_yaxis';
+    $element['yaxis']['#title'] = $this->t('Movimiento lateral (X)');
+    $element['#chart_type'] = 'boxplot';
+    $element['#attached']['library'][] = 'citius_analytics/chartjs_boxplot';
+    $element['#raw_options']['type'] = 'boxplot';
+    $element['#raw_options']['options']['plugins']['legend']['display'] = FALSE;
+    $element['#raw_options']['options']['plugins']['datalabels']['display'] = FALSE;
+    $element['#raw_options']['options']['scales']['y']['title'] = [
+      'display' => TRUE,
+      'text' => $this->t('Movimiento lateral (X)'),
+    ];
   }
 
   /**
@@ -339,6 +412,7 @@ class ChartHooks {
         '#options' => [
           'totals' => $this->t('Resultados totales'),
           'evolution' => $this->t('Evolución en el tiempo'),
+          'lateral_range' => $this->t('Rango de movimiento lateral'),
         ],
         '#default_value' => $view->getExposedInput()['chart_type'] ?? 'totals',
         '#weight' => -9,

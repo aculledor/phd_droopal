@@ -2,3 +2,15 @@ process_mining:
   css:
     theme:
       css/process-mining.css: {}
+
+chartjs_boxplot:
+  remote: 'https://github.com/sgratzl/chartjs-chart-boxplot'
+  version: 4.4.4
+  license:
+    name: MIT
+    url: 'https://github.com/sgratzl/chartjs-chart-boxplot/blob/main/LICENSE'
+    gpl-compatible: true
+  js:
+    https://unpkg.com/@sgratzl/chartjs-chart-boxplot@4.4.4/build/index.umd.min.js: { type: external, minified: true, weight: -2 }
+  dependencies:
+    - charts_chartjs/charts_chartjs
